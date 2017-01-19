@@ -1,4 +1,6 @@
 # topmenubar
 Top Menu Bar for Interseroh Webapps
 
-![Travis Build](https://travis-ci.org/interseroh/topmenubar.svg?branch=master)
+## Build Status
+
+[![Travis Build](https://travis-ci.org/interseroh/topmenubar.svg?branch=master)](https://travis-ci.org/interseroh/topmenubar)
