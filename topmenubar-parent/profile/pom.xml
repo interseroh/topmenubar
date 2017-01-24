@@ -145,7 +145,7 @@
 	<profiles>
 
 		<profile>
-			<id>profileProfile</id>
+			<id>with-profile</id>
 			<build>
 				<plugins>
 					<plugin>

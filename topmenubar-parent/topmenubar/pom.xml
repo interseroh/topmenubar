@@ -144,7 +144,7 @@
 	<profiles>
 
 		<profile>
-			<id>topmenubarProfile</id>
+			<id>with-topmenubar</id>
 			<build>
 				<plugins>
 					<plugin>

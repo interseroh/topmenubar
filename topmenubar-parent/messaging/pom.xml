@@ -145,7 +145,7 @@
 	<profiles>
 
 		<profile>
-			<id>messagingProfile</id>
+			<id>with-messaging</id>
 			<build>
 				<plugins>
 					<plugin>

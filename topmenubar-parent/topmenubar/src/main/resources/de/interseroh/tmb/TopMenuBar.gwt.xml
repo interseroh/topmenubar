@@ -67,7 +67,7 @@
 		value="ENABLED" />
 		
 	<!-- Specify the app entry point class. -->
-	<entry-point class='de.interseroh.tmb.client.TopMenueBarWebApp' />
+	<entry-point class='de.interseroh.tmb.client.TopMenuBarWebApp' />
 
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />

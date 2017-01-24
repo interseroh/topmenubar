@@ -27,10 +27,10 @@ import org.springframework.context.annotation.Bean;
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 
 @SpringBootApplication
-public class TopMenueBarApplication {
+public class TopMenuBarApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TopMenueBarApplication.class, args);
+		SpringApplication.run(TopMenuBarApplication.class, args);
 	}
 
 	@Bean

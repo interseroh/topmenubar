@@ -244,12 +244,31 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-    <modules>
-		<module>topmenubar</module>
-		<module>applauncher</module>
-		<module>messaging</module>
-		<module>profile</module>
-	</modules>
 
-
+	<profiles>
+		<profile>
+			<id>with-applauncher</id>
+			<modules>
+				<module>applauncher</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>with-messaging</id>
+			<modules>
+				<module>messaging</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>with-profile</id>
+			<modules>
+				<module>profile</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>with-topmenubar</id>
+			<modules>
+				<module>topmenubar</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>

@@ -23,7 +23,7 @@ import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.inject.Singleton;
 
-public class TopMenueBarAppGinModule extends AbstractGinModule {
+public class TopMenuBarAppGinModule extends AbstractGinModule {
 
 	@Override
 	protected void configure() {

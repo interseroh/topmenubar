@@ -25,8 +25,8 @@ import de.interseroh.tmb.client.common.ServicePreparator;
 import de.interseroh.tmb.client.ui.main.MainPanelView;
 
 
-@GinModules(TopMenueBarAppGinModule.class)
-public interface TopMenueBarAppGinjector extends Ginjector {
+@GinModules(TopMenuBarAppGinModule.class)
+public interface TopMenuBarAppGinjector extends Ginjector {
 
 	ServicePreparator getServicePreparator();
 

@@ -145,7 +145,7 @@
 	<profiles>
 
 		<profile>
-			<id>applauncherProfile</id>
+			<id>with-applauncher</id>
 			<build>
 				<plugins>
 					<plugin>
