@@ -16,25 +16,42 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client;
+package de.interseroh.tmb.client.common;
 
-import com.google.gwt.event.shared.SimpleEventBus;
-import com.google.gwt.inject.client.GinModules;
-import com.google.gwt.inject.client.Ginjector;
-import de.interseroh.tmb.client.common.ServicePreparator;
-import de.interseroh.tmb.client.ui.main.MainPanelView;
+import java.util.logging.Logger;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
-@GinModules(TopMenuBarAppGinModule.class)
-public interface TopMenuBarAppGinjector extends Ginjector {
-
-	ServicePreparator getServicePreparator();
-
-	SimpleEventBus getEventBus();
-
-	Messages getMessages();
-
-	MainPanelView getMainPanelView();
+import org.fusesource.restygwt.client.Defaults;
+import org.fusesource.restygwt.client.Resource;
+import org.fusesource.restygwt.client.RestServiceProxy;
 
 
+@Singleton
+public class ServicePreparator {
+
+	private static Logger logger = Logger
+			.getLogger(ServicePreparator.class.getName());
+
+
+
+	private void initServices() {
+		logger.info("Prepare for the resources for the services...");
+
+		Defaults.setDateFormat(null);
+
+		initDomainService();
+	}
+
+	private void initDomainService() {
+		logger.info("Init  the domains...");
+
+		Resource resource = new Resource("");
+
+	}
+
+	public void prepare() {
+		initServices();
+	}
 }

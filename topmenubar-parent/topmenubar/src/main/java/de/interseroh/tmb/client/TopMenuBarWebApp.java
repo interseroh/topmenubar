@@ -22,11 +22,17 @@ import java.util.logging.Logger;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.ui.*;
+import de.interseroh.tmb.client.common.ServicePreparator;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Label;
+import org.gwtbootstrap3.client.ui.base.HasInlineStyle;
+import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
 public class TopMenuBarWebApp implements EntryPoint {
@@ -47,7 +53,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 
-		//initServices();
+		initServices();
 
 		createViews();
 
@@ -61,8 +67,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 //	}
 
 	private void initServices() {
-		//ServicePreparator servicePreparator = injector.getServicePreparator();
-		//servicePreparator.prepare();
+		ServicePreparator servicePreparator = injector.getServicePreparator();
+		servicePreparator.prepare();
 	}
 
 	private void createViews() {
