@@ -21,20 +21,18 @@ package de.interseroh.tmb.client;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
-import de.interseroh.tmb.client.common.ServicePreparator;
-import de.interseroh.tmb.client.ui.main.MainPanelView;
 
 
 @GinModules(TopMenuBarAppGinModule.class)
 public interface TopMenuBarAppGinjector extends Ginjector {
 
-	ServicePreparator getServicePreparator();
+	//ServicePreparator getServicePreparator();
 
 	SimpleEventBus getEventBus();
 
 	Messages getMessages();
 
-	MainPanelView getMainPanelView();
+	//MainPanelView getMainPanelView();
 
 
 }
