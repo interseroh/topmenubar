@@ -18,37 +18,25 @@
  */
 package  de.interseroh.tmb.client.ui.main;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.inject.Singleton;
 
 import org.gwtbootstrap3.client.ui.AnchorButton;
-import org.gwtbootstrap3.client.ui.AnchorListItem;
 import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.NavbarLink;
 import org.gwtbootstrap3.client.ui.Popover;
 import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.binder.EventBinder;
-import com.google.web.bindery.event.shared.binder.EventHandler;
-import de.interseroh.tmb.client.common.ErrorFormatter;
-import de.interseroh.tmb.client.common.LoadingMessagePopupPanel;
-import de.interseroh.tmb.client.common.Startable;
-import de.interseroh.tmb.client.common.WidgetName;
-import de.interseroh.tmb.client.ui.event.ChangeViewEvent;
 
 @Singleton
 public class MainPanelView extends Composite {
@@ -68,11 +56,7 @@ public class MainPanelView extends Composite {
 	private final MainPanelEventBinder eventBinder = GWT
 			.create(MainPanelEventBinder.class);
 
-	final Map<WidgetName, Widget> widgets = new HashMap<>();
 
-	private final LoadingMessagePopupPanel loadingMessagePopupPanel;
-
-	private final ErrorFormatter errorFormatter;
 
 	@UiField
 	Column contentColumn;
@@ -96,12 +80,9 @@ public class MainPanelView extends Composite {
 	AnchorButton wrenchButton;
 
 	@Inject
-	public MainPanelView(EventBus eventBus, ErrorFormatter errorFormatter,
-			LoadingMessagePopupPanel loadingMessagePopupPanel) {
+	public MainPanelView(EventBus eventBus) {
 		initWidget(uiBinder.createAndBindUi(this));
 		eventBinder.bindEventHandlers(this, eventBus);
-		this.errorFormatter = errorFormatter;
-		this.loadingMessagePopupPanel = loadingMessagePopupPanel;
 
 		//webAppsButton.getElement().setClassName("glyphicon");
 		webAppsButton.setIcon(IconType.TH);
@@ -204,17 +185,8 @@ public class MainPanelView extends Composite {
 		logger.info("MainPanelView created...");
 	}
 
-	public void addWidget(WidgetName name, Widget widget) {
-		this.widgets.put(name, widget);
-		this.contentColumn.add(widget);
-		widget.setVisible(false);
-	}
 
-	public void showWidget(WidgetName name) {
-		hideAllWidgets();
-		Widget widget = this.widgets.get(name);
-		widget.setVisible(true);
-	}
+
 
 	private void hideAllWidgets() {
 		final int count = this.contentColumn.getWidgetCount();
@@ -223,15 +195,6 @@ public class MainPanelView extends Composite {
 		}
 	}
 
-	void showAndStartWidget(WidgetName name) {
-		hideAllWidgets();
-		Widget widget = this.widgets.get(name);
-		widget.setVisible(true);
-		if (widget instanceof Startable) {
-			Startable startable = (Startable) widget;
-			startable.start();
-		}
-	}
 
 	public void setContentAreaVisible(boolean visible) {
 		this.contentColumn.setVisible(visible);
@@ -239,11 +202,6 @@ public class MainPanelView extends Composite {
 
 
 
-	@EventHandler
-	void onChangeViewed(ChangeViewEvent event) {
-		logger.info("ChangeViewEvent triggered: " + event.getWidgetName()
-				+ " - Source: " + event.getSource());
-		showAndStartWidget(event.getWidgetName());
-	}
+
 
 }
