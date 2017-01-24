@@ -71,43 +71,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		servicePreparator.prepare();
 	}
 
-
-	private void createViews2() {
-		// Views
-		logger.info("Create Views begins...");
-
-		RootPanel appLauncher = getWidgets(TMB_APP_LAUNCHER);
-		RootPanel profile = getWidgets(TMB_PROFILE);
-		RootPanel messaging = getWidgets(TMB_MESSAGING);
-		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
-
-		FlowPanel panel = new FlowPanel();
-
-		FlowPanel left 	= new FlowPanel();
-		FlowPanel right = new FlowPanel();
-
-		handleLeftSide(left);
-
-		handleRightElement(appLauncher, rootPanel, right);
-
-		handleRightElement(profile, rootPanel, right);
-
-		handleRightElement(messaging, rootPanel, right);
-
-		handleRightElement(new Label("Blalblabla"), rootPanel, right);
-
-		stylePanel(right);
-
-		panel.add(left);
-		panel.add(right);
-
-
-		rootPanel.insert(panel,0);
-
-		logger.info("Create Views ends...");
-	}
-
-
 	private void createViews() {
 		// Views
 		logger.info("Create Views begins...");
@@ -144,11 +107,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 		handlePanelElement(profile, rootPanel, right);
 
 		handlePanelElement(messaging, rootPanel, right);
-
-		Label blalblabla = new Label("Blalblabla");
-		floatRight(blalblabla);
-		margin10(blalblabla);
-		right.add(blalblabla);
+//
+//		Label blalblabla = new Label("Blalblabla");
+//		floatRight(blalblabla);
+//		margin10(blalblabla);
+//		right.add(blalblabla);
 
 		row.add(left);
 		row.add(right);
@@ -169,31 +132,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 			floatRight(appLauncher);
 			right.add(appLauncher);
 		}
-	}
-
-	private void handleLeftSide(FlowPanel left) {
-		Image icon = new Image(() -> "images/entsorger-logo.png");
-		Label headline = new Label("TEST APPLICATION");
-		floatLeft(icon);
-		floatLeft(headline);
-		left.add(icon);
-		left.add(headline);
-		stylePanel(left);
-	}
-
-	private void handleRightElement(Widget appLauncher, RootPanel rootPanel, FlowPanel right) {
-		if (appLauncher != null) {
-			rootPanel.remove(appLauncher);
-			floatRight(appLauncher);
-			right.add(appLauncher);
-		}
-	}
-
-
-
-	private void stylePanel(FlowPanel left) {
-//		left.getElement().getStyle().setPadding(10, Style.Unit.PT);
-		left.getElement().getStyle().setBackgroundColor("#223d62");
 	}
 
 	private void margin10(UIObject icon) {
