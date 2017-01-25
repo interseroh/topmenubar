@@ -15,9 +15,9 @@ Top Menu Bar for Interseroh Webapps.
   - [topmenubar](#topmenubar)
 
 ##Introduction
-This application is a top menu bar for Interseroh Webapps. The project represents four microservices.
-The UI(User Interface) of each microservice is based on GWT framework(http://www.gwtproject.org/) and server part on
-Spring boot framework (https://projects.spring.io/spring-boot/).
+This application is a top menu bar for various Webapps. The project is represented by four microservices.
+The UI(User Interface) of each microservice is based on GWT framework(http://www.gwtproject.org/) and a matching 
+backend basing on Spring boot framework (https://projects.spring.io/spring-boot/).
 
 ## Maven modules
 Each microservice is represented with one maven modul under topmenubar-parent modul.
@@ -30,7 +30,7 @@ There is the next maven modules structure:
    - topmenubar
  
  ### topmenuebar-parent
- That is a parent modul with pom packaging. The pom.xml file of this module contains the depenecies an plugings management and profiles for the rest of modules.
+ That is a parent module with pom packaging. The pom.xml file of this module contains the depenecies an plugings management and profiles for the rest of modules.
  The plugins are parametriesied with three placeholders:
  
  - ${i18n.gwt.modul} (Reference to configuration of the main GWT modul )
@@ -45,13 +45,13 @@ There is the next maven modules structure:
   
  
  ### applauncher
- That modul respresents "Application launcher" of Top Menu Bar
+ This module respresents the application launcher panel of the Top Menu Bar.
  
  ### messaging
- That modul respresents "Messagung" of Top Menu Bar
+ This module respresents the messaging facilities of Top Menu Bar.
  
  ### topmenubar
-  That modul respresents "Messagung" of Top Menu Bar
+ This module contains the graphical representation of Top Menu Bar plus a prototype landing page
  
  
 
