@@ -19,25 +19,13 @@
 package de.interseroh.tmb.client.ui.event;
 
 import com.google.web.bindery.event.shared.binder.GenericEvent;
-import de.interseroh.tmb.client.common.WidgetName;
 
 public class ChangeViewEvent extends GenericEvent {
 
-	private WidgetName widgetName;
+
 
 	public ChangeViewEvent() {
 	}
 
-	public ChangeViewEvent(WidgetName widgetName) {
-		this.widgetName = widgetName;
-	}
-
-	public WidgetName getWidgetName() {
-		return widgetName;
-	}
-
-	public void setWidgetName(WidgetName widgetName) {
-		this.widgetName = widgetName;
-	}
 
 }
