@@ -80,8 +80,12 @@ public class TopMenuBarWebApp implements EntryPoint {
 		RootPanel messaging = getWidgets(TMB_MESSAGING);
 		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
+		String colour = rootPanel.getElement().getAttribute("data-colour");
+		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
+		String headL = rootPanel.getElement().getAttribute("data-headline");
+
 		FlowPanel f  = new FlowPanel();
-		f.getElement().getStyle().setBackgroundColor("#223d62");
+		f.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
 
 		Container container = new Container();
 		container.setFluid(true);
@@ -92,8 +96,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		Column left 	= new Column("MD_6");
 		Column right	= new Column("MD_6");
 
-		Image icon = new Image(() -> "images/entsorger-logo.png");
-		Label headline = new Label("TEST APPLICATION");
+		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
+		Label headline = new Label(headL != null && !headL.isEmpty() ? headL : "NO HEADLINE!");
 		floatLeft(icon);
 		floatLeft(headline);
 		margin10(icon);
