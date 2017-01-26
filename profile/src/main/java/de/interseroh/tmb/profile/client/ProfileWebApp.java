@@ -21,17 +21,22 @@ package de.interseroh.tmb.profile.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
+import java.util.logging.Logger;
+
 public class ProfileWebApp implements EntryPoint {
 
 
 
+	private static Logger logger = Logger
+			.getLogger(ProfileWebApp.class.getName());
+
 	@Override
 	public void onModuleLoad() {
-		//addMetaElements();
+		logger.info("ProfileWebApp: Create Views begins...");
 
-		GWT.log("Hello Profile!", null);
+		GWT.log("Hello ProfileWebApp!", null);
 
-		//removeLoadingImage();
+		logger.info("ProfileWebApp: Create Views ends...");
 	}
 
 

@@ -44,7 +44,7 @@
 		value="ENABLED" />
 		
 	<!-- Specify the app entry point class. -->
-	<entry-point class='de.interseroh.tmb.applauncher.client.AppLauncherWebApp' />
+	<entry-point class='de.interseroh.tmb.applauncher.client.ApplauncherWebApp' />
 
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />

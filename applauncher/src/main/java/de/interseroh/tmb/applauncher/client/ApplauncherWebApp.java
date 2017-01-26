@@ -21,17 +21,20 @@ package de.interseroh.tmb.applauncher.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-public class AppLauncherWebApp implements EntryPoint {
+import java.util.logging.Logger;
 
+public class ApplauncherWebApp implements EntryPoint {
 
+	private static Logger logger = Logger
+			.getLogger(ApplauncherWebApp.class.getName());
 
 	@Override
 	public void onModuleLoad() {
-		//addMetaElements();
+		logger.info("AppLauncher: Create Views begins...");
 
 		GWT.log("Hello Applaucher!", null);
 
-		//removeLoadingImage();
+		logger.info("AppLauncher: Create Views end...");
 	}
 
 

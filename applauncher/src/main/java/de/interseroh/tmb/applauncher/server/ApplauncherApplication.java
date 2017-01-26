@@ -20,6 +20,7 @@ package de.interseroh.tmb.applauncher.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -28,6 +29,9 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class ApplauncherApplication {
 
+	@Value("${server.context-path}")
+	private String contextPath;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ApplauncherApplication.class, args);
 	}
@@ -35,6 +39,6 @@ public class ApplauncherApplication {
 	@Bean
 	public ServletRegistrationBean servletRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING + "/*");
+				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
 	}
 }

@@ -21,17 +21,20 @@ package de.interseroh.tmb.messaging.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
+import java.util.logging.Logger;
+
 public class MessagingWebApp implements EntryPoint {
 
-
+	private static Logger logger = Logger
+			.getLogger(MessagingWebApp.class.getName());
 
 	@Override
 	public void onModuleLoad() {
-		//addMetaElements();
+		logger.info("MessagingWebApp: Create Views begins...");
 
-		GWT.log("Hello Messaging!", null);
+		GWT.log("Hello MessagingWebApp!", null);
 
-		//removeLoadingImage();
+		logger.info("MessagingWebApp: Create Views ends...");
 	}
 
 

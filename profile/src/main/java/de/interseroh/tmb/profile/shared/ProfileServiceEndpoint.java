@@ -20,7 +20,7 @@ package de.interseroh.tmb.profile.shared;
 
 public interface ProfileServiceEndpoint {
 
-	public static final String GWT_REMOTE_LOGGING = "/topmenu/remote_logging";
+	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
 
 
 }
