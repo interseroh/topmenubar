@@ -52,17 +52,7 @@
 	</properties>
    <dependencyManagement>
 	   <dependencies>
-			<!-- Spring -->
 
-
-		<!-- Use this Spring Tool for restarting the app automatically -->
-		<!-- Only use this if you don't use JRebel! -->
-		<!--
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
-		-->
 		<!-- Spring Test -->
 		<dependency>
 			<groupId>javax.validation</groupId>
