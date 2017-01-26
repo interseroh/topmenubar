@@ -33,7 +33,5 @@ public interface TopMenuBarAppGinjector extends Ginjector {
 
 	Messages getMessages();
 
-	//MainPanelView getMainPanelView();
-
 
 }

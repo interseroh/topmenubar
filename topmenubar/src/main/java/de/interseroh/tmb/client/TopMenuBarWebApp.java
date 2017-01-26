@@ -97,6 +97,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		Column right	= new Column("MD_6");
 
 		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
+		icon.setWidth("24pt");
+		icon.setHeight("24pt");
 		Label headline = new Label(headL != null && !headL.isEmpty() ? headL : "NO HEADLINE!");
 		floatLeft(icon);
 		floatLeft(headline);
