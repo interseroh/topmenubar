@@ -258,7 +258,7 @@
 										<version>${project.version}</version>
 									</artifactItem>
 								</artifactItems>
-								<outputDirectory>${project.basedir}/target/classes/</outputDirectory>
+								<outputDirectory>${project.basedir}/target/</outputDirectory>
 								<stripVersion>true</stripVersion>
 							</configuration>
 						</execution>
