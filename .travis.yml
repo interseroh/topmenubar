@@ -1,7 +1,7 @@
 language: java
 jdk:
   - oraclejdk8
-script: "mvn clean install -P with-topmenubar -DskipTests"
-script: "mvn cobertura:cobertura -P with-topmenubar -DskipTests"
+script: "mvn clean install -P with-topmenubar"
+script: "mvn cobertura:cobertura -P with-topmenubar"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
