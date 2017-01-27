@@ -1,7 +1,13 @@
 language: java
 jdk:
-  - oraclejdk8
-script: "mvn clean install -P with-topmenubar -DskipTests"
-script: "mvn cobertura:cobertura -P with-topmenubar -DskipTests"
+- oraclejdk8
+script: "mvn clean install -P with-topmenubar"
+script: "mvn cobertura:cobertura -P with-topmenubar"
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: heroku
+  api_key:
+    secure: bFfJc+Jm3yIMKSssW3hCKwLEKxi2H9/iuucGEt/ZXuGTSr6NZPNfAd/fb9ESrlfFzO6cydNzw3W1xfSZPDdR1pw4TEoqkpiCDSFwTkJXkS89rmGx3AQUeKabDn9AzsaYRxo2XBJz5OIUvc3RLzOiDh3lXKoW1hHeCcjCZB+iupIdD+kS+KIBf2L0GU4Pwb6Ll2vh/6+L3XqN8nnLnnjx9hkdWYBrbkot5QUk7RZKMdgor1R/q5aiwLeZqvC4FVZluE1NGkhd6SQH84PjYaLsq1DSAjmUT6Kasq6O+hUjSaEW+F6HQeUZ2HpMwM7rF6l7plIIW7NkDPumJwhr8OlPBw3g0ZqkBrZ5A/KjpdwA3fwsauhPXnT/oX27qnZb/tcRusVwYOUfjkthJFlsRistTk6gc/OTcOTZPGXQ9CpfNUWlTL+OYGGQG+gCh4lHHYdoNSELmMGfRmIl7Egp+b0SdRxqMO6cFXC0YEosPDXTlWiImW1nGMsS4XyRI+akFkM/0Dy9ho9fRQ0MfH+52+Ru6pe80HT8sGXe+w2ERR/oGH9/oen+pMqSIKozU0lULQMUzjaZP8op0264HEhiGopL+oLIDS4J/Xr6ZOxXFPv4tqCv5DR1F4924a7kz2D73YFUIbDmk+pYMRSgiEIfDU5C3MreH1cfMCL+2e9isVZdFD0=
+  on:
+    all_branches: true
