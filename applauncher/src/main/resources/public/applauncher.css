@@ -1,5 +1,38 @@
 /** Add css rules here for your application. */
 
+
+.applauncherRootPanel{
+   max-height: 414px; height: 496px;
+
+}
+
+.webapps-popover-outer-div {
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	white-space: nowrap;
+	text-align: left;
+	line-height: normal;
+	transition: height .2s ease-in-out;
+	-moz-user-select: text;
+	border-radius: 2px;
+	animation: gb__a .2s;
+	top: 0;
+	right: 0;
+	position: absolute;
+	overflow: hidden;
+	outline: none;
+	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+	color: #000;
+	border-color: rgba(0,0,0,.2);
+	border: 1px solid #ccc;
+	background: #fff;
+	width: 320px;
+	overflow-y: auto;
+	min-height: 196px;
+	display: block;
+}
+
+
 /** Example rules used by the template application (remove for your app) */
 h1 {
   font-size: 2em;
@@ -46,31 +79,7 @@ h1 {
 	display: none;
 }
 
-.webapps-popover-outer-div {
-	font-family: arial,sans-serif;
-	font-size: 13px;
-	white-space: nowrap;
-	text-align: left;
-	line-height: normal;
-	transition: height .2s ease-in-out;
-	-moz-user-select: text;
-	border-radius: 2px;
-	animation: gb__a .2s;
-	top: 0;
-	right: 0;
-	position: absolute;
-	overflow: hidden;
-	outline: none;
-	box-shadow: 0 2px 10px rgba(0,0,0,.2);
-	color: #000;
-	border-color: rgba(0,0,0,.2);
-	border: 1px solid #ccc;
-	background: #fff;
-	width: 320px;
-	overflow-y: auto;
-	min-height: 196px;
-	display: block;
-}
+
 .webapps-popover-unnumbered-list {
 	position: relative;
 	display: block;

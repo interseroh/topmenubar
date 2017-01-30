@@ -16,14 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.lofidewanto.demo.client.common;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.inject.Singleton;
+package de.interseroh.tmb.applauncher.client.common;
 
 import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+
+import javax.inject.Singleton;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Singleton
 public class ErrorFormatter {
