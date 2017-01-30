@@ -24,7 +24,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.3.RELEASE</version>
+		<version>1.4.3.RELEASE</version>
 
 	</parent>
 
@@ -50,6 +50,7 @@
 		<kissmda.cartridges.simple.java.version>2.0.2</kissmda.cartridges.simple.java.version>
 		<kissmda.extensions.importpacker.version>1.0.0</kissmda.extensions.importpacker.version>
 	</properties>
+
    <dependencyManagement>
 	   <dependencies>
 
