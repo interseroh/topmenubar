@@ -65,6 +65,8 @@
 		</dependency>
 		-->
 
+		<!-- Switched to jetty to enable gwt super dev mode in intellij (workaround) -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
