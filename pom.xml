@@ -212,7 +212,7 @@
 								<i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
 							</configuration>
 						</execution>
-						<execution>
+<!--						<execution>
 							<id>compile-ID</id>
 							<goals>
 								<goal>compile</goal>
@@ -225,7 +225,7 @@
 								<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
 								<deploy>${project.build.directory}/gwt-deploy</deploy>
 							</configuration>
-						</execution>
+						</execution>-->
 					</executions>
 					<configuration>
 						<runTarget>topmenuebar.html</runTarget>
@@ -259,6 +259,41 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>development</id>
+			<build>
+				<pluginManagement>
+
+				<plugins>
+					<!-- GWT Maven Plugin -->
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>gwt-maven-plugin</artifactId>
+						<version>${gwt.version}</version>
+
+						<executions>
+							<execution>
+								<id>i18n-ID</id>
+								<goals>
+									<goal>compile</goal>
+								</goals>
+								<configuration>
+									<sourceLevel>1.8</sourceLevel>
+									<module>${gwt.dev.modul}</module>
+									<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
+									<persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
+									<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
+									<deploy>${project.build.directory}/gwt-deploy</deploy>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+				</pluginManagement>
+			</build>
+
+		</profile>
 		<profile>
 			<id>with-applauncher</id>
 			<modules>

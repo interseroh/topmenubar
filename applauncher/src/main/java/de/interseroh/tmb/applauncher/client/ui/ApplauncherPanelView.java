@@ -26,5 +26,6 @@ public class ApplauncherPanelView extends Composite {
     public ApplauncherPanelView(){
         this.eventBus = eventBus;
         this.errorFormatter = errorFormatter;
+        initWidget(uiBinder.createAndBindUi(this));
     }
 }

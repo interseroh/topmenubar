@@ -30,9 +30,9 @@
 			</b:NavbarForm>
 
 			<b:NavbarText pull="RIGHT">
-				<b.html:Span>Signed in as
+
 					<b:NavbarLink>John Snow</b:NavbarLink>
-				</b.html:Span>
+
 			</b:NavbarText>
 		</b:NavbarCollapse>
 	</b:Navbar>

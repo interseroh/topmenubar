@@ -20,13 +20,12 @@ package de.interseroh.tmb.applauncher.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.*;
-import de.interseroh.tmb.applauncher.client.ui.ApplauncherPanelView;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.constants.Placement;
 import org.gwtbootstrap3.client.ui.constants.Trigger;
-import org.gwtbootstrap3.client.ui.gwt.CellTable;
 
 import java.util.logging.Logger;
 
@@ -35,7 +34,7 @@ public class ApplauncherWebApp implements EntryPoint {
 	private static Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
 
-	private Container container;
+	private Container popupContainer;
 	private Column col1;
 	private Column col2;
 	private Column col3;
@@ -47,36 +46,51 @@ public class ApplauncherWebApp implements EntryPoint {
 		GWT.log("Hello Applaucher!", null);
 
 		logger.info("AppLauncher: Create Views end...");
+//		ErrorFormatter errorFormater = new ErrorFormatter();
+//		GWT.runAsync(new RunAsyncCallback() {
+//			@Override
+//			public void onFailure(Throwable reason) {
+//				errorFormater.showError(reason,"Error ApplauncherPanelView");
+//			}
+//
+//			@Override
+//			public void onSuccess() {
+//				ApplauncherPanelView view = new ApplauncherPanelView();
+//				RootPanel.get().add(view);
+//			}
+//		});
+
+
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		ListDropDown dropDown = new ListDropDown();
 		appLauncherRoot.add(dropDown);
 
 		Popover popover = createApplauncherPopover();
-		dropDown.add(popover);
-
-
 
 		FlowPanel applauncherPanel= new FlowPanel();
+		applauncherPanel.getElement().getStyle().setFloat(Style.Float.RIGHT);
 
 		applauncherPanel.getElement().addClassName("webapps-popover-outer-div");
 		applauncherPanel.getElement().setAttribute("aria-label","Interseroh-Apps");
 		applauncherPanel.getElement().setAttribute("aria-hidden","false");
 		applauncherPanel.getElement().setAttribute("role","region");
-		applauncherPanel.add(createPopupContainer());
+
+		createPopupContainer();
+		applauncherPanel.add(popupContainer);
 
 		popover.add(applauncherPanel);
+		dropDown.add(popover);
 	}
 
 	private Container createPopupContainer(){
+	    popupContainer = new Container();
+		popupContainer.setFluid(true);
+		popupContainer.setWidth("100%");
+		popupContainer.add(createRow());
+		popupContainer.add(createRow());
 
-	   Container container = new Container();
-		container.setFluid(true);
-		container.setWidth("100%");
-		container.add(createRow());
-		container.add(createRow());
-
-		return container;
+		return popupContainer;
 
 	}
 
@@ -87,15 +101,17 @@ public class ApplauncherWebApp implements EntryPoint {
 		col1.add(icon);
 
 		Column col2	= new Column("MD_4");
-		col2.add(icon);
+		Image icon2 = new Image("images/dienstleistung-logo.png");
+		col2.add(icon2);
 		Column col3	= new Column("MD_4");
-		col3.add(icon);
+		Image icon3 = new Image("images/dienstleistung-logo.png");
+		col3.add(icon3);
 		Row row = new Row();
-		container.add(row);
+
 		row.add(col1);
 		row.add(col2);
 		row.add(col3);
-		container.add(row);
+		popupContainer.add(row);
         return row;
 	}
 
