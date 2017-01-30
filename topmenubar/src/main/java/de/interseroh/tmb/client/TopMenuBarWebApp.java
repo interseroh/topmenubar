@@ -22,17 +22,11 @@ import java.util.logging.Logger;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Node;
-import com.google.gwt.dom.client.NodeList;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.ui.*;
 import de.interseroh.tmb.client.common.ServicePreparator;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Label;
-import org.gwtbootstrap3.client.ui.base.HasInlineStyle;
-import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
 public class TopMenuBarWebApp implements EntryPoint {
@@ -44,6 +38,10 @@ public class TopMenuBarWebApp implements EntryPoint {
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
+	private Row mainPanel;
+	private Column leftPanel;
+	private Column rightPanel;
+
 
 
 	// Create Gin Injector
@@ -75,86 +73,87 @@ public class TopMenuBarWebApp implements EntryPoint {
 		// Views
 		logger.info("Create Views begins...");
 
-		RootPanel appLauncher = getWidgets(TMB_APP_LAUNCHER);
-		RootPanel profile = getWidgets(TMB_PROFILE);
-		RootPanel messaging = getWidgets(TMB_MESSAGING);
+
 		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
 		String colour = rootPanel.getElement().getAttribute("data-colour");
 		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
-		String headL = rootPanel.getElement().getAttribute("data-headline");
+		String geadlineText = rootPanel.getElement().getAttribute("data-headline");
 
-		FlowPanel f  = new FlowPanel();
-		f.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
+		FlowPanel basePanel  = new FlowPanel();
+		basePanel.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
 
-		Container container = new Container();
-		container.setFluid(true);
-		container.setWidth("100%");
+		Container container = createMD6Container();
+		createAndAddLogoImage(iconUrl);
+		createAndAddHeadlineText(geadlineText);
+		moveElementsToRightPanel();
 
-		Row row = new Row();
-
-		Column left 	= new Column("MD_6");
-		Column right	= new Column("MD_6");
-
-		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
-		icon.setWidth("24pt");
-		icon.setHeight("24pt");
-		Label headline = new Label(headL != null && !headL.isEmpty() ? headL : "NO HEADLINE!");
-		floatLeft(icon);
-		floatLeft(headline);
-		margin10(icon);
-		margin10(headline);
-
-		left.add(icon);
-		left.add(headline);
-
-		handlePanelElement(appLauncher, rootPanel, right);
-
-		handlePanelElement(profile, rootPanel, right);
-
-		handlePanelElement(messaging, rootPanel, right);
-//
-//		Label blalblabla = new Label("Blalblabla");
-//		floatRight(blalblabla);
-//		margin10(blalblabla);
-//		right.add(blalblabla);
-
-		row.add(left);
-		row.add(right);
-
-		container.add(row);
-
-		f.add(container);
-
-		rootPanel.insert(f,0);
-
+		basePanel.add(container);
+		rootPanel.insert(basePanel,0);
 		logger.info("Create Views ends...");
 	}
 
-	private void handlePanelElement(RootPanel appLauncher, RootPanel rootPanel, Column right) {
-		if (appLauncher != null) {
-			margin10(appLauncher);
-			rootPanel.remove(appLauncher);
-			floatRight(appLauncher);
-			right.add(appLauncher);
-		}
+	/**
+	 * add elements to the right panel
+	 */
+	private void moveElementsToRightPanel(){
+		RootPanel appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		RootPanel profile = getWidgets(TMB_PROFILE);
+		RootPanel messaging = getWidgets(TMB_MESSAGING);
+		appLauncher.removeFromParent();
+		profile.removeFromParent();
+		messaging.removeFromParent();
+		rightPanel.add(messaging);
+		rightPanel.add(profile);
+		rightPanel.add(appLauncher);
+
 	}
 
-	private void margin10(UIObject icon) {
-		icon.getElement().getStyle().setMargin(10, Style.Unit.PT);
+	/**
+	 * Creates and add headline text to the left panel
+	 * @param geadlineText text for adding
+	 */
+	private void createAndAddHeadlineText(String geadlineText){
+		Label headline = new Label(geadlineText != null && !geadlineText.isEmpty() ? geadlineText : "NO HEADLINE!");
+		headline.getElement().addClassName("tmb_headline_text_cls");
+		leftPanel.add(headline);
+	}
+
+	/**
+	 * Creates and add Logo image to the left panel
+	 * @param iconUrl the url of logo image
+	 */
+	private void createAndAddLogoImage(String iconUrl){
+		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
+		icon.getElement().addClassName("tmb_logo_icon_cls");
+		leftPanel.add(icon);
+	}
+
+	/**
+	 * Creates Container with two panels left and right with size MD_6
+	 * @return
+	 */
+	private Container createMD6Container(){
+		Container container = new Container();
+		container.setFluid(true);
+		container.setWidth("100%");
+		mainPanel = new Row();
+
+		leftPanel = new Column("MD_6");
+		rightPanel = new Column("MD_6");
+		mainPanel.add(leftPanel);
+		mainPanel.add(rightPanel);
+
+		container.add(mainPanel);
+		return container;
 	}
 
 
-	private void floatLeft(UIObject icon) {
-		icon.getElement().getStyle().setFloat(Style.Float.LEFT);
-	}
-
-	private void floatRight(UIObject icon) {
-		icon.getElement().getStyle().setFloat(Style.Float.RIGHT);
-	}
 
 	private RootPanel getWidgets(String element) {
 		return RootPanel.get(element);
 	}
+
+
 
 }
