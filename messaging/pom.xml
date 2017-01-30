@@ -27,12 +27,12 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>de.interseroh.applauncher</groupId>
+	<groupId>de.interseroh.tmb.messaging</groupId>
 	<artifactId>messaging</artifactId>
 	<packaging>jar</packaging>
 
 	<name>messaging</name>
-	<description>App launcher projekt</description>
+	<description>App messaging project of top menu bar</description>
 
 
 	<properties>

@@ -27,13 +27,13 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>de.interseroh.profile</groupId>
+	<groupId>de.interseroh.tmb.profile</groupId>
 	<artifactId>profile</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>profile</name>
-	<description>User Profile project</description>
+	<description>User Profile project of top menu bar</description>
 
 
 	<properties>
