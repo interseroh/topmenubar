@@ -33,7 +33,7 @@ There is the next maven modules structure:
    - topmenubar
 
  ### topmenuebar-parent
- That is a parent module with pom packaging. The pom.xml file of this module contains the depenecies an plugings management and profiles for the rest of modules.
+ That is a parent module with pom packaging. The pom.xml file of this module contains the dependencies, a plug ins management, and profiles for the rest of modules.
  The plugins are parametriesied with three placeholders:
 
  - ${i18n.gwt.modul} (Reference to configuration of the main GWT modul )
