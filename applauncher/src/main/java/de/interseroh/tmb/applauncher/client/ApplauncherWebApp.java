@@ -22,11 +22,19 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Widget;
+import de.interseroh.tmb.applauncher.shared.TargetedApplication;
 import org.gwtbootstrap3.client.ui.*;
+import org.gwtbootstrap3.client.ui.Anchor;
 import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.constants.Placement;
-import org.gwtbootstrap3.client.ui.constants.Trigger;
+import org.gwtbootstrap3.client.ui.Label;
+import org.gwtbootstrap3.client.ui.constants.*;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
+import org.gwtbootstrap3.client.ui.html.Div;
+import org.gwtbootstrap3.client.ui.html.UnorderedList;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class ApplauncherWebApp implements EntryPoint {
@@ -34,10 +42,22 @@ public class ApplauncherWebApp implements EntryPoint {
 	private static Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
 
-	private Container popupContainer;
 	private Column col1;
 	private Column col2;
 	private Column col3;
+
+
+	static List<TargetedApplication> applications = new ArrayList<>();
+
+	static {
+		applications.add(new TargetedApplication("Entsorger","http://www.google.de", "images/entsorger-logo.png"));
+		applications.add(new TargetedApplication("Aufträge","http://www.google.de", "images/auftrags-logo.png"));
+		applications.add(new TargetedApplication("eco24","http://www.google.de", "images/ecoservice24-logo.png"));
+		applications.add(new TargetedApplication("isupplier","http://www.google.de", "images/isupplier-logo.png"));
+		applications.add(new TargetedApplication("Mengen","http://www.google.de", "images/mengenmeldung-logo.png"));
+		applications.add(new TargetedApplication("Drache","http://www.google.de", "images/sammeldrache-logo.jpeg"));
+		applications.add(new TargetedApplication("Dienste","http://www.google.de", "images/dienstleistung-logo.png"));
+	}
 
 	@Override
 	public void onModuleLoad() {
@@ -64,64 +84,98 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		ListDropDown dropDown = new ListDropDown();
-		appLauncherRoot.add(dropDown);
+		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
+		dropDown.setMarginRight(200);
 
 		Popover popover = createApplauncherPopover();
+		popover.setAlternateTemplate("<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
 
-		FlowPanel applauncherPanel= new FlowPanel();
-		applauncherPanel.getElement().getStyle().setFloat(Style.Float.RIGHT);
+		AnchorButton popoverBtn= new AnchorButton();
+		popoverBtn.setIcon(IconType.TH);
+		popoverBtn.setIconSize(IconSize.LARGE);
 
-		applauncherPanel.getElement().addClassName("webapps-popover-outer-div");
-		applauncherPanel.getElement().setAttribute("aria-label","Interseroh-Apps");
-		applauncherPanel.getElement().setAttribute("aria-hidden","false");
-		applauncherPanel.getElement().setAttribute("role","region");
+		createFlowPanel();
 
-		createPopupContainer();
-		applauncherPanel.add(popupContainer);
-
-		popover.add(applauncherPanel);
+		popover.add(popoverBtn);
+		popover.setContent(createDivStructure().getElement().getString());
 		dropDown.add(popover);
+
+		appLauncherRoot.add(dropDown);
+	}
+
+	private FlowPanel createFlowPanel() {
+		FlowPanel applauncherPanel= new FlowPanel();
+
+		return applauncherPanel;
+	}
+
+	private Widget createDivStructure() {
+		FlowPanel panel = createFlowPanel();
+		Container container = createPopupContainer();
+		fillThreeColumnContainer(container, applications);
+		panel.add(container);
+	return container;
 	}
 
 	private Container createPopupContainer(){
-	    popupContainer = new Container();
+		Container popupContainer = new Container();
 		popupContainer.setFluid(true);
-		popupContainer.setWidth("100%");
-		popupContainer.add(createRow());
-		popupContainer.add(createRow());
-
+		popupContainer.setWidth("200px");
 		return popupContainer;
 
 	}
 
 
-	private Row createRow(){
-		Column col1 	= new Column("MD_4");
-		Image icon = new Image("images/dienstleistung-logo.png");
-		col1.add(icon);
-
-		Column col2	= new Column("MD_4");
-		Image icon2 = new Image("images/dienstleistung-logo.png");
-		col2.add(icon2);
-		Column col3	= new Column("MD_4");
-		Image icon3 = new Image("images/dienstleistung-logo.png");
-		col3.add(icon3);
-		Row row = new Row();
-
-		row.add(col1);
-		row.add(col2);
-		row.add(col3);
-		popupContainer.add(row);
-        return row;
+	private void fillThreeColumnContainer(Container popupContainer, List<TargetedApplication> webApps){
+		int actCol = 0;
+		Row currentRow=null;
+		for (TargetedApplication webApp : webApps) {
+			if (actCol == 0) {
+				 currentRow = new Row();
+				popupContainer.add(currentRow);
+			}
+			currentRow.add(createAnchorColumn("MD_4",webApp.getName(), webApp.getUrl(), webApp.getIconUrl()));
+			actCol++;
+			if (actCol >= 3) {
+				actCol = 0;
+			}
+		}
 	}
+
+
+	public Column createAnchorColumn(String span, String text, String url, String iconUrl) {
+		Column col = new Column(span);
+		col.getElement().getStyle().setVerticalAlign(Style.VerticalAlign.MIDDLE);
+
+		VerticalPanel panel = new VerticalPanel();
+		panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+		panel.setWidth("100%");
+		Image icon = new Image(iconUrl);
+		icon.setWidth("25px");
+		icon.setHeight("25px");
+		icon.setType(ImageType.CIRCLE);
+		icon.setResponsive(true);
+		icon.getElement().addClassName("glyphicon");
+
+		Anchor anchor = new Anchor();
+		anchor.setText(text);
+		anchor.setHref(url);
+		panel.add(icon);
+		panel.add(anchor);
+		col.add(panel);
+		return col;
+	}
+
 
 
 	private Popover createApplauncherPopover(){
 		Popover popover = new Popover();
+
 		popover.setTitle("Interseroh WabApps");
-		popover.setIsHtml(false);
+		popover.setIsHtml(true);
 		popover.setTrigger(Trigger.CLICK);
-		popover.setPlacement(Placement.BOTTOM);
+		popover.setPlacement(Placement.AUTO);
 
 		return popover;
 	}
@@ -130,5 +184,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		logger.info("getWidget:"+root);
 		return root;
 	}
+
+
 
 }

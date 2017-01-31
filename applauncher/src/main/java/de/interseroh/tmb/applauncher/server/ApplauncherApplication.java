@@ -25,7 +25,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "http://localhost:9010/")
 @SpringBootApplication
 public class ApplauncherApplication {
 
@@ -37,6 +39,7 @@ public class ApplauncherApplication {
 	}
 
 	@Bean
+	@CrossOrigin(origins = "http://localhost:9010/")
 	public ServletRegistrationBean servletRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
 				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");

@@ -5,7 +5,11 @@
    max-height: 414px; height: 496px;
 
 }
-
+/*
+.popover{
+	- max-width: 500pt;
+}
+*/
 .webapps-popover-outer-div {
 	font-family: arial,sans-serif;
 	font-size: 13px;
@@ -26,12 +30,11 @@
 	border-color: rgba(0,0,0,.2);
 	border: 1px solid #ccc;
 	background: #fff;
-	/*width: 320px;*/
 	overflow-y: auto;
 	min-height: 196px;
 	display: block;
+	max-width: 1000pt !important;
 }
-
 
 /** Example rules used by the template application (remove for your app) */
 h1 {
