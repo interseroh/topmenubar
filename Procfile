@@ -1,1 +1,2 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar topmenubar/target/topmenubar.jar
+
