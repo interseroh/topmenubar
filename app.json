@@ -1,0 +1,21 @@
+{
+  "name": "topmenubar",
+  "description": "Top Menu Bar for Interseroh Webapps.",
+  "scripts": {
+  },
+  "repository": "https://github.com/interseroh/topmenubar",
+  "success_url": "/topmenubar/topmenubar.html",
+  "env": {
+    "MAVEN_SETTINGS_PATH": "heroku-settings/tmb-settings.xml"
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/java"
+    }
+  ]
+}

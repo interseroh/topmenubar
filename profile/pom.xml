@@ -26,14 +26,14 @@
 		<artifactId>topmenubar-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<groupId>de.interseroh.profile</groupId>
 	<artifactId>profile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>profile</name>
-	<description>User frofile project</description>
+	<description>User Profile project</description>
 
 
 	<properties>
@@ -159,6 +159,6 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 
 </project>
