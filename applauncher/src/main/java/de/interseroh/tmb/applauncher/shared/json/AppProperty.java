@@ -16,14 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared;
+package de.interseroh.tmb.applauncher.shared.json;
 
-public interface ApplauncherServiceEndpoint {
 
-	public static final String CONTEXT = "/applauncher";
+import java.io.Serializable;
 
-	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
+public class AppProperty implements Serializable {
 
-	public static final String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
+    private String imageURL;
+    private String caption;
+    private String applicationURL;
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
+    }
+
+    public String getApplicationURL() {
+        return applicationURL;
+    }
+
+    public void setApplicationURL(String applicationURL) {
+        this.applicationURL = applicationURL;
+    }
 
 }

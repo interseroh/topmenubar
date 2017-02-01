@@ -17,6 +17,11 @@
 	<set-configuration-property name='xsiframe.failIfScriptTag'
 		value='FALSE' />
 
+	<!-- RestyGWT -->
+	<inherits name="org.fusesource.restygwt.RestyGWT" />
+
+	<!-- Gin -->
+	<inherits name="com.google.gwt.inject.Inject" />
 
 	<inherits name="com.google.gwt.user.User" />
 	<!-- GwtBootstrap3 -->

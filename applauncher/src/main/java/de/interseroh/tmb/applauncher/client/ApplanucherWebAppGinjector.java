@@ -16,14 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared;
+package de.interseroh.tmb.applauncher.client;
 
-public interface ApplauncherServiceEndpoint {
+import com.google.gwt.inject.client.GinModules;
+import com.google.gwt.inject.client.Ginjector;
+import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 
-	public static final String CONTEXT = "/applauncher";
-
-	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
-
-	public static final String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
-
+@GinModules(ApplanucherWebAppGinModul.class)
+public interface ApplanucherWebAppGinjector extends Ginjector {
+    ServicePreparator getServicePreparator();
 }

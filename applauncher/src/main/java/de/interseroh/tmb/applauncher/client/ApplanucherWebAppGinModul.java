@@ -16,14 +16,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared;
+package de.interseroh.tmb.applauncher.client;
 
-public interface ApplauncherServiceEndpoint {
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.inject.Singleton;
 
-	public static final String CONTEXT = "/applauncher";
 
-	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
-
-	public static final String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
-
+public class ApplanucherWebAppGinModul extends AbstractGinModule {
+    @Override
+    protected void configure() {
+        // Bind the SimpleEventBus as Singleton
+        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+    }
 }

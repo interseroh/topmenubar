@@ -16,14 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared;
 
-public interface ApplauncherServiceEndpoint {
+package de.interseroh.tmb.applauncher.server.controller;
 
-	public static final String CONTEXT = "/applauncher";
 
-	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
 
-	public static final String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
+public enum AppEnvironments {
+    DEV("dev.applauncher.json"),/*Development environment*/
+    QAT("qat.applauncher_qat.json"),/*Test and integration environment*/
+    PROD("prod.applauncher_prod.json"); /*Productive environment*/
+    private String configurationFile;
 
+    public String getConfigurationFile(){
+        return configurationFile;
+    }
+    private AppEnvironments(String configurationFile) {
+        this.configurationFile = configurationFile;
+    }
 }
