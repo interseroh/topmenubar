@@ -23,13 +23,12 @@
      <parent>
 		<groupId>de.interseroh.tmb</groupId>
 		<artifactId>topmenubar-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	
 	<groupId>de.interseroh.tmb</groupId>
 	<artifactId>topmenubar</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>topmenubar</name>
@@ -66,9 +65,22 @@
 		</dependency>
 		-->
 
+		<!-- Switched to jetty to enable gwt super dev mode in intellij (workaround) -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
 		<!-- Spring Test -->
