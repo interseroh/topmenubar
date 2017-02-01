@@ -27,7 +27,10 @@ import de.interseroh.tmb.client.common.ServicePreparator;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Label;
+import org.gwtbootstrap3.client.ui.constants.BadgePosition;
+import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
+import org.gwtbootstrap3.client.ui.html.UnorderedList;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
@@ -38,10 +41,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-	private Row mainPanel;
-	private Column leftPanel;
-	private Column rightPanel;
 
+	RootPanel rootPanel;
+	RootPanel appLauncher;
+	RootPanel profile;
+	RootPanel messaging;
 
 
 	// Create Gin Injector
@@ -56,13 +60,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		createViews();
 
 	}
-//	private void removeLoadingImage() {
-//		// Remove loadingImage from Host HTML page
-//		RootPanel rootPanel = RootPanel.get(HOST_LOADING_IMAGE);
-//		if (rootPanel != null) {
-//			RootPanel.getBodyElement().removeChild(rootPanel.getElement());
-//		}
-//	}
 
 	private void initServices() {
 		ServicePreparator servicePreparator = injector.getServicePreparator();
@@ -73,79 +70,107 @@ public class TopMenuBarWebApp implements EntryPoint {
 		// Views
 		logger.info("Create Views begins...");
 
+		appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		profile = getWidgets(TMB_PROFILE);
+		messaging = getWidgets(TMB_MESSAGING);
 
-		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
+		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
 		String colour = rootPanel.getElement().getAttribute("data-colour");
 		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
-		String geadlineText = rootPanel.getElement().getAttribute("data-headline");
+		String headlineText = rootPanel.getElement().getAttribute("data-headline");
 
-		FlowPanel basePanel  = new FlowPanel();
+		Navbar basePanel = new Navbar();
+		// FlowPanel basePanel  = new FlowPanel();
 		basePanel.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
 
-		Container container = createMD6Container();
-		createAndAddLogoImage(iconUrl);
-		createAndAddHeadlineText(geadlineText);
-		moveElementsToRightPanel();
+		NavbarHeader header = new NavbarHeader();
+		header.add(createLogoImage(iconUrl));
+		header.add(createBadge(headlineText, iconUrl));
+		header.add(createCollapseButton("tmb_navbar_collapse"));
+		basePanel.add(header);
 
-		basePanel.add(container);
+		NavbarCollapse collapse = new NavbarCollapse();
+		collapse.setId("tmb_navbar_collapse");
+		collapse.add(rightPanelElements());
+
+		rightPanelElements(collapse);
+
+		basePanel.add(collapse);
+
+
+		//Container container = createMD6Container();
+		//createAndAddLogoImage(iconUrl);
+		//createAndAddHeadlineText(geadlineText);
+		//moveElementsToRightPanel();
+
+		//basePanel.add(container);
 		rootPanel.insert(basePanel,0);
 		logger.info("Create Views ends...");
+	}
+
+	private Widget createCollapseButton(String tmb_navbar_collapse) {
+		NavbarCollapseButton button = new NavbarCollapseButton();
+		button.setDataTarget(tmb_navbar_collapse);
+		return button;
 	}
 
 	/**
 	 * add elements to the right panel
 	 */
-	private void moveElementsToRightPanel(){
-		RootPanel appLauncher = getWidgets(TMB_APP_LAUNCHER);
-		RootPanel profile = getWidgets(TMB_PROFILE);
-		RootPanel messaging = getWidgets(TMB_MESSAGING);
+	private NavbarNav rightPanelElements(){
+
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
 		messaging.removeFromParent();
-		rightPanel.add(messaging);
-		rightPanel.add(profile);
-		rightPanel.add(appLauncher);
+
+
+		NavbarNav nav = new NavbarNav();
+		nav.setPull(Pull.RIGHT);
+
+		nav.add(messaging);
+		nav.add(profile);
+		nav.add(appLauncher);
+
+		return nav;
+	}
+
+
+	/**
+	 * add elements to the right panel
+	 */
+	private void rightPanelElements(NavbarCollapse parent){
+
+		appLauncher.removeFromParent();
+		profile.removeFromParent();
+		messaging.removeFromParent();
+
+		parent.add(messaging);
+		parent.add(profile);
+		parent.add(appLauncher);
 
 	}
 
+
 	/**
 	 * Creates and add headline text to the left panel
-	 * @param geadlineText text for adding
+	 * @param headlineText text for adding
 	 */
-	private void createAndAddHeadlineText(String geadlineText){
-		Label headline = new Label(geadlineText != null && !geadlineText.isEmpty() ? geadlineText : "NO HEADLINE!");
-		headline.getElement().addClassName("tmb_headline_text_cls");
-		leftPanel.add(headline);
+	private NavbarBrand createBadge(String headlineText, String iconUrl){
+		NavbarBrand brand = new NavbarBrand();
+		brand.setBadgePosition(BadgePosition.RIGHT);
+		brand.setBadgeText(headlineText);
+		return brand;
 	}
 
 	/**
 	 * Creates and add Logo image to the left panel
 	 * @param iconUrl the url of logo image
 	 */
-	private void createAndAddLogoImage(String iconUrl){
+	private Image createLogoImage(String iconUrl){
 		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
-		icon.getElement().addClassName("tmb_logo_icon_cls");
-		leftPanel.add(icon);
-	}
-
-	/**
-	 * Creates Container with two panels left and right with size MD_6
-	 * @return
-	 */
-	private Container createMD6Container(){
-		Container container = new Container();
-		container.setFluid(true);
-		container.setWidth("100%");
-		mainPanel = new Row();
-
-		leftPanel = new Column("MD_6");
-		rightPanel = new Column("MD_6");
-		mainPanel.add(leftPanel);
-		mainPanel.add(rightPanel);
-
-		container.add(mainPanel);
-		return container;
+		icon.setPull(Pull.LEFT);
+		return icon;
 	}
 
 
