@@ -6,14 +6,14 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
     <!--                                                               -->
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
 
-    <link type="text/css" rel="stylesheet" href="../topmenubar.css">
-    <link type="text/css" rel="stylesheet" href="http://localhost:9010/applauncher/applauncher.css">
+    <link type="text/css" rel="stylesheet" href="topmenubar.css"/>
+    <link type="text/css" rel="stylesheet" th:href="'http://'+${applauncherServer}+':9010/applauncher/applauncher.css'"/>
     <link rel="icon" href="../images/favicon.png" type="image/x-icon"/>
 
     <!--                                           -->
@@ -27,9 +27,11 @@
     <!-- be added before this line.                -->
     <!--                                           -->
     <script type="text/javascript" language="javascript"
-            src="topmenubar/topmenubar.nocache.js"></script>
+            src="topmenubar.nocache.js"></script>
     <script  type="text/javascript" language="javascript"
-            src="http://${pageContext.request.hostName}:9010/applauncher/applauncher/applauncher.nocache.js"></script>
+                th:src="'http://'+${applauncherServer}+':9010/applauncher/applauncher.nocache.js'"></script>
+
+
 </head>
 
 <!--                                           -->
