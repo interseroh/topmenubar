@@ -22,23 +22,17 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.client.ui.Widget;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
-import de.interseroh.tmb.applauncher.shared.TargetedApplication;
-import de.interseroh.tmb.applauncher.shared.json.AppProperty;
+import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.Anchor;
 import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.Label;
 import org.gwtbootstrap3.client.ui.constants.*;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-import org.gwtbootstrap3.client.ui.html.Div;
-import org.gwtbootstrap3.client.ui.html.UnorderedList;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -108,11 +102,11 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 
-	private void fillThreeColumnContainer(Container popupContainer, List<AppProperty> webApps){
+	private void fillThreeColumnContainer(Container popupContainer, List<TargetedApplication> webApps){
 
 		int actCol = 0;
 		Row currentRow=null;
-		for (AppProperty webApp : webApps) {
+		for (TargetedApplication webApp : webApps) {
 			if (actCol == 0) {
 				 currentRow = new Row();
 				popupContainer.add(currentRow);
@@ -182,7 +176,7 @@ public class ApplauncherWebApp implements EntryPoint {
 										   ListDropDown dropDown,
 										   RootPanel appLauncherRoot){
 
-		appConfigurationClient.getAppConfiguration( new MethodCallback<List<AppProperty>>(){
+		appConfigurationClient.getAppConfiguration( new MethodCallback<List<TargetedApplication>>(){
 
 			@Override
 			public void onFailure(Method method, Throwable throwable) {
@@ -190,7 +184,7 @@ public class ApplauncherWebApp implements EntryPoint {
 			}
 
 			@Override
-			public void onSuccess(Method method, List<AppProperty> appProperties) {
+			public void onSuccess(Method method, List<TargetedApplication> appProperties) {
 				fillThreeColumnContainer(container, appProperties);
 				panel.add(container);
 				popover.setContent(container.getElement().getString());

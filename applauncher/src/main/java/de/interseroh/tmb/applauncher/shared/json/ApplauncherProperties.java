@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ApplauncherProperties implements Serializable {
 
-    private List<AppProperty> appProperty;
+    private List<TargetedApplication> targetedApplication;
 
     private ApplauncherProperties applauncherProperties;
 
@@ -38,12 +38,12 @@ public class ApplauncherProperties implements Serializable {
 
 
 
-    public List<AppProperty> getAppProperty() {
-        return appProperty;
+    public List<TargetedApplication> getTargetedApplication() {
+        return targetedApplication;
     }
 
-    public void setAppProperty(List<AppProperty> appProperty) {
-        this.appProperty = appProperty;
+    public void setTargetedApplication(List<TargetedApplication> targetedApplication) {
+        this.targetedApplication = targetedApplication;
     }
 
 

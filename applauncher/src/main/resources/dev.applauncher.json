@@ -1,9 +1,9 @@
 {
   "applauncherProperties": {
-      "appProperty": [
+      "targetedApplication": [
         {
           "imageURL": "images/auftrags-logo.png",
-          "caption": "Auftr‰ge",
+          "caption": "Auftr√§ge",
           "applicationURL": "http://www.google.de"
         },
         {

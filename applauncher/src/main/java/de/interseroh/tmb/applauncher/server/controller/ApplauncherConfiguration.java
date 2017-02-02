@@ -20,7 +20,7 @@ package de.interseroh.tmb.applauncher.server.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import de.interseroh.tmb.applauncher.shared.json.AppProperty;
+import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 import de.interseroh.tmb.applauncher.shared.json.ApplauncherProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -48,7 +48,7 @@ public class ApplauncherConfiguration {
 
     @RequestMapping(value = ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG, method = RequestMethod.GET)
     public @ResponseBody
-    List<AppProperty> getConfiguration(){
+    List<TargetedApplication> getConfiguration(){
         String env = System.getProperty("ApplauncherEnv");
         if(env==null){
             env =AppEnvironments.DEV.name();
@@ -59,7 +59,7 @@ public class ApplauncherConfiguration {
         ObjectMapper mapper = new ObjectMapper();
         try( InputStream jsonIs = ApplauncherConfiguration.class.getResourceAsStream("/"+ENV.getConfigurationFile())) {
             ApplauncherProperties appPropes = mapper.readValue(jsonIs, ApplauncherProperties.class);
-            List<AppProperty> listAppProps = appPropes.getApplauncherProperties().getAppProperty();
+            List<TargetedApplication> listAppProps = appPropes.getApplauncherProperties().getTargetedApplication();
             jsonIs.close();
             return listAppProps;
         }catch(IOException ex){

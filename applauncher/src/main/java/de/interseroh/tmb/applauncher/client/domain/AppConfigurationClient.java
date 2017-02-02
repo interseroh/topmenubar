@@ -19,7 +19,7 @@
 package de.interseroh.tmb.applauncher.client.domain;
 
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import de.interseroh.tmb.applauncher.shared.json.AppProperty;
+import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
@@ -37,5 +37,5 @@ import java.util.List;
 public interface AppConfigurationClient extends RestService {
     @GET
     @Path(ApplauncherServiceEndpoint.CONTEXT + ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG)
-    void getAppConfiguration(MethodCallback<List<AppProperty>> callback);
+    void getAppConfiguration(MethodCallback<List<TargetedApplication>> callback);
 }

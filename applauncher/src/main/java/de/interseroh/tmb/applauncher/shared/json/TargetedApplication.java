@@ -21,7 +21,7 @@ package de.interseroh.tmb.applauncher.shared.json;
 
 import java.io.Serializable;
 
-public class AppProperty implements Serializable {
+public class TargetedApplication implements Serializable {
 
     private String imageURL;
     private String caption;

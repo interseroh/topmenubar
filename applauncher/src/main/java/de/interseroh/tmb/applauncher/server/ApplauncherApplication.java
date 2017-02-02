@@ -20,6 +20,7 @@ package de.interseroh.tmb.applauncher.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,9 +28,12 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "http://localhost:9010/")
+import java.util.logging.Logger;
+
+@Aspect
 @SpringBootApplication
 public class ApplauncherApplication {
+    private static final Logger logger = Logger.getLogger(ApplauncherApplication.class.getName());
 
 	@Value("${server.context-path}")
 	private String contextPath;
@@ -39,9 +43,12 @@ public class ApplauncherApplication {
 	}
 
 	@Bean
-	@CrossOrigin(origins = "http://localhost:9010/")
 	public ServletRegistrationBean servletRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
 				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
 	}
+
+
+
+
 }
