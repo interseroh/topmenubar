@@ -1,0 +1,36 @@
+{
+  "applauncherProperties": {
+      "targetedApplication": [
+        {
+          "imageURL": "images/auftrags-logo.png",
+          "caption": "Aufträge",
+          "applicationURL": "http://www.google.de"
+        },
+        {
+          "imageURL": "images/ecoservice24-logo.png",
+          "caption": "eco24",
+          "applicationURL": "http://www.google.de"
+        },
+        {
+          "imageURL": "images/isupplier-logo.png",
+          "caption": "isupplier",
+          "applicationURL": "http://www.google.de"
+        },
+        {
+          "imageURL": "images/mengenmeldung-logo.png",
+          "caption": "Mengen",
+          "applicationURL": "http://www.google.de"
+        },
+        {
+          "imageURL": "images/sammeldrache-logo.jpeg",
+          "caption": "Drache",
+          "applicationURL": "http://www.google.de"
+        },
+        {
+          "imageURL": "images/dienstleistung-logo.png",
+          "caption": "Dienste",
+          "applicationURL": "http://www.google.de"
+        }
+      ]
+  }
+}
