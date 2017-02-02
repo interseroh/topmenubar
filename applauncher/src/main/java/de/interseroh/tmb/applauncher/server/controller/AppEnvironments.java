@@ -23,8 +23,8 @@ package de.interseroh.tmb.applauncher.server.controller;
 
 public enum AppEnvironments {
     DEV("dev.applauncher.json"),/*Development environment*/
-    QAT("qat.applauncher_qat.json"),/*Test and integration environment*/
-    PROD("prod.applauncher_prod.json"); /*Productive environment*/
+    QAT("qat.applauncher.json"),/*Test and integration environment*/
+    PROD("prod.applauncher.json"); /*Productive environment*/
     private String configurationFile;
 
     public String getConfigurationFile(){

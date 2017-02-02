@@ -120,7 +120,7 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 
-	public Column createAnchorColumn(String span, String text, String url, String iconUrl) {
+	private Column createAnchorColumn(String span, String text, String url, String iconUrl) {
 		Column col = new Column(span);
 		col.getElement().getStyle().setVerticalAlign(Style.VerticalAlign.MIDDLE);
 
