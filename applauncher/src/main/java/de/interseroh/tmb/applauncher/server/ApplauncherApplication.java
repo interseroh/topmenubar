@@ -35,7 +35,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.servlet.ServletContext;
 import java.util.logging.Logger;
 
-@Aspect
 @SpringBootApplication
 public class ApplauncherApplication {
     private static final Logger logger = Logger.getLogger(ApplauncherApplication.class.getName());
@@ -53,8 +52,4 @@ public class ApplauncherApplication {
 				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
 	}
 
-	@Around("execution(* com.google.gwt.logging.server.RemoteLoggingServiceImpl.logOnServer(..))")
-	public void setCrossOrigin(final JoinPoint joinPoint){
-		logger.info("++++++++++++++++++++++ALL methods in parent class"+joinPoint.getSignature());
-	}
 }
