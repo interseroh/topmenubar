@@ -53,16 +53,15 @@ public class ApplauncherWebApp implements EntryPoint {
 	public void onModuleLoad() {
 		logger.info("AppLauncher: Create Views begins...");
 
-		GWT.log("Hello Applaucher!", null);
 
-		logger.info("AppLauncher: Create Views end...");
+
 		ServicePreparator servicePreparator =initServices();
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-		dropDown.setMarginRight(200);
+		//dropDown.setMarginRight(200);
 
 		Popover popover = createApplauncherPopover();
 		popover.setAlternateTemplate("<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
@@ -78,6 +77,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		createDivStructure(popover, dropDown,  appLauncherRoot);
 
+		logger.info("AppLauncher: Create Views end...");
 	}
 
 	private FlowPanel createFlowPanel() {
@@ -95,8 +95,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private Container createPopupContainer(){
 		Container popupContainer = new Container();
+		popupContainer.getElement().addClassName("applauncherContainerCls");
 		popupContainer.setFluid(true);
-		popupContainer.setWidth("200px");
 		return popupContainer;
 
 	}
@@ -125,12 +125,11 @@ public class ApplauncherWebApp implements EntryPoint {
 		col.getElement().getStyle().setVerticalAlign(Style.VerticalAlign.MIDDLE);
 
 		VerticalPanel panel = new VerticalPanel();
+		panel.getElement().addClassName("applauncherVerticalBar");
 		panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
-		panel.setWidth("100%");
 		Image icon = new Image(iconUrl);
-		icon.setWidth("25px");
-		icon.setHeight("25px");
+		icon.getElement().addClassName("applauncherIconCls");
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
 		icon.getElement().addClassName("glyphicon");
@@ -158,7 +157,6 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 	private RootPanel getWidgets(String element) {
 		RootPanel root = RootPanel.get(element);
-		logger.info("getWidget:"+root);
 		return root;
 	}
 

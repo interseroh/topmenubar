@@ -20,7 +20,11 @@ package de.interseroh.tmb.applauncher.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,6 +32,7 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.servlet.ServletContext;
 import java.util.logging.Logger;
 
 @Aspect
@@ -48,5 +53,8 @@ public class ApplauncherApplication {
 				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
 	}
 
-
+	@Around("execution(* com.google.gwt.logging.server.RemoteLoggingServiceImpl.logOnServer(..))")
+	public void setCrossOrigin(final JoinPoint joinPoint){
+		logger.info("++++++++++++++++++++++ALL methods in parent class"+joinPoint.getSignature());
+	}
 }

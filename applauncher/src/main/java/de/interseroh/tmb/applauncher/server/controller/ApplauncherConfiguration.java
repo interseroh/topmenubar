@@ -41,7 +41,7 @@ import java.util.logging.Logger;
 @CrossOrigin
 public class ApplauncherConfiguration {
     private static final Logger logger = Logger.getLogger(ApplauncherConfiguration.class.getName());
-
+    public static final String APP_LAUNCHER_ENV_KEY= "ApplauncherEnv";
 
     public ApplauncherConfiguration(){
     }
@@ -49,7 +49,7 @@ public class ApplauncherConfiguration {
     @RequestMapping(value = ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG, method = RequestMethod.GET)
     public @ResponseBody
     List<TargetedApplication> getConfiguration(){
-        String env = System.getProperty("ApplauncherEnv");
+        String env = System.getProperty(APP_LAUNCHER_ENV_KEY);
         if(env==null){
             env =AppEnvironments.DEV.name();
         }
