@@ -1,11 +1,3 @@
-package de.interseroh.tmb.common;
-
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.logging.Logger;
-
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -24,11 +16,16 @@ import java.util.logging.Logger;
  * specific language governing permissions and limitations
  * under the License.
  */
+package de.interseroh.tmb.common;
 
-/**
- * 
- */
-public class CrossOriginLoggingFilter implements Filter{
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.logging.Logger;
+
+
+public class CrossOriginLoggingFilter implements Filter {
     private static final Logger logger = Logger.getLogger(CrossOriginLoggingFilter.class.getName());
 
     @Override
@@ -39,12 +36,12 @@ public class CrossOriginLoggingFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-           HttpServletResponse response = (HttpServletResponse) servletResponse;
-           response.setHeader("Access-Control-Allow-Origin", "*");
-           response.setHeader("Access-Control-Allow-Methods", "POST, TRACE, GET, UPDATE, OPTIONS");
-           response.setHeader("Access-Control-Allow-Headers", "content-type, x-gwt-module-base, x-gwt-permutation");
-           HttpServletRequest request = (HttpServletRequest)servletRequest;
-           filterChain.doFilter(servletRequest, servletResponse);
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, TRACE, GET, UPDATE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "content-type, x-gwt-module-base, x-gwt-permutation");
+
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

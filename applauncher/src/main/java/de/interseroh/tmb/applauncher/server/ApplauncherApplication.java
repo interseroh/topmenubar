@@ -28,37 +28,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.servlet.ServletContext;
 
 @Aspect
 @SpringBootApplication
-@ComponentScan(basePackages={"de.interseroh.tmb.common"})
+@ComponentScan(basePackages = {"de.interseroh.tmb.common"})
 public class ApplauncherApplication {
 
-	@Value("${server.context-path}")
-	private String contextPath;
+    @Value("${server.context-path}")
+    private String contextPath;
 
-	@Autowired
-	private CrossOriginLoggingFilter loggingFilter;
+    @Autowired
+    private CrossOriginLoggingFilter loggingFilter;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApplauncherApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ApplauncherApplication.class, args);
+    }
 
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
-		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
-	}
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
+        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+                contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
+    }
 
-	@Before("execution( * org.springframework.boot.web.servlet.ServletRegistrationBean.onStartup(..))  ")
-	public void addFilter(JoinPoint joinPoint){
-		ServletContext ctx =(ServletContext)joinPoint.getArgs()[0];
-		ctx.addFilter("loggingFilter",loggingFilter);
-	}
+    @Before("execution( * org.springframework.boot.web.servlet.ServletRegistrationBean.onStartup(..))  ")
+    public void addFilter(JoinPoint joinPoint) {
+        ServletContext ctx = (ServletContext) joinPoint.getArgs()[0];
+        ctx.addFilter("loggingFilter", loggingFilter);
+    }
 }
