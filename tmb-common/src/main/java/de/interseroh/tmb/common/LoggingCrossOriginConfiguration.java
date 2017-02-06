@@ -24,9 +24,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.DispatcherType;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.Arrays;
 
 @Configuration
 public class LoggingCrossOriginConfiguration {
@@ -36,17 +34,16 @@ public class LoggingCrossOriginConfiguration {
 
     @Bean(name = "loggingFilter")
     public CrossOriginLoggingFilter getCrossOriginFilter() {
-        CrossOriginLoggingFilter filter = new CrossOriginLoggingFilter();
-        return filter;
+        return new CrossOriginLoggingFilter();
     }
 
     @Bean
-    public FilterRegistrationBean filterRegistrationBean(CrossOriginLoggingFilter filter) {
+    public FilterRegistrationBean filterRegistrationBean(
+            CrossOriginLoggingFilter filter) {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        List<String> urls = new ArrayList<>();
-        urls.add(contextPath+CommonServiceEndpoint.LOGGING_CONTEXTPATH);
         registration.setDispatcherTypes(DispatcherType.REQUEST);
-        registration.setUrlPatterns(urls);
+        registration.setUrlPatterns(Arrays.asList(
+                contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH));
         registration.setFilter(filter);
         return registration;
     }

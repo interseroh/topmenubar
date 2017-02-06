@@ -34,11 +34,15 @@ public class CrossOriginLoggingFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest,
+            ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "POST, TRACE, GET, UPDATE, OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "content-type, x-gwt-module-base, x-gwt-permutation");
+        response.setHeader("Access-Control-Allow-Methods",
+                "POST, TRACE, GET, UPDATE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers",
+                "content-type, x-gwt-module-base, x-gwt-permutation");
 
         filterChain.doFilter(servletRequest, servletResponse);
     }
