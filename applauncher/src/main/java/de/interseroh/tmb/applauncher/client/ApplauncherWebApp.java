@@ -38,6 +38,7 @@ import java.util.logging.Logger;
 
 public class ApplauncherWebApp implements EntryPoint {
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+
 	private static Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
 
@@ -53,12 +54,12 @@ public class ApplauncherWebApp implements EntryPoint {
 	public void onModuleLoad() {
 		logger.info("AppLauncher: Create Views begins...");
 
+		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
+		String appUrl = appLauncherRoot.getElement().getAttribute("data-application-url");
+		ServicePreparator servicePreparator =initServices(appUrl);
 
-
-		ServicePreparator servicePreparator =initServices();
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
 
-		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
 		//dropDown.setMarginRight(200);
@@ -160,9 +161,9 @@ public class ApplauncherWebApp implements EntryPoint {
 		return root;
 	}
 
-	private ServicePreparator initServices() {
+	private ServicePreparator initServices(String appUrl) {
 		ServicePreparator servicePreparator = injector.getServicePreparator();
-		servicePreparator.prepare();
+		servicePreparator.prepare(appUrl);
 
 		return servicePreparator;
 	}

@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -63,11 +64,11 @@ public class ApplauncherConfiguration {
             jsonIs.close();
             return listAppProps;
         }catch(IOException ex){
-            logger.severe(ex.getMessage());
-            throw new RuntimeException(ex);
-        }catch(Exception ex2){
-            logger.severe("Unexpected Exception");
-            throw new RuntimeException(ex2);
+            logger.log(Level.SEVERE,"Error property loading",ex);
+         }catch(Exception ex2){
+            logger.log(Level.SEVERE,"Unexpected Exception",ex2);
         }
+
+        return null;
     }
 }

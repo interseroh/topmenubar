@@ -36,21 +36,22 @@ public class ServicePreparator {
 
 
 
+
 	@Inject
 	private AppConfigurationClient appConfigurationClient;
 
-	private void initServices() {
+	private void initServices(String appUrl) {
 		logger.info("Prepare for the resources for the services...");
 
 		Defaults.setDateFormat(null);
 
-		initDomainService();
+		initDomainService(appUrl);
 	}
 
-	private void initDomainService() {
+	private void initDomainService(String appUrl) {
 		logger.info("Init  the domains...");
 
-		Resource resource = new Resource("");
+		Resource resource = new Resource(appUrl);
 
 		((RestServiceProxy) appConfigurationClient).setResource(resource);
 	}
@@ -59,7 +60,7 @@ public class ServicePreparator {
 		return appConfigurationClient;
 	}
 
-	public void prepare() {
-		initServices();
+	public void prepare(String appUrl) {
+		initServices(appUrl);
 	}
 }
