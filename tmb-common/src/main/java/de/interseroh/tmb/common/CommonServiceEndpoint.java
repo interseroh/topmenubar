@@ -16,12 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared;
+package de.interseroh.tmb.common;
 
-import de.interseroh.tmb.common.CommonServiceEndpoint;
-
-public interface ApplauncherServiceEndpoint {
-
-    public static final String GWT_REMOTE_LOGGING = CommonServiceEndpoint.LOGGING_CONTEXTPATH;
+public interface CommonServiceEndpoint {
+    String LOGGING_CONTEXTPATH = "/remote_logging";
 
 }

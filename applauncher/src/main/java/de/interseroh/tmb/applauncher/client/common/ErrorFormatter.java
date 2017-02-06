@@ -27,23 +27,23 @@ import java.util.logging.Logger;
 @Singleton
 public class ErrorFormatter {
 
-	private static Logger logger = Logger
-			.getLogger(ErrorFormatter.class.getName());
+    private static Logger logger = Logger
+            .getLogger(ErrorFormatter.class.getName());
 
-	public void showError(Throwable exception, String inputMessage) {
-		String message = inputMessage + exception + " - "
-				+ exception.getMessage() + "Stack trace: "
-				+ stackTraceToString(exception);
-		logger.log(Level.SEVERE, message);
-		Notify.notify(message);
-	}
+    public void showError(Throwable exception, String inputMessage) {
+        String message =
+                inputMessage + exception + " - " + exception.getMessage()
+                        + "Stack trace: " + stackTraceToString(exception);
+        logger.log(Level.SEVERE, message);
+        Notify.notify(message);
+    }
 
-	private String stackTraceToString(Throwable e) {
-		StringBuilder sb = new StringBuilder();
-		for (StackTraceElement element : e.getStackTrace()) {
-			sb.append(element.toString());
-			sb.append("\n");
-		}
-		return sb.toString();
-	}
+    private String stackTraceToString(Throwable e) {
+        StringBuilder sb = new StringBuilder();
+        for (StackTraceElement element : e.getStackTrace()) {
+            sb.append(element.toString());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }
