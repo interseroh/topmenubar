@@ -19,17 +19,21 @@
 package de.interseroh.tmb.common;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.Filter;
+import javax.servlet.DispatcherType;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Component
-public class LoggingCrossOrigin {
+@Configuration
+public class LoggingCrossOriginConfiguration {
+
+    @Value("${server.context-path}")
+    private String contextPath;
 
     @Bean(name = "loggingFilter")
     public CrossOriginLoggingFilter getCrossOriginFilter() {
@@ -38,11 +42,11 @@ public class LoggingCrossOrigin {
     }
 
     @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
+    public FilterRegistrationBean filterRegistrationBean(CrossOriginLoggingFilter filter) {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         List<String> urls = new ArrayList<>();
-        Filter filter = getCrossOriginFilter();
-        urls.add("/*/remote_logging");
+        urls.add(contextPath+CommonServiceEndpoint.LOGGING_CONTEXTPATH);
+        registration.setDispatcherTypes(DispatcherType.REQUEST);
         registration.setUrlPatterns(urls);
         registration.setFilter(filter);
         return registration;
