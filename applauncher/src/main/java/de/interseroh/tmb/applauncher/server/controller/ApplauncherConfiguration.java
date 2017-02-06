@@ -63,10 +63,8 @@ public class ApplauncherConfiguration {
             List<TargetedApplication> listAppProps = appPropes.getApplauncherProperties().getTargetedApplication();
             jsonIs.close();
             return listAppProps;
-        }catch(IOException ex){
+        }catch(Exception ex){
             logger.log(Level.SEVERE,"Error property loading",ex);
-         }catch(Exception ex2){
-            logger.log(Level.SEVERE,"Unexpected Exception",ex2);
         }
 
         return null;
