@@ -20,28 +20,45 @@ package de.interseroh.tmb.applauncher.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import de.interseroh.tmb.common.CrossOriginLoggingFilter;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import javax.servlet.ServletContext;
 
-@CrossOrigin(origins = "http://localhost:9010/")
+@Aspect
 @SpringBootApplication
+@ComponentScan(basePackages={"de.interseroh.tmb.common"})
 public class ApplauncherApplication {
 
 	@Value("${server.context-path}")
 	private String contextPath;
+
+	@Autowired
+	private CrossOriginLoggingFilter loggingFilter;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApplauncherApplication.class, args);
 	}
 
 	@Bean
-	@CrossOrigin(origins = "http://localhost:9010/")
 	public ServletRegistrationBean servletRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
 				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
+	}
+
+	@Before("execution( * org.springframework.boot.web.servlet.ServletRegistrationBean.onStartup(..))  ")
+	public void addFilter(JoinPoint joinPoint){
+		ServletContext ctx =(ServletContext)joinPoint.getArgs()[0];
+		ctx.addFilter("loggingFilter",loggingFilter);
 	}
 }

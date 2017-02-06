@@ -313,7 +313,10 @@
             <id>with-topmenubar</id>
             <modules>
                 <module>topmenubar</module>
-            </modules>
+             </modules>
         </profile>
     </profiles>
+    <modules>
+        <module>tmb-common</module>
+    </modules>
 </project>
