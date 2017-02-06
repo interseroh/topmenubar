@@ -28,16 +28,17 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ProfileApplication {
-	@Value("${server.context-path}")
-	private String contextPath;
+    @Value("${server.context-path}")
+    private String contextPath;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProfileApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ProfileApplication.class, args);
+    }
 
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
-		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				contextPath.concat(ProfileServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
-	}
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
+        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+                contextPath.concat(ProfileServiceEndpoint.GWT_REMOTE_LOGGING)
+                        + "/*");
+    }
 }

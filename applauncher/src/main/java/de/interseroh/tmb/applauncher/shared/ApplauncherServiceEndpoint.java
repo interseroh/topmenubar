@@ -22,7 +22,6 @@ import de.interseroh.tmb.common.CommonServiceEndpoint;
 
 public interface ApplauncherServiceEndpoint {
 
-	public static final String GWT_REMOTE_LOGGING = CommonServiceEndpoint.LOGGING_CONTEXTPATH;
-
+    public static final String GWT_REMOTE_LOGGING = CommonServiceEndpoint.LOGGING_CONTEXTPATH;
 
 }

@@ -20,8 +20,7 @@ package de.interseroh.tmb.applauncher.shared;
 
 import java.io.Serializable;
 
-
-public class TargetedApplication implements Serializable{
+public class TargetedApplication implements Serializable {
 
     private String name;
     private String url;

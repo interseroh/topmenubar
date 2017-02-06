@@ -18,39 +18,32 @@
  */
 package de.interseroh.tmb.client;
 
-import java.util.logging.Logger;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 import de.interseroh.tmb.client.common.ServicePreparator;
 import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.Label;
 import org.gwtbootstrap3.client.ui.constants.BadgePosition;
 import org.gwtbootstrap3.client.ui.constants.Pull;
-import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-import org.gwtbootstrap3.client.ui.html.UnorderedList;
+
+import java.util.logging.Logger;
 
 public class TopMenuBarWebApp implements EntryPoint {
-
-	private static Logger logger = Logger
-			.getLogger(TopMenuBarWebApp.class.getName());
 
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-
+    private static Logger logger = Logger
+            .getLogger(TopMenuBarWebApp.class.getName());
+    // Create Gin Injector
+    private final TopMenuBarAppGinjector injector = GWT
+            .create(TopMenuBarAppGinjector.class);
 	RootPanel rootPanel;
 	RootPanel appLauncher;
 	RootPanel profile;
 	RootPanel messaging;
-
-
-	// Create Gin Injector
-	private final TopMenuBarAppGinjector injector = GWT
-			.create(TopMenuBarAppGinjector.class);
 
 	@Override
 	public void onModuleLoad() {
@@ -98,7 +91,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		basePanel.add(collapse);
 
-
 		//Container container = createMD6Container();
 		//createAndAddLogoImage(iconUrl);
 		//createAndAddHeadlineText(geadlineText);
@@ -124,7 +116,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		profile.removeFromParent();
 		messaging.removeFromParent();
 
-
 		NavbarNav nav = new NavbarNav();
 		nav.setPull(Pull.RIGHT);
 
@@ -134,7 +125,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		return nav;
 	}
-
 
 	/**
 	 * add elements to the right panel
@@ -150,7 +140,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		parent.add(appLauncher);
 
 	}
-
 
 	/**
 	 * Creates and add headline text to the left panel
@@ -173,12 +162,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		return icon;
 	}
 
-
-
 	private RootPanel getWidgets(String element) {
 		return RootPanel.get(element);
 	}
-
-
 
 }

@@ -20,24 +20,13 @@ package de.interseroh.tmb.applauncher.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import de.interseroh.tmb.common.CrossOriginLoggingFilter;
 import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-
 
 @SpringBootApplication
 @Import(LoggingCrossOriginConfiguration.class)
@@ -46,7 +35,6 @@ public class ApplauncherApplication {
     @Value("${server.context-path}")
     private String contextPath;
 
-
     public static void main(String[] args) {
         SpringApplication.run(ApplauncherApplication.class, args);
     }
@@ -54,9 +42,9 @@ public class ApplauncherApplication {
     @Bean
     public ServletRegistrationBean servletRegistrationBean() {
         return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
+                contextPath
+                        .concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
+                        + "/*");
     }
-
-
 
 }

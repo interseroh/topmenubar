@@ -19,7 +19,6 @@
 package de.interseroh.tmb.messaging.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import de.interseroh.tmb.messaging.shared.MessagingServiceEndpoint;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -27,21 +26,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
-
 @SpringBootApplication
 public class MessagingApplication {
 
-	@Value("${server.context-path}")
-	private String contextPath;
+    @Value("${server.context-path}")
+    private String contextPath;
 
-	public static void main(String[] args) {
-		SpringApplication.run(MessagingApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MessagingApplication.class, args);
+    }
 
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
 
-		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				contextPath.concat(MessagingServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
-	}
+        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+                contextPath.concat(MessagingServiceEndpoint.GWT_REMOTE_LOGGING)
+                        + "/*");
+    }
 }
