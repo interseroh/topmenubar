@@ -16,31 +16,35 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.messaging.server;
+package de.interseroh.tmb.common;
 
-import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
-import de.interseroh.tmb.messaging.shared.MessagingServiceEndpoint;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-public class MessagingApplication {
+import javax.servlet.DispatcherType;
+import java.util.Arrays;
+
+@Configuration
+public class LoggingCrossOriginConfiguration {
 
     @Value("${server.context-path}")
     private String contextPath;
 
-    public static void main(String[] args) {
-        SpringApplication.run(MessagingApplication.class, args);
+    @Bean(name = "loggingFilter")
+    public CrossOriginLoggingFilter getCrossOriginFilter() {
+        return new CrossOriginLoggingFilter();
     }
 
     @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath.concat(MessagingServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
+    public FilterRegistrationBean filterRegistrationBean(
+            CrossOriginLoggingFilter filter) {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setDispatcherTypes(DispatcherType.REQUEST);
+        registration.setUrlPatterns(Arrays.asList(
+                contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH));
+        registration.setFilter(filter);
+        return registration;
     }
 }

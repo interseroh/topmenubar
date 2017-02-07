@@ -18,40 +18,34 @@
  */
 package de.interseroh.tmb.client.common;
 
-import java.util.logging.Logger;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import org.fusesource.restygwt.client.Defaults;
 import org.fusesource.restygwt.client.Resource;
-import org.fusesource.restygwt.client.RestServiceProxy;
 
+import javax.inject.Singleton;
+import java.util.logging.Logger;
 
 @Singleton
 public class ServicePreparator {
 
-	private static Logger logger = Logger
-			.getLogger(ServicePreparator.class.getName());
+    private static Logger logger = Logger
+            .getLogger(ServicePreparator.class.getName());
 
+    private void initServices() {
+        logger.info("Prepare for the resources for the services...");
 
+        Defaults.setDateFormat(null);
 
-	private void initServices() {
-		logger.info("Prepare for the resources for the services...");
+        initDomainService();
+    }
 
-		Defaults.setDateFormat(null);
+    private void initDomainService() {
+        logger.info("Init  the domains...");
 
-		initDomainService();
-	}
+        Resource resource = new Resource("");
 
-	private void initDomainService() {
-		logger.info("Init  the domains...");
+    }
 
-		Resource resource = new Resource("");
-
-	}
-
-	public void prepare() {
-		initServices();
-	}
+    public void prepare() {
+        initServices();
+    }
 }

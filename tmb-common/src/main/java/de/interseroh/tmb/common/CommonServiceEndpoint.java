@@ -16,21 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+package de.interseroh.tmb.common;
 
-package de.interseroh.tmb.applauncher.server.controller;
+public interface CommonServiceEndpoint {
+    String LOGGING_CONTEXTPATH = "/remote_logging";
 
-
-
-public enum AppEnvironments {
-    DEV("dev.applauncher.json"),/*Development environment*/
-    QAT("qat.applauncher.json"),/*Test and integration environment*/
-    PROD("prod.applauncher.json"); /*Productive environment*/
-    private String configurationFile;
-
-    public String getConfigurationFile(){
-        return configurationFile;
-    }
-    private AppEnvironments(String configurationFile) {
-        this.configurationFile = configurationFile;
-    }
 }

@@ -25,31 +25,35 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.context.annotation.Import;
 
 import javax.servlet.ServletContext;
 import java.util.logging.Logger;
 
 @SpringBootApplication
+@Import(LoggingCrossOriginConfiguration.class)
 public class ApplauncherApplication {
     private static final Logger logger = Logger.getLogger(ApplauncherApplication.class.getName());
 
-	@Value("${server.context-path}")
-	private String contextPath;
+    @Value("${server.context-path}")
+    private String contextPath;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApplauncherApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ApplauncherApplication.class, args);
+    }
 
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
-		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				contextPath.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
-	}
+    @Bean
+    public ServletRegistrationBean servletRegistrationBean() {
+        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+                contextPath
+                        .concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
+                        + "/*");
+    }
 
 }

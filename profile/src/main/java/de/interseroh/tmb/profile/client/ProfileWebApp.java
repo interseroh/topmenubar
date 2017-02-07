@@ -25,20 +25,16 @@ import java.util.logging.Logger;
 
 public class ProfileWebApp implements EntryPoint {
 
+    private static Logger logger = Logger
+            .getLogger(ProfileWebApp.class.getName());
 
+    @Override
+    public void onModuleLoad() {
+        logger.info("ProfileWebApp: Create Views begins...");
 
-	private static Logger logger = Logger
-			.getLogger(ProfileWebApp.class.getName());
+        GWT.log("Hello ProfileWebApp!", null);
 
-	@Override
-	public void onModuleLoad() {
-		logger.info("ProfileWebApp: Create Views begins...");
-
-		GWT.log("Hello ProfileWebApp!", null);
-
-		logger.info("ProfileWebApp: Create Views ends...");
-	}
-
-
+        logger.info("ProfileWebApp: Create Views ends...");
+    }
 
 }
