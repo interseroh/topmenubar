@@ -22,6 +22,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import de.interseroh.tmb.client.common.RemoteScriptInjector;
 import de.interseroh.tmb.client.common.ServicePreparator;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.constants.BadgePosition;
@@ -64,6 +65,12 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views begins...");
 
 		appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		String appUrl = appLauncher.getElement().getAttribute("data-application-url");
+		String javascriptUrl = appLauncher.getElement().getAttribute("data-javascript-url");
+
+		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
+		scriptInjector.injectScript(appUrl,javascriptUrl);
+
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
 
