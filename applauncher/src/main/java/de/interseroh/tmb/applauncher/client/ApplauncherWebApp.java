@@ -21,15 +21,16 @@ package de.interseroh.tmb.applauncher.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.Anchor;
-import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.constants.*;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
@@ -55,7 +56,8 @@ public class ApplauncherWebApp implements EntryPoint {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
-		String appUrl = appLauncherRoot.getElement().getAttribute("data-application-url");
+		String appUrl = appLauncherRoot.getElement()
+				.getAttribute("data-tmb-applauncher-url");
 		ServicePreparator servicePreparator =initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();

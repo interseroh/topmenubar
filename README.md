@@ -49,6 +49,14 @@ There is the next maven modules structure:
 
  ### applauncher
  This module respresents the application launcher panel of the Top Menu Bar.
+ 
+ #### Configuration Properties
+ It utilizes the dev.applauncher.json file by default for configuring the panel.
+ You can override it by setting the applauncher.config.json property.
+ 
+ Example:
+ 
+ `-Dapplauncher.config.json=classpath:prod.applauncher.json`
 
  ### messaging
  This module respresents the messaging facilities of Top Menu Bar.

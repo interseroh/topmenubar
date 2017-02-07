@@ -69,9 +69,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
-		String colour = rootPanel.getElement().getAttribute("data-colour");
-		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
-		String headlineText = rootPanel.getElement().getAttribute("data-headline");
+		String colour = rootPanel.getElement().getAttribute("data-tmb-colour");
+		String iconUrl = rootPanel.getElement()
+				.getAttribute("data-tmb-icon-url");
+		String headlineText = rootPanel.getElement()
+				.getAttribute("data-tmb-headline");
 
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
