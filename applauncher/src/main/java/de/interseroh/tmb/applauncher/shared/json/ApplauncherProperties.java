@@ -16,13 +16,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client.ui.event;
+package de.interseroh.tmb.applauncher.shared.json;
 
-import com.google.web.bindery.event.shared.binder.GenericEvent;
+import java.io.Serializable;
+import java.util.List;
 
-public class ChangeViewEvent extends GenericEvent {
 
-	public ChangeViewEvent() {
-	}
+public class ApplauncherProperties implements Serializable {
+
+    private List<TargetedApplication> targetedApplication;
+
+    private ApplauncherProperties applauncherProperties;
+
+    public ApplauncherProperties getApplauncherProperties() {
+        return applauncherProperties;
+    }
+
+    public void setApplauncherProperties(ApplauncherProperties applauncherProperties) {
+        this.applauncherProperties = applauncherProperties;
+    }
+
+
+
+    public List<TargetedApplication> getTargetedApplication() {
+        return targetedApplication;
+    }
+
+    public void setTargetedApplication(List<TargetedApplication> targetedApplication) {
+        this.targetedApplication = targetedApplication;
+    }
+
+
 
 }

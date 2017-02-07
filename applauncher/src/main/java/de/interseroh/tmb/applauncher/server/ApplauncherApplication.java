@@ -28,9 +28,12 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
+import java.util.logging.Logger;
+
 @SpringBootApplication
 @Import(LoggingCrossOriginConfiguration.class)
 public class ApplauncherApplication {
+    private static final Logger logger = Logger.getLogger(ApplauncherApplication.class.getName());
 
     @Value("${server.context-path}")
     private String contextPath;

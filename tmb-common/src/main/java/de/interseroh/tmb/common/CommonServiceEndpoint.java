@@ -19,6 +19,6 @@
 package de.interseroh.tmb.common;
 
 public interface CommonServiceEndpoint {
-    String LOGGING_CONTEXTPATH = "/remote_logging";
+	String LOGGING_CONTEXTPATH = "/remote_logging";
 
 }

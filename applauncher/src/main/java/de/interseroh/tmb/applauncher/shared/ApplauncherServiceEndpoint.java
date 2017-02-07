@@ -18,10 +18,12 @@
  */
 package de.interseroh.tmb.applauncher.shared;
 
-import de.interseroh.tmb.common.CommonServiceEndpoint;
-
 public interface ApplauncherServiceEndpoint {
 
-    public static final String GWT_REMOTE_LOGGING = CommonServiceEndpoint.LOGGING_CONTEXTPATH;
+	public static final String CONTEXT = "/applauncher";
+
+	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
+
+	public static final String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
 
 }

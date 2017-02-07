@@ -29,18 +29,18 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class TopMenuBarApplication {
 
-    @Value("${server.context-path}")
-    private String contextPath;
+	@Value("${server.context-path}")
+	private String contextPath;
 
-    public static void main(String[] args) {
-        SpringApplication.run(TopMenuBarApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(TopMenuBarApplication.class, args);
+	}
 
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath
-                        .concat(TopMenueBarServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
-    }
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean() {
+		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+				contextPath
+						.concat(TopMenueBarServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
+	}
 }

@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client.ui.event;
+package de.interseroh.tmb.applauncher.client;
 
-import com.google.web.bindery.event.shared.binder.GenericEvent;
+import com.google.gwt.inject.client.GinModules;
+import com.google.gwt.inject.client.Ginjector;
+import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 
-public class ChangeViewEvent extends GenericEvent {
-
-	public ChangeViewEvent() {
-	}
-
+@GinModules(ApplanucherWebAppGinModul.class)
+public interface ApplanucherWebAppGinjector extends Ginjector {
+    ServicePreparator getServicePreparator();
 }

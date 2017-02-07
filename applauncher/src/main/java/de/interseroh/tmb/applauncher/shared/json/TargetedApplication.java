@@ -16,46 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared;
+package de.interseroh.tmb.applauncher.shared.json;
+
 
 import java.io.Serializable;
 
 public class TargetedApplication implements Serializable {
 
-    private String name;
-    private String url;
-    private String iconUrl;
+    private String imageURL;
+    private String caption;
+    private String applicationURL;
 
-    public TargetedApplication() {
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public TargetedApplication(String name, String url, String iconUrl) {
-        this.name = name;
-        this.url = url;
-        this.iconUrl = iconUrl;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
-    public String getName() {
-        return name;
+    public String getCaption() {
+        return caption;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
-    public String getUrl() {
-        return url;
+    public String getApplicationURL() {
+        return applicationURL;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setApplicationURL(String applicationURL) {
+        this.applicationURL = applicationURL;
     }
 
-    public String getIconUrl() {
-        return iconUrl;
-    }
-
-    public void setIconUrl(String iconUrl) {
-        this.iconUrl = iconUrl;
-    }
 }

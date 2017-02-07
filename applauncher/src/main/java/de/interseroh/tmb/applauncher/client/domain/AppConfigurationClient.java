@@ -16,36 +16,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client.common;
+package de.interseroh.tmb.applauncher.client.domain;
 
-import org.fusesource.restygwt.client.Defaults;
-import org.fusesource.restygwt.client.Resource;
+import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.fusesource.restygwt.client.RestService;
 
 import javax.inject.Singleton;
-import java.util.logging.Logger;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Singleton
-public class ServicePreparator {
-
-	private static Logger logger = Logger
-			.getLogger(ServicePreparator.class.getName());
-
-	private void initServices() {
-		logger.info("Prepare for the resources for the services...");
-
-		Defaults.setDateFormat(null);
-
-		initDomainService();
-	}
-
-	private void initDomainService() {
-		logger.info("Init  the domains...");
-
-		Resource resource = new Resource("");
-
-	}
-
-	public void prepare() {
-		initServices();
-	}
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public interface AppConfigurationClient extends RestService {
+    @GET
+    @Path(ApplauncherServiceEndpoint.CONTEXT + ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG)
+    void getAppConfiguration(MethodCallback<List<TargetedApplication>> callback);
 }

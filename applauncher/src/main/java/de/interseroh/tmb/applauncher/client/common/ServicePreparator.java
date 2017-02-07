@@ -16,11 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client.common;
+package de.interseroh.tmb.applauncher.client.common;
 
+
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import org.fusesource.restygwt.client.Defaults;
 import org.fusesource.restygwt.client.Resource;
+import org.fusesource.restygwt.client.RestServiceProxy;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.logging.Logger;
 
@@ -30,22 +34,33 @@ public class ServicePreparator {
 	private static Logger logger = Logger
 			.getLogger(ServicePreparator.class.getName());
 
-	private void initServices() {
+
+
+
+	@Inject
+	private AppConfigurationClient appConfigurationClient;
+
+	private void initServices(String appUrl) {
 		logger.info("Prepare for the resources for the services...");
 
 		Defaults.setDateFormat(null);
 
-		initDomainService();
+		initDomainService(appUrl);
 	}
 
-	private void initDomainService() {
+	private void initDomainService(String appUrl) {
 		logger.info("Init  the domains...");
 
-		Resource resource = new Resource("");
+		Resource resource = new Resource(appUrl);
 
+		((RestServiceProxy) appConfigurationClient).setResource(resource);
 	}
 
-	public void prepare() {
-		initServices();
+	public AppConfigurationClient getAppConfigurationClient() {
+		return appConfigurationClient;
+	}
+
+	public void prepare(String appUrl) {
+		initServices(appUrl);
 	}
 }
