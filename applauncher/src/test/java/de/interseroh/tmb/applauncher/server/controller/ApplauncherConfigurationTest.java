@@ -20,13 +20,11 @@
 package de.interseroh.tmb.applauncher.server.controller;
 
 import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -37,29 +35,24 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@TestPropertySource(properties={"applauncher.config.json=test.applauncher.json"})
-public class ApplauncherConfigurationTest
-        extends ApplauncherConfigurationBaseTest {
+@TestPropertySource(properties = {
+		"applauncher.config.json=classpath:test.applauncher.json" })
+public class ApplauncherConfigurationTest {
 
-    private static final String PROD_URL="http://www.yahoo.de";
+	private static final String PORTAL_URL = "http://www.yahoo.de";
 
+	private static final int ITEMS_AMOUNT = 6;
 
-    private static final int ITEMS_AMOUNT = 6;
+	@Autowired
+	private ApplauncherConfiguration appConfig;
 
-    @Autowired
-    private ApplauncherConfiguration appConfig;
-
-    @Test
-    public void test03PRODConfiguration() throws Exception{
-        test(PROD_URL);
-    }
-
-    protected void test(String checkUrl) throws Exception{
-        List<TargetedApplication> configuration = appConfig.getConfiguration();
-        Assert.assertNotNull(configuration);
-        Assert.assertEquals(ITEMS_AMOUNT,configuration.size());
-        Assert.assertEquals(checkUrl,configuration.get(0).getApplicationURL());
-
-    }
+	@Test
+	public void testApplauncherJsonConfiguration() throws Exception {
+		List<TargetedApplication> configuration = appConfig.getConfiguration();
+		Assert.assertNotNull(configuration);
+		Assert.assertEquals(ITEMS_AMOUNT, configuration.size());
+		Assert.assertEquals(PORTAL_URL,
+				configuration.get(0).getApplicationURL());
+	}
 
 }

@@ -20,11 +20,11 @@
 package de.interseroh.tmb.applauncher.server.controller;
 
 import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -34,11 +34,9 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-@TestPropertySource(properties = {
-		"applauncher.config.json=classpath:test.applauncher.json" })
-public class ApplauncherConfigurationTest {
+public class ApplauncherConfigurationDefaultTest {
 
-	private static final String PROD_URL = "http://www.yahoo.de";
+	private static final String PORTAL_URL = "http://www.google.de";
 
 	private static final int ITEMS_AMOUNT = 6;
 
@@ -50,7 +48,8 @@ public class ApplauncherConfigurationTest {
 		List<TargetedApplication> configuration = appConfig.getConfiguration();
 		Assert.assertNotNull(configuration);
 		Assert.assertEquals(ITEMS_AMOUNT, configuration.size());
-		Assert.assertEquals(PROD_URL, configuration.get(0).getApplicationURL());
+		Assert.assertEquals(PORTAL_URL,
+				configuration.get(0).getApplicationURL());
 	}
 
 }

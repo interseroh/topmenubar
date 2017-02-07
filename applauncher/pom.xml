@@ -17,7 +17,8 @@
  | specific language governing permissions and limitations
  | under the License.
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -38,9 +39,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <i18n.messages.bundle>de.interseroh.tmb.applauncher.client.Messages</i18n.messages.bundle>
-        <i18n.gwt.modul>de.interseroh.tmb.applauncher.Applauncher</i18n.gwt.modul>
-        <gwt.dev.modul>de.interseroh.tmb.applauncher.ApplauncherDevelopment</gwt.dev.modul>
+        <i18n.messages.bundle>de.interseroh.tmb.applauncher.client.Messages
+        </i18n.messages.bundle>
+        <i18n.gwt.modul>de.interseroh.tmb.applauncher.Applauncher
+        </i18n.gwt.modul>
+        <gwt.dev.modul>de.interseroh.tmb.applauncher.ApplauncherDevelopment
+        </gwt.dev.modul>
     </properties>
 
     <dependencies>

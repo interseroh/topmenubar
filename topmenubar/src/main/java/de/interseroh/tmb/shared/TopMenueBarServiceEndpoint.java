@@ -20,6 +20,6 @@ package de.interseroh.tmb.shared;
 
 public interface TopMenueBarServiceEndpoint {
 
-    public static final String GWT_REMOTE_LOGGING = "/remote_logging";
+	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
 
 }

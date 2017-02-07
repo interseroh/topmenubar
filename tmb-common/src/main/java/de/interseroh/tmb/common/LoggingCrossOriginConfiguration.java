@@ -29,22 +29,22 @@ import java.util.Arrays;
 @Configuration
 public class LoggingCrossOriginConfiguration {
 
-    @Value("${server.context-path}")
-    private String contextPath;
+	@Value("${server.context-path}")
+	private String contextPath;
 
-    @Bean(name = "loggingFilter")
-    public CrossOriginLoggingFilter getCrossOriginFilter() {
-        return new CrossOriginLoggingFilter();
-    }
+	@Bean(name = "loggingFilter")
+	public CrossOriginLoggingFilter getCrossOriginFilter() {
+		return new CrossOriginLoggingFilter();
+	}
 
-    @Bean
-    public FilterRegistrationBean filterRegistrationBean(
-            CrossOriginLoggingFilter filter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setDispatcherTypes(DispatcherType.REQUEST);
-        registration.setUrlPatterns(Arrays.asList(
-                contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH));
-        registration.setFilter(filter);
-        return registration;
-    }
+	@Bean
+	public FilterRegistrationBean filterRegistrationBean(
+			CrossOriginLoggingFilter filter) {
+		FilterRegistrationBean registration = new FilterRegistrationBean();
+		registration.setDispatcherTypes(DispatcherType.REQUEST);
+		registration.setUrlPatterns(Arrays.asList(
+				contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH));
+		registration.setFilter(filter);
+		return registration;
+	}
 }

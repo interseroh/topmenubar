@@ -20,11 +20,6 @@ package de.interseroh.tmb.applauncher.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -33,7 +28,6 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-import javax.servlet.ServletContext;
 import java.util.logging.Logger;
 
 @SpringBootApplication

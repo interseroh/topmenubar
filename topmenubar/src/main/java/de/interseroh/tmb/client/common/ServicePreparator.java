@@ -27,25 +27,25 @@ import java.util.logging.Logger;
 @Singleton
 public class ServicePreparator {
 
-    private static Logger logger = Logger
-            .getLogger(ServicePreparator.class.getName());
+	private static Logger logger = Logger
+			.getLogger(ServicePreparator.class.getName());
 
-    private void initServices() {
-        logger.info("Prepare for the resources for the services...");
+	private void initServices() {
+		logger.info("Prepare for the resources for the services...");
 
-        Defaults.setDateFormat(null);
+		Defaults.setDateFormat(null);
 
-        initDomainService();
-    }
+		initDomainService();
+	}
 
-    private void initDomainService() {
-        logger.info("Init  the domains...");
+	private void initDomainService() {
+		logger.info("Init  the domains...");
 
-        Resource resource = new Resource("");
+		Resource resource = new Resource("");
 
-    }
+	}
 
-    public void prepare() {
-        initServices();
-    }
+	public void prepare() {
+		initServices();
+	}
 }
