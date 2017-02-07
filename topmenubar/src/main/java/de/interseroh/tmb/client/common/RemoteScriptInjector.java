@@ -18,7 +18,7 @@ public class RemoteScriptInjector {
 	public void injectScript(String applicationUrl, String scriptPath){
 		String scriptFullUrl=applicationUrl+scriptPath;
 		logger.info("Start JavaScript injecting  from URL :"+scriptFullUrl);
-		ScriptInjector.fromUrl(scriptFullUrl).setRemoveTag(true).setCallback(
+		ScriptInjector.fromUrl(scriptFullUrl).setCallback(
 				new Callback() {
 					@Override
 					public void onFailure(Object o) {
