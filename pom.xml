@@ -17,15 +17,14 @@
  | specific language governing permissions and limitations
  | under the License.
 -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.3.RELEASE</version>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.1.RELEASE</version>
 
     </parent>
 
@@ -215,49 +214,25 @@
                                 <goal>i18n</goal>
                             </goals>
 
-                            <configuration>
-                                <sourceLevel>1.8</sourceLevel>
-                                <module>${i18n.gwt.modul}</module>
-                                <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-                                <persistentunitcachedir>
-                                    ${project.build.directory}
-                                </persistentunitcachedir>
-                                <webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-                                <deploy>${project.build.directory}/gwt-deploy</deploy>
-                                <i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <runTarget>topmenuebar.html</runTarget>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>install</id>
-                            <phase>install</phase>
-                            <goals>
-                                <goal>copy</goal>
-                            </goals>
-                            <configuration>
-                                <artifactItems>
-                                    <artifactItem>
-                                        <groupId>${project.groupId}</groupId>
-                                        <artifactId>${project.artifactId}</artifactId>
-                                        <version>${project.version}</version>
-                                    </artifactItem>
-                                </artifactItems>
-                                <outputDirectory>${project.basedir}/../target/</outputDirectory>
-                                <stripVersion>true</stripVersion>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+							<configuration>
+								<sourceLevel>1.8</sourceLevel>
+								<module>${i18n.gwt.modul}</module>
+								<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
+								<persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
+								<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
+								<deploy>${project.build.directory}/gwt-deploy</deploy>
+								<i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
+							</configuration>
+						</execution>
+
+					</executions>
+					<configuration>
+						<runTarget>topmenuebar.html</runTarget>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
     <profiles>
         <profile>
