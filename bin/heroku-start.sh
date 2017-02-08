@@ -17,7 +17,7 @@ if [ "$SERVICE_NAME" == "topmenubar" ]; then
 
     echo $APPLAUNCHER_URL
 
-   # java $JAVA_OPTS -jar $SERVICE_NAME/target/$SERVICE_NAME*.jar --server.port=$PORT --applauncher.url=APPLAUNCHER_URL
+   java $JAVA_OPTS -jar $SERVICE_NAME/target/$SERVICE_NAME*.jar --server.port=$PORT --applauncher.url=APPLAUNCHER_URL
 
 else
 

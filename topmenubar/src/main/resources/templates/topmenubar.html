@@ -13,7 +13,8 @@
     <!--                                                               -->
 
     <link type="text/css" rel="stylesheet" href="topmenubar.css"/>
-    <link type="text/css" rel="stylesheet" th:href="'http://'+${applauncherServer}+':9010/applauncher/applauncher.css'"/>
+    <link type="text/css" rel="stylesheet"
+          th:href="'${applauncherUrl}+'/applauncher.css'"/>
     <link rel="icon" href="../images/favicon.png" type="image/x-icon"/>
 
     <!--                                           -->
@@ -28,8 +29,8 @@
     <!--                                           -->
     <script type="text/javascript" language="javascript"
             src="topmenubar/topmenubar.nocache.js"></script>
-    <script  type="text/javascript" language="javascript"
-                th:src="'http://'+${applauncherServer}+':9010/applauncher/applauncher/applauncher.nocache.js'"></script>
+    <script type="text/javascript" language="javascript"
+            th:src="${applauncherUrl}+'/applauncher/applauncher.nocache.js'"></script>
 
 
 </head>
