@@ -20,7 +20,8 @@ package de.interseroh.tmb.client.common;
 
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
-import org.apache.log4j.Logger;
+
+import java.util.logging.Logger;
 
 public class RemoteScriptInjector {
 	private static final Logger logger = Logger
@@ -28,18 +29,18 @@ public class RemoteScriptInjector {
 
 	public void injectScript(String applicationUrl, String scriptPath) {
 		String scriptFullUrl = applicationUrl + scriptPath;
-		logger.debug("Start JavaScript injecting  from URL :" + scriptFullUrl);
+		logger.info("Start JavaScript injecting  from URL :" + scriptFullUrl);
 		ScriptInjector.fromUrl(scriptFullUrl).setCallback(new Callback() {
 			@Override
 			public void onFailure(Object o) {
 
-				logger.debug("Error: Can not load JavaScript from from URL :"
+				logger.info("Error: Can not load JavaScript from from URL :"
 						+ scriptFullUrl);
 			}
 
 			@Override
 			public void onSuccess(Object o) {
-				logger.error("Java Script is lodaed from URL :" + scriptFullUrl);
+				logger.info("Java Script is lodaed from URL :" + scriptFullUrl);
 			}
 		}).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
