@@ -55,8 +55,9 @@ public class ApplauncherWebApp implements EntryPoint {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
-		String appUrl = appLauncherRoot.getElement().getAttribute("data-application-url");
-		ServicePreparator servicePreparator =initServices(appUrl);
+		String appUrl = appLauncherRoot.getElement()
+				.getAttribute("data-application-url");
+		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
 
@@ -65,9 +66,10 @@ public class ApplauncherWebApp implements EntryPoint {
 		//dropDown.setMarginRight(200);
 
 		Popover popover = createApplauncherPopover();
-		popover.setAlternateTemplate("<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
+		popover.setAlternateTemplate(
+				"<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
 
-		AnchorButton popoverBtn= new AnchorButton();
+		AnchorButton popoverBtn = new AnchorButton();
 		popoverBtn.setIcon(IconType.TH);
 		popoverBtn.setIconSize(IconSize.LARGE);
 
@@ -75,26 +77,26 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		popover.add(popoverBtn);
 
-
-		createDivStructure(popover, dropDown,  appLauncherRoot);
+		createDivStructure(popover, dropDown, appLauncherRoot);
 
 		logger.info("AppLauncher: Create Views end...");
 	}
 
 	private FlowPanel createFlowPanel() {
-		FlowPanel applauncherPanel= new FlowPanel();
+		FlowPanel applauncherPanel = new FlowPanel();
 
 		return applauncherPanel;
 	}
 
-	private void createDivStructure(Popover popover,ListDropDown dropDown, RootPanel appLauncherRoot) {
+	private void createDivStructure(Popover popover, ListDropDown dropDown,
+			RootPanel appLauncherRoot) {
 		FlowPanel panel = createFlowPanel();
 		Container container = createPopupContainer();
-		fillApplauncherPopupPanel(panel,container,popover,dropDown,appLauncherRoot);
+		fillApplauncherPopupPanel(panel, container, popover, dropDown,
+				appLauncherRoot);
 	}
 
-
-	private Container createPopupContainer(){
+	private Container createPopupContainer() {
 		Container popupContainer = new Container();
 		popupContainer.getElement().addClassName("applauncherContainerCls");
 		popupContainer.setFluid(true);
@@ -102,17 +104,18 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	}
 
-
-	private void fillThreeColumnContainer(Container popupContainer, List<TargetedApplication> webApps){
+	private void fillThreeColumnContainer(Container popupContainer,
+			List<TargetedApplication> webApps) {
 
 		int actCol = 0;
-		Row currentRow=null;
+		Row currentRow = null;
 		for (TargetedApplication webApp : webApps) {
 			if (actCol == 0) {
-				 currentRow = new Row();
+				currentRow = new Row();
 				popupContainer.add(currentRow);
 			}
-			currentRow.add(createAnchorColumn("MD_4",webApp.getCaption(), webApp.getApplicationURL(), webApp.getImageURL()));
+			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
+					webApp.getApplicationURL(), webApp.getImageURL()));
 			actCol++;
 			if (actCol >= 3) {
 				actCol = 0;
@@ -120,10 +123,11 @@ public class ApplauncherWebApp implements EntryPoint {
 		}
 	}
 
-
-	private Column createAnchorColumn(String span, String text, String url, String iconUrl) {
+	private Column createAnchorColumn(String span, String text, String url,
+			String iconUrl) {
 		Column col = new Column(span);
-		col.getElement().getStyle().setVerticalAlign(Style.VerticalAlign.MIDDLE);
+		col.getElement().getStyle()
+				.setVerticalAlign(Style.VerticalAlign.MIDDLE);
 
 		VerticalPanel panel = new VerticalPanel();
 		panel.getElement().addClassName("applauncherVerticalBar");
@@ -144,9 +148,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		return col;
 	}
 
-
-
-	private Popover createApplauncherPopover(){
+	private Popover createApplauncherPopover() {
 		Popover popover = new Popover();
 
 		popover.setTitle("Interseroh WabApps");
@@ -156,6 +158,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		return popover;
 	}
+
 	private RootPanel getWidgets(String element) {
 		RootPanel root = RootPanel.get(element);
 		return root;
@@ -168,28 +171,26 @@ public class ApplauncherWebApp implements EntryPoint {
 		return servicePreparator;
 	}
 
+	private void fillApplauncherPopupPanel(FlowPanel panel, Container container,
+			Popover popover, ListDropDown dropDown, RootPanel appLauncherRoot) {
 
-	private void fillApplauncherPopupPanel(FlowPanel panel,
-										   Container container,
-										   Popover popover,
-										   ListDropDown dropDown,
-										   RootPanel appLauncherRoot){
+		appConfigurationClient.getAppConfiguration(
+				new MethodCallback<List<TargetedApplication>>() {
 
-		appConfigurationClient.getAppConfiguration( new MethodCallback<List<TargetedApplication>>(){
+					@Override
+					public void onFailure(Method method, Throwable throwable) {
+						logger.severe("Error getting applauncher properties");
+					}
 
-			@Override
-			public void onFailure(Method method, Throwable throwable) {
-				logger.severe("Error getting applauncher properties");
-			}
-
-			@Override
-			public void onSuccess(Method method, List<TargetedApplication> appProperties) {
-				fillThreeColumnContainer(container, appProperties);
-				panel.add(container);
-				popover.setContent(container.getElement().getString());
-				dropDown.add(popover);
-				appLauncherRoot.add(dropDown);
-			}
-		});
+					@Override
+					public void onSuccess(Method method,
+							List<TargetedApplication> appProperties) {
+						fillThreeColumnContainer(container, appProperties);
+						panel.add(container);
+						popover.setContent(container.getElement().getString());
+						dropDown.add(popover);
+						appLauncherRoot.add(dropDown);
+					}
+				});
 	}
 }
