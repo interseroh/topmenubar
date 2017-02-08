@@ -1,11 +1,9 @@
 #!/bin/bash
-
 env
 
 if [ "$SERVICE_NAME" == "topmenubar" ]; then
 
    PR_NO=`echo $HEROKU_APP_NAME | sed "s/[a-zA-Z\\-]//g"`
-   echo "PullRequest: $PR_NO"
 
     if [ -n "$PR_NO" ]; then
         PR_SUFFIX="-pr-$PR_NO"
