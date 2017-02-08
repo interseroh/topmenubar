@@ -1,4 +1,4 @@
-web: heroku-start.sh
+web: bin/heroku-start.sh
 
 
 
