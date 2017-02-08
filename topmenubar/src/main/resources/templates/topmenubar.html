@@ -12,9 +12,10 @@
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
 
+
     <link type="text/css" rel="stylesheet" href="topmenubar.css"/>
     <link type="text/css" rel="stylesheet"
-          th:href="'${applauncherUrl}+'/applauncher.css'"/>
+          th:href="${applauncherUrl}+'/applauncher.css'"/>
     <link rel="icon" href="../images/favicon.png" type="image/x-icon"/>
 
     <!--                                           -->
@@ -42,6 +43,7 @@
 <!--                                           -->
 <body>
 
+
 <!-- OPTIONAL: include this if you want history support -->
 <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
         style="position: absolute; width: 0; height: 0; border: 0"></iframe>
@@ -56,7 +58,7 @@
 </noscript>
 
 <div id="tmb_top_menu_bar" data-colour="#223d62" data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
-    <div id="tmb_app_launcher" data-application-url="http://localhost:9010/">
+    <div id="tmb_app_launcher" th:attr="data-application-url=${applauncherUrl}">
     </div>
     <div id="tmb_profile">
     </div>

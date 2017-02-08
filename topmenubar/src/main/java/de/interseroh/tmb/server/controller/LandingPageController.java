@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LandingPageController {
 
-    @Value("{applauncher.url:http://localhost:9014/applauncher}")
+    @Value("${applauncher.url:http://localhost:9014/applauncher}")
     private String applauncherUrl;
 
 	@GetMapping(path = "*.html")
