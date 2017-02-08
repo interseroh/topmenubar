@@ -23,7 +23,6 @@ import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import de.interseroh.tmb.client.common.ServicePreparator;
 
-
 @GinModules(TopMenuBarAppGinModule.class)
 public interface TopMenuBarAppGinjector extends Ginjector {
 
@@ -32,6 +31,5 @@ public interface TopMenuBarAppGinjector extends Ginjector {
 	SimpleEventBus getEventBus();
 
 // 	Messages getMessages();
-
 
 }

@@ -291,4 +291,7 @@
             </modules>
         </profile>
     </profiles>
+    <modules>
+        <module>tmb-common</module>
+    </modules>
 </project>

@@ -18,12 +18,11 @@
  */
 package de.interseroh.tmb.client.common;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.gwtbootstrap3.extras.notify.client.ui.Notify;
 
 import javax.inject.Singleton;
-
-import org.gwtbootstrap3.extras.notify.client.ui.Notify;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Singleton
 public class ErrorFormatter {
@@ -32,9 +31,9 @@ public class ErrorFormatter {
 			.getLogger(ErrorFormatter.class.getName());
 
 	public void showError(Throwable exception, String inputMessage) {
-		String message = inputMessage + exception + " - "
-				+ exception.getMessage() + "Stack trace: "
-				+ stackTraceToString(exception);
+		String message =
+				inputMessage + exception + " - " + exception.getMessage()
+						+ "Stack trace: " + stackTraceToString(exception);
 		logger.log(Level.SEVERE, message);
 		Notify.notify(message);
 	}

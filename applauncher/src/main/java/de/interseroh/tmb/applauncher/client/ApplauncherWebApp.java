@@ -22,70 +22,47 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.client.ui.Widget;
-import de.interseroh.tmb.applauncher.shared.TargetedApplication;
+import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
+import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.Anchor;
 import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.Label;
 import org.gwtbootstrap3.client.ui.constants.*;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-import org.gwtbootstrap3.client.ui.html.Div;
-import org.gwtbootstrap3.client.ui.html.UnorderedList;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class ApplauncherWebApp implements EntryPoint {
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+
 	private static Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
+
+	private final ApplanucherWebAppGinjector injector = GWT
+			.create(ApplanucherWebAppGinjector.class);
+	private AppConfigurationClient appConfigurationClient;
 
 	private Column col1;
 	private Column col2;
 	private Column col3;
 
-
-	static List<TargetedApplication> applications = new ArrayList<>();
-
-	static {
-		applications.add(new TargetedApplication("Entsorger","http://www.google.de", "images/entsorger-logo.png"));
-		applications.add(new TargetedApplication("Aufträge","http://www.google.de", "images/auftrags-logo.png"));
-		applications.add(new TargetedApplication("eco24","http://www.google.de", "images/ecoservice24-logo.png"));
-		applications.add(new TargetedApplication("isupplier","http://www.google.de", "images/isupplier-logo.png"));
-		applications.add(new TargetedApplication("Mengen","http://www.google.de", "images/mengenmeldung-logo.png"));
-		applications.add(new TargetedApplication("Drache","http://www.google.de", "images/sammeldrache-logo.jpeg"));
-		applications.add(new TargetedApplication("Dienste","http://www.google.de", "images/dienstleistung-logo.png"));
-	}
-
 	@Override
 	public void onModuleLoad() {
 		logger.info("AppLauncher: Create Views begins...");
 
-		GWT.log("Hello Applaucher!", null);
-
-		logger.info("AppLauncher: Create Views end...");
-//		ErrorFormatter errorFormater = new ErrorFormatter();
-//		GWT.runAsync(new RunAsyncCallback() {
-//			@Override
-//			public void onFailure(Throwable reason) {
-//				errorFormater.showError(reason,"Error ApplauncherPanelView");
-//			}
-//
-//			@Override
-//			public void onSuccess() {
-//				ApplauncherPanelView view = new ApplauncherPanelView();
-//				RootPanel.get().add(view);
-//			}
-//		});
-
-
-
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
+		String appUrl = appLauncherRoot.getElement().getAttribute("data-application-url");
+		ServicePreparator servicePreparator =initServices(appUrl);
+
+		appConfigurationClient = servicePreparator.getAppConfigurationClient();
+
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-		dropDown.setMarginRight(200);
+		//dropDown.setMarginRight(200);
 
 		Popover popover = createApplauncherPopover();
 		popover.setAlternateTemplate("<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
@@ -97,10 +74,11 @@ public class ApplauncherWebApp implements EntryPoint {
 		createFlowPanel();
 
 		popover.add(popoverBtn);
-		popover.setContent(createDivStructure().getElement().getString());
-		dropDown.add(popover);
 
-		appLauncherRoot.add(dropDown);
+
+		createDivStructure(popover, dropDown,  appLauncherRoot);
+
+		logger.info("AppLauncher: Create Views end...");
 	}
 
 	private FlowPanel createFlowPanel() {
@@ -109,24 +87,24 @@ public class ApplauncherWebApp implements EntryPoint {
 		return applauncherPanel;
 	}
 
-	private Widget createDivStructure() {
+	private void createDivStructure(Popover popover,ListDropDown dropDown, RootPanel appLauncherRoot) {
 		FlowPanel panel = createFlowPanel();
 		Container container = createPopupContainer();
-		fillThreeColumnContainer(container, applications);
-		panel.add(container);
-	return container;
+		fillApplauncherPopupPanel(panel,container,popover,dropDown,appLauncherRoot);
 	}
+
 
 	private Container createPopupContainer(){
 		Container popupContainer = new Container();
+		popupContainer.getElement().addClassName("applauncherContainerCls");
 		popupContainer.setFluid(true);
-		popupContainer.setWidth("200px");
 		return popupContainer;
 
 	}
 
 
 	private void fillThreeColumnContainer(Container popupContainer, List<TargetedApplication> webApps){
+
 		int actCol = 0;
 		Row currentRow=null;
 		for (TargetedApplication webApp : webApps) {
@@ -134,7 +112,7 @@ public class ApplauncherWebApp implements EntryPoint {
 				 currentRow = new Row();
 				popupContainer.add(currentRow);
 			}
-			currentRow.add(createAnchorColumn("MD_4",webApp.getName(), webApp.getUrl(), webApp.getIconUrl()));
+			currentRow.add(createAnchorColumn("MD_4",webApp.getCaption(), webApp.getApplicationURL(), webApp.getImageURL()));
 			actCol++;
 			if (actCol >= 3) {
 				actCol = 0;
@@ -143,17 +121,16 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 
-	public Column createAnchorColumn(String span, String text, String url, String iconUrl) {
+	private Column createAnchorColumn(String span, String text, String url, String iconUrl) {
 		Column col = new Column(span);
 		col.getElement().getStyle().setVerticalAlign(Style.VerticalAlign.MIDDLE);
 
 		VerticalPanel panel = new VerticalPanel();
+		panel.getElement().addClassName("applauncherVerticalBar");
 		panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
-		panel.setWidth("100%");
 		Image icon = new Image(iconUrl);
-		icon.setWidth("25px");
-		icon.setHeight("25px");
+		icon.getElement().addClassName("applauncherIconCls");
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
 		icon.getElement().addClassName("glyphicon");
@@ -181,10 +158,38 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 	private RootPanel getWidgets(String element) {
 		RootPanel root = RootPanel.get(element);
-		logger.info("getWidget:"+root);
 		return root;
 	}
 
+	private ServicePreparator initServices(String appUrl) {
+		ServicePreparator servicePreparator = injector.getServicePreparator();
+		servicePreparator.prepare(appUrl);
+
+		return servicePreparator;
+	}
 
 
+	private void fillApplauncherPopupPanel(FlowPanel panel,
+										   Container container,
+										   Popover popover,
+										   ListDropDown dropDown,
+										   RootPanel appLauncherRoot){
+
+		appConfigurationClient.getAppConfiguration( new MethodCallback<List<TargetedApplication>>(){
+
+			@Override
+			public void onFailure(Method method, Throwable throwable) {
+				logger.severe("Error getting applauncher properties");
+			}
+
+			@Override
+			public void onSuccess(Method method, List<TargetedApplication> appProperties) {
+				fillThreeColumnContainer(container, appProperties);
+				panel.add(container);
+				popover.setContent(container.getElement().getString());
+				dropDown.add(popover);
+				appLauncherRoot.add(dropDown);
+			}
+		});
+	}
 }

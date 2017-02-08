@@ -31,9 +31,9 @@ public class ErrorFormatter {
 			.getLogger(ErrorFormatter.class.getName());
 
 	public void showError(Throwable exception, String inputMessage) {
-		String message = inputMessage + exception + " - "
-				+ exception.getMessage() + "Stack trace: "
-				+ stackTraceToString(exception);
+		String message =
+				inputMessage + exception + " - " + exception.getMessage()
+						+ "Stack trace: " + stackTraceToString(exception);
 		logger.log(Level.SEVERE, message);
 		Notify.notify(message);
 	}

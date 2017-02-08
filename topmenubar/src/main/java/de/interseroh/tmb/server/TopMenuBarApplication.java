@@ -32,7 +32,6 @@ public class TopMenuBarApplication {
 	@Value("${server.context-path}")
 	private String contextPath;
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(TopMenuBarApplication.class, args);
 	}
@@ -40,6 +39,8 @@ public class TopMenuBarApplication {
 	@Bean
 	public ServletRegistrationBean servletRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				contextPath.concat(TopMenueBarServiceEndpoint.GWT_REMOTE_LOGGING) + "/*");
+				contextPath
+						.concat(TopMenueBarServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
 	}
 }

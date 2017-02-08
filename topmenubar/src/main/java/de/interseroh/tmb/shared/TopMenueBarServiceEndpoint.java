@@ -22,5 +22,4 @@ public interface TopMenueBarServiceEndpoint {
 
 	String GWT_REMOTE_LOGGING = "/remote_logging";
 
-
 }

@@ -25,18 +25,16 @@ import java.util.logging.Logger;
 
 public class MessagingWebApp implements EntryPoint {
 
-	private static Logger logger = Logger
-			.getLogger(MessagingWebApp.class.getName());
+    private static Logger logger = Logger
+            .getLogger(MessagingWebApp.class.getName());
 
-	@Override
-	public void onModuleLoad() {
-		logger.info("MessagingWebApp: Create Views begins...");
+    @Override
+    public void onModuleLoad() {
+        logger.info("MessagingWebApp: Create Views begins...");
 
-		GWT.log("Hello MessagingWebApp!", null);
+        GWT.log("Hello MessagingWebApp!", null);
 
-		logger.info("MessagingWebApp: Create Views ends...");
-	}
-
-
+        logger.info("MessagingWebApp: Create Views ends...");
+    }
 
 }
