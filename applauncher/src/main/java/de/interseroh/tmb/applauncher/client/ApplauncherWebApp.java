@@ -20,8 +20,10 @@ package de.interseroh.tmb.applauncher.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.*;
+import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
@@ -62,10 +64,9 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-		//dropDown.setMarginRight(200);
+		dropDown.getElement().setAttribute("onFocusOut","hideTmbPopover();");
 
 		Popover popover = createApplauncherPopover();
-		popover.setAlternateTemplate("<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
 
 		AnchorButton popoverBtn= new AnchorButton();
 		popoverBtn.setIcon(IconType.TH);
@@ -80,6 +81,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		logger.info("AppLauncher: Create Views end...");
 	}
+
+
 
 	private FlowPanel createFlowPanel() {
 		FlowPanel applauncherPanel= new FlowPanel();
@@ -147,13 +150,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 
 	private Popover createApplauncherPopover(){
-		Popover popover = new Popover();
-
-		popover.setTitle("Interseroh WabApps");
-		popover.setIsHtml(true);
-		popover.setTrigger(Trigger.CLICK);
-		popover.setPlacement(Placement.AUTO);
-
+		Popover popover = new ApplauncherPopover("Id241");
 		return popover;
 	}
 	private RootPanel getWidgets(String element) {
@@ -189,7 +186,10 @@ public class ApplauncherWebApp implements EntryPoint {
 				popover.setContent(container.getElement().getString());
 				dropDown.add(popover);
 				appLauncherRoot.add(dropDown);
+				dropDown.getElement().setAttribute("onFocusOut","javasript:"+ApplauncherPopover.CLOSE_POPOVER_JSFUNCTION+";");
 			}
 		});
 	}
+
+
 }
