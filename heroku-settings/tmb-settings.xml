@@ -5,6 +5,7 @@
     <activeProfiles>
         <activeProfile>with-topmenubar</activeProfile>
         <activeProfile>with-applauncher</activeProfile>
+        <activeProfile>development</activeProfile>
     </activeProfiles>
 
 </settings>
