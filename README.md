@@ -45,8 +45,8 @@ There is the next maven modules structure:
    - profile
    - topmenubar
 
- ### topmenuebar-parent
- That is a parent module with pom packaging. The pom.xml file of this module contains the dependencies, a plug ins management, and profiles for the rest of modules.
+ ### topmenubar-parent
+ This is the parent module with pom packaging. The pom.xml file of this module contains the dependencies, a plugins management, and profiles for the rest of modules.
  The plugins are parametriesied with three placeholders:
 
  - ${i18n.gwt.modul} (Reference to configuration of the main GWT modul )
@@ -70,21 +70,21 @@ There is the next maven modules structure:
  This module contains the graphical representation of Top Menu Bar plus a prototype landing page
 
 ##Integration test
-The integration test simulates the injection of TomMenuBar in some existed page
- with Bootstrap components and responsive design.
+The integration test simulates the injection of TopMenuBar in an existing page
+ containing Bootstrap components and been developed applying the principles of responsive design.
  
    ### Given 
-   The original page where have been built in the next Bootstrap components:
+   The original page has been built using the following Bootstrap components:
       - Navigation Bar
       - Modal dialog which can be activated by button 
-      - Tables which have been located standalone in HTML page and built in other container
-      - different Bootstrap containers with row and columns where are located short texts and 
-        buttons which redirect to pages with details.
+      - Tables which have been located standalone in HTML page and built in another container
+      - different Bootstrap containers with row and columns containing short texts and 
+        buttons (which redirect to pages with details).
     
    ### Test case 1
-   This test is presented with the page **resources/public/bstest_1_original.html**.
+   This test is represented with the page **resources/public/bstest_1_original.html**.
    
-   - Have been done 1.
+   - Test Procedure 
         - add next JavaScripts to html header.
            ```html
             <script type="text/javascript" language="javascript"
@@ -115,32 +115,32 @@ The integration test simulates the injection of TomMenuBar in some existed page
         ```
       
    - Result of the Test case 1
-        That is the simplest way for the integration of ToMenuBar where was not changed the original html
+        This is the simplest way of integration of ToMenuBar without influencing the original html
         content (aside header).
-        As a result we have here the  problem with **invisibility of TopMenuBar**. 
-        The problem is the class **navbar-fixed-top** which ist located in original navigation bar
+        As a result there is a problem with **invisibility of TopMenuBar**. 
+        The problem is the class **navbar-fixed-top** which is located inside of original navigation bar
         
   ### Test case 2
   
-   This test case is presented also with the page **resources/public/bstest_1_original.html** as test case 1.
+   This test case is co-represented with the page **resources/public/bstest_1_original.html** as test case 1.
    
-   - Have been done 2.
-       Additionally to the same steps as in (#Test case 1) it should be doing one additional step more.
+   - Test Procedure
+       Additionally to the same steps as in (#Test case 1) we need to perform one more additional step.
        - remove class **navbar-fixed-top**
-         Here should be removed the class **navbar-fixed-top** from the attribute class of the tag **nav**.
+         We should remove the class **navbar-fixed-top** from the attribute class of the tag **nav**.
          
    - Result of the Test case 2
-   In this case the result is better. The ToMenuBar is visible on the top of page and menu bar from original page 
+   In this case we achieve a better result. The TopMenuBar is visible on the top of page and page's original menu bar
    is located under TopMenuBar.
    The problem here is that the **TopMenuBar lost the color**, which was defined by parameter data-color.
    
    ### Test case 3
-   This test case is presented  with the page **resources/public/bstest_1_solution.html**.
+   This test case is represented  with the page **resources/public/bstest_1_solution.html**.
    That is possible solution of integration for TopMenuBar.
    
-   - Have been done 2.
+   - Test Procedure
     Additionally to the same steps as in (#Test case 1) and (#Test case 2) it should be doing one additional step more.
-      - remove Bootstrat css and JavaScript from original page.
+      - remove Bootstrap css and JavaScript from original page.
       ```html
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -150,10 +150,10 @@ The integration test simulates the injection of TomMenuBar in some existed page
    - Result of the Test case 3.
       
    ### Conclusion   
-   What should be done for the successful integration of the **TopMenuBar** in the pages which contains
+   Proceeding for the successful integration of the **TopMenuBar** in the pages which contain
     Bootstrap navigation bar.
     - check existing class **navbar-fixed-top** of the attribute **class** of the tag **nav**.
     - if the class **navbar-fixed-top** exists than remove this class as in the **Test case 2**
-    - removes Bootstrat css and JavaScripts from the original page as in the **Test case 3**
+    - removes Bootstrap css and JavaScripts from the original page as in the **Test case 3**
    
       
