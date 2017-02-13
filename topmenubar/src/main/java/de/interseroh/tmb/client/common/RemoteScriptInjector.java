@@ -40,8 +40,8 @@ public class RemoteScriptInjector {
 
 			@Override
 			public void onSuccess(Object o) {
-				logger.info("Java Script is lodaed from URL :" + scriptFullUrl);
-			}
+                logger.info("Java Script is loaded from URL :" + scriptFullUrl);
+            }
 		}).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
 
