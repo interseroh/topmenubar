@@ -229,7 +229,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <runTarget>topmenuebar.html</runTarget>
+                        <runTarget>topmenubar.html</runTarget>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -292,12 +292,6 @@
             </build>
         </profile>
         <profile>
-            <id>with-applauncher</id>
-            <modules>
-                <module>applauncher</module>
-            </modules>
-        </profile>
-        <profile>
             <id>with-messaging</id>
             <modules>
                 <module>messaging</module>
@@ -309,14 +303,10 @@
                 <module>profile</module>
             </modules>
         </profile>
-        <profile>
-            <id>with-topmenubar</id>
-            <modules>
-                <module>topmenubar</module>
-            </modules>
-        </profile>
     </profiles>
     <modules>
         <module>tmb-common</module>
+        <module>applauncher</module>
+        <module>topmenubar</module>
     </modules>
 </project>
