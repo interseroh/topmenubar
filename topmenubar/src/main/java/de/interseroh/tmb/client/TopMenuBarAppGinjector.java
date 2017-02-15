@@ -30,6 +30,6 @@ public interface TopMenuBarAppGinjector extends Ginjector {
 
 	SimpleEventBus getEventBus();
 
-	Messages getMessages();
+// 	Messages getMessages();
 
 }
