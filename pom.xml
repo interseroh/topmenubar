@@ -198,7 +198,6 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>gwt-maven-plugin</artifactId>
 					<version>${gwt.version}</version>
-
 					<executions>
 						<execution>
 							<id>gwt-compile</id>
