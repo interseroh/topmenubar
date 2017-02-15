@@ -20,6 +20,7 @@ package de.interseroh.tmb.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import de.interseroh.tmb.client.common.ServicePreparator;
@@ -76,6 +77,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
 		basePanel.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
+		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
 		header.add(createLogoImage(iconUrl));
