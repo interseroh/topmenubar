@@ -215,25 +215,49 @@
                                 <goal>i18n</goal>
                             </goals>
 
-							<configuration>
-								<sourceLevel>1.8</sourceLevel>
-								<module>${i18n.gwt.modul}</module>
-								<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-								<persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
-								<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-								<deploy>${project.build.directory}/gwt-deploy</deploy>
-								<i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
-							</configuration>
-						</execution>
-
-					</executions>
-					<configuration>
-						<runTarget>topmenuebar.html</runTarget>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+                            <configuration>
+                                <sourceLevel>1.8</sourceLevel>
+                                <module>${i18n.gwt.modul}</module>
+                                <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
+                                <persistentunitcachedir>
+                                    ${project.build.directory}
+                                </persistentunitcachedir>
+                                <webappDirectory>${project.build.directory}/classes/public</webappDirectory>
+                                <deploy>${project.build.directory}/gwt-deploy</deploy>
+                                <i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <runTarget>topmenubar.html</runTarget>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>install</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>copy</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>${project.groupId}</groupId>
+                                        <artifactId>${project.artifactId}</artifactId>
+                                        <version>${project.version}</version>
+                                    </artifactItem>
+                                </artifactItems>
+                                <outputDirectory>${project.basedir}/../target/</outputDirectory>
+                                <stripVersion>true</stripVersion>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <profiles>
         <profile>
@@ -268,12 +292,6 @@
             </build>
         </profile>
         <profile>
-            <id>with-applauncher</id>
-            <modules>
-                <module>applauncher</module>
-            </modules>
-        </profile>
-        <profile>
             <id>with-messaging</id>
             <modules>
                 <module>messaging</module>
@@ -285,15 +303,11 @@
                 <module>profile</module>
             </modules>
         </profile>
-        <profile>
-            <id>with-topmenubar</id>
-            <modules>
-                <module>topmenubar</module>
-            </modules>
-        </profile>
     </profiles>
     <modules>
         <module>tmb-common</module>
         <module>zuul-server</module>
+        <module>applauncher</module>
+        <module>topmenubar</module>
     </modules>
 </project>
