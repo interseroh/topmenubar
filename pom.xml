@@ -206,7 +206,6 @@
 								<goal>compile</goal>
 								<goal>i18n</goal>
 							</goals>
-
 							<configuration>
 								<sourceLevel>1.8</sourceLevel>
 								<module>${i18n.gwt.modul}</module>

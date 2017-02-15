@@ -23,6 +23,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import de.interseroh.tmb.client.common.RemoteScriptInjector;
 import de.interseroh.tmb.client.common.ServicePreparator;
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.constants.BadgePosition;
@@ -63,8 +64,16 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private void createViews() {
 		// Views
 		logger.info("Create Views begins...");
-
 		appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		String appUrl = appLauncher.getElement()
+				.getAttribute("data-application-url");
+		String javascriptUrl = appLauncher.getElement()
+				.getAttribute("data-javascript-url");
+
+		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
+		scriptInjector.injectScript(appUrl, javascriptUrl);
+
+
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
 
@@ -93,12 +102,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		basePanel.add(collapse);
 
-		//Container container = createMD6Container();
-		//createAndAddLogoImage(iconUrl);
-		//createAndAddHeadlineText(geadlineText);
-		//moveElementsToRightPanel();
-
-		//basePanel.add(container);
 		rootPanel.insert(basePanel,0);
 		logger.info("Create Views ends...");
 	}
@@ -158,8 +161,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 * Creates and add Logo image to the left panel
 	 * @param iconUrl the url of logo image
 	 */
-	private Image createLogoImage(String iconUrl){
-		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
+	private Image createLogoImage(String iconUrl) {
+		Image icon = new Image(
+				() -> (iconUrl != null && !iconUrl.trim().isEmpty() ?
+						iconUrl :
+						"images/broken.png"));
 		icon.setPull(Pull.LEFT);
 		return icon;
 	}

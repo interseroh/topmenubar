@@ -20,7 +20,6 @@ package de.interseroh.tmb.applauncher.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.*;
 import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
@@ -59,6 +58,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncherRoot.getElement()
 				.getAttribute("data-application-url");
+		logger.info("++++++++++++++++++++Applauncher application URL:"+appUrl);
 		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
@@ -110,7 +110,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		Row currentRow = null;
 		for (TargetedApplication webApp : webApps) {
 			if (actCol == 0) {
-				currentRow = new Row();
+				 currentRow = new Row();
 				popupContainer.add(currentRow);
 			}
 			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
