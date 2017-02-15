@@ -202,7 +202,6 @@
 					<executions>
 						<execution>
 							<id>gwt-compile</id>
-
 							<goals>
 								<goal>compile</goal>
 								<goal>i18n</goal>
