@@ -32,10 +32,8 @@
     <artifactId>applauncher</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>applauncher</name>
     <description>App launcher projekt of top menu bar</description>
-
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -141,8 +139,8 @@
             <artifactId>gwtmockito</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
+    
     <build>
         <plugins>
             <plugin>
