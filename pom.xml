@@ -18,296 +18,316 @@
  | under the License.
 -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.1.RELEASE</version>
+	</parent>
 
-    </parent>
+	<groupId>de.interseroh.tmb</groupId>
+	<artifactId>topmenubar-parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>topmenubar-parent</name>
+	<description>Top menu bar project</description>
 
-    <groupId>de.interseroh.tmb</groupId>
-    <artifactId>topmenubar-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<gwt.version>2.8.0</gwt.version>
+		<google.gin.version>2.1.2</google.gin.version>
+		<gwt.bootstrap.version>0.9.3</gwt.bootstrap.version>
+		<gwt.eventbinder.version>1.1.0</gwt.eventbinder.version>
+		<gwt.resty.version>2.2.0</gwt.resty.version>
+		<gwt.mockito.version>1.1.6</gwt.mockito.version>
+		<kissmda.maven.plugin.version>2.0.0</kissmda.maven.plugin.version>
+		<kissmda.cartridges.simple.java.version>2.0.2</kissmda.cartridges.simple.java.version>
+		<kissmda.extensions.importpacker.version>1.0.0</kissmda.extensions.importpacker.version>
+	</properties>
 
-    <name>topmenubar-parent</name>
-    <description>Top menu bar project</description>
+	<modules>
+		<module>tmb-common</module>
+		<module>zuul-server</module>
+		<module>applauncher</module>
+		<module>topmenubar</module>
+	</modules>
 
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring Test -->
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.1.0.Final</version>
+			</dependency>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <gwt.version>2.8.0</gwt.version>
-        <google.gin.version>2.1.2</google.gin.version>
-        <gwt.bootstrap.version>0.9.3</gwt.bootstrap.version>
-        <gwt.eventbinder.version>1.1.0</gwt.eventbinder.version>
-        <gwt.resty.version>2.2.0</gwt.resty.version>
-        <gwt.mockito.version>1.1.6</gwt.mockito.version>
-        <kissmda.maven.plugin.version>2.0.0</kissmda.maven.plugin.version>
-        <kissmda.cartridges.simple.java.version>2.0.2</kissmda.cartridges.simple.java.version>
-        <kissmda.extensions.importpacker.version>1.0.0</kissmda.extensions.importpacker.version>
+			<dependency>
+				<groupId>javax.ws.rs</groupId>
+				<artifactId>jsr311-api</artifactId>
+				<version>1.1.1</version>
+			</dependency>
 
-        <!--
-        the following properties must be defined in submodules
-        <i18n.gwt.modul>TBD</i18n.gwt.modul>
-        <i18n.messages.bundle>TBD</i18n.messages.bundle>
-        <gwt.dev.modul>TBD</gwt.dev.modul>
-        -->
-    </properties>
+			<!-- GWT -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>validation-api</artifactId>
+						<groupId>javax.validation</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 
-    <dependencyManagement>
-        <dependencies>
+			<!-- Gin -->
+			<dependency>
+				<groupId>com.google.gwt.inject</groupId>
+				<artifactId>gin</artifactId>
+				<version>${google.gin.version}</version>
+			</dependency>
 
-            <!-- Spring Test -->
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
-            </dependency>
+			<!-- GWT EventBus -->
+			<dependency>
+				<groupId>com.google.gwt.eventbinder</groupId>
+				<artifactId>eventbinder</artifactId>
+				<version>${gwt.eventbinder.version}</version>
+			</dependency>
 
-            <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>jsr311-api</artifactId>
-                <version>1.1.1</version>
-            </dependency>
+			<!-- GWT Bootstrap 3 -->
+			<dependency>
+				<groupId>org.gwtbootstrap3</groupId>
+				<artifactId>gwtbootstrap3</artifactId>
+				<version>${gwt.bootstrap.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.gwtbootstrap3</groupId>
+				<artifactId>gwtbootstrap3-extras</artifactId>
+				<version>${gwt.bootstrap.version}</version>
+			</dependency>
 
-            <!-- GWT -->
-            <dependency>
-                <groupId>com.google.gwt</groupId>
-                <artifactId>gwt-user</artifactId>
-                <version>${gwt.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>validation-api</artifactId>
-                        <groupId>javax.validation</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
+			<!-- RestyGWT -->
+			<dependency>
+				<groupId>org.fusesource.restygwt</groupId>
+				<artifactId>restygwt</artifactId>
+				<version>${gwt.resty.version}</version>
+			</dependency>
 
-            <!-- Gin -->
-            <dependency>
-                <groupId>com.google.gwt.inject</groupId>
-                <artifactId>gin</artifactId>
-                <version>${google.gin.version}</version>
-            </dependency>
+			<!-- GWT Mockito -->
+			<dependency>
+				<groupId>com.google.gwt.gwtmockito</groupId>
+				<artifactId>gwtmockito</artifactId>
+				<version>${gwt.mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-            <!-- GWT EventBus -->
-            <dependency>
-                <groupId>com.google.gwt.eventbinder</groupId>
-                <artifactId>eventbinder</artifactId>
-                <version>${gwt.eventbinder.version}</version>
-            </dependency>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Plugin org.springframework.boot -->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
 
-            <!-- GWT Bootstrap 3 -->
-            <dependency>
-                <groupId>org.gwtbootstrap3</groupId>
-                <artifactId>gwtbootstrap3</artifactId>
-                <version>${gwt.bootstrap.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.google.gwt</groupId>
-                        <artifactId>gwt-user</artifactId>
-                    </exclusion>
-                </exclusions>
+				<!-- Plugin build-helper-maven-plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>add-source</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>add-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>
+										${project.build.directory}/generated-sources/java
+									</source>
+									<source>
+										${project.build.directory}/generated-sources/gwt
+									</source>
+								</sources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 
-            </dependency>
-            <dependency>
-                <groupId>org.gwtbootstrap3</groupId>
-                <artifactId>gwtbootstrap3-extras</artifactId>
-                <version>${gwt.bootstrap.version}</version>
-            </dependency>
+				<!-- JRebel plugin, you need to turn off Spring Tool! -->
+				<plugin>
+					<groupId>org.zeroturnaround</groupId>
+					<artifactId>jrebel-maven-plugin</artifactId>
+					<version>1.1.5</version>
+					<configuration>
+						<relativePath>.</relativePath>
+						<classpath>
+							<fallback>default</fallback>
+							<resources>
+								<resource>
+								</resource>
+							</resources>
+						</classpath>
+					</configuration>
+					<executions>
+						<execution>
+							<id>generate-rebel-xml</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				
+				<!-- GWT Maven Plugin -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${gwt.version}</version>
 
-            <!-- RestyGWT -->
-            <dependency>
-                <groupId>org.fusesource.restygwt</groupId>
-                <artifactId>restygwt</artifactId>
-                <version>${gwt.resty.version}</version>
-            </dependency>
+					<executions>
+						<execution>
+							<id>gwt-compile</id>
 
-            <!-- GWT Mockito -->
-            <dependency>
-                <groupId>com.google.gwt.gwtmockito</groupId>
-                <artifactId>gwtmockito</artifactId>
-                <version>${gwt.mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
+							<goals>
+								<goal>compile</goal>
+								<goal>i18n</goal>
+							</goals>
 
-        </dependencies>
+							<configuration>
+								<sourceLevel>1.8</sourceLevel>
+								<module>${i18n.gwt.modul}</module>
+								<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
+								<persistentunitcachedir>
+									${project.build.directory}
+								</persistentunitcachedir>
+								<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
+								<deploy>${project.build.directory}/gwt-deploy</deploy>
+								<i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
+							</configuration>
+						</execution>
+					</executions>
+					<configuration>
+						<runTarget>topmenubar.html</runTarget>
+					</configuration>
+				</plugin>
+				
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>install</id>
+							<phase>install</phase>
+							<goals>
+								<goal>copy</goal>
+							</goals>
+							<configuration>
+								<artifactItems>
+									<artifactItem>
+										<groupId>${project.groupId}</groupId>
+										<artifactId>${project.artifactId}</artifactId>
+										<version>${project.version}</version>
+									</artifactItem>
+								</artifactItems>
+								<outputDirectory>${project.basedir}/../target/</outputDirectory>
+								<stripVersion>true</stripVersion>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 
-    </dependencyManagement>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.zeroturnaround
+										</groupId>
+										<artifactId>
+											jrebel-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.1.5,)
+										</versionRange>
+										<goals>
+											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!-- Plugin  org.springframework.boot -->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-
-                <!-- Plugin  build-helper-maven-plugin -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>build-helper-maven-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>add-source</id>
-                            <phase>generate-sources</phase>
-                            <goals>
-                                <goal>add-source</goal>
-                            </goals>
-                            <configuration>
-                                <sources>
-                                    <source>
-                                        ${project.build.directory}/generated-sources/java
-                                    </source>
-                                    <source>
-                                        ${project.build.directory}/generated-sources/gwt
-                                    </source>
-                                </sources>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- JRebel plugin, you need to turn off Spring Tool! -->
-                <plugin>
-                    <groupId>org.zeroturnaround</groupId>
-                    <artifactId>jrebel-maven-plugin</artifactId>
-                    <version>1.1.5</version>
-                    <configuration>
-                        <relativePath>.</relativePath>
-                        <classpath>
-                            <fallback>default</fallback>
-                            <resources>
-                                <resource>
-                                </resource>
-                            </resources>
-                        </classpath>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>generate-rebel-xml</id>
-                            <phase>process-resources</phase>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <!-- GWT Maven Plugin -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>gwt-maven-plugin</artifactId>
-                    <version>${gwt.version}</version>
-
-                    <executions>
-                        <execution>
-                            <id>gwt-compile</id>
-
-                            <goals>
-                                <goal>compile</goal>
-                                <goal>i18n</goal>
-                            </goals>
-
-                            <configuration>
-                                <sourceLevel>1.8</sourceLevel>
-                                <module>${i18n.gwt.modul}</module>
-                                <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-                                <persistentunitcachedir>
-                                    ${project.build.directory}
-                                </persistentunitcachedir>
-                                <webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-                                <deploy>${project.build.directory}/gwt-deploy</deploy>
-                                <i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <runTarget>topmenubar.html</runTarget>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>install</id>
-                            <phase>install</phase>
-                            <goals>
-                                <goal>copy</goal>
-                            </goals>
-                            <configuration>
-                                <artifactItems>
-                                    <artifactItem>
-                                        <groupId>${project.groupId}</groupId>
-                                        <artifactId>${project.artifactId}</artifactId>
-                                        <version>${project.version}</version>
-                                    </artifactItem>
-                                </artifactItems>
-                                <outputDirectory>${project.basedir}/../target/</outputDirectory>
-                                <stripVersion>true</stripVersion>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <profiles>
-        <profile>
-            <id>development</id>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>gwt-maven-plugin</artifactId>
-                            <version>${gwt.version}</version>
-                            <executions>
-                                <execution>
-                                    <id>gwt-compile</id>
-                                    <goals>
-                                        <goal>compile</goal>
-                                    </goals>
-                                    <configuration>
-                                        <sourceLevel>1.8</sourceLevel>
-                                        <module>${gwt.dev.modul}</module>
-                                        <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-                                        <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
-                                        <webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-                                        <deploy>${project.build.directory}/gwt-deploy</deploy>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-        <profile>
-            <id>with-messaging</id>
-            <modules>
-                <module>messaging</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>with-profile</id>
-            <modules>
-                <module>profile</module>
-            </modules>
-        </profile>
-    </profiles>
-    <modules>
-        <module>tmb-common</module>
-        <module>zuul-server</module>
-        <module>applauncher</module>
-        <module>topmenubar</module>
-    </modules>
+	<profiles>
+		<profile>
+			<id>development</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>gwt-maven-plugin</artifactId>
+							<version>${gwt.version}</version>
+							<executions>
+								<execution>
+									<id>gwt-compile</id>
+									<goals>
+										<goal>compile</goal>
+									</goals>
+									<configuration>
+										<sourceLevel>1.8</sourceLevel>
+										<module>${gwt.dev.modul}</module>
+										<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
+										<persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
+										<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
+										<deploy>${project.build.directory}/gwt-deploy</deploy>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>with-messaging</id>
+			<modules>
+				<module>messaging</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>with-profile</id>
+			<modules>
+				<module>profile</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>
