@@ -35,8 +35,6 @@ public class ServicePreparator {
 			.getLogger(ServicePreparator.class.getName());
 
 
-
-
 	@Inject
 	private AppConfigurationClient appConfigurationClient;
 
@@ -51,7 +49,7 @@ public class ServicePreparator {
 	private void initDomainService(String appUrl) {
 		logger.info("Init  the domains...");
 
-		Resource resource = new Resource(appUrl);
+		Resource resource = new Resource(appUrl==null?"":appUrl);
 
 		((RestServiceProxy) appConfigurationClient).setResource(resource);
 	}

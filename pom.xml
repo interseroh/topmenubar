@@ -283,6 +283,7 @@
                                         <persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
                                         <webappDirectory>${project.build.directory}/classes/public</webappDirectory>
                                         <deploy>${project.build.directory}/gwt-deploy</deploy>
+                                        <style>DETAILED</style>
                                     </configuration>
                                 </execution>
                             </executions>
