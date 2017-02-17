@@ -20,15 +20,9 @@ Top Menu Bar for Interseroh Webapps.
 - [Integration Test](#integration-test)
   - [Requirements](#requirements)
   - [Test Case 1](#test-case-1)
-    - [Have been done](#Have been done 1)
-    - [Result of the Test case 1](#Result of the Test case 1)
   - [Test Case 2](#test-case-2)
-    - [Have been done](#Have been done 2)
-    - [Result of the Test case 2](#Result of the Test case 2)
   - [Test Case 3](#test-case-3)
-    - [Have been done](#Have been done 3)
-    - [Result of the Test case 3](#Result of the Test case 3)
-  -[Conclusion](#Conclusion) 
+-[Conclusion](#conclusion) 
 
 
 ## Introduction
@@ -88,25 +82,26 @@ The original page has been built using the following Bootstrap components:
 ### Test Case 1
 This test is represented with the page **resources/public/bstest_1_original.html**.
    
-- Test Procedure 
--- add next JavaScripts to html header.
+#### Test Procedure 1 
+- Add next JavaScripts to html header.
 
-	```html
+```html
             <script type="text/javascript" language="javascript"
                        src="topmenubar/topmenubar.nocache.js"></script>
             <script type="text/javascript" language="javascript"
                        src="http://localhost:9010/applauncher/applauncher/applauncher.nocache.js">
             </script>
-            ```
-        - add applauncher css the html header
+```
+
+- Add applauncher css the html header
        
-            ```html
+```html
             <link type="text/css" rel="stylesheet" href="http://localhost:9010/applauncher/applauncher.css">
-            ```
+```
     
-        - add TopMenuBar at the top of the html body.
+- Add TopMenuBar at the top of the html body.
        
-            ```html
+```html
             <div id="tmb_top_menu_bar" data-colour="#223d62"
                  data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
                 <div id="tmb_app_launcher" data-application-url="http://localhost:9010/"
@@ -117,9 +112,9 @@ This test is represented with the page **resources/public/bstest_1_original.html
                 <div id="tmb_messaging">
                 </div>
             </div>
-        ```
+```
       
-- Result of the Test case 1
+#### Result of the Test Case 1
 This is the simplest way of integration of ToMenuBar without influencing the original html content (aside header).
 As a result there is a problem with **invisibility of TopMenuBar**. 
 The problem is the class **navbar-fixed-top** which is located inside of original navigation bar
@@ -128,13 +123,13 @@ The problem is the class **navbar-fixed-top** which is located inside of origina
 ### Test Case 2
 This test case is co-represented with the page **resources/public/bstest_1_original.html** as test case 1.
    
-- Test Procedure
+#### Test Procedure 2
 Additionally to the same steps as in (#Test case 1) we need to perform one more additional step.
        
-- remove class **navbar-fixed-top**
+- Remove class **navbar-fixed-top**
 We should remove the class **navbar-fixed-top** from the attribute class of the tag **nav**.
          
-- Result of the Test case 2
+#### Result of the Test Case 2
 In this case we achieve a better result. The TopMenuBar is visible on the top of page and page's original menu bar is located under TopMenuBar. 
 
 The problem here is that the **TopMenuBar lost the color**, which was defined by parameter data-color.
@@ -143,21 +138,23 @@ The problem here is that the **TopMenuBar lost the color**, which was defined by
 This test case is represented  with the page **resources/public/bstest_1_solution.html**.
 That is possible solution of integration for TopMenuBar.
    
-- Test Procedure
+#### Test Procedure 3
 Additionally to the same steps as in (#Test case 1) and (#Test case 2) it should be doing one additional step more.
-- remove Bootstrap css and JavaScript from original page.
 
-      ```html
+- Remove Bootstrap css and JavaScript from original page.
+
+```html
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      ```
-- Result of the Test case 3.
+```
+
+#### Result of the Test Case 3
       
-### Conclusion   
+## Conclusion   
 Proceeding for the successful integration of the **TopMenuBar** in the pages which contain Bootstrap navigation bar.
-- check existing class **navbar-fixed-top** of the attribute **class** of the tag **nav**.
-- if the class **navbar-fixed-top** exists than remove this class as in the **Test case 2**
-- removes Bootstrap css and JavaScripts from the original page as in the **Test case 3**
+- Check existing class **navbar-fixed-top** of the attribute **class** of the tag **nav**.
+- If the class **navbar-fixed-top** exists than remove this class as in the **Test case 2**
+- Removes Bootstrap css and JavaScripts from the original page as in the **Test case 3**
    
