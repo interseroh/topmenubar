@@ -46,9 +46,9 @@ This is the parent module with pom packaging. The pom.xml file of this module co
  
 The plugins are parametrized with three placeholders:
 
-- ${i18n.gwt.modul} (Reference to configuration of the main GWT modul )
-- ${gwt.dev.modul} (Reference to the configuration of development GWT modul )
-- ${i18n.messages.bundle} (Reference to the configuration of development GWT modul )
+- ${i18n.gwt.modul} (Reference to configuration of the main GWT modul)
+- ${gwt.dev.modul} (Reference to the configuration of development GWT modul)
+- ${i18n.messages.bundle} (Reference to the configuration of development GWT modul)
 
 The values for these placeholders are provided by properties in pom.xml of each child module.
 For example for the modul #topmenubar that are:
@@ -86,32 +86,30 @@ This test is represented with the page **resources/public/bstest_1_original.html
 - Add next JavaScripts to html header.
 
 ```html
-            <script type="text/javascript" language="javascript"
-                       src="topmenubar/topmenubar.nocache.js"></script>
-            <script type="text/javascript" language="javascript"
-                       src="http://localhost:9010/applauncher/applauncher/applauncher.nocache.js">
-            </script>
+<script type="text/javascript" language="javascript"
+    src="topmenubar/topmenubar.nocache.js"></script>
+<script type="text/javascript" language="javascript"
+    src="http://localhost:9010/applauncher/applauncher/applauncher.nocache.js">
+</script>
 ```
 
 - Add applauncher css the html header
        
 ```html
-            <link type="text/css" rel="stylesheet" href="http://localhost:9010/applauncher/applauncher.css">
+<link type="text/css" rel="stylesheet" href="http://localhost:9010/applauncher/applauncher.css">
 ```
     
 - Add TopMenuBar at the top of the html body.
        
 ```html
-            <div id="tmb_top_menu_bar" data-colour="#223d62"
-                 data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
-                <div id="tmb_app_launcher" data-application-url="http://localhost:9010/"
-                     data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
-                </div>
-                <div id="tmb_profile">
-                </div>
-                <div id="tmb_messaging">
-                </div>
-            </div>
+<div id="tmb_top_menu_bar" data-colour="#223d62"
+    data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
+    <div id="tmb_app_launcher" data-application-url="http://localhost:9010/"
+        data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
+    </div>
+    <div id="tmb_profile"></div>
+    <div id="tmb_messaging"></div>
+</div>
 ```
       
 #### Result of the Test Case 1
@@ -144,10 +142,14 @@ Additionally to the same steps as in (#Test case 1) and (#Test case 2) it should
 - Remove Bootstrap css and JavaScript from original page.
 
 ```html
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
 ```
 
 #### Result of the Test Case 3
