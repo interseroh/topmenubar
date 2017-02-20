@@ -19,14 +19,17 @@
 package de.interseroh.tmb.server;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
+import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 import de.interseroh.tmb.shared.TopMenueBarServiceEndpoint;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@Import(LoggingCrossOriginConfiguration.class)
 public class TopMenuBarApplication {
 
 	@Value("${server.context-path}")
@@ -37,7 +40,7 @@ public class TopMenuBarApplication {
 	}
 
 	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
+	public ServletRegistrationBean filterRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
 				contextPath
 						.concat(TopMenueBarServiceEndpoint.GWT_REMOTE_LOGGING)
