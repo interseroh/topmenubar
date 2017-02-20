@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- The DOCTYPE declaration above will set the     -->
 <!-- browser's rendering engine into                -->
 <!-- "Standards Mode". Replacing this declaration   -->
@@ -15,7 +15,7 @@
 
     <link type="text/css" rel="stylesheet" href="topmenubar.css"/>
     <link type="text/css" rel="stylesheet"
-          th:href="${applauncherUrl}+'/applauncher/applauncher.css'"/>
+          th:href="${applauncherUrl}+'/applauncher.css'"/>
     <link rel="icon" href="images/favicon.png" type="image/x-icon"/>
 
     <!--                                           -->
@@ -54,7 +54,8 @@
 </noscript>
 
 <div id="tmb_top_menu_bar" data-colour="#223d62" data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
-    <div id="tmb_app_launcher" th:attr="data-application-url=${applauncherUrl}" data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
+    <div id="tmb_app_launcher" th:attr="data-application-url=${applauncherUrl}"
+         data-javascript-url="/applauncher/applauncher.nocache.js">
     </div>
     <div id="tmb_profile">
     </div>
