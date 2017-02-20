@@ -43,7 +43,7 @@ public class ApplauncherApplication {
     }
 
     @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
+    public ServletRegistrationBean remoteLoggingService() {
         return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
                 contextPath
                         .concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
