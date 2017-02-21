@@ -81,7 +81,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
 		scriptInjector.injectScript(appUrl, javascriptUrl);
 
-
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
 
@@ -89,11 +88,15 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		String colour = rootPanel.getElement().getAttribute("data-colour");
 		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
-		String headlineText = rootPanel.getElement().getAttribute("data-headline");
+		String headlineText = rootPanel.getElement()
+				.getAttribute("data-headline");
 
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
-		basePanel.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
+		basePanel.getElement().getStyle().setBackgroundColor(
+				colour != null && !colour.trim().isEmpty() ?
+						colour :
+						"#FF0000");
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
@@ -110,7 +113,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		basePanel.add(collapse);
 
-		rootPanel.insert(basePanel,0);
+		rootPanel.insert(basePanel, 0);
 		logger.info("Create Views ends...");
 	}
 
@@ -123,7 +126,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	/**
 	 * add elements to the right panel
 	 */
-	private NavbarNav rightPanelElements(){
+	private NavbarNav rightPanelElements() {
 
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
@@ -142,7 +145,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	/**
 	 * add elements to the right panel
 	 */
-	private void rightPanelElements(NavbarCollapse parent){
+	private void rightPanelElements(NavbarCollapse parent) {
 
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
@@ -156,9 +159,10 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Creates and add headline text to the left panel
+	 *
 	 * @param headlineText text for adding
 	 */
-	private NavbarBrand createBadge(String headlineText, String iconUrl){
+	private NavbarBrand createBadge(String headlineText, String iconUrl) {
 		NavbarBrand brand = new NavbarBrand();
 		brand.setBadgePosition(BadgePosition.RIGHT);
 		brand.setBadgeText(headlineText);
@@ -167,6 +171,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Creates and add Logo image to the left panel
+	 *
 	 * @param iconUrl the url of logo image
 	 */
 	private Image createLogoImage(String iconUrl) {

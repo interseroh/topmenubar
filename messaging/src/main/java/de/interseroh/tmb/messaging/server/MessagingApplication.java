@@ -31,18 +31,18 @@ import de.interseroh.tmb.messaging.shared.MessagingServiceEndpoint;
 @SpringBootApplication
 public class MessagingApplication {
 
-    @Value("${server.context-path}")
-    private String contextPath;
+	@Value("${server.context-path}")
+	private String contextPath;
 
-    public static void main(String[] args) {
-        SpringApplication.run(MessagingApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(MessagingApplication.class, args);
+	}
 
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean() {
 
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath.concat(MessagingServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
-    }
+		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+				contextPath.concat(MessagingServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
+	}
 }

@@ -25,5 +25,5 @@ import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 
 @GinModules(ApplanucherWebAppGinModul.class)
 public interface ApplanucherWebAppGinjector extends Ginjector {
-    ServicePreparator getServicePreparator();
+	ServicePreparator getServicePreparator();
 }

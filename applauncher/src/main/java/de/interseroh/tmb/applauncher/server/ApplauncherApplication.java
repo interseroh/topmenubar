@@ -35,21 +35,22 @@ import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 @SpringBootApplication
 @Import(LoggingCrossOriginConfiguration.class)
 public class ApplauncherApplication {
-    private static final Logger logger = Logger.getLogger(ApplauncherApplication.class.getName());
+	private static final Logger logger = Logger
+			.getLogger(ApplauncherApplication.class.getName());
 
-    @Value("${server.context-path}")
-    private String contextPath;
+	@Value("${server.context-path}")
+	private String contextPath;
 
-    public static void main(String[] args) {
-        SpringApplication.run(ApplauncherApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ApplauncherApplication.class, args);
+	}
 
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath
-                        .concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
-    }
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean() {
+		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+				contextPath
+						.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
+	}
 
 }

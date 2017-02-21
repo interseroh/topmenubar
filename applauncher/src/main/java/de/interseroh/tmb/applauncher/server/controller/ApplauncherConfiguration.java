@@ -41,25 +41,26 @@ import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 @RestController
 @CrossOrigin
 public class ApplauncherConfiguration {
-    private static final Logger logger = LoggerFactory
-            .getLogger(ApplauncherConfiguration.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(ApplauncherConfiguration.class);
 
-    @Value("${applauncher.config.json:classpath:dev.applauncher.json}")
-    private Resource applauncherConfigurationJson;
+	@Value("${applauncher.config.json:classpath:dev.applauncher.json}")
+	private Resource applauncherConfigurationJson;
 
-    @RequestMapping(value = ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG, method = RequestMethod.GET)
-    public List<TargetedApplication> getConfiguration() {
-        List<TargetedApplication> listAppProps = new ArrayList<>();
-        try (InputStream jsonIs = applauncherConfigurationJson
-                .getInputStream()) {
-            ObjectMapper mapper = new ObjectMapper();
-            ApplauncherProperties appPropes = mapper.readValue(jsonIs, ApplauncherProperties.class);
-            listAppProps.addAll(appPropes.getApplauncherProperties()
-                    .getTargetedApplication());
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
-        }
+	@RequestMapping(value = ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG, method = RequestMethod.GET)
+	public List<TargetedApplication> getConfiguration() {
+		List<TargetedApplication> listAppProps = new ArrayList<>();
+		try (InputStream jsonIs = applauncherConfigurationJson
+				.getInputStream()) {
+			ObjectMapper mapper = new ObjectMapper();
+			ApplauncherProperties appPropes = mapper
+					.readValue(jsonIs, ApplauncherProperties.class);
+			listAppProps.addAll(appPropes.getApplauncherProperties()
+					.getTargetedApplication());
+		} catch (IOException e) {
+			logger.error(e.getMessage(), e);
+		}
 
-        return listAppProps;
-    }
+		return listAppProps;
+	}
 }

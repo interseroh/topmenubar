@@ -6,18 +6,18 @@
   "repository": "https://github.com/interseroh/topmenubar",
   "success_url": "/topmenubar/topmenubar.html",
   "env": {
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
-    "MAVEN_SETTINGS_PATH": "heroku-settings/tmb-settings.xml"
+	"HEROKU_APP_NAME": {
+	  "required": true
+	},
+	"MAVEN_SETTINGS_PATH": "heroku-settings/tmb-settings.xml"
   },
   "formation": {
   },
   "addons": [
   ],
   "buildpacks": [
-    {
-      "url": "heroku/java"
-    }
+	{
+	  "url": "heroku/java"
+	}
   ]
 }

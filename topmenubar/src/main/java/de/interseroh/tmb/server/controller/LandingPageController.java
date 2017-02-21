@@ -30,13 +30,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @CrossOrigin
 public class LandingPageController {
 
-    @Value("${applauncher.url:http://localhost:9014/applauncher}")
-    private String applauncherUrl;
+	@Value("${applauncher.url:http://localhost:9014/applauncher}")
+	private String applauncherUrl;
 
 	@GetMapping(path = "*.html")
 	public String doGet(HttpServletRequest request, Model model) {
-        model.addAttribute("applauncherUrl", applauncherUrl);
-        return "topmenubar";
+		model.addAttribute("applauncherUrl", applauncherUrl);
+		return "topmenubar";
 	}
 
 }

@@ -18,37 +18,36 @@
  */
 package de.interseroh.tmb.applauncher.shared.json;
 
-
 import java.io.Serializable;
 
 public class TargetedApplication implements Serializable {
 
-    private String imageURL;
-    private String caption;
-    private String applicationURL;
+	private String imageURL;
+	private String caption;
+	private String applicationURL;
 
-    public String getImageURL() {
-        return imageURL;
-    }
+	public String getImageURL() {
+		return imageURL;
+	}
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
 
-    public String getCaption() {
-        return caption;
-    }
+	public String getCaption() {
+		return caption;
+	}
 
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
+	public void setCaption(String caption) {
+		this.caption = caption;
+	}
 
-    public String getApplicationURL() {
-        return applicationURL;
-    }
+	public String getApplicationURL() {
+		return applicationURL;
+	}
 
-    public void setApplicationURL(String applicationURL) {
-        this.applicationURL = applicationURL;
-    }
+	public void setApplicationURL(String applicationURL) {
+		this.applicationURL = applicationURL;
+	}
 
 }

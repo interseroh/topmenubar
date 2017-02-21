@@ -35,8 +35,7 @@ public class RemoteScriptInjector {
 				.setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
 
-	private class ScriptInjectionCallback
-			implements Callback<Void, Exception> {
+	private class ScriptInjectionCallback implements Callback<Void, Exception> {
 		private final String scriptFullUrl;
 
 		public ScriptInjectionCallback(String scriptFullUrl) {
