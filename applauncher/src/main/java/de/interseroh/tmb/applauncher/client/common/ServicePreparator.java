@@ -34,9 +34,12 @@ public class ServicePreparator {
 	private static Logger logger = Logger
 			.getLogger(ServicePreparator.class.getName());
 
+	private final AppConfigurationClient appConfigurationClient;
 
 	@Inject
-	private AppConfigurationClient appConfigurationClient;
+	public ServicePreparator(AppConfigurationClient appConfigurationClient) {
+		this.appConfigurationClient = appConfigurationClient;
+	}
 
 	private void initServices(String appUrl) {
 		logger.info("Prepare for the resources for the services...");
