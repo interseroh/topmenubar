@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 @Singleton
 public class ErrorFormatter {
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ErrorFormatter.class.getName());
 
 	public void showError(Throwable exception, String inputMessage) {

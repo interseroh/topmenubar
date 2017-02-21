@@ -40,16 +40,12 @@ import java.util.logging.Logger;
 public class ApplauncherWebApp implements EntryPoint {
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
 
 	private final ApplanucherWebAppGinjector injector = GWT
 			.create(ApplanucherWebAppGinjector.class);
 	private AppConfigurationClient appConfigurationClient;
-
-	private Column col1;
-	private Column col2;
-	private Column col3;
 
 	@Override
 	public void onModuleLoad() {

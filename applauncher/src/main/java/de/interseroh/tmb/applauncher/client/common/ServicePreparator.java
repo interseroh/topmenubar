@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 @Singleton
 public class ServicePreparator {
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ServicePreparator.class.getName());
 
 

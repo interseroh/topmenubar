@@ -37,15 +37,15 @@ public class TopMenuBarWebApp implements EntryPoint {
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
 	// Create Gin Injector
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
-	RootPanel rootPanel;
-	RootPanel appLauncher;
-	RootPanel profile;
-	RootPanel messaging;
+	private RootPanel rootPanel;
+	private RootPanel appLauncher;
+	private RootPanel profile;
+	private RootPanel messaging;
 
 	@Override
 	public void onModuleLoad() {
@@ -106,9 +106,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views ends...");
 	}
 
-	private Widget createCollapseButton(String tmb_navbar_collapse) {
+	private Widget createCollapseButton(String dataTarget) {
 		NavbarCollapseButton button = new NavbarCollapseButton();
-		button.setDataTarget(tmb_navbar_collapse);
+		button.setDataTarget(dataTarget);
 		return button;
 	}
 

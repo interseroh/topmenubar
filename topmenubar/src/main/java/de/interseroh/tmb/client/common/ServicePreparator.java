@@ -19,7 +19,6 @@
 package de.interseroh.tmb.client.common;
 
 import org.fusesource.restygwt.client.Defaults;
-import org.fusesource.restygwt.client.Resource;
 
 import javax.inject.Singleton;
 import java.util.logging.Logger;
@@ -27,22 +26,13 @@ import java.util.logging.Logger;
 @Singleton
 public class ServicePreparator {
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ServicePreparator.class.getName());
 
 	private void initServices() {
 		logger.info("Prepare for the resources for the services...");
 
 		Defaults.setDateFormat(null);
-
-		initDomainService();
-	}
-
-	private void initDomainService() {
-		logger.info("Init  the domains...");
-
-		Resource resource = new Resource("");
-
 	}
 
 	public void prepare() {

@@ -29,7 +29,4 @@ public interface TopMenuBarAppGinjector extends Ginjector {
 	ServicePreparator getServicePreparator();
 
 	SimpleEventBus getEventBus();
-
-// 	Messages getMessages();
-
 }
