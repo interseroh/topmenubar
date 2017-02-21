@@ -18,15 +18,16 @@
  */
 package de.interseroh.tmb.applauncher.client.common;
 
+import java.util.logging.Logger;
 
-import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import org.fusesource.restygwt.client.Defaults;
 import org.fusesource.restygwt.client.Resource;
 import org.fusesource.restygwt.client.RestServiceProxy;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import java.util.logging.Logger;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 
 @Singleton
 public class ServicePreparator {

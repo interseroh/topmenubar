@@ -18,18 +18,26 @@
  */
 package de.interseroh.tmb.client;
 
+import java.util.logging.Logger;
+
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.Navbar;
+import org.gwtbootstrap3.client.ui.NavbarBrand;
+import org.gwtbootstrap3.client.ui.NavbarCollapse;
+import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
+import org.gwtbootstrap3.client.ui.NavbarHeader;
+import org.gwtbootstrap3.client.ui.NavbarNav;
+import org.gwtbootstrap3.client.ui.constants.BadgePosition;
+import org.gwtbootstrap3.client.ui.constants.Pull;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
 import de.interseroh.tmb.client.common.ServicePreparator;
-import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.constants.BadgePosition;
-import org.gwtbootstrap3.client.ui.constants.Pull;
-
-import java.util.logging.Logger;
 
 public class TopMenuBarWebApp implements EntryPoint {
 

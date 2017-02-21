@@ -21,6 +21,7 @@ package de.interseroh.tmb.client;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
+
 import de.interseroh.tmb.client.common.ServicePreparator;
 
 @GinModules(TopMenuBarAppGinModule.class)
