@@ -14,7 +14,7 @@
 
 
 	<set-configuration-property name='xsiframe.failIfScriptTag'
-								value='FALSE'/>
+		value='FALSE'/>
 
 	<!-- RestyGWT -->
 	<inherits name="org.fusesource.restygwt.RestyGWT"/>
@@ -52,11 +52,11 @@
 	<set-property name="gwt.logging.logLevel" value="INFO"/>
 	<set-property name="gwt.logging.enabled" value="TRUE"/>
 	<set-property name="gwt.logging.simpleRemoteHandler"
-				  value="ENABLED"/>
+		value="ENABLED"/>
 
 	<!-- Specify the app entry point class. -->
 	<entry-point
-			class='de.interseroh.tmb.applauncher.client.ApplauncherWebApp'/>
+		class='de.interseroh.tmb.applauncher.client.ApplauncherWebApp'/>
 
 	<!-- Specify the paths for translatable code -->
 	<source path='client'/>
