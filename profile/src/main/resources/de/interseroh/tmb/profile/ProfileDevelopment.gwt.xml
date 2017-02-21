@@ -2,21 +2,21 @@
 
 <module rename-to='profile'>
 	<!-- Inherit the core Web Toolkit stuff. -->
-	<inherits name='de.interseroh.tmb.profile.Profile'/>
+	<inherits name='de.interseroh.tmb.profile.Profile' />
 
 	<!-- Compiler agent - we only need to compile for one web browser in development -->
 	<!-- If you want to use SDBG for debugging you need to use Chrome == safari -->
-	<set-property name="user.agent" value="safari"/>
+	<set-property name="user.agent" value="safari" />
 
 	<!-- SuperDev Mode -->
 	<set-configuration-property name="devModeRedirectEnabled"
-		value="true"/>
-	<set-property name="compiler.useSourceMaps" value="true"/>
+		value="true" />
+	<set-property name="compiler.useSourceMaps" value="true" />
 
-	<set-property name="compiler.emulatedStack" value="true"/>
+	<set-property name="compiler.emulatedStack" value="true" />
 	<set-configuration-property name="compiler.emulatedStack.recordFileNames"
-		value="true"/>
+		value="true" />
 
 	<!-- Logging -->
-	<set-property name="gwt.logging.logLevel" value="INFO"/>
+	<set-property name="gwt.logging.logLevel" value="INFO" />
 </module>
