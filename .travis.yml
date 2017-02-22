@@ -16,8 +16,8 @@ jdk:
   - oraclejdk8
 
 script:
-  - mvn clean install -P with-topmenubar -P with-applauncher
-  - mvn sonar:sonar -DskipTests=true -Dsonar.login=$SONAR_TOKEN -P with-topmenubar -P with-applauncher
+  - mvn clean install -DskipTests=true -P with-topmenubar -P with-applauncher
+  - mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN -P with-topmenubar -P with-applauncher
 #  - sonar-scanner
 
 after_success:
