@@ -1,13 +1,22 @@
+dist: trusty
+sudo: required
+
 addons:
   sonarqube:
     token:
       secure: sMNblSoYq+4XlxH2jWXySnKb8qniHfPAP69D4IT929CEa4fIgTWHxtmH22GCfO0rtnv3yaOCQzJmNGGOzZ+CP1mTNAxAib5HDpssUcvJqH2gwTtxaB3v+UvZsMxYBgguGtttq5e4DoTjx33f1uBdqKGZNGCoid816N5llODu/f4fmnM7RsgYCC8qzIJAycMxZxfu72HFk822IALfHIOP+P1GAsKtAeMwU6a7I0iA9pCXydzUL0sjCHxbJy2m3Hru6giPe7HJgOjt88akoPsIPDKlnbAwnZMJ7fkJv3OgvY7vMlLg7u8hRyz09g8a5cY6bpjQJvw2+gVXzaOEnzmkorTZgOw8ie7p0JzBhqT1UJlxZijQ71kmTrvui1u4Ec/92jc7+Yckufw2JvaXGkyT4vpr/QDrv82X0afjOV232OqTT0NsQ5lyCItsEvFlF83EG2SdKbh5Xvki9wNznmtoG5VoYA1cJ++ScdvDMq/gQqJeKphxafxuFjXJeUq6WUF9nKUDUu3+tKXu5ItPRp6KWLxUr5tOKIUqYqtCfJQV9iq/uTO6c46+L2iO03WDRF+uwFOow2M98RDP+l1bXsQUvMOlkBbN/bslPHUjK0v3uWATnt353K8HAooVrNvQT6gg8XyDtD2cOcnqY3CHt4R4hUSRepyoa6Wg55i/bqX2+RE=
     github_token:
       secure: qKyiJcEW96Md+EXgr5Vi//PYOwt3wasJDyFsA3/8Hmc4/w8cnrFTSX21Bv+ljqq4rVkSQZl5zfEN/ZNJITtUMJTNccmEdnUp5hif1xuQEDk0iXlh3xsXK6icEdmyU/kbdMAyrVBzLxehVjRdFNU+OA+jygTCo8kRincPLm6PRE+yOTc8NJatncv+IBK3hyo2YeYXjaD5T8eD8wUGkO/j405uAKAIf0JAQ1nTLgggFPeyrZhZ3J5dI2T/XL/WLZb5f2y+73yx6CoZ18AM8GUI/eIWYKZzr2O0ghWMjWf8FxxNXgbsqzh1bzmvfd63CwxSp7E3L+z5IDMnvZmyLnx98E4/8+aoRQosvZkugR33FXriFC69ENEWTSILkP8JF1i+YmQufRlPojPhkOx8wmAG7ATUcHtq/G4MVC5QsfH4CNkp605B+y+fd+yyaNkVJLUEQKboF42NvYy1FUAo0Ka9yqTDRLP9fUTKXcXV25oP1jqB/1kcajS9al9uNTniRzpA1m1NnR1aTKa+pjb4BdPpyTkKiasNR0yblvNlD+ZS/dmhvDb5CGkTs02DGQSlYlO6I/gPjEKO3TD36UyV7KdFR2nsUbKmz/k0mlEpnuDk059bDXmI8a6M4AlS77eUBLZM7hEi92xGeC7VbOzG4CUnqt7SUomZ7tvEQ7bj9s9TwSU=
+
 language: java
+
 jdk:
-- oraclejdk8
-script: mvn clean install -P with-topmenubar -P with-applauncher
-script: mvn cobertura:cobertura sonar:sonar -P with-topmenubar -P with-applauncher
+  - oraclejdk8
+
+script:
+  - mvn clean install -P with-topmenubar -P with-applauncher
+  - mvn cobertura:cobertura sonar:sonar -P with-topmenubar -P with-applauncher
+  - sonar-scanner
+
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
