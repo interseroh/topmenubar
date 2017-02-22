@@ -17,7 +17,7 @@ jdk:
 
 script:
   - mvn clean install -P with-topmenubar -P with-applauncher
-  - mvn cobertura:cobertura sonar:sonar -Dsonar.login=$SONAR_TOKEN -P with-topmenubar -P with-applauncher
+  - mvn sonar:sonar -DskipTests=true -Dsonar.login=$SONAR_TOKEN -P with-topmenubar -P with-applauncher
 #  - sonar-scanner
 
 after_success:
