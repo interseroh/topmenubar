@@ -1,7 +1,13 @@
+addons:
+  sonarqube:
+    token:
+      secure: 4780f0c12306aa665ae632c292980975f65d61ec
 language: java
 jdk:
 - oraclejdk8
 script: "mvn clean install -P with-topmenubar -P with-applauncher"
-script: "mvn cobertura:cobertura -P with-topmenubar -P with-applauncher"
+script: "mvn cobertura:cobertura sonar:sonar -P with-topmenubar -P with-applauncher"
+script: "sonar-scanner"
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+
