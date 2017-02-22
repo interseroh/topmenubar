@@ -18,17 +18,9 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
-import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
-import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import java.util.List;
+import java.util.logging.Logger;
+
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.Anchor;
@@ -44,22 +36,29 @@ import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.ImageType;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
-import java.util.List;
-import java.util.logging.Logger;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+
+import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
+import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
+import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 
 public class ApplauncherWebApp implements EntryPoint {
 
 	public static final String DATA_APPLICATION_URL = "data-application-url";
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
-	private static Logger logger = Logger
+
+	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
 	private final ApplanucherWebAppGinjector injector = GWT
 			.create(ApplanucherWebAppGinjector.class);
 	private AppConfigurationClient appConfigurationClient;
-
-	private Column col1;
-	private Column col2;
-	private Column col3;
 
 	@Override
 	public void onModuleLoad() {
@@ -120,7 +119,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		Row currentRow = null;
 		for (TargetedApplication webApp : webApps) {
 			if (actCol == 0) {
-				 currentRow = new Row();
+				currentRow = new Row();
 				popupContainer.add(currentRow);
 			}
 			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),

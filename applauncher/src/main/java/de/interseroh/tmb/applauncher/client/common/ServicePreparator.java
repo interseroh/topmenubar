@@ -18,20 +18,21 @@
  */
 package de.interseroh.tmb.applauncher.client.common;
 
+import java.util.logging.Logger;
 
-import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import org.fusesource.restygwt.client.Defaults;
 import org.fusesource.restygwt.client.Resource;
 import org.fusesource.restygwt.client.RestServiceProxy;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import java.util.logging.Logger;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 
 @Singleton
 public class ServicePreparator {
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ServicePreparator.class.getName());
 
 	private final AppConfigurationClient appConfigurationClient;
@@ -52,7 +53,7 @@ public class ServicePreparator {
 	private void initDomainService(String appUrl) {
 		logger.info("Init  the domains...");
 
-		Resource resource = new Resource(appUrl==null?"":appUrl);
+		Resource resource = new Resource(appUrl == null ? "" : appUrl);
 
 		((RestServiceProxy) appConfigurationClient).setResource(resource);
 	}

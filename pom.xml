@@ -45,8 +45,10 @@
 		<gwt.resty.version>2.2.0</gwt.resty.version>
 		<gwt.mockito.version>1.1.6</gwt.mockito.version>
 		<kissmda.maven.plugin.version>2.0.0</kissmda.maven.plugin.version>
-		<kissmda.cartridges.simple.java.version>2.0.2</kissmda.cartridges.simple.java.version>
-		<kissmda.extensions.importpacker.version>1.0.0</kissmda.extensions.importpacker.version>
+		<kissmda.cartridges.simple.java.version>2.0.2
+		</kissmda.cartridges.simple.java.version>
+		<kissmda.extensions.importpacker.version>1.0.0
+		</kissmda.extensions.importpacker.version>
 	</properties>
 
 	<modules>
@@ -192,7 +194,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+
 				<!-- GWT Maven Plugin -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -212,9 +214,13 @@
 								<persistentunitcachedir>
 									${project.build.directory}
 								</persistentunitcachedir>
-								<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-								<deploy>${project.build.directory}/gwt-deploy</deploy>
-								<i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
+								<webappDirectory>
+									${project.build.directory}/classes/public
+								</webappDirectory>
+								<deploy>${project.build.directory}/gwt-deploy
+								</deploy>
+								<i18nMessagesBundle>${i18n.messages.bundle}
+								</i18nMessagesBundle>
 							</configuration>
 						</execution>
 					</executions>
@@ -222,7 +228,7 @@
 						<runTarget>topmenubar.html</runTarget>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<executions>
@@ -236,11 +242,13 @@
 								<artifactItems>
 									<artifactItem>
 										<groupId>${project.groupId}</groupId>
-										<artifactId>${project.artifactId}</artifactId>
+										<artifactId>${project.artifactId}
+										</artifactId>
 										<version>${project.version}</version>
 									</artifactItem>
 								</artifactItems>
-								<outputDirectory>${project.basedir}/../target/</outputDirectory>
+								<outputDirectory>${project.basedir}/../target/
+								</outputDirectory>
 								<stripVersion>true</stripVersion>
 							</configuration>
 						</execution>
@@ -302,10 +310,17 @@
 									<configuration>
 										<sourceLevel>1.8</sourceLevel>
 										<module>${gwt.dev.modul}</module>
-										<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-										<persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
-										<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-										<deploy>${project.build.directory}/gwt-deploy</deploy>
+										<extraJvmArgs>-Xmx1024M -Xss1024k
+										</extraJvmArgs>
+										<persistentunitcachedir>
+											${project.build.directory}
+										</persistentunitcachedir>
+										<webappDirectory>
+											${project.build.directory}/classes/public
+										</webappDirectory>
+										<deploy>
+											${project.build.directory}/gwt-deploy
+										</deploy>
 									</configuration>
 								</execution>
 							</executions>

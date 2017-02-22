@@ -18,18 +18,26 @@
  */
 package de.interseroh.tmb.client;
 
+import java.util.logging.Logger;
+
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.Navbar;
+import org.gwtbootstrap3.client.ui.NavbarBrand;
+import org.gwtbootstrap3.client.ui.NavbarCollapse;
+import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
+import org.gwtbootstrap3.client.ui.NavbarHeader;
+import org.gwtbootstrap3.client.ui.NavbarNav;
+import org.gwtbootstrap3.client.ui.constants.BadgePosition;
+import org.gwtbootstrap3.client.ui.constants.Pull;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
 import de.interseroh.tmb.client.common.ServicePreparator;
-import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.constants.BadgePosition;
-import org.gwtbootstrap3.client.ui.constants.Pull;
-
-import java.util.logging.Logger;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
@@ -37,15 +45,15 @@ public class TopMenuBarWebApp implements EntryPoint {
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
 	// Create Gin Injector
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
-	RootPanel rootPanel;
-	RootPanel appLauncher;
-	RootPanel profile;
-	RootPanel messaging;
+	private RootPanel rootPanel;
+	private RootPanel appLauncher;
+	private RootPanel profile;
+	private RootPanel messaging;
 
 	@Override
 	public void onModuleLoad() {
@@ -73,7 +81,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
 		scriptInjector.injectScript(appUrl, javascriptUrl);
 
-
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
 
@@ -81,11 +88,15 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		String colour = rootPanel.getElement().getAttribute("data-colour");
 		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
-		String headlineText = rootPanel.getElement().getAttribute("data-headline");
+		String headlineText = rootPanel.getElement()
+				.getAttribute("data-headline");
 
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
-		basePanel.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
+		basePanel.getElement().getStyle().setBackgroundColor(
+				colour != null && !colour.trim().isEmpty() ?
+						colour :
+						"#FF0000");
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
@@ -102,20 +113,20 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		basePanel.add(collapse);
 
-		rootPanel.insert(basePanel,0);
+		rootPanel.insert(basePanel, 0);
 		logger.info("Create Views ends...");
 	}
 
-	private Widget createCollapseButton(String tmb_navbar_collapse) {
+	private Widget createCollapseButton(String dataTarget) {
 		NavbarCollapseButton button = new NavbarCollapseButton();
-		button.setDataTarget(tmb_navbar_collapse);
+		button.setDataTarget(dataTarget);
 		return button;
 	}
 
 	/**
 	 * add elements to the right panel
 	 */
-	private NavbarNav rightPanelElements(){
+	private NavbarNav rightPanelElements() {
 
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
@@ -134,7 +145,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	/**
 	 * add elements to the right panel
 	 */
-	private void rightPanelElements(NavbarCollapse parent){
+	private void rightPanelElements(NavbarCollapse parent) {
 
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
@@ -148,9 +159,10 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Creates and add headline text to the left panel
+	 *
 	 * @param headlineText text for adding
 	 */
-	private NavbarBrand createBadge(String headlineText, String iconUrl){
+	private NavbarBrand createBadge(String headlineText, String iconUrl) {
 		NavbarBrand brand = new NavbarBrand();
 		brand.setBadgePosition(BadgePosition.RIGHT);
 		brand.setBadgeText(headlineText);
@@ -159,6 +171,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Creates and add Logo image to the left panel
+	 *
 	 * @param iconUrl the url of logo image
 	 */
 	private Image createLogoImage(String iconUrl) {

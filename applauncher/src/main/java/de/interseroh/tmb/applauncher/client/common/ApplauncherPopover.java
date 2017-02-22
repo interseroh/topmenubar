@@ -18,10 +18,11 @@
  */
 package de.interseroh.tmb.applauncher.client.common;
 
-import com.google.gwt.core.client.ScriptInjector;
 import org.gwtbootstrap3.client.ui.Popover;
 import org.gwtbootstrap3.client.ui.constants.Placement;
 import org.gwtbootstrap3.client.ui.constants.Trigger;
+
+import com.google.gwt.core.client.ScriptInjector;
 
 /**
  * This component is extension of Bootstrap Popover.

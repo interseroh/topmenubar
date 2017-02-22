@@ -15,8 +15,8 @@ import org.springframework.stereotype.Controller;
 @SpringBootApplication
 public class ZuulServerApplication {
 
-    public static void main(String[] args) {
-        new SpringApplicationBuilder(ZuulServerApplication.class).web(true)
-                .run(args);
-    }
+	public static void main(String[] args) {
+		new SpringApplicationBuilder(ZuulServerApplication.class).web(true)
+				.run(args);
+	}
 }

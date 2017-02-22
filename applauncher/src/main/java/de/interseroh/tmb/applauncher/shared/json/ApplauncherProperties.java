@@ -21,31 +21,28 @@ package de.interseroh.tmb.applauncher.shared.json;
 import java.io.Serializable;
 import java.util.List;
 
-
 public class ApplauncherProperties implements Serializable {
 
-    private List<TargetedApplication> targetedApplication;
+	private List<TargetedApplication> targetedApplication;
 
-    private ApplauncherProperties applauncherProperties;
+	private ApplauncherProperties applauncherProperties;
 
-    public ApplauncherProperties getApplauncherProperties() {
-        return applauncherProperties;
-    }
+	public ApplauncherProperties getApplauncherProperties() {
+		return applauncherProperties;
+	}
 
-    public void setApplauncherProperties(ApplauncherProperties applauncherProperties) {
-        this.applauncherProperties = applauncherProperties;
-    }
+	public void setApplauncherProperties(
+			ApplauncherProperties applauncherProperties) {
+		this.applauncherProperties = applauncherProperties;
+	}
 
+	public List<TargetedApplication> getTargetedApplication() {
+		return targetedApplication;
+	}
 
-
-    public List<TargetedApplication> getTargetedApplication() {
-        return targetedApplication;
-    }
-
-    public void setTargetedApplication(List<TargetedApplication> targetedApplication) {
-        this.targetedApplication = targetedApplication;
-    }
-
-
+	public void setTargetedApplication(
+			List<TargetedApplication> targetedApplication) {
+		this.targetedApplication = targetedApplication;
+	}
 
 }
