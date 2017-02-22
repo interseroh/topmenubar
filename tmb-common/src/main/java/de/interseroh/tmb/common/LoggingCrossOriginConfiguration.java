@@ -34,12 +34,12 @@ public class LoggingCrossOriginConfiguration {
 	private String contextPath;
 
 	@Bean(name = "loggingFilter")
-	public CrossOriginLoggingFilter getCrossOriginFilter() {
+	public CrossOriginLoggingFilter crossOriginFilter() {
 		return new CrossOriginLoggingFilter();
 	}
 
 	@Bean
-	public FilterRegistrationBean filterRegistrationBean(
+	public FilterRegistrationBean filterRegistrationForCrossOriginLoggingFilter(
 			CrossOriginLoggingFilter filter) {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
 		registration.setDispatcherTypes(DispatcherType.REQUEST);

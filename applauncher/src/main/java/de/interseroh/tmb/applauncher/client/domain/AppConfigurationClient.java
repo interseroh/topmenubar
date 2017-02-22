@@ -38,8 +38,7 @@ import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 @Consumes(MediaType.APPLICATION_JSON)
 public interface AppConfigurationClient extends RestService {
 	@GET
-	@Path(ApplauncherServiceEndpoint.CONTEXT
-			+ ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG)
+	@Path(ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG)
 	void getAppConfiguration(
 			MethodCallback<List<TargetedApplication>> callback);
 }

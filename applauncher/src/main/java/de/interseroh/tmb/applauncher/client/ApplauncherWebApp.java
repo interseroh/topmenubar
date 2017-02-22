@@ -50,11 +50,12 @@ import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 
 public class ApplauncherWebApp implements EntryPoint {
+
+	public static final String DATA_APPLICATION_URL = "data-application-url";
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
-
 	private final ApplanucherWebAppGinjector injector = GWT
 			.create(ApplanucherWebAppGinjector.class);
 	private AppConfigurationClient appConfigurationClient;
@@ -65,9 +66,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncherRoot.getElement()
-				.getAttribute("data-application-url");
-		logger.info(
-				"++++++++++++++++++++Applauncher application URL:" + appUrl);
+				.getAttribute(DATA_APPLICATION_URL);
+		logger.info("++++++++++++++++++++Applauncher application URL:"+appUrl);
 		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();

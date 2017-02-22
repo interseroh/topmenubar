@@ -1,35 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <!-- The DOCTYPE declaration above will set the     -->
 <!-- browser's rendering engine into                -->
 <!-- "Standards Mode". Replacing this declaration   -->
 <!-- with a "Quirks Mode" doctype is not supported. -->
 
+<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
-	<!--                                                               -->
-	<!-- Consider inlining CSS to reduce the number of requested files -->
-	<!--                                                               -->
+    <!--                                                               -->
+    <!-- Consider inlining CSS to reduce the number of requested files -->
+    <!--                                                               -->
 
 
-	<link type="text/css" rel="stylesheet" href="topmenubar.css" />
-	<link type="text/css" rel="stylesheet"
-		th:href="${applauncherUrl}+'/applauncher/applauncher.css'" />
-	<link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link type="text/css" rel="stylesheet" href="topmenubar.css"/>
+    <link type="text/css" rel="stylesheet"
+          th:href="${applauncherUrl}+'/applauncher.css'"/>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon"/>
 
-	<!--                                           -->
-	<!-- Any title is fine                         -->
-	<!--                                           -->
-	<title>Tmb GWT Webapp</title>
+    <!--                                           -->
+    <!-- Any title is fine                         -->
+    <!--                                           -->
+    <title>Tmb GWT Webapp</title>
 
-	<!--                                           -->
-	<!-- This script loads your compiled module.   -->
-	<!-- If you add any GWT meta tags, they must   -->
-	<!-- be added before this line.                -->
-	<!--                                           -->
-	<script type="text/javascript" language="javascript"
-		src="topmenubar/topmenubar.nocache.js"></script>
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    <script type="text/javascript" language="javascript"
+            src="topmenubar/topmenubar.nocache.js"></script>
 </head>
 
 <!--                                           -->
@@ -42,26 +43,25 @@
 
 <!-- OPTIONAL: include this if you want history support -->
 <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
-	style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+        style="position: absolute; width: 0; height: 0; border: 0"></iframe>
 
 <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
 <noscript>
-	<div
-		style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
-		Your web browser must have JavaScript enabled in order for this
-		application to display correctly.
-	</div>
+    <div
+            style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled in order for this
+        application to display correctly.
+    </div>
 </noscript>
 
-<div id="tmb_top_menu_bar" data-colour="#223d62"
-	data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
-	<div id="tmb_app_launcher" th:attr="data-application-url=${applauncherUrl}"
-		data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
-	</div>
-	<div id="tmb_profile">
-	</div>
-	<div id="tmb_messaging">
-	</div>
+<div id="tmb_top_menu_bar" data-colour="#223d62" data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
+    <div id="tmb_app_launcher" th:attr="data-application-url=${applauncherUrl}"
+         data-javascript-url="/applauncher/applauncher.nocache.js">
+    </div>
+    <div id="tmb_profile">
+    </div>
+    <div id="tmb_messaging">
+    </div>
 </div>
 
 </body>

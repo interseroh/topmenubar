@@ -31,27 +31,17 @@ public class RemoteScriptInjector {
 		String scriptFullUrl = applicationUrl + scriptPath;
 		logger.info("Start JavaScript injecting  from URL :" + scriptFullUrl);
 		ScriptInjector.fromUrl(scriptFullUrl)
-				.setCallback(new ScriptInjectionCallback(scriptFullUrl))
-				.setWindow(ScriptInjector.TOP_WINDOW).inject();
-	}
+				.setCallback(new Callback<Void, Exception>() {
+			@Override
+			public void onFailure(Exception reason) {
+				logger.info("Error: Can not load JavaScript from from URL :"
+						+ scriptFullUrl);
+			}
 
-	private class ScriptInjectionCallback implements Callback<Void, Exception> {
-		private final String scriptFullUrl;
-
-		public ScriptInjectionCallback(String scriptFullUrl) {
-			this.scriptFullUrl = scriptFullUrl;
-		}
-
-		@Override
-		public void onFailure(Exception o) {
-
-			logger.info("Error: Can not load JavaScript from from URL :"
-					+ scriptFullUrl);
-		}
-
-		@Override
-		public void onSuccess(Void o) {
-			logger.info("Java Script is loaded from URL :" + scriptFullUrl);
-		}
+			@Override
+			public void onSuccess(Void result) {
+				logger.info("Java Script is loaded from URL :" + scriptFullUrl);
+            }
+		}).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
 }
