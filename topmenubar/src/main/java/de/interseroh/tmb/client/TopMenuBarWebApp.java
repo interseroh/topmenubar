@@ -86,7 +86,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
-		String colour = rootPanel.getElement().getAttribute("data-colour");
+		String color = rootPanel.getElement().getAttribute("data-color");
 		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
 		String headlineText = rootPanel.getElement()
 				.getAttribute("data-headline");
@@ -94,8 +94,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
 		basePanel.getElement().getStyle().setBackgroundColor(
-				colour != null && !colour.trim().isEmpty() ?
-						colour :
+				color != null && !color.trim().isEmpty() ?
+						color :
 						"#FF0000");
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
