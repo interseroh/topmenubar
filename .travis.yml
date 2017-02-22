@@ -15,7 +15,7 @@ jdk:
 
 script:
   - mvn clean install -P with-topmenubar -P with-applauncher
-  - mvn cobertura:cobertura sonar:sonar -P with-topmenubar -P with-applauncher
+  - mvn cobertura:cobertura -P with-topmenubar -P with-applauncher
   - sonar-scanner
 
 after_success:
