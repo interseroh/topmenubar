@@ -18,8 +18,8 @@ jdk:
 
 script:
   - echo $SONAR_TOKEN
-  - mvn clean install -DskipTests=true
-  - mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
+  - mvn clean install
+#  - mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
 #  - sonar-scanner
 
 after_success:
