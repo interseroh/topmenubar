@@ -1,7 +1,7 @@
 dist: trusty
 sudo: required
 
-secure: "heJtjUSKOw050ox1u0nUu8sI6SxPRylR19y2GEnuopQz+7aqD0lEhhKcS+6HxmY3azYh4gKb7qKCjGgiDYsaI+AVXODpLpcuui++e45a4x6YThN/lmrLNOKNJCWFeo2dKrEwYWvD8YbAO4Hd3CFhUL5ufyAVxyTZ4Q92rk0U0IdtkyIj6f4y00RB+k18R3jxzKzTqo03K6WbJuHuzyr/2DQJ/jAWSR0EWdR9Qy5s6b7I40PsfG4ywOAwUTU21wnYyiamLORJJ5+u5hXBS40GDYUuVPlEHSZoLZ37XR7zDOL9igt52gXJHE+qNTT+Nq5g+zorOFioVwdZHTTYyX2VPT872cKzLsrOTPCNbI44MngGSRz1fKpId+VEtn0QvfVvhE+UAhiklUmML/e7sbs3v+d7JcPLpP8vXaAtZ2gJNvlhLrF0WW/0pgTQqFH0chhlbb16Vq9h7l4gNoxMVGz/aNdokf5bA+2Xz1zM48urrABK+TgZWxBLtjz6xbpj6XHhRkX++vuexwQOvX1SDlA/0mb7CyustSPvQl09O7Z/PB/bt7AX7GuG2PgkSkMolIYZBy4qLhw8U+gPn8uDfaHI0VfneikkJU71g9/DJJOil4Zjp+xoJMDWFSMIGyAl4JXneX600c4e6PnztDEwWR5vSMo0bE/eg6PU/U28rsRSQsU=
+#secure: "heJtjUSKOw050ox1u0nUu8sI6SxPRylR19y2GEnuopQz+7aqD0lEhhKcS+6HxmY3azYh4gKb7qKCjGgiDYsaI+AVXODpLpcuui++e45a4x6YThN/lmrLNOKNJCWFeo2dKrEwYWvD8YbAO4Hd3CFhUL5ufyAVxyTZ4Q92rk0U0IdtkyIj6f4y00RB+k18R3jxzKzTqo03K6WbJuHuzyr/2DQJ/jAWSR0EWdR9Qy5s6b7I40PsfG4ywOAwUTU21wnYyiamLORJJ5+u5hXBS40GDYUuVPlEHSZoLZ37XR7zDOL9igt52gXJHE+qNTT+Nq5g+zorOFioVwdZHTTYyX2VPT872cKzLsrOTPCNbI44MngGSRz1fKpId+VEtn0QvfVvhE+UAhiklUmML/e7sbs3v+d7JcPLpP8vXaAtZ2gJNvlhLrF0WW/0pgTQqFH0chhlbb16Vq9h7l4gNoxMVGz/aNdokf5bA+2Xz1zM48urrABK+TgZWxBLtjz6xbpj6XHhRkX++vuexwQOvX1SDlA/0mb7CyustSPvQl09O7Z/PB/bt7AX7GuG2PgkSkMolIYZBy4qLhw8U+gPn8uDfaHI0VfneikkJU71g9/DJJOil4Zjp+xoJMDWFSMIGyAl4JXneX600c4e6PnztDEwWR5vSMo0bE/eg6PU/U28rsRSQsU=
 
 addons:
   sonarqube: true
@@ -17,7 +17,7 @@ jdk:
 
 script:
   - mvn clean install -P with-topmenubar -P with-applauncher
-  - mvn cobertura:cobertura sonar:sonar -Dsonar.login=$SONAR_TOKEN -P with-topmenubar -P with-applauncher
+#  - mvn cobertura:cobertura sonar:sonar -Dsonar.login=$SONAR_TOKEN -P with-topmenubar -P with-applauncher
   - sonar-scanner
 
 after_success:
