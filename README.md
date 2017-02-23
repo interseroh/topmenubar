@@ -27,13 +27,13 @@ Top Menu Bar for Interseroh Webapps.
 
 
 ## Introduction
-This application is a top menu bar for various Webapps. The project is represented by four microservices.
+This application is a top menu bar for various Webapps. The project is represented by four micro services.
 The UI (User Interface) of each microservice is based on GWT framework (http://www.gwtproject.org) and a matching
 backend basing on Spring boot framework (https://projects.spring.io/spring-boot).
 
 
 ## Maven Modules
-Each microservice is represented with one maven modul under topmenubar-parent modul.
+Each microservice is represented with one maven module under topmenubar-parent module.
 There are following modules:
 
 - topmenubar-parent
