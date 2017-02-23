@@ -38,14 +38,14 @@ import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 @SpringBootTest
 @TestPropertySource(properties = {
 		"applauncher.config.json=classpath:test.applauncher.json" })
-public class ApplauncherConfigurationTest {
+public class ApplauncherConfigurationControllerTest {
 
 	private static final String PORTAL_URL = "http://www.yahoo.de";
 
 	private static final int ITEMS_AMOUNT = 6;
 
 	@Autowired
-	private ApplauncherConfiguration appConfig;
+	private ApplauncherConfigurationController appConfig;
 
 	@Test
 	public void testApplauncherJsonConfiguration() throws Exception {

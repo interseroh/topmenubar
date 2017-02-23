@@ -35,14 +35,14 @@ import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ApplauncherConfigurationDefaultTest {
+public class ApplauncherConfigurationControllerDefaultTest {
 
 	private static final String PORTAL_URL = "http://www.google.de";
 
 	private static final int ITEMS_AMOUNT = 6;
 
 	@Autowired
-	private ApplauncherConfiguration appConfig;
+	private ApplauncherConfigurationController appConfig;
 
 	@Test
 	public void testApplauncherJsonConfiguration() throws Exception {

@@ -38,9 +38,9 @@ import de.interseroh.tmb.applauncher.shared.json.ApplauncherProperties;
 import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 @RestController
-public class ApplauncherConfiguration {
+public class ApplauncherConfigurationController {
 	private static final Logger logger = LoggerFactory
-			.getLogger(ApplauncherConfiguration.class);
+			.getLogger(ApplauncherConfigurationController.class);
 
 	@Value("${applauncher.config.json:classpath:dev.applauncher.json}")
 	private Resource applauncherConfigurationJson;
