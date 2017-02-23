@@ -91,9 +91,7 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 	private FlowPanel createFlowPanel() {
-		FlowPanel applauncherPanel = new FlowPanel();
-
-		return applauncherPanel;
+		return new FlowPanel();
 	}
 
 	private void createDivStructure(Popover popover, ListDropDown dropDown,
