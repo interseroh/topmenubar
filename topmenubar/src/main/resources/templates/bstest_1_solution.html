@@ -16,17 +16,15 @@
     <script type="text/javascript" language="javascript"
             src="topmenubar/topmenubar.nocache.js"></script>
 
-    <script type="text/javascript" language="javascript"
-            th:src="${applauncherUrl}+'/applauncher/applauncher.nocache.js'"></script>
     <link type="text/css" rel="stylesheet"
           th:href="${applauncherUrl}+'/applauncher.css'"/>
 
 </head>
 <body>
 
-<div id="tmb_top_menu_bar" data-color="#223d62"
-     data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
-    <div id="tmb_app_launcher" th:attr="data-application-url=${applauncherUrl}">
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+     data-tmb-headline="TEST APPLICATION" data-tmb-icon-url="images/entsorger-logo.png">
+    <div id="tmb_app_launcher" th:attr="data-tmb-application-url=${applauncherUrl}" data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
     </div>
     <div id="tmb_profile">
     </div>

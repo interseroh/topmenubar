@@ -44,9 +44,19 @@ public class TopMenuBarWebApp implements EntryPoint {
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
+
+	public static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
+	public static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
+
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
+
 	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
+	public static final String DATA_TMB_COLOR = "data-tmb-color";
+	public static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
+	public static final String DATA_TMB_HEADLINE = "data-tmb-headline";
+	public static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
+
 	// Create Gin Injector
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
@@ -72,11 +82,12 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private void createViews() {
 		// Views
 		logger.info("Create Views begins...");
+
 		appLauncher = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncher.getElement()
-				.getAttribute("data-application-url");
+				.getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = appLauncher.getElement()
-				.getAttribute("data-javascript-url");
+				.getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
 
 		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
 		scriptInjector.injectScript(appUrl, javascriptUrl);
@@ -86,17 +97,15 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
-		String color = rootPanel.getElement().getAttribute("data-color");
-		String iconUrl = rootPanel.getElement().getAttribute("data-icon-url");
+		String color = rootPanel.getElement().getAttribute(DATA_TMB_COLOR);
+		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement()
-				.getAttribute("data-headline");
+				.getAttribute(DATA_TMB_HEADLINE);
 
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
-		basePanel.getElement().getStyle().setBackgroundColor(
-				color != null && !color.trim().isEmpty() ?
-						color :
-						"#FF0000");
+		basePanel.getElement().getStyle()
+				.setBackgroundColor(ifPresent(color, DEFAULT_BACKGROUND_COLOR));
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
@@ -175,12 +184,21 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 * @param iconUrl the url of logo image
 	 */
 	private Image createLogoImage(String iconUrl) {
-		Image icon = new Image(
-				() -> (iconUrl != null && !iconUrl.trim().isEmpty() ?
-						iconUrl :
-						"images/broken.png"));
+		Image icon = new Image(ifPresent(iconUrl, "images/broken.png"));
 		icon.setPull(Pull.LEFT);
 		return icon;
+	}
+
+	/**
+	 * Returns value if not null or empty otherwise it returns the default value.
+	 * @param value
+	 * @param defaultValue
+	 * @return value or defaultValue
+	 */
+	private String ifPresent(String value, String defaultValue) {
+		return (value != null && !value.trim().isEmpty()) ?
+				value :
+				defaultValue;
 	}
 
 	private RootPanel getWidgets(String element) {
