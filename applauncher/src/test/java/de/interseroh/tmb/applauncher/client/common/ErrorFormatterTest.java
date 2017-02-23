@@ -28,7 +28,7 @@ import java.util.logging.Handler;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,6 +50,15 @@ public class ErrorFormatterTest {
 	@Rule
 	public OutputCapture outputCapture = new OutputCapture();
 
+	@BeforeClass
+	public static void attachLogCapturer() {
+		logCapturingStream = new ByteArrayOutputStream();
+		Handler[] handlers = log.getParent().getHandlers();
+		customLogHandler = new StreamHandler(logCapturingStream,
+				handlers[0].getFormatter());
+		log.addHandler(customLogHandler);
+	}
+
 	@Test(expected = NullPointerException.class)
 	public void testWithNullValues() throws Exception {
 		new ErrorFormatter().showError(null, null);
@@ -68,15 +77,6 @@ public class ErrorFormatterTest {
 		outputCapture.flush();
 		assertThat(getTestCapturedLog(),
 				containsString("InputMessage for Test"));
-	}
-
-	@Before
-	public void attachLogCapturer() {
-		logCapturingStream = new ByteArrayOutputStream();
-		Handler[] handlers = log.getParent().getHandlers();
-		customLogHandler = new StreamHandler(logCapturingStream,
-				handlers[0].getFormatter());
-		log.addHandler(customLogHandler);
 	}
 
 	public String getTestCapturedLog() throws IOException {
