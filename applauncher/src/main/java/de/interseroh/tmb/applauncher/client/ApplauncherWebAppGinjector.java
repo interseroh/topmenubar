@@ -23,6 +23,7 @@ import com.google.gwt.inject.client.Ginjector;
 
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 
+@FunctionalInterface
 @GinModules(ApplauncherWebAppGinModul.class)
 public interface ApplauncherWebAppGinjector extends Ginjector {
 	ServicePreparator getServicePreparator();
