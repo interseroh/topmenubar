@@ -18,7 +18,11 @@ script:
 #  - sonar-scanner
 
 after_success:
-  - mvn sonar:sonar
+#  - mvn sonar:sonar
+  - echo $GITHUB_TOKEN
+  - echo $TRAVIS_PULL_REQUEST
+  - echo $TRAVIS_REPO_SLUG
+  - if [[  -n $TRAVIS_PULL_REQUEST && $TRAVIS_PULL_REQUEST != "false" ]]; then mvn --batch-mode --errors --show-version sonar:sonar -Dsonar.analysis.mode=preview  -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_TOKEN  -Dsonar.github.oauth=$GITHUB_TOKEN  -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST  -Dsonar.github.repository=$TRAVIS_REPO_SLUG; fi
 #  - bash <(curl -s https://codecov.io/bash)
-
+# - if [[ $(echo $JAVA_HOME | grep 8) && -n TRAVIS_PULL_REQUEST && $TRAVIS_PULL_REQUEST != "false" && -n $SONAR_TOKEN && -n $GITHUB_TOKEN ]]; then mvn --batch-mode --errors --show-version sonar:sonar
 

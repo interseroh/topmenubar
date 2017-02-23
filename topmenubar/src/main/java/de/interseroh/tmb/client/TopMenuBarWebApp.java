@@ -47,19 +47,17 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	public static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
 	public static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
-
-	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-
-	private static final Logger logger = Logger
-			.getLogger(TopMenuBarWebApp.class.getName());
 	public static final String DATA_TMB_COLOR = "data-tmb-color";
 	public static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
 	public static final String DATA_TMB_HEADLINE = "data-tmb-headline";
 	public static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
-
+	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
+	private static final Logger logger = Logger
+			.getLogger(TopMenuBarWebApp.class.getName());
 	// Create Gin Injector
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
+
 	private RootPanel rootPanel;
 	private RootPanel appLauncher;
 	private RootPanel profile;
