@@ -192,9 +192,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 * @return value or defaultValue
 	 */
 	private String ifPresent(String value, String defaultValue) {
-		return (value != null && !value.trim().isEmpty()) ?
-				value :
-				defaultValue;
+		return value != null && !value.trim().isEmpty() ? value : defaultValue;
 	}
 
 	private RootPanel getWidgets(String element) {
