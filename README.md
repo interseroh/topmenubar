@@ -27,7 +27,7 @@ Top Menu Bar for Interseroh Webapps.
 
 
 ## Introduction
-This application is a top menu bar for various Webapps. The project is represented by four micro services.
+This application is a top menu bar for various Web apps. The project is represented by four micro services.
 The UI (User Interface) of each microservice is based on GWT framework (http://www.gwtproject.org) and a matching
 backend basing on Spring boot framework (https://projects.spring.io/spring-boot).
 
@@ -47,22 +47,22 @@ This is the parent module with pom packaging. The pom.xml file of this module co
  
 The plugins are parametrized with three placeholders:
 
-- ${i18n.gwt.modul} (Reference to configuration of the main GWT modul)
-- ${gwt.dev.modul} (Reference to the configuration of development GWT modul)
-- ${i18n.messages.bundle} (Reference to the configuration of development GWT modul)
+- `${i18n.gwt.module} (Reference to configuration of the main GWT module)
+- `${gwt.dev.module}` (Reference to the configuration of development GWT module)
+- `${i18n.messages.bundle}` (Reference to the configuration of development GWT module)
 
 The values for these placeholders are provided by properties in pom.xml of each child module.
-For example for the modul #topmenubar that are:
-- i18n.gwt.modul = de.interseroh.tmb.TopMenuBar (In the application that is de.interseroh.tmb.TopMenuBar.gwt.xml)
-- gwt.dev.modul = de.interseroh.tmb.TopMenuBarDevelopment (In the application that is de.interseroh.tmb.TopMenuBarDevelopment.gwt.xml)
-- i18n.messages.bundle = de.interseroh.tmb.client.Messages (In the application that is de.interseroh.tmb.client.Messages.properties)
+For example for the module `#topmenubar` that are:
+- `i18n.gwt.module = de.interseroh.tmb.TopMenuBar` (In the application that is de.interseroh.tmb.TopMenuBar.gwt.xml)
+- `gwt.dev.module = de.interseroh.tmb.TopMenuBarDevelopment` (In the application that is `de.interseroh.tmb.TopMenuBarDevelopment.gwt.xml`)
+- `i18n.messages.bundle = de.interseroh.tmb.client.Messages` (In the application that is `de.interseroh.tmb.client.Messages.properties`)
 
 ### applauncher
 This module represents the application launcher panel of the Top Menu Bar.
  
 #### Configuration Properties
-It utilizes the dev.applauncher.json file by default for configuring the panel.
-You can override it by setting the applauncher.config.json property.
+It utilizes the `dev.applauncher.json` file by default for configuring the panel.
+You can override it by setting the `applauncher.config.json property.
  
 Example:
  
@@ -89,7 +89,7 @@ The original page has been built using the following Bootstrap components:
 - Different Bootstrap containers with row and columns containing short texts and buttons (which redirect to pages with details).
     
 ### Test Case 1
-This test is represented with the page **resources/public/bstest_1_original.html**.
+This test is represented with the page `resources/public/bstest_1_original.html`.
    
 #### Test Procedure 1 
 - Add next JavaScripts to html header.
@@ -165,7 +165,7 @@ Additionally to the same steps as in (#Test case 1) and (#Test case 2) it should
       
 ## Conclusion   
 Proceeding for the successful integration of the **TopMenuBar** in the pages which contain Bootstrap navigation bar.
-- Check existing class **navbar-fixed-top** of the attribute **class** of the tag **nav**.
-- If the class **navbar-fixed-top** exists than remove this class as in the **Test case 2**
+- Check existing class `navbar-fixed-top` of the attribute **class** of the tag `nav`.
+- If the class `navbar-fixed-top` exists than remove this class as in the **Test case 2**
 - Removes Bootstrap css and JavaScripts from the original page as in the **Test case 3**
    

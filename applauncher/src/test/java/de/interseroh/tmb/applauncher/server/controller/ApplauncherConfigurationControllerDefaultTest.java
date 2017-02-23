@@ -28,25 +28,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 /**
  * Test for testing ApplauncherConfiguration controller
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ApplauncherConfigurationDefaultTest {
+public class ApplauncherConfigurationControllerDefaultTest {
 
 	private static final String PORTAL_URL = "http://www.google.de";
 
 	private static final int ITEMS_AMOUNT = 6;
 
 	@Autowired
-	private ApplauncherConfiguration appConfig;
+	private ApplauncherConfigurationController appConfig;
 
 	@Test
 	public void testApplauncherJsonConfiguration() throws Exception {
-		List<TargetedApplication> configuration = appConfig.getConfiguration();
+		List<TargetApplication> configuration = appConfig.getConfiguration();
 		Assert.assertNotNull(configuration);
 		Assert.assertEquals(ITEMS_AMOUNT, configuration.size());
 		Assert.assertEquals(PORTAL_URL,

@@ -25,7 +25,7 @@ import com.google.gwt.core.client.GWT;
 
 public class ProfileWebApp implements EntryPoint {
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ProfileWebApp.class.getName());
 
 	@Override

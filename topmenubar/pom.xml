@@ -21,23 +21,23 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>de.interseroh.tmb</groupId>
         <artifactId>topmenubar-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>de.interseroh.tmb</groupId>
     <artifactId>topmenubar</artifactId>
     <packaging>jar</packaging>
+
     <name>topmenubar</name>
     <description>Demo project for Spring Boot and GWT</description>
 
     <properties>
-        <i18n.messages.bundle>de.interseroh.tmb.client.Messages
-        </i18n.messages.bundle>
-        <i18n.gwt.modul>de.interseroh.tmb.TopMenuBar</i18n.gwt.modul>
-        <gwt.dev.modul>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.modul>
+        <i18n.messages.bundle>de.interseroh.tmb.client.Messages</i18n.messages.bundle>
+        <i18n.gwt.module>de.interseroh.tmb.TopMenuBar</i18n.gwt.module>
+        <gwt.dev.module>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.module>
     </properties>
 
     <dependencies>

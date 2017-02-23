@@ -18,8 +18,6 @@
  */
 package de.interseroh.tmb.applauncher.server;
 
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,8 +33,6 @@ import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 @SpringBootApplication
 @Import(LoggingCrossOriginConfiguration.class)
 public class ApplauncherApplication {
-	private static final Logger logger = Logger
-			.getLogger(ApplauncherApplication.class.getName());
 
 	@Value("${server.context-path}")
 	private String contextPath;
@@ -45,12 +41,12 @@ public class ApplauncherApplication {
 		SpringApplication.run(ApplauncherApplication.class, args);
 	}
 
-    @Bean
-    public ServletRegistrationBean remoteLoggingService() {
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath
-                        .concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
-    }
+	@Bean
+	public ServletRegistrationBean remoteLoggingService() {
+		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+				contextPath
+						.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
+	}
 
 }

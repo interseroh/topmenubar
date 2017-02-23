@@ -170,6 +170,11 @@
 				<artifactId>gwtbootstrap3-extras</artifactId>
 				<version>${gwt.bootstrap.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
 
 			<!-- RestyGWT -->
 			<dependency>
@@ -184,6 +189,16 @@
 				<artifactId>gwtmockito</artifactId>
 				<version>${gwt.mockito.version}</version>
 				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -262,7 +277,7 @@
 							</goals>
 							<configuration>
 								<sourceLevel>1.8</sourceLevel>
-								<module>${i18n.gwt.modul}</module>
+								<module>${i18n.gwt.module}</module>
 								<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
 								<persistentunitcachedir>
 									${project.build.directory}
@@ -362,7 +377,7 @@
 									</goals>
 									<configuration>
 										<sourceLevel>1.8</sourceLevel>
-										<module>${gwt.dev.modul}</module>
+										<module>${gwt.dev.module}</module>
 										<extraJvmArgs>-Xmx1024M -Xss1024k
 										</extraJvmArgs>
 										<persistentunitcachedir>

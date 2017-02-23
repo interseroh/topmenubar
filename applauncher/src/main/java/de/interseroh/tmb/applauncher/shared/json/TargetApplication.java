@@ -20,8 +20,10 @@ package de.interseroh.tmb.applauncher.shared.json;
 
 import java.io.Serializable;
 
-public class TargetedApplication implements Serializable {
+public class TargetApplication implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private String imageURL;
 	private String caption;
 	private String applicationURL;

@@ -40,9 +40,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<i18n.messages.bundle>de.interseroh.tmb.messaging.client.Messages
 		</i18n.messages.bundle>
-		<i18n.gwt.modul>de.interseroh.tmb.messaging.Messaging</i18n.gwt.modul>
-		<gwt.dev.modul>de.interseroh.tmb.messaging.MessagingDevelopment
-		</gwt.dev.modul>
+		<i18n.gwt.module>de.interseroh.tmb.messaging.Messaging</i18n.gwt.module>
+		<gwt.dev.module>de.interseroh.tmb.messaging.MessagingDevelopment
+		</gwt.dev.module>
 	</properties>
 
 	<dependencies>

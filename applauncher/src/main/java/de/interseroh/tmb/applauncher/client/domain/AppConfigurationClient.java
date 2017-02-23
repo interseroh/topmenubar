@@ -31,7 +31,7 @@ import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 @Singleton
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +39,5 @@ import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 public interface AppConfigurationClient extends RestService {
 	@GET
 	@Path(ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG)
-	void getAppConfiguration(
-			MethodCallback<List<TargetedApplication>> callback);
+	void getAppConfiguration(MethodCallback<List<TargetApplication>> callback);
 }

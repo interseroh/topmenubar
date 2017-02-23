@@ -26,3 +26,4 @@ target
 .settings
 
 .env
+*/web/WEB-INF/web.xml

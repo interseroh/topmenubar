@@ -30,19 +30,18 @@
 
 	<groupId>de.interseroh.tmb.applauncher</groupId>
 	<artifactId>applauncher</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>applauncher</name>
-	<description>App launcher projekt of top menu bar</description>
+	<description>App launcher project of top menu bar</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<i18n.messages.bundle>de.interseroh.tmb.applauncher.client.Messages
 		</i18n.messages.bundle>
-		<i18n.gwt.modul>de.interseroh.tmb.applauncher.Applauncher
-		</i18n.gwt.modul>
-		<gwt.dev.modul>de.interseroh.tmb.applauncher.ApplauncherDevelopment
-		</gwt.dev.modul>
+		<i18n.gwt.module>de.interseroh.tmb.applauncher.Applauncher
+		</i18n.gwt.module>
+		<gwt.dev.module>de.interseroh.tmb.applauncher.ApplauncherDevelopment
+		</gwt.dev.module>
 	</properties>
 
 	<dependencies>
@@ -69,6 +68,17 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
 		<!-- Spring Test -->
@@ -128,6 +138,12 @@
 		</dependency>
 
 		<!-- RestyGWT -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.fusesource.restygwt</groupId>
 			<artifactId>restygwt</artifactId>

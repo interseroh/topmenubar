@@ -25,7 +25,7 @@ import com.google.gwt.core.client.GWT;
 
 public class MessagingWebApp implements EntryPoint {
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(MessagingWebApp.class.getName());
 
 	@Override
