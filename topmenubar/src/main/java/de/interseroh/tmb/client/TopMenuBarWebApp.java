@@ -189,8 +189,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Returns value if not null or empty otherwise it returns the default value.
-	 * @param value
-	 * @param defaultValue
+	 * @param value the current value
+	 * @param defaultValue the fallback default value if value is empty
 	 * @return value or defaultValue
 	 */
 	private String ifPresent(String value, String defaultValue) {

@@ -59,15 +59,14 @@ public class ApplauncherPopover extends Popover {
 	 * of popover id parameter. The  which is defined by data attribute <code>data-topmenubar</code>
 	 *
 	 * @param id the identificator for Popover
-	 * @return
+	 * @return String containing a java function
 	 */
 	private String createPopoverHider(String id) {
-		String jsFunction = "function " + CLOSE_POPOVER_JSFUNCTION + " {"
+		return "function " + CLOSE_POPOVER_JSFUNCTION + " {"
 				+ "$('[data-topmenubar=\"" + id + "\"]').popover('hide');"
 				+ " $('body').on('hidden.bs.popover', function (e) {\n"
 				+ "            $(e.target).data(\"bs.popover\").inState = { click: false, hover: false, focus: false }\n"
 				+ "        });" + "}";
-		return jsFunction;
 	}
 
 }
