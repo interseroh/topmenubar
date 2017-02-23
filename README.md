@@ -47,15 +47,15 @@ This is the parent module with pom packaging. The pom.xml file of this module co
  
 The plugins are parametrized with three placeholders:
 
-- ${i18n.gwt.modul} (Reference to configuration of the main GWT modul)
-- ${gwt.dev.modul} (Reference to the configuration of development GWT modul)
-- ${i18n.messages.bundle} (Reference to the configuration of development GWT modul)
+- `${i18n.gwt.module} (Reference to configuration of the main GWT module)
+- `${gwt.dev.module}` (Reference to the configuration of development GWT module)
+- `${i18n.messages.bundle}` (Reference to the configuration of development GWT module)
 
 The values for these placeholders are provided by properties in pom.xml of each child module.
-For example for the modul #topmenubar that are:
-- i18n.gwt.modul = de.interseroh.tmb.TopMenuBar (In the application that is de.interseroh.tmb.TopMenuBar.gwt.xml)
-- gwt.dev.modul = de.interseroh.tmb.TopMenuBarDevelopment (In the application that is de.interseroh.tmb.TopMenuBarDevelopment.gwt.xml)
-- i18n.messages.bundle = de.interseroh.tmb.client.Messages (In the application that is de.interseroh.tmb.client.Messages.properties)
+For example for the module `#topmenubar` that are:
+- `i18n.gwt.module = de.interseroh.tmb.TopMenuBar` (In the application that is de.interseroh.tmb.TopMenuBar.gwt.xml)
+- `gwt.dev.module = de.interseroh.tmb.TopMenuBarDevelopment` (In the application that is `de.interseroh.tmb.TopMenuBarDevelopment.gwt.xml`)
+- `i18n.messages.bundle = de.interseroh.tmb.client.Messages` (In the application that is `de.interseroh.tmb.client.Messages.properties`)
 
 ### applauncher
 This module represents the application launcher panel of the Top Menu Bar.

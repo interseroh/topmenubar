@@ -262,7 +262,7 @@
 							</goals>
 							<configuration>
 								<sourceLevel>1.8</sourceLevel>
-								<module>${i18n.gwt.modul}</module>
+								<module>${i18n.gwt.module}</module>
 								<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
 								<persistentunitcachedir>
 									${project.build.directory}
@@ -362,7 +362,7 @@
 									</goals>
 									<configuration>
 										<sourceLevel>1.8</sourceLevel>
-										<module>${gwt.dev.modul}</module>
+										<module>${gwt.dev.module}</module>
 										<extraJvmArgs>-Xmx1024M -Xss1024k
 										</extraJvmArgs>
 										<persistentunitcachedir>

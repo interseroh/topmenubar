@@ -34,10 +34,9 @@
     <description>Demo project for Spring Boot and GWT</description>
 
     <properties>
-        <i18n.messages.bundle>de.interseroh.tmb.client.Messages
-        </i18n.messages.bundle>
-        <i18n.gwt.modul>de.interseroh.tmb.TopMenuBar</i18n.gwt.modul>
-        <gwt.dev.modul>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.modul>
+        <i18n.messages.bundle>de.interseroh.tmb.client.Messages</i18n.messages.bundle>
+        <i18n.gwt.module>de.interseroh.tmb.TopMenuBar</i18n.gwt.module>
+        <gwt.dev.module>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.module>
     </properties>
 
     <dependencies>
