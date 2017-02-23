@@ -14,7 +14,7 @@ addons:
 script:
   - echo $SONAR_TOKEN
   - mvn clean install
-  - if [[ -n $TRAVIS_PULL_REQUEST && $TRAVIS_PULL_REQUEST != "false" ]]; then mvn --batch-mode --errors --show-version org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar -Dsonar.analysis.mode=preview  -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_TOKEN  -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN  -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST  -Dsonar.github.repository=$TRAVIS_REPO_SLUG; else mvn sonar:sonar; fi
+  - if [[ -n $TRAVIS_PULL_REQUEST && $TRAVIS_PULL_REQUEST != "false" ]]; then mvn --batch-mode --errors --show-version org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar -Dsonar.analysis.mode=preview  -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_TOKEN  -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN  -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST  -Dsonar.github.repository=$TRAVIS_REPO_SLUG; else mvn org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar; fi
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

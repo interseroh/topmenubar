@@ -30,7 +30,8 @@ public class RemoteScriptInjector {
 
 	public void injectScript(String applicationUrl, String scriptPath) {
 		String scriptFullUrl = applicationUrl + scriptPath;
-		logger.info("Start JavaScript injecting  from URL :" + scriptFullUrl);
+		logger.log(Level.INFO, "Start JavaScript injecting  from URL: %s",
+				scriptFullUrl);
 		ScriptInjector.fromUrl(scriptFullUrl)
 				.setCallback(new Callback<Void, Exception>() {
 					@Override
