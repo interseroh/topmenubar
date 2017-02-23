@@ -5,6 +5,7 @@ Top Menu Bar for Interseroh Webapps.
 ## Build Status
 
 [![Travis Build](https://travis-ci.org/interseroh/topmenubar.svg?branch=master)](https://travis-ci.org/interseroh/topmenubar)
+[![Quality Gate](http://sonarqube.com/api/badges/gate?key=de.interseroh.tmb:topmenubar-parent)](https://sonarqube.com/dashboard?id=de.interseroh.tmb%3Atopmenubar-parent)
 [![codecov](https://codecov.io/gh/interseroh/topmenubar/branch/master/graph/badge.svg)](https://codecov.io/gh/interseroh/topmenubar)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=topmenubar&root=/topmenubar/topmenubar.html)](https://topmenubar.herokuapp.com/topmenubar/topmenubar.html)
 
