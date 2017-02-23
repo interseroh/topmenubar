@@ -22,6 +22,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ApplauncherProperties implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	private List<TargetApplication> targetApplication;
 
