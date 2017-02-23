@@ -18,9 +18,11 @@
  */
 package de.interseroh.tmb.applauncher.server.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import de.interseroh.tmb.applauncher.shared.json.ApplauncherProperties;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,10 +31,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import de.interseroh.tmb.applauncher.shared.json.ApplauncherProperties;
 import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 @RestController
