@@ -51,8 +51,8 @@ import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 public class ApplauncherWebApp implements EntryPoint {
 
-	public static final String DATA_APPLICATION_URL = "data-tmb-application-url";
-	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+	private static final String DATA_APPLICATION_URL = "data-tmb-application-url";
+	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
