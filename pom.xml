@@ -35,12 +35,21 @@
 	<name>topmenubar-parent</name>
 	<description>Top menu bar project</description>
 
+	<url>https://github.com/interseroh/topmenubar</url>
+
+	<organization>
+		<name>Interseroh Dienstleistungs GmbH</name>
+		<url>http://www.interseroh.com</url>
+	</organization>
+
+
 	<scm>
 		<url>https://github.com/interseroh/topmenubar</url>
 	</scm>
 
 	<developers>
 		<developer>
+			<id>lofi</id>
 			<name>Lofi Dewanto</name>
 			<roles>
 				<role>Product Owner</role>
@@ -49,6 +58,7 @@
 			<organizationUrl>https://www.interseroh.com</organizationUrl>
 		</developer>
 		<developer>
+			<id>ingo</id>
 			<name>Ingo Düppe</name>
 			<roles>
 				<role>Developer</role>
@@ -58,6 +68,7 @@
 			<organizationUrl>https://www.crowdcode.io</organizationUrl>
 		</developer>
 		<developer>
+			<id>marcus</id>
 			<name>Marcus Nörder-Tuitje</name>
 			<roles>
 				<role>Developer</role>
@@ -67,6 +78,7 @@
 			<organizationUrl>https://www.crowdcode.io</organizationUrl>
 		</developer>
 		<developer>
+			<id>alex</id>
 			<name>Oleksandr Prognimak</name>
 			<roles>
 				<role>Developer</role>
@@ -76,7 +88,6 @@
 			<organizationUrl>https://www.crowdcode.io</organizationUrl>
 		</developer>
 	</developers>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
