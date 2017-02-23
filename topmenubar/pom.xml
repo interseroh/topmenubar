@@ -27,7 +27,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>de.interseroh.tmb</groupId>
     <artifactId>topmenubar</artifactId>
     <packaging>jar</packaging>
     <name>topmenubar</name>
