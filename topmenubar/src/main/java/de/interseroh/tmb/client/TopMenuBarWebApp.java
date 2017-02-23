@@ -57,7 +57,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
 
-	private RootPanel rootPanel;
 	private RootPanel appLauncher;
 	private RootPanel profile;
 	private RootPanel messaging;
@@ -91,7 +90,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
 
-		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
+		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
 		String color = rootPanel.getElement().getAttribute(DATA_TMB_COLOR);
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
