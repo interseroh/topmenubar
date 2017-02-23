@@ -13,7 +13,7 @@ addons:
 
 script:
   - echo $SONAR_TOKEN
-  - mvn clean install -Dmaven.test.failure.ignore=true
+  - mvn clean install -Dmaven.test.failure.ignore=true -P development
 #  - mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
 #  - sonar-scanner
 
