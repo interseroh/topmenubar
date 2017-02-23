@@ -37,7 +37,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
-import de.interseroh.tmb.client.common.ServicePreparator;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
@@ -73,8 +72,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	}
 
 	private void initServices() {
-		ServicePreparator servicePreparator = injector.getServicePreparator();
-		servicePreparator.prepare();
+		injector.getServicePreparator().prepare();
 	}
 
 	private void createViews() {
