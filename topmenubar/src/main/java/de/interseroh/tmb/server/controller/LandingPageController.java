@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 @CrossOrigin
 public class LandingPageController {
 
-    @Value("${applauncher.url:http://localhost:9014/applauncher}")
-    private String applauncherUrl;
+	@Value("${applauncher.url:http://localhost:9014/applauncher}")
+	private String applauncherUrl;
 
 	@GetMapping(path = "{viewname}.html")
 	public String doGet(Model model,

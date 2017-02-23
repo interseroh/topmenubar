@@ -42,7 +42,8 @@ import static org.hamcrest.Matchers.containsString;
 @RunWith(GwtMockitoTestRunner.class)
 public class ErrorFormatterTest {
 
-	private static Logger log = Logger.getLogger(ErrorFormatter.class.getName());
+	private static Logger log = Logger
+			.getLogger(ErrorFormatter.class.getName());
 	private static OutputStream logCapturingStream;
 	private static StreamHandler customLogHandler;
 

@@ -41,12 +41,12 @@ public class ApplauncherApplication {
 		SpringApplication.run(ApplauncherApplication.class, args);
 	}
 
-    @Bean
-    public ServletRegistrationBean remoteLoggingService() {
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath
-                        .concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
-    }
+	@Bean
+	public ServletRegistrationBean remoteLoggingService() {
+		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+				contextPath
+						.concat(ApplauncherServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
+	}
 
 }

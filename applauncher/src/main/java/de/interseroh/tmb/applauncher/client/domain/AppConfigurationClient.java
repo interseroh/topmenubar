@@ -39,6 +39,5 @@ import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 public interface AppConfigurationClient extends RestService {
 	@GET
 	@Path(ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG)
-	void getAppConfiguration(
-			MethodCallback<List<TargetApplication>> callback);
+	void getAppConfiguration(MethodCallback<List<TargetApplication>> callback);
 }

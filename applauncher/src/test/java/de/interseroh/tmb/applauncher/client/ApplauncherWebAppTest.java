@@ -38,6 +38,6 @@ public class ApplauncherWebAppTest {
 
 	@Test
 	public void testOnModuleLoad() throws Exception {
-//		applauncherWebApp.onModuleLoad();
+		//		applauncherWebApp.onModuleLoad();
 	}
 }
