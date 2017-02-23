@@ -18,32 +18,52 @@
  */
 package de.interseroh.tmb.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
-import de.interseroh.tmb.client.common.ServicePreparator;
-import org.gwtbootstrap3.client.ui.*;
+import java.util.logging.Logger;
+
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.Navbar;
+import org.gwtbootstrap3.client.ui.NavbarBrand;
+import org.gwtbootstrap3.client.ui.NavbarCollapse;
+import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
+import org.gwtbootstrap3.client.ui.NavbarHeader;
+import org.gwtbootstrap3.client.ui.NavbarNav;
 import org.gwtbootstrap3.client.ui.constants.BadgePosition;
 import org.gwtbootstrap3.client.ui.constants.Pull;
 
-import java.util.logging.Logger;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
+
+import de.interseroh.tmb.client.common.RemoteScriptInjector;
+import de.interseroh.tmb.client.common.ServicePreparator;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 	public static final String TMB_PROFILE = "tmb_profile";
 	public static final String TMB_MESSAGING = "tmb_messaging";
+
+	public static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
+	public static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
+
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-	private static Logger logger = Logger
+
+	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
+	public static final String DATA_TMB_COLOR = "data-tmb-color";
+	public static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
+	public static final String DATA_TMB_HEADLINE = "data-tmb-headline";
+	public static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
+
 	// Create Gin Injector
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
-	RootPanel rootPanel;
-	RootPanel appLauncher;
-	RootPanel profile;
-	RootPanel messaging;
+	private RootPanel rootPanel;
+	private RootPanel appLauncher;
+	private RootPanel profile;
+	private RootPanel messaging;
 
 	@Override
 	public void onModuleLoad() {
@@ -64,20 +84,29 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views begins...");
 
 		appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		String appUrl = appLauncher.getElement()
+				.getAttribute(ATTRIBUTE_APPLICATION_URL);
+		String javascriptUrl = appLauncher.getElement()
+				.getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
+
+		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
+		scriptInjector.injectScript(appUrl, javascriptUrl);
+
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
 
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
-		String colour = rootPanel.getElement().getAttribute("data-tmb-colour");
-		String iconUrl = rootPanel.getElement()
-				.getAttribute("data-tmb-icon-url");
+		String color = rootPanel.getElement().getAttribute(DATA_TMB_COLOR);
+		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement()
-				.getAttribute("data-tmb-headline");
+				.getAttribute(DATA_TMB_HEADLINE);
 
 		Navbar basePanel = new Navbar();
 		// FlowPanel basePanel  = new FlowPanel();
-		basePanel.getElement().getStyle().setBackgroundColor(colour != null && !colour.trim().isEmpty() ? colour : "#FF0000");
+		basePanel.getElement().getStyle()
+				.setBackgroundColor(ifPresent(color, DEFAULT_BACKGROUND_COLOR));
+		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
 		header.add(createLogoImage(iconUrl));
@@ -93,26 +122,20 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		basePanel.add(collapse);
 
-		//Container container = createMD6Container();
-		//createAndAddLogoImage(iconUrl);
-		//createAndAddHeadlineText(geadlineText);
-		//moveElementsToRightPanel();
-
-		//basePanel.add(container);
-		rootPanel.insert(basePanel,0);
+		rootPanel.insert(basePanel, 0);
 		logger.info("Create Views ends...");
 	}
 
-	private Widget createCollapseButton(String tmb_navbar_collapse) {
+	private Widget createCollapseButton(String dataTarget) {
 		NavbarCollapseButton button = new NavbarCollapseButton();
-		button.setDataTarget(tmb_navbar_collapse);
+		button.setDataTarget(dataTarget);
 		return button;
 	}
 
 	/**
 	 * add elements to the right panel
 	 */
-	private NavbarNav rightPanelElements(){
+	private NavbarNav rightPanelElements() {
 
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
@@ -131,7 +154,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	/**
 	 * add elements to the right panel
 	 */
-	private void rightPanelElements(NavbarCollapse parent){
+	private void rightPanelElements(NavbarCollapse parent) {
 
 		appLauncher.removeFromParent();
 		profile.removeFromParent();
@@ -145,9 +168,10 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Creates and add headline text to the left panel
+	 *
 	 * @param headlineText text for adding
 	 */
-	private NavbarBrand createBadge(String headlineText, String iconUrl){
+	private NavbarBrand createBadge(String headlineText, String iconUrl) {
 		NavbarBrand brand = new NavbarBrand();
 		brand.setBadgePosition(BadgePosition.RIGHT);
 		brand.setBadgeText(headlineText);
@@ -156,12 +180,25 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	/**
 	 * Creates and add Logo image to the left panel
+	 *
 	 * @param iconUrl the url of logo image
 	 */
-	private Image createLogoImage(String iconUrl){
-		Image icon = new Image(() -> (iconUrl != null && !iconUrl.trim().isEmpty() ? iconUrl : "images/broken.png"));
+	private Image createLogoImage(String iconUrl) {
+		Image icon = new Image(ifPresent(iconUrl, "images/broken.png"));
 		icon.setPull(Pull.LEFT);
 		return icon;
+	}
+
+	/**
+	 * Returns value if not null or empty otherwise it returns the default value.
+	 * @param value
+	 * @param defaultValue
+	 * @return value or defaultValue
+	 */
+	private String ifPresent(String value, String defaultValue) {
+		return (value != null && !value.trim().isEmpty()) ?
+				value :
+				defaultValue;
 	}
 
 	private RootPanel getWidgets(String element) {

@@ -20,10 +20,10 @@ package de.interseroh.tmb.applauncher.shared;
 
 public interface ApplauncherServiceEndpoint {
 
-	public static final String CONTEXT = "/applauncher";
+	String CONTEXT = "/applauncher";
 
-	public static final String GWT_REMOTE_LOGGING = "/remote_logging";
+	String GWT_REMOTE_LOGGING = "/remote_logging";
 
-	public static final String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
+	String APPLAUNCHER_CONFIG = "/v1/applauncherConfig";
 
 }

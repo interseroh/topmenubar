@@ -1,7 +1,24 @@
 language: java
-jdk:
-- oraclejdk8
-script: "mvn clean install -P with-topmenubar -P with-applauncher"
-script: "mvn cobertura:cobertura -P with-topmenubar -P with-applauncher"
+sudo: false
+jdk :
+  - oraclejdk8
+
+env:
+  global:
+    - secure: "rsOeEb1W1meGqoFHUHC9toOZGdB1/zMia8D86/s0RzJQF3t1xVfDJ+DaM942q+CLnfuAD/e3vWnzHaz2J61rjKDdqayxovwCX7nVFVoT0C6YCnajaI0tWxwfmw01HfOXErmZggOZoroIrHFNSCLcpP2f/8HmDK3cfy8mW3EkfYmiy8tkNjpvzh/OHAg7cgm5ZCSE8uhwKusJ3uqc+pqR4vXM9rx+pwhc4NvKs+xHMutY5t08E9Xn75pO4GJAV13e0GEGRo1kmIImricyrGW8PpVTNhyPAWym1Uq0QP08bZBsNaqqt7vRR7TWDxBE4pO2jaSYctGVtszgogmgKrB/m6EU/ypkx5QUPgoc6gLp/SJmkIr94WvOgSX6+ZI13eSXDege9eza9o5k4h5aWTpPjmaf2f67J6otAgpKQDUeaTijwsD1RR/czKTeqAwmJ9XTvJl64oQDPAbsMV3WQpZTx3AU1HrzHfo8tydKmqZguvtnPrjNEn09fQcLb8h/VBnX56eRBmj5ysMQSooO/RJAxX8/y15lCeoEpslYD5d/y2hrmiU8X5piEBGhRLuFWsTlD9R9iPjUzmFPLa0GCnjVN4kLIDspvHN/ENXw3CcaGCDegC6wAR68Nsh2hQt7sqmF6mXivmkYH4T4Ub8PFBBbd8DgDlzCrzQ3/vuJbOZ/dTM="
+    - secure: "eLLE6ceYz6P4UxZvq9370vkeyCylm9H/rWtupbapn98bK3xMotvSKo4bxBXSFQUmgRK2zmrYrG1UFtvTDvASlKOXiXZdywhhfoGW33mhDtt489pxKYfmJWrpYYeAXFd9dX6stVY7z1f+zAzrazYdGbNUsqEpY4Zp1wboapS52vFxLOM8Phjlg17XBQETgTZUyIeo0ftR0vYBgiISswbOFBH5Hn2Z9fLctVf/6EAPJ5Qe938zkB1kTl53MMzAFoAFfrz4JBGnChwHgj80PkiBkyIAmpXl7Whsdzs46MmlhQ2+YS9KanpF5CUx2tjOL+oXGQs9mFg3HT6MBvl5cb75BpdPGgnUdeVp3q1xpTpQK7v5k/wlu1g/vWfdPRPZwW1W9l1GFWZeCTNhLSlpDNJA+Is8/j2N+0XTgDhQtwtjO236EXqTSO7RigX4qOJKd7ZZFtlf/f+6eyzHn8d0X2d582Ij8BOsKI16njdjY9VSLw3aYDiABsqkt6D4tbCY1VyOe24ZyMNvOBdf51qYrEc72be/OtYii1j8vLGzfkSfqoo88SDl3q/mu26AaIkOPuNX0V1YyU4RfyaHyTyHsmOds6zTWnwju/i/lAEBg6IrAXz29JSkUcdEi5ZExjj1VnVhD2Y8I61m4U7b4MpypTBisZVHTlKtXESGzlY32azEQbk="
+
+addons:
+  sonarqube: true
+
+script:
+  - echo $SONAR_TOKEN
+  - mvn clean install -Dmaven.test.failure.ignore=true
+#  - mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
+#  - sonar-scanner
+
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+  - mvn sonar:sonar
+#  - bash <(curl -s https://codecov.io/bash)
+
+

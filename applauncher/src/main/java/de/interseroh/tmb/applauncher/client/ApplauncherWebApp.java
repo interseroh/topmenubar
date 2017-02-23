@@ -18,6 +18,24 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
+import java.util.List;
+import java.util.logging.Logger;
+
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.gwtbootstrap3.client.ui.Anchor;
+import org.gwtbootstrap3.client.ui.AnchorButton;
+import org.gwtbootstrap3.client.ui.Column;
+import org.gwtbootstrap3.client.ui.Container;
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.ListDropDown;
+import org.gwtbootstrap3.client.ui.Popover;
+import org.gwtbootstrap3.client.ui.Row;
+import org.gwtbootstrap3.client.ui.constants.IconSize;
+import org.gwtbootstrap3.client.ui.constants.IconType;
+import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
@@ -25,31 +43,22 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
+import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
-import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.constants.*;
-import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-
-import java.util.List;
-import java.util.logging.Logger;
 
 public class ApplauncherWebApp implements EntryPoint {
+
+	public static final String DATA_APPLICATION_URL = "data-tmb-application-url";
 	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 
-	private static Logger logger = Logger
+	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
-
 	private final ApplanucherWebAppGinjector injector = GWT
 			.create(ApplanucherWebAppGinjector.class);
 	private AppConfigurationClient appConfigurationClient;
-
-	private Column col1;
-	private Column col2;
-	private Column col3;
 
 	@Override
 	public void onModuleLoad() {
@@ -57,19 +66,18 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncherRoot.getElement()
-				.getAttribute("data-tmb-applauncher-url");
-		ServicePreparator servicePreparator =initServices(appUrl);
+				.getAttribute(DATA_APPLICATION_URL);
+		logger.info("++++++++++++++++++++Applauncher application URL:"+appUrl);
+		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
 
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-		//dropDown.setMarginRight(200);
 
 		Popover popover = createApplauncherPopover();
-		popover.setAlternateTemplate("<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>");
 
-		AnchorButton popoverBtn= new AnchorButton();
+		AnchorButton popoverBtn = new AnchorButton();
 		popoverBtn.setIcon(IconType.TH);
 		popoverBtn.setIconSize(IconSize.LARGE);
 
@@ -77,26 +85,26 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		popover.add(popoverBtn);
 
-
-		createDivStructure(popover, dropDown,  appLauncherRoot);
+		createDivStructure(popover, dropDown, appLauncherRoot);
 
 		logger.info("AppLauncher: Create Views end...");
 	}
 
 	private FlowPanel createFlowPanel() {
-		FlowPanel applauncherPanel= new FlowPanel();
+		FlowPanel applauncherPanel = new FlowPanel();
 
 		return applauncherPanel;
 	}
 
-	private void createDivStructure(Popover popover,ListDropDown dropDown, RootPanel appLauncherRoot) {
+	private void createDivStructure(Popover popover, ListDropDown dropDown,
+			RootPanel appLauncherRoot) {
 		FlowPanel panel = createFlowPanel();
 		Container container = createPopupContainer();
-		fillApplauncherPopupPanel(panel,container,popover,dropDown,appLauncherRoot);
+		fillApplauncherPopupPanel(panel, container, popover, dropDown,
+				appLauncherRoot);
 	}
 
-
-	private Container createPopupContainer(){
+	private Container createPopupContainer() {
 		Container popupContainer = new Container();
 		popupContainer.getElement().addClassName("applauncherContainerCls");
 		popupContainer.setFluid(true);
@@ -104,17 +112,18 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	}
 
-
-	private void fillThreeColumnContainer(Container popupContainer, List<TargetedApplication> webApps){
+	private void fillThreeColumnContainer(Container popupContainer,
+			List<TargetedApplication> webApps) {
 
 		int actCol = 0;
-		Row currentRow=null;
+		Row currentRow = null;
 		for (TargetedApplication webApp : webApps) {
 			if (actCol == 0) {
-				 currentRow = new Row();
+				currentRow = new Row();
 				popupContainer.add(currentRow);
 			}
-			currentRow.add(createAnchorColumn("MD_4",webApp.getCaption(), webApp.getApplicationURL(), webApp.getImageURL()));
+			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
+					webApp.getApplicationURL(), webApp.getImageURL()));
 			actCol++;
 			if (actCol >= 3) {
 				actCol = 0;
@@ -122,10 +131,11 @@ public class ApplauncherWebApp implements EntryPoint {
 		}
 	}
 
-
-	private Column createAnchorColumn(String span, String text, String url, String iconUrl) {
+	private Column createAnchorColumn(String span, String text, String url,
+			String iconUrl) {
 		Column col = new Column(span);
-		col.getElement().getStyle().setVerticalAlign(Style.VerticalAlign.MIDDLE);
+		col.getElement().getStyle()
+				.setVerticalAlign(Style.VerticalAlign.MIDDLE);
 
 		VerticalPanel panel = new VerticalPanel();
 		panel.getElement().addClassName("applauncherVerticalBar");
@@ -146,18 +156,11 @@ public class ApplauncherWebApp implements EntryPoint {
 		return col;
 	}
 
-
-
-	private Popover createApplauncherPopover(){
-		Popover popover = new Popover();
-
-		popover.setTitle("Interseroh WabApps");
-		popover.setIsHtml(true);
-		popover.setTrigger(Trigger.CLICK);
-		popover.setPlacement(Placement.AUTO);
-
+	private Popover createApplauncherPopover() {
+		Popover popover = new ApplauncherPopover("Id241");
 		return popover;
 	}
+
 	private RootPanel getWidgets(String element) {
 		RootPanel root = RootPanel.get(element);
 		return root;
@@ -170,28 +173,31 @@ public class ApplauncherWebApp implements EntryPoint {
 		return servicePreparator;
 	}
 
+	private void fillApplauncherPopupPanel(FlowPanel panel, Container container,
+			Popover popover, ListDropDown dropDown, RootPanel appLauncherRoot) {
 
-	private void fillApplauncherPopupPanel(FlowPanel panel,
-										   Container container,
-										   Popover popover,
-										   ListDropDown dropDown,
-										   RootPanel appLauncherRoot){
+		appConfigurationClient.getAppConfiguration(
+				new MethodCallback<List<TargetedApplication>>() {
 
-		appConfigurationClient.getAppConfiguration( new MethodCallback<List<TargetedApplication>>(){
+					@Override
+					public void onFailure(Method method, Throwable throwable) {
+						logger.severe("Error getting applauncher properties");
+					}
 
-			@Override
-			public void onFailure(Method method, Throwable throwable) {
-				logger.severe("Error getting applauncher properties");
-			}
-
-			@Override
-			public void onSuccess(Method method, List<TargetedApplication> appProperties) {
-				fillThreeColumnContainer(container, appProperties);
-				panel.add(container);
-				popover.setContent(container.getElement().getString());
-				dropDown.add(popover);
-				appLauncherRoot.add(dropDown);
-			}
-		});
+					@Override
+					public void onSuccess(Method method,
+							List<TargetedApplication> appProperties) {
+						fillThreeColumnContainer(container, appProperties);
+						panel.add(container);
+						popover.setContent(container.getElement().getString());
+						dropDown.add(popover);
+						appLauncherRoot.add(dropDown);
+						dropDown.getElement().setAttribute("onFocusOut",
+								"javasript:"
+										+ ApplauncherPopover.CLOSE_POPOVER_JSFUNCTION
+										+ ";");
+					}
+				});
 	}
+
 }

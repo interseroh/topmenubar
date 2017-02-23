@@ -11,10 +11,10 @@
 	<extend-property name="locale" values="de_DE" />
 	<set-property-fallback name="locale" value="de_DE" />
 	<set-property name="locale" value="de_DE" />
-	
+
 	<!-- GWT Event Bus -->
 	<inherits name='com.google.web.bindery.event.EventBinder' />
-	
+
 	<!-- RestyGWT -->
 	<inherits name="org.fusesource.restygwt.RestyGWT" />
 
@@ -35,10 +35,10 @@
 	<inherits name="org.gwtbootstrap3.GwtBootstrap3" />
 	<inherits name="org.gwtbootstrap3.extras.respond.Respond" />
 	<inherits name="org.gwtbootstrap3.extras.bootbox.Bootbox" />
-	<inherits name="org.gwtbootstrap3.extras.notify.Notify"/>
+	<inherits name="org.gwtbootstrap3.extras.notify.Notify" />
 	<inherits name="org.gwtbootstrap3.extras.datetimepicker.DateTimePicker" />
 	<inherits name="org.gwtbootstrap3.extras.select.Select" />
-	<inherits name="org.gwtbootstrap3.extras.typeahead.Typeahead"/>
+	<inherits name="org.gwtbootstrap3.extras.typeahead.Typeahead" />
 
 	<!-- Bootstrap Themes files -->
 	<public path='resource/themes'>
@@ -55,17 +55,17 @@
 
 	<!-- Themes -->
 	<stylesheet src='bootswatch/paper/css/bootstrap.min.css' />
-	
+
 	<!-- Fix themes Paper Bootswatch with GwtBootstrap3 -->
-	<stylesheet src='bootswatch/paper/css/bootstrap.fix.css' />  
-	
+	<stylesheet src='bootswatch/paper/css/bootstrap.fix.css' />
+
 	<!-- Logging -->
 	<inherits name="com.google.gwt.logging.Logging" />
 	<set-property name="gwt.logging.logLevel" value="INFO" />
 	<set-property name="gwt.logging.enabled" value="TRUE" />
 	<set-property name="gwt.logging.simpleRemoteHandler"
 		value="ENABLED" />
-		
+
 	<!-- Specify the app entry point class. -->
 	<entry-point class='de.interseroh.tmb.client.TopMenuBarWebApp' />
 

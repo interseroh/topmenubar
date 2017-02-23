@@ -16,13 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client.ui.event;
+package de.interseroh.tmb.shared;
 
-import com.google.web.bindery.event.shared.binder.GenericEvent;
+public interface TopMenuBarServiceEndpoint {
 
-public class ChangeViewEvent extends GenericEvent {
-
-	public ChangeViewEvent() {
-	}
+	String GWT_REMOTE_LOGGING = "/remote_logging";
 
 }

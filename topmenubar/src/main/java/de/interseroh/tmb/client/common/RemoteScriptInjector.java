@@ -18,32 +18,30 @@
  */
 package de.interseroh.tmb.client.common;
 
-import org.gwtbootstrap3.extras.notify.client.ui.Notify;
-
-import javax.inject.Singleton;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Singleton
-public class ErrorFormatter {
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.core.client.ScriptInjector;
 
-	private static Logger logger = Logger
-			.getLogger(ErrorFormatter.class.getName());
+public class RemoteScriptInjector {
+	private static final Logger logger = Logger
+			.getLogger(RemoteScriptInjector.class.getName());
 
-	public void showError(Throwable exception, String inputMessage) {
-		String message =
-				inputMessage + exception + " - " + exception.getMessage()
-						+ "Stack trace: " + stackTraceToString(exception);
-		logger.log(Level.SEVERE, message);
-		Notify.notify(message);
-	}
+	public void injectScript(String applicationUrl, String scriptPath) {
+		String scriptFullUrl = applicationUrl + scriptPath;
+		logger.info("Start JavaScript injecting  from URL :" + scriptFullUrl);
+		ScriptInjector.fromUrl(scriptFullUrl)
+				.setCallback(new Callback<Void, Exception>() {
+			@Override
+			public void onFailure(Exception reason) {
+				logger.info("Error: Can not load JavaScript from from URL :"
+						+ scriptFullUrl);
+			}
 
-	private String stackTraceToString(Throwable e) {
-		StringBuilder sb = new StringBuilder();
-		for (StackTraceElement element : e.getStackTrace()) {
-			sb.append(element.toString());
-			sb.append("\n");
-		}
-		return sb.toString();
+			@Override
+			public void onSuccess(Void result) {
+				logger.info("Java Script is loaded from URL :" + scriptFullUrl);
+            }
+		}).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
 }
