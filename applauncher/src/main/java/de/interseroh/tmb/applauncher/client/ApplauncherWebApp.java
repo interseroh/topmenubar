@@ -56,8 +56,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
-	private final ApplanucherWebAppGinjector injector = GWT
-			.create(ApplanucherWebAppGinjector.class);
+	private final ApplauncherWebAppGinjector injector = GWT
+			.create(ApplauncherWebAppGinjector.class);
 	private AppConfigurationClient appConfigurationClient;
 
 	@Override
@@ -157,13 +157,11 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 	private Popover createApplauncherPopover() {
-		Popover popover = new ApplauncherPopover("Id241");
-		return popover;
+		return new ApplauncherPopover("applauncherPopover");
 	}
 
 	private RootPanel getWidgets(String element) {
-		RootPanel root = RootPanel.get(element);
-		return root;
+		return RootPanel.get(element);
 	}
 
 	private ServicePreparator initServices(String appUrl) {

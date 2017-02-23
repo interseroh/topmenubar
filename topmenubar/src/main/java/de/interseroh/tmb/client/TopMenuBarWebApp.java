@@ -41,16 +41,16 @@ import de.interseroh.tmb.client.common.ServicePreparator;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
-	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
-	public static final String TMB_PROFILE = "tmb_profile";
-	public static final String TMB_MESSAGING = "tmb_messaging";
+	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+	private static final String TMB_PROFILE = "tmb_profile";
+	private static final String TMB_MESSAGING = "tmb_messaging";
 
-	public static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
-	public static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
-	public static final String DATA_TMB_COLOR = "data-tmb-color";
-	public static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
-	public static final String DATA_TMB_HEADLINE = "data-tmb-headline";
-	public static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
+	private static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
+	private static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
+	private static final String DATA_TMB_COLOR = "data-tmb-color";
+	private static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
+	private static final String DATA_TMB_HEADLINE = "data-tmb-headline";
+	private static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
 	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
@@ -108,7 +108,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		NavbarHeader header = new NavbarHeader();
 		header.add(createLogoImage(iconUrl));
-		header.add(createBadge(headlineText, iconUrl));
+		header.add(createBadge(headlineText));
 		header.add(createCollapseButton("tmb_navbar_collapse"));
 		basePanel.add(header);
 
@@ -169,7 +169,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 *
 	 * @param headlineText text for adding
 	 */
-	private NavbarBrand createBadge(String headlineText, String iconUrl) {
+	private NavbarBrand createBadge(String headlineText) {
 		NavbarBrand brand = new NavbarBrand();
 		brand.setBadgePosition(BadgePosition.RIGHT);
 		brand.setBadgeText(headlineText);

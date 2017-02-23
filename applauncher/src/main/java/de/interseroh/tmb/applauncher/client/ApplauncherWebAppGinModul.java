@@ -18,12 +18,15 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-import com.google.gwt.inject.client.GinModules;
-import com.google.gwt.inject.client.Ginjector;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.inject.Singleton;
 
-import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
-
-@GinModules(ApplanucherWebAppGinModul.class)
-public interface ApplanucherWebAppGinjector extends Ginjector {
-	ServicePreparator getServicePreparator();
+public class ApplauncherWebAppGinModul extends AbstractGinModule {
+	@Override
+	protected void configure() {
+		// Bind the SimpleEventBus as Singleton
+		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+	}
 }
