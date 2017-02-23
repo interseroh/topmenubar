@@ -29,7 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 /**
  * Test for testing ApplauncherConfiguration controller
@@ -49,7 +49,7 @@ public class ApplauncherConfigurationTest {
 
 	@Test
 	public void testApplauncherJsonConfiguration() throws Exception {
-		List<TargetedApplication> configuration = appConfig.getConfiguration();
+		List<TargetApplication> configuration = appConfig.getConfiguration();
 		Assert.assertNotNull(configuration);
 		Assert.assertEquals(ITEMS_AMOUNT, configuration.size());
 		Assert.assertEquals(PORTAL_URL,

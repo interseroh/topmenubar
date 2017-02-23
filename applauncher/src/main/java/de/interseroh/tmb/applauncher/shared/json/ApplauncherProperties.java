@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ApplauncherProperties implements Serializable {
 
-	private List<TargetedApplication> targetedApplication;
+	private List<TargetApplication> targetApplication;
 
 	private ApplauncherProperties applauncherProperties;
 
@@ -36,13 +36,13 @@ public class ApplauncherProperties implements Serializable {
 		this.applauncherProperties = applauncherProperties;
 	}
 
-	public List<TargetedApplication> getTargetedApplication() {
-		return targetedApplication;
+	public List<TargetApplication> getTargetApplication() {
+		return targetApplication;
 	}
 
-	public void setTargetedApplication(
-			List<TargetedApplication> targetedApplication) {
-		this.targetedApplication = targetedApplication;
+	public void setTargetApplication(
+			List<TargetApplication> targetApplication) {
+		this.targetApplication = targetApplication;
 	}
 
 }

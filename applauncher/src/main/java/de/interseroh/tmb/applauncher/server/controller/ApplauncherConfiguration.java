@@ -21,7 +21,6 @@ package de.interseroh.tmb.applauncher.server.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
 import de.interseroh.tmb.applauncher.shared.json.ApplauncherProperties;
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +33,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 @RestController
 public class ApplauncherConfiguration {
@@ -44,15 +44,15 @@ public class ApplauncherConfiguration {
 	private Resource applauncherConfigurationJson;
 
 	@RequestMapping(value = ApplauncherServiceEndpoint.APPLAUNCHER_CONFIG, method = RequestMethod.GET)
-	public List<TargetedApplication> getConfiguration() {
-		List<TargetedApplication> listAppProps = new ArrayList<>();
+	public List<TargetApplication> getConfiguration() {
+		List<TargetApplication> listAppProps = new ArrayList<>();
 		try (InputStream jsonIs = applauncherConfigurationJson
 				.getInputStream()) {
 			ObjectMapper mapper = new ObjectMapper();
 			ApplauncherProperties appPropes = mapper
 					.readValue(jsonIs, ApplauncherProperties.class);
 			listAppProps.addAll(appPropes.getApplauncherProperties()
-					.getTargetedApplication());
+					.getTargetApplication());
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
 		}

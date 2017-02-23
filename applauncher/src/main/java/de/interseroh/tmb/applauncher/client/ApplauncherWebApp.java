@@ -47,7 +47,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 public class ApplauncherWebApp implements EntryPoint {
 
@@ -113,11 +113,11 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 	private void fillThreeColumnContainer(Container popupContainer,
-			List<TargetedApplication> webApps) {
+			List<TargetApplication> webApps) {
 
 		int actCol = 0;
 		Row currentRow = null;
-		for (TargetedApplication webApp : webApps) {
+		for (TargetApplication webApp : webApps) {
 			if (actCol == 0) {
 				currentRow = new Row();
 				popupContainer.add(currentRow);
@@ -175,7 +175,7 @@ public class ApplauncherWebApp implements EntryPoint {
 			Popover popover, ListDropDown dropDown, RootPanel appLauncherRoot) {
 
 		appConfigurationClient.getAppConfiguration(
-				new MethodCallback<List<TargetedApplication>>() {
+				new MethodCallback<List<TargetApplication>>() {
 
 					@Override
 					public void onFailure(Method method, Throwable throwable) {
@@ -184,7 +184,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 					@Override
 					public void onSuccess(Method method,
-							List<TargetedApplication> appProperties) {
+							List<TargetApplication> appProperties) {
 						fillThreeColumnContainer(container, appProperties);
 						panel.add(container);
 						popover.setContent(container.getElement().getString());
