@@ -1,6 +1,6 @@
 {
 	"applauncherProperties": {
-		"targetedApplication": [
+		"targetApplication": [
 			{
 				"imageURL": "images/auftrags-logo.png",
 				"caption": "Aufträge",
