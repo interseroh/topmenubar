@@ -39,6 +39,44 @@
 		<url>https://github.com/interseroh/topmenubar</url>
 	</scm>
 
+	<developers>
+		<developer>
+			<name>Lofi Dewanto</name>
+			<roles>
+				<role>Product Owner</role>
+			</roles>
+			<organization>Interseroh Dienstleistungs GmbH</organization>
+			<organizationUrl>https://www.interseroh.com</organizationUrl>
+		</developer>
+		<developer>
+			<name>Ingo Düppe</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>ingo.dueppe@crowdcode.io</email>
+			<organization>Crowdcode</organization>
+			<organizationUrl>https://www.crowdcode.io</organizationUrl>
+		</developer>
+		<developer>
+			<name>Marcus Nörder-Tuitje</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>marcus.noerder-tuitje@crowdcode.io</email>
+			<organization>Crowdcode</organization>
+			<organizationUrl>https://www.crowdcode.io</organizationUrl>
+		</developer>
+		<developer>
+			<name>Oleksandr Prognimak</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>oleksandr.prognimak@crowdcode.io</email>
+			<organization>Crowdcode</organization>
+			<organizationUrl>https://www.crowdcode.io</organizationUrl>
+		</developer>
+	</developers>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
