@@ -18,7 +18,6 @@
  */
 package de.interseroh.tmb.client.common;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gwt.core.client.Callback;
@@ -30,21 +29,19 @@ public class RemoteScriptInjector {
 
 	public void injectScript(String applicationUrl, String scriptPath) {
 		String scriptFullUrl = applicationUrl + scriptPath;
-		logger.log(Level.INFO, "Start JavaScript injecting  from URL: %s",
-				scriptFullUrl);
+		logger.info("Start JavaScript injecting  from URL: " + scriptFullUrl);
 		ScriptInjector.fromUrl(scriptFullUrl)
 				.setCallback(new Callback<Void, Exception>() {
 					@Override
 					public void onFailure(Exception reason) {
-						logger.log(Level.WARNING,
-								"Error: Can not load JavaScript from from URL: %s",
-								scriptFullUrl);
+						logger.warning(
+								"Error: Can not load JavaScript from from URL: "
+										+ scriptFullUrl);
 					}
 
 					@Override
 					public void onSuccess(Void result) {
-						logger.log(Level.INFO,
-								"Java Script is loaded from URL: %s",
+						logger.info("Java Script is loaded from URL: " +
 								scriptFullUrl);
 					}
 				}).setWindow(ScriptInjector.TOP_WINDOW).inject();

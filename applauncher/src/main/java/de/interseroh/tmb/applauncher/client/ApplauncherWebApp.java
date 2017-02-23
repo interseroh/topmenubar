@@ -19,7 +19,6 @@
 package de.interseroh.tmb.applauncher.client;
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.fusesource.restygwt.client.Method;
@@ -70,8 +69,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
-		logger.log(Level.INFO,
-				"++++++++++++++++++++Applauncher application URL: %s", appUrl);
+		logger.info("Applauncher application URL: " + appUrl);
 		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
