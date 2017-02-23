@@ -170,6 +170,11 @@
 				<artifactId>gwtbootstrap3-extras</artifactId>
 				<version>${gwt.bootstrap.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
 
 			<!-- RestyGWT -->
 			<dependency>
@@ -184,6 +189,16 @@
 				<artifactId>gwtmockito</artifactId>
 				<version>${gwt.mockito.version}</version>
 				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
