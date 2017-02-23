@@ -56,8 +56,10 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
+
 	private final ApplauncherWebAppGinjector injector = GWT
 			.create(ApplauncherWebAppGinjector.class);
+
 	private AppConfigurationClient appConfigurationClient;
 
 	@Override
@@ -67,7 +69,8 @@ public class ApplauncherWebApp implements EntryPoint {
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
-		logger.info("++++++++++++++++++++Applauncher application URL:"+appUrl);
+		logger.info(
+				"++++++++++++++++++++Applauncher application URL:" + appUrl);
 		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
