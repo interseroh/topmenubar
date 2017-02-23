@@ -21,12 +21,10 @@ package de.interseroh.tmb.server.controller;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-@CrossOrigin
 public class LandingPageController {
 
 	@Value("${applauncher.url:http://localhost:9014/applauncher}")

@@ -139,17 +139,17 @@
 
 		<!-- RestyGWT -->
 		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>org.fusesource.restygwt</groupId>
 			<artifactId>restygwt</artifactId>
 		</dependency>
 
 		<!-- GWT Mockito -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>com.google.gwt.gwtmockito</groupId>
 			<artifactId>gwtmockito</artifactId>

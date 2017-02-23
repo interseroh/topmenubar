@@ -151,7 +151,13 @@
         </dependency>
 
         <!-- GWT Mockito -->
-        <dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
             <groupId>com.google.gwt.gwtmockito</groupId>
             <artifactId>gwtmockito</artifactId>
             <scope>test</scope>
