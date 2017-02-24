@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-parent</artifactId>
-		<version>Camden.SR5</version>
+		<version>Camden.SR4</version>
 		<relativePath></relativePath>
 	</parent>
 	<artifactId>zuul-server</artifactId>
