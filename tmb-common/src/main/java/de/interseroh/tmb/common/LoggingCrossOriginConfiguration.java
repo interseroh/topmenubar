@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LoggingCrossOriginConfiguration {
 
-	@Value("${server.context-path}")
+	@Value("${server.context-path:}")
 	private String contextPath;
 
 	@Bean(name = "loggingFilter")
