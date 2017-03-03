@@ -109,6 +109,7 @@
 		<module>zuul-server</module>
 		<module>applauncher</module>
 		<module>topmenubar</module>
+		<module>tmb-demo</module>
 	</modules>
 
 	<dependencyManagement>

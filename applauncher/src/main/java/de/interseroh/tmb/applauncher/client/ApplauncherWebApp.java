@@ -61,16 +61,17 @@ public class ApplauncherWebApp implements EntryPoint {
 			.create(ApplauncherWebAppGinjector.class);
 
 	private AppConfigurationClient appConfigurationClient;
+	private String applauncherUrl;
 
 	@Override
 	public void onModuleLoad() {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
-		String appUrl = appLauncherRoot.getElement()
+		applauncherUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
-		logger.info("Applauncher application URL: " + appUrl);
-		ServicePreparator servicePreparator = initServices(appUrl);
+		logger.info("Applauncher application URL: " + applauncherUrl);
+		ServicePreparator servicePreparator = initServices(applauncherUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
 
@@ -123,11 +124,8 @@ public class ApplauncherWebApp implements EntryPoint {
 				popupContainer.add(currentRow);
 			}
 			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
-					webApp.getApplicationURL(), webApp.getImageURL()));
-			actCol++;
-			if (actCol >= 3) {
-				actCol = 0;
-			}
+					webApp.getApplicationURL(), applauncherUrl + '/' + webApp.getImageURL()));
+			actCol = (actCol + 1) % 3;
 		}
 	}
 

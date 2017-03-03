@@ -18,20 +18,25 @@
  *  * under the License.
  *
  */
+package de.interseroh.tmb.landing.controller;
 
-package de.interseroh.tmb.server;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+@Controller
+public class LandingPageController {
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class TopMenuBarApplicationTest {
+	@Value("${applauncher.url:http://localhost:9014/applauncher}")
+	private String applauncherUrl;
 
-	@Test
-	public void testConfiguration() throws Exception {
-
+	@GetMapping(path = "{viewname}.html")
+	public String doGet(Model model,
+			@PathVariable("viewname") String viewname) {
+		model.addAttribute("applauncherUrl", applauncherUrl);
+		return viewname;
 	}
+
 }

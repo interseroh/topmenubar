@@ -18,28 +18,15 @@
  *  * under the License.
  *
  */
+package de.interseroh.tmb.landing;
 
-package de.interseroh.tmb.server.controller;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+@SpringBootApplication
+public class TopMenuBarApplication {
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-@RunWith(SpringRunner.class)
-@WebMvcTest(LandingPageController.class)
-public class LandingPageControllerTest {
-
-	@Autowired
-	private MockMvc mvc;
-
-	@Test
-	public void testLandingPageGet() throws Exception {
-		mvc.perform(get("/topmenubar.html")).andExpect(status().isOk());
+	public static void main(String[] args) {
+		SpringApplication.run(TopMenuBarApplication.class, args);
 	}
 }
