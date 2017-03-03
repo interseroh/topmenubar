@@ -2,7 +2,7 @@ node {
     def mvnHome
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
-        git branch: 'TPI-16-dockertest', url: 'https://github.com/interseroh/topmenubar.git'
+        git branch: 'feature/TPI-16-dockertest', url: 'https://github.com/interseroh/topmenubar.git'
         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
