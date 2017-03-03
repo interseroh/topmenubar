@@ -11,7 +11,7 @@ node {
     stage('Build') {
         // Run the maven build
         if (isUnix()) {
-            sh "'${mvnHome}/bin/mvn' clean package"
+            sh "'${mvnHome}/bin/mvn' clean package -Pwith-docker"
         } else {
             bat(/"${mvnHome}\bin\mvn" clean package/)
         }
