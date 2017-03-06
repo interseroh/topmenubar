@@ -18,7 +18,7 @@
  */
 package de.interseroh.tmb.common;
 
-import java.util.Collections;
+import java.util.Arrays;
 
 import javax.servlet.DispatcherType;
 
@@ -42,9 +42,13 @@ public class LoggingCrossOriginConfiguration {
 	public FilterRegistrationBean filterRegistrationForCrossOriginLoggingFilter(
 			CrossOriginLoggingFilter filter) {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setDispatcherTypes(DispatcherType.REQUEST);
-		registration.setUrlPatterns(Collections.singletonList(
-				contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH));
+		registration.setDispatcherTypes(DispatcherType.REQUEST,
+				DispatcherType.FORWARD, DispatcherType.ERROR,
+				DispatcherType.ASYNC, DispatcherType.INCLUDE);
+		registration.setUrlPatterns(Arrays.asList(
+				//				contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH,
+				//				contextPath + "/*",
+				"/*"));
 		registration.setFilter(filter);
 		return registration;
 	}
