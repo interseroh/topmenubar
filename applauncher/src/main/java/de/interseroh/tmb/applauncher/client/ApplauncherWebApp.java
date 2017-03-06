@@ -39,10 +39,8 @@ import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
@@ -76,12 +74,13 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
+		dropDown.getElement().getStyle().setMarginTop(12, Style.Unit.PX);
 
 		Popover popover = createApplauncherPopover();
 
 		AnchorButton popoverBtn = new AnchorButton();
 		popoverBtn.setIcon(IconType.TH);
-		popoverBtn.setIconSize(IconSize.LARGE);
+		popoverBtn.setIconSize(IconSize.TIMES3);
 
 		createFlowPanel();
 
@@ -114,45 +113,30 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private void fillThreeColumnContainer(Container popupContainer,
 			List<TargetApplication> webApps) {
-
-		int actCol = 0;
-		Row currentRow = null;
+		Row currentRow = new Row();
+		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
-			if (actCol == 0) {
-				currentRow = new Row();
-				popupContainer.add(currentRow);
-			}
-			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
+			currentRow.add(createAnchorColumn("SM_4", webApp.getCaption(),
 					webApp.getApplicationURL(), webApp.getImageURL()));
-			actCol++;
-			if (actCol >= 3) {
-				actCol = 0;
-			}
 		}
 	}
 
 	private Column createAnchorColumn(String span, String text, String url,
 			String iconUrl) {
 		Column col = new Column(span);
-		col.getElement().getStyle()
-				.setVerticalAlign(Style.VerticalAlign.MIDDLE);
-
-		VerticalPanel panel = new VerticalPanel();
-		panel.getElement().addClassName("applauncherVerticalBar");
-		panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+		Row newRow = new Row();
+		SimplePanel icontainer  = new SimplePanel();
+		icontainer.getElement().setClassName("icontainer");
 		Image icon = new Image(iconUrl);
-		icon.getElement().addClassName("applauncherIconCls");
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
-		icon.getElement().addClassName("glyphicon");
-
+		icontainer.add(icon);
 		Anchor anchor = new Anchor();
 		anchor.setText(text);
 		anchor.setHref(url);
-		panel.add(icon);
-		panel.add(anchor);
-		col.add(panel);
+		newRow.add(icontainer);
+		newRow.add(anchor);
+		col.add(newRow);
 		return col;
 	}
 
