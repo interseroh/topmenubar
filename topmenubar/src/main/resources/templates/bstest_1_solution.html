@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!--
     This test page is modified an original page.
@@ -8,26 +9,23 @@
      - is removed all references to bootstrap css and js of original page
 
     -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Bootstrap 3 Responsive Layout Example</title>
 
     <script type="text/javascript" language="javascript"
             src="topmenubar/topmenubar.nocache.js"></script>
 
-    <script type="text/javascript" language="javascript"
-            src="http://localhost:9010/applauncher/applauncher/applauncher.nocache.js"></script>
     <link type="text/css" rel="stylesheet"
-          href="http://localhost:9010/applauncher/applauncher.css">
+          th:href="${applauncherUrl}+'/applauncher.css'"/>
 
 </head>
 <body>
 
-<div id="tmb_top_menu_bar" data-colour="#223d62"
-     data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
-    <div id="tmb_app_launcher" data-application-url="http://localhost:9010/"
-         data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+     data-tmb-headline="TEST APPLICATION" data-tmb-icon-url="images/entsorger-logo.png">
+    <div id="tmb_app_launcher" th:attr="data-tmb-application-url=${applauncherUrl}" data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
     </div>
     <div id="tmb_profile">
     </div>
@@ -230,7 +228,7 @@
                     More &raquo;</a></p>
         </div>
     </div>
-    <hr>
+    <hr/>
     <div class="row">
         <div class="col-sm-12">
             <footer>

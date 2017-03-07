@@ -19,7 +19,8 @@
 
 package de.interseroh.tmb.applauncher.server.controller;
 
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 /**
  * Test for testing ApplauncherConfiguration controller
@@ -37,18 +38,18 @@ import java.util.List;
 @SpringBootTest
 @TestPropertySource(properties = {
 		"applauncher.config.json=classpath:test.applauncher.json" })
-public class ApplauncherConfigurationTest {
+public class ApplauncherConfigurationControllerTest {
 
 	private static final String PORTAL_URL = "http://www.yahoo.de";
 
 	private static final int ITEMS_AMOUNT = 6;
 
 	@Autowired
-	private ApplauncherConfiguration appConfig;
+	private ApplauncherConfigurationController appConfig;
 
 	@Test
 	public void testApplauncherJsonConfiguration() throws Exception {
-		List<TargetedApplication> configuration = appConfig.getConfiguration();
+		List<TargetApplication> configuration = appConfig.getConfiguration();
 		Assert.assertNotNull(configuration);
 		Assert.assertEquals(ITEMS_AMOUNT, configuration.size());
 		Assert.assertEquals(PORTAL_URL,

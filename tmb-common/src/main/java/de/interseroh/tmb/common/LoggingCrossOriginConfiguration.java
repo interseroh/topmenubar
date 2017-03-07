@@ -18,32 +18,37 @@
  */
 package de.interseroh.tmb.common;
 
+import java.util.Arrays;
+
+import javax.servlet.DispatcherType;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.servlet.DispatcherType;
-import java.util.Arrays;
-
 @Configuration
 public class LoggingCrossOriginConfiguration {
 
-	@Value("${server.context-path}")
+	@Value("${server.context-path:}")
 	private String contextPath;
 
 	@Bean(name = "loggingFilter")
-	public CrossOriginLoggingFilter getCrossOriginFilter() {
+	public CrossOriginLoggingFilter crossOriginFilter() {
 		return new CrossOriginLoggingFilter();
 	}
 
 	@Bean
-	public FilterRegistrationBean filterRegistrationBean(
+	public FilterRegistrationBean filterRegistrationForCrossOriginLoggingFilter(
 			CrossOriginLoggingFilter filter) {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setDispatcherTypes(DispatcherType.REQUEST);
+		registration.setDispatcherTypes(DispatcherType.REQUEST,
+				DispatcherType.FORWARD, DispatcherType.ERROR,
+				DispatcherType.ASYNC, DispatcherType.INCLUDE);
 		registration.setUrlPatterns(Arrays.asList(
-				contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH));
+				//				contextPath + CommonServiceEndpoint.LOGGING_CONTEXTPATH,
+				//				contextPath + "/*",
+				"/*"));
 		registration.setFilter(filter);
 		return registration;
 	}

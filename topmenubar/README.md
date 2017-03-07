@@ -2,7 +2,8 @@
 This module contains the graphical representation of Top Menu Bar plus a prototype landing page.
 
 ## Build
-```java
+
+```bash
 mvn -P development process-classes gwt:run-codeserver
 ```
 

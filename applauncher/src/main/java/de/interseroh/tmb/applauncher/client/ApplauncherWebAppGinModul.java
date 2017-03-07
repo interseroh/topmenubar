@@ -16,13 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.client.ui.event;
+package de.interseroh.tmb.applauncher.client;
 
-import com.google.web.bindery.event.shared.binder.GenericEvent;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.inject.Singleton;
 
-public class ChangeViewEvent extends GenericEvent {
-
-	public ChangeViewEvent() {
+public class ApplauncherWebAppGinModul extends AbstractGinModule {
+	@Override
+	protected void configure() {
+		// Bind the SimpleEventBus as Singleton
+		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 	}
-
 }

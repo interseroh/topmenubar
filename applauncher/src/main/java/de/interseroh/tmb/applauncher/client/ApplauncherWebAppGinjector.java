@@ -20,9 +20,11 @@ package de.interseroh.tmb.applauncher.client;
 
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
+
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 
-@GinModules(ApplanucherWebAppGinModul.class)
-public interface ApplanucherWebAppGinjector extends Ginjector {
-    ServicePreparator getServicePreparator();
+@FunctionalInterface
+@GinModules(ApplauncherWebAppGinModul.class)
+public interface ApplauncherWebAppGinjector extends Ginjector {
+	ServicePreparator getServicePreparator();
 }

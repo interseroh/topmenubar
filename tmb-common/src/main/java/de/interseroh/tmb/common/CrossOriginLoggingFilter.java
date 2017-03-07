@@ -18,9 +18,15 @@
  */
 package de.interseroh.tmb.common;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 public class CrossOriginLoggingFilter implements Filter {
 
@@ -37,7 +43,9 @@ public class CrossOriginLoggingFilter implements Filter {
 		response.setHeader("Access-Control-Allow-Methods",
 				"POST, TRACE, GET, UPDATE, OPTIONS");
 		response.setHeader("Access-Control-Allow-Headers",
-				"content-type, x-gwt-module-base, x-gwt-permutation");
+				"content-type, x-gwt-module-base, x-gwt-permutation,"
+						+ " Origin, X-Requested-With, Content-Type, "
+						+ "Accept, X-HTTP-Method-Override");
 
 		filterChain.doFilter(servletRequest, servletResponse);
 	}

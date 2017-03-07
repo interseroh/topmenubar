@@ -18,38 +18,49 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.*;
-import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
-import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
-import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
-import de.interseroh.tmb.applauncher.shared.json.TargetedApplication;
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
-import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.Anchor;
-import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.constants.*;
-import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-
 import java.util.List;
 import java.util.logging.Logger;
 
-public class ApplauncherWebApp implements EntryPoint {
-	public static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.gwtbootstrap3.client.ui.Anchor;
+import org.gwtbootstrap3.client.ui.AnchorButton;
+import org.gwtbootstrap3.client.ui.Column;
+import org.gwtbootstrap3.client.ui.Container;
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.ListDropDown;
+import org.gwtbootstrap3.client.ui.Popover;
+import org.gwtbootstrap3.client.ui.Row;
+import org.gwtbootstrap3.client.ui.constants.IconSize;
+import org.gwtbootstrap3.client.ui.constants.IconType;
+import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
-	private static Logger logger = Logger
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+
+import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
+import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+
+public class ApplauncherWebApp implements EntryPoint {
+
+	private static final String DATA_APPLICATION_URL = "data-tmb-application-url";
+	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+
+	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
 
-	private final ApplanucherWebAppGinjector injector = GWT
-			.create(ApplanucherWebAppGinjector.class);
-	private AppConfigurationClient appConfigurationClient;
+	private final ApplauncherWebAppGinjector injector = GWT
+			.create(ApplauncherWebAppGinjector.class);
 
-	private Column col1;
-	private Column col2;
-	private Column col3;
+	private AppConfigurationClient appConfigurationClient;
 
 	@Override
 	public void onModuleLoad() {
@@ -57,8 +68,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		String appUrl = appLauncherRoot.getElement()
-				.getAttribute("data-application-url");
-		logger.info("++++++++++++++++++++Applauncher application URL:"+appUrl);
+				.getAttribute(DATA_APPLICATION_URL);
+		logger.info("Applauncher application URL: " + appUrl);
 		ServicePreparator servicePreparator = initServices(appUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
@@ -82,9 +93,7 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 	private FlowPanel createFlowPanel() {
-		FlowPanel applauncherPanel = new FlowPanel();
-
-		return applauncherPanel;
+		return new FlowPanel();
 	}
 
 	private void createDivStructure(Popover popover, ListDropDown dropDown,
@@ -104,13 +113,13 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 	private void fillThreeColumnContainer(Container popupContainer,
-			List<TargetedApplication> webApps) {
+			List<TargetApplication> webApps) {
 
 		int actCol = 0;
 		Row currentRow = null;
-		for (TargetedApplication webApp : webApps) {
+		for (TargetApplication webApp : webApps) {
 			if (actCol == 0) {
-				 currentRow = new Row();
+				currentRow = new Row();
 				popupContainer.add(currentRow);
 			}
 			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
@@ -148,13 +157,11 @@ public class ApplauncherWebApp implements EntryPoint {
 	}
 
 	private Popover createApplauncherPopover() {
-		Popover popover = new ApplauncherPopover("Id241");
-		return popover;
+		return new ApplauncherPopover("applauncherPopover");
 	}
 
 	private RootPanel getWidgets(String element) {
-		RootPanel root = RootPanel.get(element);
-		return root;
+		return RootPanel.get(element);
 	}
 
 	private ServicePreparator initServices(String appUrl) {
@@ -168,7 +175,7 @@ public class ApplauncherWebApp implements EntryPoint {
 			Popover popover, ListDropDown dropDown, RootPanel appLauncherRoot) {
 
 		appConfigurationClient.getAppConfiguration(
-				new MethodCallback<List<TargetedApplication>>() {
+				new MethodCallback<List<TargetApplication>>() {
 
 					@Override
 					public void onFailure(Method method, Throwable throwable) {
@@ -177,7 +184,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 					@Override
 					public void onSuccess(Method method,
-							List<TargetedApplication> appProperties) {
+							List<TargetApplication> appProperties) {
 						fillThreeColumnContainer(container, appProperties);
 						panel.add(container);
 						popover.setContent(container.getElement().getString());

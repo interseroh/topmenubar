@@ -35,6 +35,59 @@
 	<name>topmenubar-parent</name>
 	<description>Top menu bar project</description>
 
+	<url>https://github.com/interseroh/topmenubar</url>
+
+	<organization>
+		<name>Interseroh Dienstleistungs GmbH</name>
+		<url>http://www.interseroh.com</url>
+	</organization>
+
+
+	<scm>
+		<url>https://github.com/interseroh/topmenubar</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>lofi</id>
+			<name>Lofi Dewanto</name>
+			<roles>
+				<role>Product Owner</role>
+			</roles>
+			<organization>Interseroh Dienstleistungs GmbH</organization>
+			<organizationUrl>https://www.interseroh.com</organizationUrl>
+		</developer>
+		<developer>
+			<id>ingo</id>
+			<name>Ingo Düppe</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>ingo.dueppe@crowdcode.io</email>
+			<organization>Crowdcode</organization>
+			<organizationUrl>https://www.crowdcode.io</organizationUrl>
+		</developer>
+		<developer>
+			<id>marcus</id>
+			<name>Marcus Nörder-Tuitje</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>marcus.noerder-tuitje@crowdcode.io</email>
+			<organization>Crowdcode</organization>
+			<organizationUrl>https://www.crowdcode.io</organizationUrl>
+		</developer>
+		<developer>
+			<id>alex</id>
+			<name>Oleksandr Prognimak</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<email>oleksandr.prognimak@crowdcode.io</email>
+			<organization>Crowdcode</organization>
+			<organizationUrl>https://www.crowdcode.io</organizationUrl>
+		</developer>
+	</developers>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
@@ -45,8 +98,10 @@
 		<gwt.resty.version>2.2.0</gwt.resty.version>
 		<gwt.mockito.version>1.1.6</gwt.mockito.version>
 		<kissmda.maven.plugin.version>2.0.0</kissmda.maven.plugin.version>
-		<kissmda.cartridges.simple.java.version>2.0.2</kissmda.cartridges.simple.java.version>
-		<kissmda.extensions.importpacker.version>1.0.0</kissmda.extensions.importpacker.version>
+		<kissmda.cartridges.simple.java.version>2.0.2
+		</kissmda.cartridges.simple.java.version>
+		<kissmda.extensions.importpacker.version>1.0.0
+		</kissmda.extensions.importpacker.version>
 	</properties>
 
 	<modules>
@@ -115,6 +170,11 @@
 				<artifactId>gwtbootstrap3-extras</artifactId>
 				<version>${gwt.bootstrap.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
 
 			<!-- RestyGWT -->
 			<dependency>
@@ -129,6 +189,16 @@
 				<artifactId>gwtmockito</artifactId>
 				<version>${gwt.mockito.version}</version>
 				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -192,7 +262,7 @@
 						</execution>
 					</executions>
 				</plugin>
-				
+
 				<!-- GWT Maven Plugin -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -207,14 +277,18 @@
 							</goals>
 							<configuration>
 								<sourceLevel>1.8</sourceLevel>
-								<module>${i18n.gwt.modul}</module>
+								<module>${i18n.gwt.module}</module>
 								<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
 								<persistentunitcachedir>
 									${project.build.directory}
 								</persistentunitcachedir>
-								<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-								<deploy>${project.build.directory}/gwt-deploy</deploy>
-								<i18nMessagesBundle>${i18n.messages.bundle}</i18nMessagesBundle>
+								<webappDirectory>
+									${project.build.directory}/classes/public
+								</webappDirectory>
+								<deploy>${project.build.directory}/gwt-deploy
+								</deploy>
+								<i18nMessagesBundle>${i18n.messages.bundle}
+								</i18nMessagesBundle>
 							</configuration>
 						</execution>
 					</executions>
@@ -222,7 +296,7 @@
 						<runTarget>topmenubar.html</runTarget>
 					</configuration>
 				</plugin>
-				
+
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<executions>
@@ -236,11 +310,13 @@
 								<artifactItems>
 									<artifactItem>
 										<groupId>${project.groupId}</groupId>
-										<artifactId>${project.artifactId}</artifactId>
+										<artifactId>${project.artifactId}
+										</artifactId>
 										<version>${project.version}</version>
 									</artifactItem>
 								</artifactItems>
-								<outputDirectory>${project.basedir}/../target/</outputDirectory>
+								<outputDirectory>${project.basedir}/../target/
+								</outputDirectory>
 								<stripVersion>true</stripVersion>
 							</configuration>
 						</execution>
@@ -301,11 +377,18 @@
 									</goals>
 									<configuration>
 										<sourceLevel>1.8</sourceLevel>
-										<module>${gwt.dev.modul}</module>
-										<extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-										<persistentunitcachedir>${project.build.directory}</persistentunitcachedir>
-										<webappDirectory>${project.build.directory}/classes/public</webappDirectory>
-										<deploy>${project.build.directory}/gwt-deploy</deploy>
+										<module>${gwt.dev.module}</module>
+										<extraJvmArgs>-Xmx1024M -Xss1024k
+										</extraJvmArgs>
+										<persistentunitcachedir>
+											${project.build.directory}
+										</persistentunitcachedir>
+										<webappDirectory>
+											${project.build.directory}/classes/public
+										</webappDirectory>
+										<deploy>
+											${project.build.directory}/gwt-deploy
+										</deploy>
 									</configuration>
 								</execution>
 							</executions>

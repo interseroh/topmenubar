@@ -18,23 +18,23 @@
  */
 package de.interseroh.tmb.profile.client;
 
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-import java.util.logging.Logger;
-
 public class ProfileWebApp implements EntryPoint {
 
-    private static Logger logger = Logger
-            .getLogger(ProfileWebApp.class.getName());
+	private static final Logger logger = Logger
+			.getLogger(ProfileWebApp.class.getName());
 
-    @Override
-    public void onModuleLoad() {
-        logger.info("ProfileWebApp: Create Views begins...");
+	@Override
+	public void onModuleLoad() {
+		logger.info("ProfileWebApp: Create Views begins...");
 
-        GWT.log("Hello ProfileWebApp!", null);
+		GWT.log("Hello ProfileWebApp!", null);
 
-        logger.info("ProfileWebApp: Create Views ends...");
-    }
+		logger.info("ProfileWebApp: Create Views ends...");
+	}
 
 }

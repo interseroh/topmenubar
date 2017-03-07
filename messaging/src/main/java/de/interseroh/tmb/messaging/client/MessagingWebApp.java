@@ -18,23 +18,23 @@
  */
 package de.interseroh.tmb.messaging.client;
 
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 
-import java.util.logging.Logger;
-
 public class MessagingWebApp implements EntryPoint {
 
-    private static Logger logger = Logger
-            .getLogger(MessagingWebApp.class.getName());
+	private static final Logger logger = Logger
+			.getLogger(MessagingWebApp.class.getName());
 
-    @Override
-    public void onModuleLoad() {
-        logger.info("MessagingWebApp: Create Views begins...");
+	@Override
+	public void onModuleLoad() {
+		logger.info("MessagingWebApp: Create Views begins...");
 
-        GWT.log("Hello MessagingWebApp!", null);
+		GWT.log("Hello MessagingWebApp!", null);
 
-        logger.info("MessagingWebApp: Create Views ends...");
-    }
+		logger.info("MessagingWebApp: Create Views ends...");
+	}
 
 }

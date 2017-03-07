@@ -18,27 +18,29 @@
  */
 package de.interseroh.tmb.profile.server;
 
-import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
-import de.interseroh.tmb.profile.shared.ProfileServiceEndpoint;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+
+import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
+
+import de.interseroh.tmb.profile.shared.ProfileServiceEndpoint;
 
 @SpringBootApplication
 public class ProfileApplication {
-    @Value("${server.context-path}")
-    private String contextPath;
+	@Value("${server.context-path}")
+	private String contextPath;
 
-    public static void main(String[] args) {
-        SpringApplication.run(ProfileApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ProfileApplication.class, args);
+	}
 
-    @Bean
-    public ServletRegistrationBean servletRegistrationBean() {
-        return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-                contextPath.concat(ProfileServiceEndpoint.GWT_REMOTE_LOGGING)
-                        + "/*");
-    }
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean() {
+		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
+				contextPath.concat(ProfileServiceEndpoint.GWT_REMOTE_LOGGING)
+						+ "/*");
+	}
 }

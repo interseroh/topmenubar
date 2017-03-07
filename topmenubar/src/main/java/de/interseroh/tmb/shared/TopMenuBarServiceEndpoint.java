@@ -16,39 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.applauncher.shared.json;
+package de.interseroh.tmb.shared;
 
+public interface TopMenuBarServiceEndpoint {
 
-import java.io.Serializable;
-
-public class TargetedApplication implements Serializable {
-
-    private String imageURL;
-    private String caption;
-    private String applicationURL;
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
-
-    public String getApplicationURL() {
-        return applicationURL;
-    }
-
-    public void setApplicationURL(String applicationURL) {
-        this.applicationURL = applicationURL;
-    }
+	String GWT_REMOTE_LOGGING = "/remote_logging";
 
 }
