@@ -2,6 +2,10 @@
 .APL_application li {
     list-style-type: none;
 }
+.APL_application__item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
 .APL_application__iconsContainer {
     width: 320px;
