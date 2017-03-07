@@ -54,8 +54,10 @@ public class CrossOriginLoggingFilterTest {
 		assertThat(headers.get("Access-Control-Allow-Origin"), contains("*"));
 		assertThat(headers.get("Access-Control-Allow-Methods"),
 				contains("POST, TRACE, GET, UPDATE, OPTIONS"));
-		assertThat(headers.get("Access-Control-Allow-Headers"),
-				contains("content-type, x-gwt-module-base, x-gwt-permutation"));
+		assertThat(headers.get("Access-Control-Allow-Headers"), contains(
+				"content-type, x-gwt-module-base, x-gwt-permutation,"
+						+ " Origin, X-Requested-With, Content-Type, "
+						+ "Accept, X-HTTP-Method-Override"));
 
 	}
 }
