@@ -8,10 +8,19 @@
 	float: left;
 	background-color: #fff;
 	padding: 3px;
-	border: 1px solid #223D62;
+	margin: 1px 0;
 	border-radius: 5px;
 }
 
 .TMB_application__logocontainer img {
 	height: 55px;
+}
+
+.TMB_application__button {
+	border-color: #000 !important;
+	box-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+.TMB_application__button span {
+	box-shadow: 1px 2px 0 rgba(255, 255, 255, 1);
 }

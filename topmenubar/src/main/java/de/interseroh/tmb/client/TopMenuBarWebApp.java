@@ -122,6 +122,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	private Widget createCollapseButton(String dataTarget) {
 		NavbarCollapseButton button = new NavbarCollapseButton();
+		button.getElement().addClassName(CSS_BLOCK + "__button");
 		button.setDataTarget(dataTarget);
 		return button;
 	}
