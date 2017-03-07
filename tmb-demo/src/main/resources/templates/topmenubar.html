@@ -25,8 +25,9 @@
 <!-- "Standards Mode". Replacing this declaration   -->
 <!-- with a "Quirks Mode" doctype is not supported. -->
 
-<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
 <html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
+<!--/*@thymesVar id="topmenubarUrl" type="java.lang.String"*/-->
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
@@ -34,7 +35,7 @@
 	<!-- Consider inlining CSS to reduce the number of requested files -->
 	<!--                                                               -->
 
-	<link type="text/css" rel="stylesheet" href="/topmenubar/topmenubar.css" />
+	<link type="text/css" rel="stylesheet" th:href="${topmenubarUrl}+'/topmenubar/topmenubar.css'" />
 	<link type="text/css" rel="stylesheet"
 		th:href="${applauncherUrl}+'/applauncher.css'" />
 	<link rel="icon" href="images/favicon.png" type="image/x-icon" />
@@ -50,7 +51,7 @@
 	<!-- be added before this line.                -->
 	<!--                                           -->
 	<script type="text/javascript" language="javascript"
-		src="/topmenubar/topmenubar/topmenubar.nocache.js"></script>
+		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
 </head>
 
 <!--                                           -->
