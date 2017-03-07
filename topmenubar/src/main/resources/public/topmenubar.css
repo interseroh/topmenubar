@@ -1,2 +1,17 @@
 /** Add css rules here for your application. */
 
+.TMB_application {
+
+}
+
+.TMB_application__logocontainer {
+	float: left;
+	background-color: #fff;
+	padding: 3px;
+	border: 1px solid #223D62;
+	border-radius: 5px;
+}
+
+.TMB_application__logocontainer img {
+	height: 55px;
+}
