@@ -21,15 +21,13 @@
 
 package de.interseroh.tmb.applauncher.client.common;
 
+import com.google.gwtmockito.GwtMockitoTestRunner;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import org.fusesource.restygwt.client.RestServiceProxy;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-
-import com.google.gwtmockito.GwtMockitoTestRunner;
-
-import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

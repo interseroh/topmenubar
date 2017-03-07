@@ -35,7 +35,8 @@
     <description>Demo project for Spring Boot and GWT</description>
 
     <properties>
-        <i18n.messages.bundle>de.interseroh.tmb.client.Messages</i18n.messages.bundle>
+        <i18n.messages.bundle>de.interseroh.tmb.client.Messages
+        </i18n.messages.bundle>
         <i18n.gwt.module>de.interseroh.tmb.TopMenuBar</i18n.gwt.module>
         <gwt.dev.module>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.module>
     </properties>
@@ -151,13 +152,13 @@
         </dependency>
 
         <!-- GWT Mockito -->
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
+        <dependency>
             <groupId>com.google.gwt.gwtmockito</groupId>
             <artifactId>gwtmockito</artifactId>
             <scope>test</scope>

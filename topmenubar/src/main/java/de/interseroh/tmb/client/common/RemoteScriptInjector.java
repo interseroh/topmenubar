@@ -18,10 +18,10 @@
  */
 package de.interseroh.tmb.client.common;
 
-import java.util.logging.Logger;
-
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.ScriptInjector;
+
+import java.util.logging.Logger;
 
 public class RemoteScriptInjector {
 	private static final Logger logger = Logger
@@ -41,8 +41,8 @@ public class RemoteScriptInjector {
 
 					@Override
 					public void onSuccess(Void result) {
-						logger.info("Java Script is loaded from URL: " +
-								scriptFullUrl);
+						logger.info("Java Script is loaded from URL: "
+								+ scriptFullUrl);
 					}
 				}).setWindow(ScriptInjector.TOP_WINDOW).inject();
 	}
