@@ -22,6 +22,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
 import org.gwtbootstrap3.client.ui.*;
@@ -32,6 +33,7 @@ import java.util.logging.Logger;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
+	private static final String CSS_BLOCK = "TMB_application";
 	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 	private static final String TMB_PROFILE = "tmb_profile";
 	private static final String TMB_MESSAGING = "tmb_messaging";
@@ -83,6 +85,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		messaging = getWidgets(TMB_MESSAGING);
 
 		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
+		rootPanel.getElement().setClassName(CSS_BLOCK);
 
 		String color = rootPanel.getElement().getAttribute(DATA_TMB_COLOR);
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
@@ -96,7 +99,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
-		header.add(createLogoImage(iconUrl));
+
+		SimplePanel logoContainer = new SimplePanel();
+		logoContainer.getElement().setClassName(CSS_BLOCK + "__logocontainer");
+		logoContainer.add(createLogoImage(iconUrl));
+		header.add(logoContainer);
 		header.add(createBadge(headlineText));
 		header.add(createCollapseButton("tmb_navbar_collapse"));
 		basePanel.add(header);
@@ -172,7 +179,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 */
 	private Image createLogoImage(String iconUrl) {
 		Image icon = new Image(ifPresent(iconUrl, "images/broken.png"));
-		icon.setPull(Pull.LEFT);
 		return icon;
 	}
 

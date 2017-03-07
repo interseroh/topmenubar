@@ -43,6 +43,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private static final String DATA_APPLICATION_URL = "data-tmb-application-url";
 	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+	private static final String CSS_BLOCK = "APL_application";
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
@@ -57,6 +58,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
+		appLauncherRoot.getElement().setClassName(CSS_BLOCK);
 		String appUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
 		logger.info("Applauncher application URL: " + appUrl);
@@ -97,7 +99,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private Container createPopupContainer() {
 		Container popupContainer = new Container();
-		popupContainer.getElement().addClassName("applauncherContainerCls");
+		popupContainer.getElement()
+				.addClassName(CSS_BLOCK + "__iconsContainer");
 		popupContainer.setFluid(true);
 		return popupContainer;
 
@@ -108,7 +111,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		Row currentRow = new Row();
 		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
-			currentRow.add(createAnchorColumn("SM_4", webApp.getCaption(),
+			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
 					webApp.getApplicationURL(), webApp.getImageURL()));
 		}
 	}
@@ -117,16 +120,17 @@ public class ApplauncherWebApp implements EntryPoint {
 			String iconUrl) {
 		Column col = new Column(span);
 		Row newRow = new Row();
-		SimplePanel icontainer  = new SimplePanel();
-		icontainer.getElement().setClassName("icontainer");
+		SimplePanel iconWrapper = new SimplePanel();
+		iconWrapper.getElement().setClassName(CSS_BLOCK + "__iconWrapper");
 		Image icon = new Image(iconUrl);
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
-		icontainer.add(icon);
+		iconWrapper.add(icon);
 		Anchor anchor = new Anchor();
 		anchor.setText(text);
+		anchor.getElement().setClassName(CSS_BLOCK + "__link");
 		anchor.setHref(url);
-		newRow.add(icontainer);
+		newRow.add(iconWrapper);
 		newRow.add(anchor);
 		col.add(newRow);
 		return col;
