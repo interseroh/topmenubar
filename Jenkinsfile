@@ -1,19 +1,19 @@
 node {
     def mvnHome
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-        git branch: 'feature/TPI-16-dockertest', url: 'https://github.com/interseroh/topmenubar.git'
+    stage('Preparation') {
+        // Using scm configuration from upstream project.
+        checkout scm
         // Get the Maven tool.
-        // ** NOTE: This 'M3' Maven tool must be configured
+        // ** NOTE: This 'maven-default' Maven tool must be configured
         // **       in the global configuration.
         mvnHome = tool 'maven-default'
     }
     stage('Build') {
         // Run the maven build
         if (isUnix()) {
-            sh "'${mvnHome}/bin/mvn' clean install io.fabric8:docker-maven-plugin:0.19.1:build -Pwith-docker"
+            sh "'${mvnHome}/bin/mvn' clean install -Pwith-docker"
         } else {
-            bat(/"${mvnHome}\bin\mvn" clean package/)
+            bat(/"${mvnHome}\bin\mvn" clean install -Pwith-docker/)
         }
     }
     stage('Results') {
