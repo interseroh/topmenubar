@@ -128,6 +128,7 @@ public class ApplauncherWebApp implements EntryPoint {
 			String iconUrl) {
 		Column col = new Column(span);
 		Row newRow = new Row();
+		newRow.getElement().addClassName(CSS_BLOCK + "__item");
 		SimplePanel iconWrapper = new SimplePanel();
 		iconWrapper.getElement().setClassName(CSS_BLOCK + "__iconWrapper");
 		Image icon = new Image(iconUrl);
