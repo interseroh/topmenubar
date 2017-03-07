@@ -416,6 +416,25 @@
 					<plugins>
 						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>build-helper-maven-plugin</artifactId>
+							<version>3.0.0</version>
+							<executions>
+								<execution>
+									<phase>package</phase>
+									<goals>
+										<goal>regex-property</goal>
+									</goals>
+									<configuration>
+										<name>docker.branch.name</name>
+										<value>${GIT_BRANCH}</value>
+										<regex>.*([^\/]+)</regex>
+										<replacement></replacement>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>properties-maven-plugin</artifactId>
 							<version>1.0.0</version>
 							<executions>
@@ -449,8 +468,7 @@
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
 											<tags>
-												<tag>latest</tag>
-												<tag>${project.version}</tag>
+												<tag>${project.version}-${docker.branch.name}</tag>
 											</tags>
 											<ports>
 												<port>${server.port}</port>
