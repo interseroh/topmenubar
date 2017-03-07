@@ -18,7 +18,10 @@
  */
 package de.interseroh.tmb.applauncher.client.domain;
 
-import java.util.List;
+import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.fusesource.restygwt.client.RestService;
 
 import javax.inject.Singleton;
 import javax.ws.rs.Consumes;
@@ -26,12 +29,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import org.fusesource.restygwt.client.MethodCallback;
-import org.fusesource.restygwt.client.RestService;
-
-import de.interseroh.tmb.applauncher.shared.ApplauncherServiceEndpoint;
-import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+import java.util.List;
 
 @Singleton
 @Produces(MediaType.APPLICATION_JSON)

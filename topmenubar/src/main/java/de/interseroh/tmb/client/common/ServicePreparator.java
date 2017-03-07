@@ -18,11 +18,10 @@
  */
 package de.interseroh.tmb.client.common;
 
-import java.util.logging.Logger;
+import org.fusesource.restygwt.client.Defaults;
 
 import javax.inject.Singleton;
-
-import org.fusesource.restygwt.client.Defaults;
+import java.util.logging.Logger;
 
 @Singleton
 public class ServicePreparator {

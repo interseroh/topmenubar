@@ -21,20 +21,19 @@
 
 package de.interseroh.tmb.applauncher.client.common;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.logging.Handler;
-import java.util.logging.Logger;
-import java.util.logging.StreamHandler;
-
+import com.google.gwtmockito.GwtMockitoTestRunner;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.rule.OutputCapture;
 
-import com.google.gwtmockito.GwtMockitoTestRunner;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
