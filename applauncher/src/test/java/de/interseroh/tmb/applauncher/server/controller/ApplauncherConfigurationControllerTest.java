@@ -19,8 +19,7 @@
 
 package de.interseroh.tmb.applauncher.server.controller;
 
-import java.util.List;
-
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +28,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+import java.util.List;
 
 /**
  * Test for testing ApplauncherConfiguration controller

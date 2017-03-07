@@ -18,14 +18,13 @@
  */
 package de.interseroh.tmb.common;
 
-import java.util.Arrays;
-
-import javax.servlet.DispatcherType;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.servlet.DispatcherType;
+import java.util.Arrays;
 
 @Configuration
 public class LoggingCrossOriginConfiguration {
