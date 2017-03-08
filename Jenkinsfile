@@ -4,7 +4,9 @@ node {
         // Using scm configuration from upstream project.
         checkout scm
         //Setting GIT_BRANCH in environment because jenkins does not set it in the current version.
-        env.GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+        //env.GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+        env.GIT_BRANCH = sh(returnStdout: true, script: 'git name-rev --name-only HEAD').trim()
+
         println "BRANCH: $GIT_BRANCH"
 
         // Get the Maven tool.
