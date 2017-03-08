@@ -472,7 +472,7 @@
 										<name>docker.branch.name</name>
 										<value>${GIT_BRANCH}</value>
 										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
-										<regex>.*([^\/]+)</regex>
+										<regex>.*\/</regex>
 										<replacement></replacement>
 									</configuration>
 								</execution>
