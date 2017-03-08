@@ -24,7 +24,9 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
+
 import org.gwtbootstrap3.client.ui.*;
 import org.gwtbootstrap3.client.ui.constants.BadgePosition;
 import org.gwtbootstrap3.client.ui.constants.Pull;
@@ -45,12 +47,22 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String DATA_TMB_HEADLINE = "data-tmb-headline";
 	private static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
+	private static final String TOP_MENU_ICONS_RIGHT = "tmb_icons_right";
+
+	private static final String PORTAL_LINKS = "tmb_portal_links";
+	private static final String TOPICS = "internal_topics";
+
+	private static final String COLLAPSEID = "tmb_navbar_collapse";
 	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
 	// Create Gin Injector
 	private final TopMenuBarAppGinjector injector = GWT
 			.create(TopMenuBarAppGinjector.class);
 
+	private RootPanel portal;
+	private RootPanel topics;
+
+	private RootPanel icons_right;
 	private RootPanel appLauncher;
 	private RootPanel profile;
 	private RootPanel messaging;
@@ -61,7 +73,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 		initServices();
 
 		createViews();
-
 	}
 
 	private void initServices() {
@@ -73,6 +84,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views begins...");
 
 		appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		appLauncher.getElement().addClassName("hidden-xs");
+		appLauncher.getElement().addClassName("headertabs");
+
 		String appUrl = appLauncher.getElement()
 				.getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = appLauncher.getElement()
@@ -80,9 +94,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		RemoteScriptInjector scriptInjector = new RemoteScriptInjector();
 		scriptInjector.injectScript(appUrl, javascriptUrl);
-
-		profile = getWidgets(TMB_PROFILE);
-		messaging = getWidgets(TMB_MESSAGING);
 
 		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 		rootPanel.getElement().setClassName(CSS_BLOCK);
@@ -93,7 +104,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 				.getAttribute(DATA_TMB_HEADLINE);
 
 		Navbar basePanel = new Navbar();
-		// FlowPanel basePanel  = new FlowPanel();
 		basePanel.getElement().getStyle()
 				.setBackgroundColor(ifPresent(color, DEFAULT_BACKGROUND_COLOR));
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
@@ -105,16 +115,27 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logoContainer.add(createLogoImage(iconUrl));
 		header.add(logoContainer);
 		header.add(createBadge(headlineText));
-		header.add(createCollapseButton("tmb_navbar_collapse"));
 		basePanel.add(header);
 
+		portal = getWidgets(PORTAL_LINKS);
+		topics = getWidgets(TOPICS);
+		portal.add(topics);
+
 		NavbarCollapse collapse = new NavbarCollapse();
-		collapse.setId("tmb_navbar_collapse");
-		collapse.add(rightPanelElements());
-
-		rightPanelElements(collapse);
-
+		collapse.setId(COLLAPSEID);
+		collapse.add(portal);
 		basePanel.add(collapse);
+
+		profile = getWidgets(TMB_PROFILE);
+		messaging = getWidgets(TMB_MESSAGING);
+
+		icons_right = getWidgets(TOP_MENU_ICONS_RIGHT);
+		icons_right.add(createCollapseButton("#" + COLLAPSEID));
+		icons_right.add(appLauncher);
+		icons_right.add(messaging);
+		icons_right.add(profile);
+		icons_right.getElement().addClassName("icons-right");
+		basePanel.add(icons_right);
 
 		rootPanel.insert(basePanel, 0);
 		logger.info("Create Views ends...");
@@ -123,42 +144,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private Widget createCollapseButton(String dataTarget) {
 		NavbarCollapseButton button = new NavbarCollapseButton();
 		button.getElement().addClassName(CSS_BLOCK + "__button");
+		button.getElement().addClassName("headertabs");
 		button.setDataTarget(dataTarget);
 		return button;
-	}
-
-	/**
-	 * add elements to the right panel
-	 */
-	private NavbarNav rightPanelElements() {
-
-		appLauncher.removeFromParent();
-		profile.removeFromParent();
-		messaging.removeFromParent();
-
-		NavbarNav nav = new NavbarNav();
-		nav.setPull(Pull.RIGHT);
-
-		nav.add(messaging);
-		nav.add(profile);
-		nav.add(appLauncher);
-
-		return nav;
-	}
-
-	/**
-	 * add elements to the right panel
-	 */
-	private void rightPanelElements(NavbarCollapse parent) {
-
-		appLauncher.removeFromParent();
-		profile.removeFromParent();
-		messaging.removeFromParent();
-
-		parent.add(messaging);
-		parent.add(profile);
-		parent.add(appLauncher);
-
 	}
 
 	/**

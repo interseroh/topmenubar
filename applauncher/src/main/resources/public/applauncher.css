@@ -1,40 +1,41 @@
-/** Add css rules here for your application. */
+/** Add css rules here for your apl application. */
 .APL_application li {
-    list-style-type: none;
+	list-style-type: none;
 }
+
 .APL_application__item {
-    margin-top: 5px;
-    margin-bottom: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .APL_application__iconsContainer {
-    width: 320px;
-    padding: 10px;
+	width: 320px;
+	padding: 10px;
 }
 
 .APL_application__iconWrapper,
 .APL_application__link {
-    height: 25px;
-    margin: auto;
-    display: block;
-    text-align: center;
+	height: 25px;
+	margin: auto;
+	display: block;
+	text-align: center;
 }
 
 .APL_application__iconsContainer img {
-    width: 25px;
-    height: 25px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    margin: auto;
+	width: 25px;
+	height: 25px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	margin: auto;
 }
 
 /** Example rules used by the template application (remove for your app) */
 h1 {
-    font-size: 2em;
-    font-weight: bold;
-    color: #777777;
-    margin: 40px 0 70px;
-    text-align: center;
+	font-size: 2em;
+	font-weight: bold;
+	color: #777777;
+	margin: 40px 0 70px;
+	text-align: center;
 }

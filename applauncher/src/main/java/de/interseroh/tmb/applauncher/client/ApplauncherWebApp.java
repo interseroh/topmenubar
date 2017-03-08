@@ -28,6 +28,7 @@ import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.*;
@@ -58,7 +59,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
-		appLauncherRoot.getElement().setClassName(CSS_BLOCK);
+		appLauncherRoot.getElement().addClassName(CSS_BLOCK);
 		String appUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
 		logger.info("Applauncher application URL: " + appUrl);
@@ -68,8 +69,6 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-		dropDown.getElement().getStyle().setMarginTop(12, Style.Unit.PX);
-
 		Popover popover = createApplauncherPopover();
 
 		AnchorButton popoverBtn = new AnchorButton();
