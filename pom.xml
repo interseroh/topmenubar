@@ -457,6 +457,14 @@
 							<groupId>io.fabric8</groupId>
 							<artifactId>docker-maven-plugin</artifactId>
 							<version>0.19.1</version>
+							<executions>
+								<execution>
+									<phase>pre-integration-test</phase>
+									<goals>
+										<goal>build</goal>
+									</goals>
+								</execution>
+							</executions>
 							<configuration>
 								<skip>true</skip>
 								<images>
