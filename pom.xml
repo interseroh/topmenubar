@@ -521,7 +521,7 @@
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
 											<tags>
-												<tag>${project.version}-${docker.branch.name}</tag>
+												<tag>${project.version}-${GIT_BRANCH}</tag>
 											</tags>
 											<ports>
 												<port>${server.port}</port>
