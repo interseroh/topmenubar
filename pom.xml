@@ -426,7 +426,8 @@
 									</goals>
 									<configuration>
 										<name>docker.branch.name</name>
-										<value>${GIT_BRANCH}</value>
+										<value>$\{GIT_BRANCH}</value>
+										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
 										<regex>.*([^\/]+)</regex>
 										<replacement></replacement>
 									</configuration>
@@ -476,7 +477,7 @@
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
 											<tags>
-												<tag>${project.version}-${docker.branch.name}</tag>
+												<tag>${project.version}-${GIT_BRANCH}</tag>
 											</tags>
 											<ports>
 												<port>${server.port}</port>
