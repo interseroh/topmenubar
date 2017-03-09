@@ -119,6 +119,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		portal = getWidgets(PORTAL_LINKS);
 		topics = getWidgets(TOPICS);
+		topics.getElement().addClassName("nav");
+		topics.getElement().addClassName("navbar-nav");
 		portal.add(topics);
 
 		NavbarCollapse collapse = new NavbarCollapse();

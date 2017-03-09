@@ -51,6 +51,9 @@ body {
 	right: 10px;
 }
 
+.TMB_application .navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
 @media (max-width: 400px) {
 	.navbar-brand {
 		display: none;
