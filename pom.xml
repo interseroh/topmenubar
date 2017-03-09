@@ -514,7 +514,7 @@
 								<skip>true</skip>
 								<images>
 									<image>
-										<name>${project.artifactId}</name>
+										<name>${docker.registry}/${project.artifactId}</name>
 										<build>
 											<from>java:8</from>
 											<maintainer>
