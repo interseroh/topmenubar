@@ -33,6 +33,7 @@ import org.gwtbootstrap3.client.ui.constants.Pull;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -43,6 +44,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 	private static final String TMB_PROFILE = "tmb_profile";
 	private static final String TMB_MESSAGING = "tmb_messaging";
+	private static final String TMB_CUSTOMITEMS = "tmb_customitems";
 
 	private static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
 	private static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
@@ -60,6 +62,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private RootPanel appLauncher;
 	private RootPanel profile;
 	private RootPanel messaging;
+	private RootPanel customItems;
 
 	@Override
 	public void onModuleLoad() {
@@ -89,6 +92,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
+		customItems = getWidgets(TMB_CUSTOMITEMS);
 
 		RootPanel rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
 
@@ -132,16 +136,18 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 */
 	private NavbarNav rightPanelElements() {
 
-		appLauncher.removeFromParent();
-		profile.removeFromParent();
-		messaging.removeFromParent();
+		removeFromParent(customItems);
+		removeFromParent(appLauncher);
+		removeFromParent(profile);
+		removeFromParent(messaging);
 
 		NavbarNav nav = new NavbarNav();
 		nav.setPull(Pull.RIGHT);
 
-		nav.add(messaging);
-		nav.add(profile);
-		nav.add(appLauncher);
+		addToParent(nav, customItems);
+		addToParent(nav, messaging);
+		addToParent(nav, profile);
+		addToParent(nav, appLauncher);
 
 		return nav;
 	}
@@ -151,14 +157,35 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 */
 	private void rightPanelElements(NavbarCollapse parent) {
 
-		appLauncher.removeFromParent();
-		profile.removeFromParent();
-		messaging.removeFromParent();
+		removeFromParent(appLauncher);
+		removeFromParent(profile);
+		removeFromParent(messaging);
 
-		parent.add(messaging);
-		parent.add(profile);
-		parent.add(appLauncher);
+		addToParent(parent, messaging);
+		addToParent(parent, profile);
+		addToParent(parent, appLauncher);
 
+	}
+
+	/**
+	 * Remove a widget from its prent.
+	 * @param widget
+	 */
+	private void removeFromParent(Widget widget) {
+		if (widget != null) {
+			widget.removeFromParent();
+		}
+	}
+
+	/**
+	 * Add a widget to a parent
+	 * @param parent
+	 * @param child
+	 */
+	private void addToParent(Panel parent, Widget child) {
+		if (child != null && parent != null) {
+			parent.add(child);
+		}
 	}
 
 	/**

@@ -19,7 +19,6 @@
   ~  * under the License.
   ~  */
   -->
-
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
 <!--/*@thymesVar id="topmenubarUrl" type="java.lang.String"*/-->
@@ -36,66 +35,46 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Bootstrap 3 Responsive Layout Example</title>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-		crossorigin="anonymous" />
+	<link type="text/css" rel="stylesheet"
+		th:href="${topmenubarUrl}+'/topmenubar.css'" />
+	<script type="text/javascript" language="javascript"
+		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
 
 	<link type="text/css" rel="stylesheet"
 		th:href="${applauncherUrl}+'/applauncher.css'" />
-
-	<script type="text/javascript" language="javascript"
-		th:src="${applauncherUrl}+'/applauncher/applauncher.nocache.js'"></script>
-
 </head>
 <body>
 
-
-<nav id="myNavbar" style="margin-top: 0"
-	class="navbar navbar-default navbar-inverse" role="navigation">
-
-	<!-- Brand and toggle get grouped for better mobile display -->
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#navbarCollapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Tutorial Republic</a>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="https://www.interseroh.de"
-					target="_blank">Home</a></li>
-				<li><a href="https://www.interseroh.de/en/company/about-us-interseroh"
-					target="_blank">About</a></li>
-				<li><a href="https://www.interseroh.de/en/contact"
-					target="_blank">Contact</a></li>
-				<li>
-					<div id="tmb_app_launcher"
-						th:attr="data-tmb-application-url=${applauncherUrl}"
-						data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
-					</div>
-				</li>
-			</ul>
-		</div>
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+	data-tmb-headline="TEST APPLICATION"
+	th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+	<div id="tmb_app_launcher"
+		th:attr="data-tmb-application-url=${applauncherUrl}"
+		data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
 	</div>
-</nav>
+	<div id="tmb_profile">
+	</div>
+	<div id="tmb_messaging">
+	</div>
 
-<!-- Button trigger modal -->
-<div class="container">
-	<div class="row">
-		<button type="button" class="btn btn-primary" data-toggle="modal"
-			data-target="#exampleModal">
-			Launch demo modal
-		</button>
+
+	<div id="tmb_customitems">
+		<ul class="nav navbar-nav">
+			<li class="active">
+				<a href="https://www.interseroh.de" target="_blank">Home</a>
+			</li>
+			<li>
+				<a href="https://www.interseroh.de/en/company/about-us-interseroh"
+					target="_blank">About</a>
+			</li>
+			<li>
+				<a href="https://www.interseroh.de/en/contact"
+					target="_blank">Contact</a>
+			</li>
+		</ul>
 	</div>
 </div>
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -157,26 +136,16 @@
 	</div>
 
 	<div class="jumbotron">
-		<h1>Interseroh</h1>
-		<p>Cologne. The reconditioning of PCs and notebooks, as offered by Interseroh,
-			makes a significant contribution to protecting the climate and saving natural resources.
-			This has now been proven scientifically for the first time
-			in a research project at the Fraunhofer Institute for Environmental,
-			Safety, and Energy Technology (UMSICHT) which was completed on behalf of INTERSEROH Dienstleistungs GmbH.
-			<a href="http://www.interseroh.com"
-				target="_blank">interseroh.com</a> </p>
-		<p><a href="http://www.interseroh.com" target="_blank"
+		<h1>Learn to Create Websites</h1>
+		<p>In today's world internet is the most popular way of connecting with
+			the people. At <a href="http://www.tutorialrepublic.com"
+				target="_blank">tutorialrepublic.com</a> you will
+			learn the essential of web development technologies along with real
+			life practice example, so that you can create your own website to
+			connect with the people around the world.</p>
+		<p><a href="http://www.tutorialrepublic.com" target="_blank"
 			class="btn btn-success btn-lg">Get started today</a></p>
 	</div>
 </div>
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
-
 </body>
 </html>

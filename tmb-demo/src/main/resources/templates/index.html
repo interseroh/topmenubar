@@ -6,19 +6,8 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-	<!--                                                               -->
-	<!-- Consider inlining CSS to reduce the number of requested files -->
-	<!--                                                               -->
-
-	<link type="text/css" rel="stylesheet"
-		th:href="${topmenubarUrl}+'/topmenubar/topmenubar.css'" />
-	<link type="text/css" rel="stylesheet"
-		th:href="${applauncherUrl}+'/applauncher.css'" />
 	<link rel="icon" href="images/favicon.png" type="image/x-icon" />
 
-	<!--                                           -->
-	<!-- Any title is fine                         -->
-	<!--                                           -->
 	<title>Tmb GWT Webapp</title>
 
 	<!-- Latest compiled and minified CSS -->
@@ -27,13 +16,6 @@
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 		crossorigin="anonymous" />
 
-	<!--                                           -->
-	<!-- This script loads your compiled module.   -->
-	<!-- If you add any GWT meta tags, they must   -->
-	<!-- be added before this line.                -->
-	<!--                                           -->
-	<script type="text/javascript" language="javascript"
-		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
 
 </head>
 <body>
@@ -67,6 +49,11 @@ x
 					href="applauncher-within-navbar.html">
 					3. Applauncher within a Bootsrap Navbar.
 				</a>
+				<a class="list-group-item"
+					href="topmenubar-with-portalitems.html">
+					4. Navitems within Topmenubar.
+				</a>
+
 			</div>
 		</div>
 	</div>
