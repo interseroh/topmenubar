@@ -54,6 +54,12 @@ body {
 .TMB_application .navbar-default .navbar-nav>li>a {
 	color: #fff;
 }
+
+.TMB_application .navbar-default .navbar-nav>li>a:hover,
+.TMB_application .navbar-default .navbar-nav>li>a:focus {
+	color: #789abc;
+}
+
 @media (max-width: 400px) {
 	.navbar-brand {
 		display: none;
