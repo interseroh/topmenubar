@@ -507,6 +507,7 @@
 									<phase>pre-integration-test</phase>
 									<goals>
 										<goal>build</goal>
+										<goal>push</goal>
 									</goals>
 								</execution>
 							</executions>
