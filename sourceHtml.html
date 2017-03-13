@@ -1,0 +1,125 @@
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+	data-tmb-headline="TEST APPLICATION" data-tmb-icon-url="images/logo.svg"
+	class="TMB_application">
+
+
+	<nav class="navbar navbar-default" role="navigation"
+		style="background-color: rgb(34, 61, 98); margin-bottom: 0pt;">
+		<div class="navbar-header">
+			<div class="TMB_application__logocontainer">
+				<img src="images/logo.svg" class="">
+			</div>
+			<a href="javascript:;" class="navbar-brand">
+				<span class="badge"
+				style="margin-left: 0; margin-right: 0;">TEST APPLICATION</span>
+			</a>
+		</div>
+		<div class="collapse navbar-collapse" id="tmb_navbar_collapse">
+			<div id="tmb_portal_links">
+				<ul id="internal_topics" class="text-right nav navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Thema 1</a></li>
+					<li><a href="#">Thema 2</a></li>
+					<li><a href="#"> . . . </a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="tmb_icons_right" class="icons-right">
+
+			<button type="button"
+				class="navbar-toggle TMB_application__button headertabs"
+				data-toggle="collapse" data-target="#tmb_navbar_collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<div id="tmb_app_launcher"
+				data-tmb-javascript-url="/applauncher/applauncher.nocache.js"
+				data-tmb-application-url="http://localhost:9010/applauncher"
+				class="hidden-xs headertabs APL_application">
+
+				Der applauncher hat hier noch eine LI statt eines DIVS
+				<div class="dropdown"
+					onfocusout="javasript:hideApplauncherPopover();"
+					style="float: right;">
+					<a class="dropdown-toggle"
+					href="javascript:;" data-original-title="" title="">
+						<i class="fa fa-th fa-3x"></i>
+					</a>
+				</div>
+			</div>
+			<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+			<div id="tmb_profile" class="fa fa-user headertabs"></div>
+		</div>
+	</nav>
+</div>
+
+für die Links, die von außen kommen, gilt diese Struktur: (class="text-right" nur dann, wenn der Text rechts ausgerichtet sein soll)
+<ul id="internal_topics" class="text-right">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Thema 1</a></li>
+	<li><a href="#">Thema 2</a></li>
+	<li><a href="#">Thema 3</a></li>
+	<li><a href="#">Thema 4</a></li>
+	<li><a href="#">Thema 5</a></li>
+</ul>
+
+
+
+
+oder einfacher:
+<div id="tmb_top_menu_bar">
+
+
+	<nav class="navbar navbar-default">
+
+		1
+		<div class="navbar-header">
+			<div class="TMB_application__logocontainer">
+				LOGO
+			</div>
+			<a class="navbar-brand">
+				TITLE
+			</a>
+		</div>
+
+		2
+		<div class="collapse navbar-collapse" id="tmb_navbar_collapse">
+			<div id="tmb_portal_links">
+				<ul id="internal_topics" class="text-right nav navbar-nav">
+					<li><a href="#">COLAPSABLE</a></li>
+					<li><a href="#">LIST</a></li>
+					<li><a href="#">Thema 2</a></li>
+					<li><a href="#"> . . . </a></li>
+				</ul>
+			</div>
+		</div>
+
+		3
+		<div id="tmb_icons_right" class="icons-right">
+			<button type="button">
+				BURGERBUTTON
+			</button>
+			<div id="tmb_app_launcher">
+				APPLAUNCHER
+			</div>
+			<div>ICON</div>
+			<div>ICON</div>
+		</div>
+
+
+	</nav>
+</div>
+
+in der topmenubar.html stehen bereit
+Container für alles
+<div id="tmb_top_menu_bar"></div>
+Links vom Portal
+<div id="tmb_portal_links"></div>
+Icons auf der rechten Seite
+<div id="tmb_icons_right"></div>
+Profile Icon
+<div id="tmb_profile" class="fa fa-user headertabs"></div>
+Nachrichten Icon
+<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
