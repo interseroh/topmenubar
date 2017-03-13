@@ -168,4 +168,30 @@ Proceeding for the successful integration of the **TopMenuBar** in the pages whi
 - Check existing class `navbar-fixed-top` of the attribute **class** of the tag `nav`.
 - If the class `navbar-fixed-top` exists than remove this class as in the **Test case 2**
 - Removes Bootstrap css and JavaScripts from the original page as in the **Test case 3**
+
    
+      
+   # Docker-Container
+   This project is using the fabric8.io docker plugin for maven and enables the developer to create docker images in zero time. 
+   ##Requirements
+   Besides the necessary maven environment, a working docker container build environment is mandatory (this means, you must be able to run docker build commands successfully). 
+   ##Building the images
+   All you have to do is enabling the with-docker-profile. The build command for building the image is fired through maven:
+   
+   ```
+mvn clean install -Pwith-docker io.fabric8:docker-maven-plugin:0.19.1:build
+   ```
+
+   _Please verify that the plugin version in the command line matches the plugin version in the parent pom.xml!_
+      
+  
+  As a result of this build you will find an image carrying the build version in the local docker registry:
+   
+   ```
+   $ docker images
+   
+      REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+      topmenubar          1.0.0-SNAPSHOT      0677b5eb24a8        3 minutes ago       767 MB
+      topmenubar          latest              0677b5eb24a8        3 minutes ago       767 MB
+      applauncher         1.0.0-SNAPSHOT      41183726d7a9        3 minutes ago       752 MB
+      applauncher         latest              41183726d7a9        3 minutes ago       752 MB```

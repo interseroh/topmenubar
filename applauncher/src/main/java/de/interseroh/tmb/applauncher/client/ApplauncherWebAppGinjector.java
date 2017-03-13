@@ -20,7 +20,6 @@ package de.interseroh.tmb.applauncher.client;
 
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
-
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 
 @FunctionalInterface

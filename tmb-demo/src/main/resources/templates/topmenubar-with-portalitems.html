@@ -23,16 +23,13 @@
 <!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
 <!--/*@thymesVar id="topmenubarUrl" type="java.lang.String"*/-->
 <head>
-	<!--
-	This test page is modified an original page.
-	There are next changes from original page:
-	 - is removed class 'navbar-fixed-top'
-	 - is removed all references to bootstrap css and js of original page
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-	-->
-	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
 	<title>Bootstrap 3 Responsive Layout Example</title>
 
 	<link type="text/css" rel="stylesheet"
@@ -52,28 +49,27 @@
 		th:attr="data-tmb-application-url=${applauncherUrl}"
 		data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
 	</div>
-	<div id="tmb_profile">
+	<div id="tmb_portal_links"></div>
+	<div id="tmb_icons_right"></div>
+	<div id="tmb_profile" class="fa fa-user headertabs">
 	</div>
-	<div id="tmb_messaging">
-	</div>
-
-
-	<div id="tmb_customitems">
-		<ul class="nav navbar-nav">
-			<li class="active">
-				<a href="https://www.interseroh.de" target="_blank">Home</a>
-			</li>
-			<li>
-				<a href="https://www.interseroh.de/en/company/about-us-interseroh"
-					target="_blank">About</a>
-			</li>
-			<li>
-				<a href="https://www.interseroh.de/en/contact"
-					target="_blank">Contact</a>
-			</li>
-		</ul>
+	<div id="tmb_messaging" class="fa fa-envelope-o headertabs">
 	</div>
 </div>
+
+<ul id="internal_topics" class="text-right">
+	<li>
+		<a href="https://www.interseroh.de" target="_blank">Home</a>
+	</li>
+	<li>
+		<a href="https://www.interseroh.de/en/company/about-us-interseroh"
+			target="_blank">About</a>
+	</li>
+	<li>
+		<a href="https://www.interseroh.de/en/contact"
+			target="_blank">Contact</a>
+	</li>
+</ul>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"

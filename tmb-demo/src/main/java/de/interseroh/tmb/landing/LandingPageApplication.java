@@ -24,9 +24,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TopMenuBarApplication {
+public class LandingPageApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TopMenuBarApplication.class, args);
+		System.out.println("TEST");
+		SpringApplication.run(LandingPageApplication.class, args);
 	}
 }

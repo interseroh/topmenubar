@@ -39,10 +39,8 @@ import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
@@ -53,6 +51,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private static final String DATA_APPLICATION_URL = "data-tmb-application-url";
 	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+	private static final String CSS_BLOCK = "APL_application";
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
@@ -68,6 +67,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
+		appLauncherRoot.getElement().addClassName(CSS_BLOCK);
 		applauncherUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
 		logger.info("Applauncher application URL: " + applauncherUrl);
@@ -77,12 +77,11 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-
 		Popover popover = createApplauncherPopover();
 
 		AnchorButton popoverBtn = new AnchorButton();
 		popoverBtn.setIcon(IconType.TH);
-		popoverBtn.setIconSize(IconSize.LARGE);
+		popoverBtn.setIconSize(IconSize.TIMES3);
 
 		createFlowPanel();
 
@@ -107,7 +106,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private Container createPopupContainer() {
 		Container popupContainer = new Container();
-		popupContainer.getElement().addClassName("applauncherContainerCls");
+		popupContainer.getElement()
+				.addClassName(CSS_BLOCK + "__iconsContainer");
 		popupContainer.setFluid(true);
 		return popupContainer;
 
@@ -115,42 +115,32 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private void fillThreeColumnContainer(Container popupContainer,
 			List<TargetApplication> webApps) {
-
-		int actCol = 0;
-		Row currentRow = null;
+		Row currentRow = new Row();
+		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
-			if (actCol == 0) {
-				currentRow = new Row();
-				popupContainer.add(currentRow);
-			}
-			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
-					webApp.getApplicationURL(), applauncherUrl + '/' + webApp.getImageURL()));
-			actCol = (actCol + 1) % 3;
+			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
+					webApp.getApplicationURL(), webApp.getImageURL()));
 		}
 	}
 
 	private Column createAnchorColumn(String span, String text, String url,
 			String iconUrl) {
 		Column col = new Column(span);
-		col.getElement().getStyle()
-				.setVerticalAlign(Style.VerticalAlign.MIDDLE);
-
-		VerticalPanel panel = new VerticalPanel();
-		panel.getElement().addClassName("applauncherVerticalBar");
-		panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+		Row newRow = new Row();
+		newRow.getElement().addClassName(CSS_BLOCK + "__item");
+		SimplePanel iconWrapper = new SimplePanel();
+		iconWrapper.getElement().setClassName(CSS_BLOCK + "__iconWrapper");
 		Image icon = new Image(iconUrl);
-		icon.getElement().addClassName("applauncherIconCls");
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
-		icon.getElement().addClassName("glyphicon");
-
+		iconWrapper.add(icon);
 		Anchor anchor = new Anchor();
 		anchor.setText(text);
+		anchor.getElement().setClassName(CSS_BLOCK + "__link");
 		anchor.setHref(url);
-		panel.add(icon);
-		panel.add(anchor);
-		col.add(panel);
+		newRow.add(iconWrapper);
+		newRow.add(anchor);
+		col.add(newRow);
 		return col;
 	}
 

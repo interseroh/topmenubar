@@ -35,7 +35,8 @@
     <description>Demo project for Spring Boot and GWT</description>
 
     <properties>
-        <i18n.messages.bundle>de.interseroh.tmb.client.Messages</i18n.messages.bundle>
+        <i18n.messages.bundle>de.interseroh.tmb.client.Messages
+        </i18n.messages.bundle>
         <i18n.gwt.module>de.interseroh.tmb.TopMenuBar</i18n.gwt.module>
         <gwt.dev.module>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.module>
     </properties>
@@ -59,6 +60,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.apache.tomcat</groupId>-->
+                    <!--<artifactId>tomcat-juli</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
         </dependency>
 
         <!-- Use this Spring Tool for restarting the app automatically -->
@@ -193,4 +200,26 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>with-docker</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>properties-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>0.19.1</version>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
