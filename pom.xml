@@ -205,6 +205,29 @@
 	</dependencyManagement>
 
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>2.2.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+					<execution>
+						<id>validate-the-git-infos</id>
+						<goals>
+							<goal>validateRevision</goal>
+						</goals>
+						<!-- *NOTE*: The default phase of validateRevision is verify, but in case you want to change it, you can do so by adding the phase here -->
+						<phase>validate</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 		<pluginManagement>
 			<plugins>
 				<!-- Plugin org.springframework.boot -->
@@ -417,6 +440,47 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
+							<groupId>pl.project13.maven</groupId>
+							<artifactId>git-commit-id-plugin</artifactId>
+							<version>2.2.2</version>
+							<executions>
+								<execution>
+									<goals>
+										<goal>revision</goal>
+									</goals>
+									<phase>validate</phase>
+								</execution>
+								<execution>
+									<id>validate-the-git-infos</id>
+									<goals>
+										<goal>validateRevision</goal>
+									</goals>
+									<!-- *NOTE*: The default phase of validateRevision is verify, but in case you want to change it, you can do so by adding the phase here -->
+									<phase>validate</phase>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>build-helper-maven-plugin</artifactId>
+							<version>3.0.0</version>
+							<executions>
+								<execution>
+									<phase>package</phase>
+									<goals>
+										<goal>regex-property</goal>
+									</goals>
+									<configuration>
+										<name>docker.branch.name</name>
+										<value>${GIT_BRANCH}</value>
+										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
+										<regex>.*\/</regex>
+										<replacement></replacement>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>properties-maven-plugin</artifactId>
 							<version>1.0.0</version>
@@ -440,19 +504,27 @@
 							<groupId>io.fabric8</groupId>
 							<artifactId>docker-maven-plugin</artifactId>
 							<version>0.19.1</version>
+							<executions>
+								<execution>
+									<phase>pre-integration-test</phase>
+									<goals>
+										<goal>build</goal>
+										<goal>push</goal>
+									</goals>
+								</execution>
+							</executions>
 							<configuration>
 								<skip>true</skip>
 								<images>
 									<image>
-										<name>${project.artifactId}</name>
+										<name>${docker.registry}/${project.artifactId}</name>
 										<build>
 											<from>java:8</from>
 											<maintainer>
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
 											<tags>
-												<tag>latest</tag>
-												<tag>${project.version}</tag>
+												<tag>${project.version}-${docker.branch.name}</tag>
 											</tags>
 											<ports>
 												<port>${server.port}</port>
@@ -474,6 +546,10 @@
 										</build>
 									</image>
 								</images>
+								<authConfig>
+									<username>${docker.username}</username>
+									<password>${docker.password}</password>
+								</authConfig>
 							</configuration>
 						</plugin>
 					</plugins>
