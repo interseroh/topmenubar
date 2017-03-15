@@ -33,7 +33,8 @@
 	<artifactId>tmb-demo</artifactId>
 
 	<properties>
-		<i18n.messages.bundle>de.interseroh.tmb.client.Messages</i18n.messages.bundle>
+		<i18n.messages.bundle>de.interseroh.tmb.client.Messages
+		</i18n.messages.bundle>
 		<i18n.gwt.module>de.interseroh.tmb.TopMenuBar</i18n.gwt.module>
 		<gwt.dev.module>de.interseroh.tmb.TopMenuBarDevelopment</gwt.dev.module>
 	</properties>
@@ -42,8 +43,8 @@
 		<!-- Use this Spring Tool for restarting the app automatically -->
 		<!-- Only use this if you don't use JRebel! -->
 		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-devtools</artifactId>-->
+		<!--<groupId>org.springframework.boot</groupId>-->
+		<!--<artifactId>spring-boot-devtools</artifactId>-->
 		<!--</dependency>-->
 
 		<!-- Switched to jetty to enable gwt super dev mode in intellij (workaround) -->
