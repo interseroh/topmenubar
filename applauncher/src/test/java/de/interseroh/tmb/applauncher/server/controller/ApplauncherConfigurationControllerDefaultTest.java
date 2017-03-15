@@ -39,7 +39,7 @@ public class ApplauncherConfigurationControllerDefaultTest {
 
 	private static final String PORTAL_URL = "http://www.google.de";
 
-	private static final int ITEMS_AMOUNT = 6;
+	private static final int ITEMS_AMOUNT = 5;
 
 	@Autowired
 	private ApplauncherConfigurationController appConfig;
