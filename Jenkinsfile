@@ -1,20 +1,23 @@
 node {
     def mvnHome
-    stage('Preparation') { // for display purposes
-        // Get some code from a GitHub repository
-        git branch: 'feature/TPI-16-dockertest', url: 'https://github.com/interseroh/topmenubar.git'
+    stage('Preparation') {
+        // Using scm configuration from upstream project.
+        checkout scm
+        //Setting GIT_BRANCH in environment because jenkins does not set it in the current version.
+        //env.GIT_BRANCH = sh(returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+        env.GIT_BRANCH = sh(returnStdout: true, script: 'git name-rev --name-only HEAD').trim()
+
+        println "BRANCH: $GIT_BRANCH"
+
         // Get the Maven tool.
-        // ** NOTE: This 'M3' Maven tool must be configured
+        // ** NOTE: This 'maven-default' Maven tool must be configured
         // **       in the global configuration.
         mvnHome = tool 'maven-default'
     }
     stage('Build') {
+        println "BRANCH: $GIT_BRANCH"
         // Run the maven build
-        if (isUnix()) {
-            sh "'${mvnHome}/bin/mvn' clean install io.fabric8:docker-maven-plugin:0.19.1:build -Pwith-docker"
-        } else {
-            bat(/"${mvnHome}\bin\mvn" clean package/)
-        }
+        sh "'${mvnHome}/bin/mvn' clean install -Pwith-docker"
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
