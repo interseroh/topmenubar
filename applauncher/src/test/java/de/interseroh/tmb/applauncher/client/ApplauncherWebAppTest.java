@@ -20,10 +20,12 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-import com.google.gwtmockito.GwtMockitoTestRunner;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.google.gwtmockito.GwtMockitoTestRunner;
 
 @RunWith(GwtMockitoTestRunner.class)
 public class ApplauncherWebAppTest {
@@ -36,7 +38,8 @@ public class ApplauncherWebAppTest {
 	}
 
 	@Test
+	@Ignore
 	public void testOnModuleLoad() throws Exception {
-		applauncherWebApp.toString();
+		applauncherWebApp.onModuleLoad();
 	}
 }

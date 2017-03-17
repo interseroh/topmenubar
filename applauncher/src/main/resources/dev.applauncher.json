@@ -2,32 +2,27 @@
   "applauncherProperties": {
     "targetApplication": [
       {
-        "imageURL": "images/auftrags-logo.png",
-        "caption": "Aufträge",
+        "imageURL": "images/webshop-logo.png",
+        "caption": "WebShop",
         "applicationURL": "http://www.google.de"
       },
       {
-        "imageURL": "images/ecoservice24-logo.png",
-        "caption": "eco24",
+        "imageURL": "images/entsorgerportal-logo.png",
+        "caption": "Entsorgerportal",
         "applicationURL": "http://www.google.de"
       },
       {
-        "imageURL": "images/isupplier-logo.png",
-        "caption": "isupplier",
+        "imageURL": "images/kleinmengenlogistik-logo.png",
+        "caption": "Kleinmengenlogistik",
         "applicationURL": "http://www.google.de"
       },
       {
-        "imageURL": "images/mengenmeldung-logo.png",
-        "caption": "Mengen",
+        "imageURL": "images/mengenmeldeportal-logo.png",
+        "caption": "Mengenmeldeportal",
         "applicationURL": "http://www.google.de"
       },
       {
-        "imageURL": "images/sammeldrache-logo.jpeg",
-        "caption": "Drache",
-        "applicationURL": "http://www.google.de"
-      },
-      {
-        "imageURL": "images/dienstleistung-logo.png",
+        "imageURL": "images/dlp-logo.png",
         "caption": "Dienste",
         "applicationURL": "http://www.google.de"
       }

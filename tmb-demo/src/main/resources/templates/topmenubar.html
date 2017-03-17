@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the     -->
+<!-- browser's rendering engine into                -->
+<!-- "Standards Mode". Replacing this declaration   -->
+<!-- with a "Quirks Mode" doctype is not supported. -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
+<!--/*@thymesVar id="topmenubarUrl" type="java.lang.String"*/-->
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+	<!--                                                               -->
+	<!-- Consider inlining CSS to reduce the number of requested files -->
+	<!--                                                               -->
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<link type="text/css" rel="stylesheet"
+		th:href="${topmenubarUrl}+'/topmenubar.css'" />
+	<link type="text/css" rel="stylesheet"
+		th:href="${applauncherUrl}+'/applauncher.css'" />
+	<link rel="icon" href="images/favicon.png" type="image/x-icon" />
+
+	<!--                                           -->
+	<!-- Any title is fine                         -->
+	<!--                                           -->
+	<title>Tmb GWT Webapp</title>
+
+	<!--                                           -->
+	<!-- This script loads your compiled module.   -->
+	<!-- If you add any GWT meta tags, they must   -->
+	<!-- be added before this line.                -->
+	<!--                                           -->
+	<script type="text/javascript" language="javascript"
+		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+</head>
+
+<!--                                           -->
+<!-- The body can have arbitrary html, or      -->
+<!-- you can leave the body empty if you want  -->
+<!-- to create a completely dynamic UI.        -->
+<!--                                           -->
+<body>
+
+
+<!-- OPTIONAL: include this if you want history support -->
+<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+	style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+
+<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+<noscript>
+	<div
+		style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+		Your web browser must have JavaScript enabled in order for this
+		application to display correctly.
+	</div>
+</noscript>
+
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+	data-tmb-headline="TEST APPLICATION"
+	th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
+	<div id="tmb_app_launcher"
+		th:attr="data-tmb-application-url=${applauncherUrl}"
+		data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+	</div>
+	<div id="tmb_portal_links"></div>
+	<div id="tmb_icons_right"></div>
+	<div id="tmb_profile" class="fa fa-user headertabs"></div>
+	<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+</div>
+
+<ul id="internal_topics" class="text-right">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Thema 1</a></li>
+	<li><a href="#">Thema 2</a></li>
+	<li><a href="#">Thema 3</a></li>
+	<li><a href="#">Thema 4</a></li>
+	<li><a href="#">Thema 5</a></li>
+</ul>
+
+<div style="padding:20px;">
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+	eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+	voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+	clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor.
+	amet.
+</div>
+</body>
+</html>

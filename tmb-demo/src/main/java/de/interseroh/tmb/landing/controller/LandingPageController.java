@@ -18,28 +18,29 @@
  *  * under the License.
  *
  */
+package de.interseroh.tmb.landing.controller;
 
-package de.interseroh.tmb.server.controller;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+@Controller
+public class LandingPageController {
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+	@Value("${applauncher.url:http://localhost:9014/applauncher}")
+	private String applauncherUrl;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(LandingPageController.class)
-public class LandingPageControllerTest {
+	@Value("${topmenubar.url:http://localhost:9010/topmenubar}")
+	private String topmenubarUrl;
 
-	@Autowired
-	private MockMvc mvc;
-
-	@Test
-	public void testLandingPageGet() throws Exception {
-		mvc.perform(get("/topmenubar.html")).andExpect(status().isOk());
+	@GetMapping(path = "{viewname}.html")
+	public String doGet(Model model,
+			@PathVariable("viewname") String viewname) {
+		model.addAttribute("applauncherUrl", applauncherUrl);
+		model.addAttribute("topmenubarUrl", topmenubarUrl);
+		return viewname;
 	}
+
 }

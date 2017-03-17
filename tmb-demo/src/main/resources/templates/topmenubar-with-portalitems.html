@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+  ~ /*
+  ~  * Licensed to the Apache Software Foundation (ASF) under one
+  ~  * or more contributor license agreements.  See the NOTICE file
+  ~  * distributed with this work for additional information
+  ~  * regarding copyright ownership.  The ASF licenses this file
+  ~  * to you under the Apache License, Version 2.0 (the
+  ~  * "License"); you may not use this file except in compliance
+  ~  * with the License.  You may obtain a copy of the License at
+  ~  *
+  ~  *  http://www.apache.org/licenses/LICENSE-2.0
+  ~  *
+  ~  * Unless required by applicable law or agreed to in writing,
+  ~  * software distributed under the License is distributed on an
+  ~  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  * KIND, either express or implied.  See the License for the
+  ~  * specific language governing permissions and limitations
+  ~  * under the License.
+  ~  */
+  -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
+<!--/*@thymesVar id="topmenubarUrl" type="java.lang.String"*/-->
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+	<title>Bootstrap 3 Responsive Layout Example</title>
+
+	<link type="text/css" rel="stylesheet"
+		th:href="${topmenubarUrl}+'/topmenubar.css'" />
+	<script type="text/javascript" language="javascript"
+		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+
+	<link type="text/css" rel="stylesheet"
+		th:href="${applauncherUrl}+'/applauncher.css'" />
+</head>
+<body>
+
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+	data-tmb-headline="TEST APPLICATION"
+	th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+	<div id="tmb_app_launcher"
+		th:attr="data-tmb-application-url=${applauncherUrl}"
+		data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+	</div>
+	<div id="tmb_portal_links"></div>
+	<div id="tmb_icons_right"></div>
+	<div id="tmb_profile" class="fa fa-user headertabs">
+	</div>
+	<div id="tmb_messaging" class="fa fa-envelope-o headertabs">
+	</div>
+</div>
+
+<ul id="internal_topics" class="text-right">
+	<li>
+		<a href="https://www.interseroh.de" target="_blank">Home</a>
+	</li>
+	<li>
+		<a href="https://www.interseroh.de/en/company/about-us-interseroh"
+			target="_blank">About</a>
+	</li>
+	<li>
+		<a href="https://www.interseroh.de/en/contact"
+			target="_blank">Contact</a>
+	</li>
+</ul>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Modal body text goes here.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Save changes
+				</button>
+				<button type="button" class="btn btn-secondary"
+					data-dismiss="modal">Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="container">
+		<h2>Table in Container</h2>
+		<p>The .table class adds basic styling (light padding and only
+			horizontal
+			dividers) to a table:</p>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>john@example.com</td>
+			</tr>
+			<tr>
+				<td>Mary</td>
+				<td>Moe</td>
+				<td>mary@example.com</td>
+			</tr>
+			<tr>
+				<td>July</td>
+				<td>Dooley</td>
+				<td>july@example.com</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="jumbotron">
+		<h1>Learn to Create Websites</h1>
+		<p>In today's world internet is the most popular way of connecting with
+			the people. At <a href="http://www.tutorialrepublic.com"
+				target="_blank">tutorialrepublic.com</a> you will
+			learn the essential of web development technologies along with real
+			life practice example, so that you can create your own website to
+			connect with the people around the world.</p>
+		<p><a href="http://www.tutorialrepublic.com" target="_blank"
+			class="btn btn-success btn-lg">Get started today</a></p>
+	</div>
+</div>
+</body>
+</html>

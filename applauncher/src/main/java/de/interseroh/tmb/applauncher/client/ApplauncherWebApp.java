@@ -18,32 +18,40 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
-import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
-import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
-import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+import java.util.List;
+import java.util.logging.Logger;
+
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
-import org.gwtbootstrap3.client.ui.*;
+import org.gwtbootstrap3.client.ui.Anchor;
+import org.gwtbootstrap3.client.ui.AnchorButton;
+import org.gwtbootstrap3.client.ui.Column;
+import org.gwtbootstrap3.client.ui.Container;
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.ListDropDown;
+import org.gwtbootstrap3.client.ui.Popover;
+import org.gwtbootstrap3.client.ui.Row;
 import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.ImageType;
 import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
-import java.util.List;
-import java.util.logging.Logger;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
+
+import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
+import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
+import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
 public class ApplauncherWebApp implements EntryPoint {
 
 	private static final String DATA_APPLICATION_URL = "data-tmb-application-url";
 	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
+	private static final String CSS_BLOCK = "APL_application";
 
 	private static final Logger logger = Logger
 			.getLogger(ApplauncherWebApp.class.getName());
@@ -52,27 +60,28 @@ public class ApplauncherWebApp implements EntryPoint {
 			.create(ApplauncherWebAppGinjector.class);
 
 	private AppConfigurationClient appConfigurationClient;
+	private String applauncherUrl;
 
 	@Override
 	public void onModuleLoad() {
 		logger.info("AppLauncher: Create Views begins...");
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
-		String appUrl = appLauncherRoot.getElement()
+		appLauncherRoot.getElement().addClassName(CSS_BLOCK);
+		applauncherUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
-		logger.info("Applauncher application URL: " + appUrl);
-		ServicePreparator servicePreparator = initServices(appUrl);
+		logger.info("Applauncher application URL: " + applauncherUrl);
+		ServicePreparator servicePreparator = initServices(applauncherUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
 
 		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
-
 		Popover popover = createApplauncherPopover();
 
 		AnchorButton popoverBtn = new AnchorButton();
 		popoverBtn.setIcon(IconType.TH);
-		popoverBtn.setIconSize(IconSize.LARGE);
+		popoverBtn.setIconSize(IconSize.TIMES3);
 
 		createFlowPanel();
 
@@ -97,7 +106,8 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private Container createPopupContainer() {
 		Container popupContainer = new Container();
-		popupContainer.getElement().addClassName("applauncherContainerCls");
+		popupContainer.getElement()
+				.addClassName(CSS_BLOCK + "__iconsContainer");
 		popupContainer.setFluid(true);
 		return popupContainer;
 
@@ -105,45 +115,32 @@ public class ApplauncherWebApp implements EntryPoint {
 
 	private void fillThreeColumnContainer(Container popupContainer,
 			List<TargetApplication> webApps) {
-
-		int actCol = 0;
-		Row currentRow = null;
+		Row currentRow = new Row();
+		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
-			if (actCol == 0) {
-				currentRow = new Row();
-				popupContainer.add(currentRow);
-			}
-			currentRow.add(createAnchorColumn("MD_4", webApp.getCaption(),
+			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
 					webApp.getApplicationURL(), webApp.getImageURL()));
-			actCol++;
-			if (actCol >= 3) {
-				actCol = 0;
-			}
 		}
 	}
 
 	private Column createAnchorColumn(String span, String text, String url,
 			String iconUrl) {
 		Column col = new Column(span);
-		col.getElement().getStyle()
-				.setVerticalAlign(Style.VerticalAlign.MIDDLE);
-
-		VerticalPanel panel = new VerticalPanel();
-		panel.getElement().addClassName("applauncherVerticalBar");
-		panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+		Row newRow = new Row();
+		newRow.getElement().addClassName(CSS_BLOCK + "__item");
+		SimplePanel iconWrapper = new SimplePanel();
+		iconWrapper.getElement().setClassName(CSS_BLOCK + "__iconWrapper");
 		Image icon = new Image(iconUrl);
-		icon.getElement().addClassName("applauncherIconCls");
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
-		icon.getElement().addClassName("glyphicon");
-
+		iconWrapper.add(icon);
 		Anchor anchor = new Anchor();
 		anchor.setText(text);
+		anchor.getElement().setClassName(CSS_BLOCK + "__link");
 		anchor.setHref(url);
-		panel.add(icon);
-		panel.add(anchor);
-		col.add(panel);
+		newRow.add(iconWrapper);
+		newRow.add(anchor);
+		col.add(newRow);
 		return col;
 	}
 
