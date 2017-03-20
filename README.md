@@ -61,12 +61,23 @@ For example for the module `#topmenubar` that are:
 This module represents the application launcher panel of the Top Menu Bar.
  
 #### Configuration Properties
+##### config file
 It utilizes the `dev.applauncher.json` file by default for configuring the panel.
 You can override it by setting the `applauncher.config.json property.
  
 Example:
  
  `-Dapplauncher.config.json=classpath:prod.applauncher.json`
+##### image folder
+By default the images in src/main/resources/public/images will bes used.
+You can override this value to set a custom image folder. Be aware that the
+complete folder will be public accessible.
+Note: The name of the image folder has to be closed with a slash.
+
+Examples:
+
+ `-Dapplauncher.images.location=classpath:public/images/`
+ `-Dapplauncher.images.location=file:/var/public/images/`
 
 ### messaging
 This module represents the messaging facilities of Top Menu Bar.
