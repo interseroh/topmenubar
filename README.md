@@ -65,9 +65,11 @@ This module represents the application launcher panel of the Top Menu Bar.
 It utilizes the `dev.applauncher.json` file by default for configuring the panel.
 You can override it by setting the `applauncher.config.json property.
  
-Example:
+Examples:
  
  `-Dapplauncher.config.json=classpath:prod.applauncher.json`
+ `-Dapplauncher.config.json=file:/var/config/applauncher.json`
+ 
 ##### image folder
 By default the images in src/main/resources/public/images will bes used.
 You can override this value to set a custom image folder. Be aware that the
