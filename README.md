@@ -97,11 +97,11 @@ This module contains the graphical representation of Top Menu Bar plus a prototy
 
 ## Configuration
 In a production environment you should define the location of the configuration file
-and image folder. The configuration file and image folder in the sources is just used for
+and image folder. The configuration file and image folder in the sources are just used for
 development purpose. You do not want to commit your configuration and images to a
-public version control repository.
+public version control repository like GitHub.
 
-See [applauncher](#applauncher) for configuration properties.
+See [applauncher](#applauncher) for configuration properties and configuration file.
 
 
 ## Integration Test
