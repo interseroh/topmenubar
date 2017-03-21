@@ -126,9 +126,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		if (icons_right != null) {
 			icons_right.add(createCollapseButton("#" + COLLAPSEID));
-			icons_right.add(appLauncher);
-			icons_right.add(messaging);
 			icons_right.add(profile);
+			icons_right.add(messaging);
+			icons_right.add(appLauncher);
 			icons_right.getElement().addClassName("icons-right");
 			basePanel.add(icons_right);
 		}
@@ -148,7 +148,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 	}
 
 	private void configureApplauncher() {
-		appLauncher.getElement().addClassName("hidden-xs");
 		appLauncher.getElement().addClassName("headertabs");
 	}
 

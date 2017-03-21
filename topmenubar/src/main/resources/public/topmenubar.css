@@ -4,33 +4,27 @@ body {
 	overflow: hidden;
 }
 
-.TMB_application .APL_application {
-	padding-top: 2px;
-}
-
 .TMB_application .fa {
-	font-size: 25px;
+	font-size: 13px;
 	color: #fff;
 	text-shadow: 1px 1px 0 #000;
-	margin-top: 20px;
 }
 
 .TMB_application .headertabs {
 	float: right;
-	margin-left: .15em;
-	margin-right: .15em;
+	margin-right: 15px;
 }
 
 .TMB_application__logocontainer {
 	float: left;
 	background-color: #fff;
 	padding: 3px;
-	margin: 1px 0;
+	margin: 3px 0;
 	border-radius: 5px;
 }
 
 .TMB_application__logocontainer img {
-	height: 55px;
+	height: 50px;
 }
 
 .TMB_application__button {
@@ -49,6 +43,11 @@ body {
 	position: absolute;
 	top: 0;
 	right: 10px;
+	padding-top: 20px;
+}
+
+.TMB_application .icons-right .TMB_application__button {
+	margin-top:-10px;
 }
 
 .TMB_application .navbar-default .navbar-nav>li>a {

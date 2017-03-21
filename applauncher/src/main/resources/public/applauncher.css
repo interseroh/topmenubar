@@ -1,29 +1,36 @@
 /** Add css rules here for your apl application. */
 .APL_application li {
 	list-style-type: none;
+	line-height: 1em;
+}
+
+.APL_application .fa {
+	color: #fff;
+	margin-top: 1px;
+	font-size: 13px;
 }
 
 .APL_application__item {
 	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 
 .APL_application__iconsContainer {
-	width: 320px;
+	width: 265px;
 	padding: 10px;
 }
 
 .APL_application__iconWrapper,
 .APL_application__link {
-	height: 25px;
+	height: 40px;
 	margin: auto;
 	display: block;
 	text-align: center;
 }
 
 .APL_application__iconsContainer img {
-	width: 25px;
-	height: 25px;
+	width: 35px;
+	height: 35px;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
