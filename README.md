@@ -19,6 +19,11 @@ Top Menu Bar for Interseroh Webapps.
   - [messaging](#messaging)
   - [profile](#profile)
   - [topmenubar](#topmenubar)
+- [Configuration](#configuration)
+- [Integration of topmenubar and applauncher into your application](#integration-of-topmenubar-and-applauncher-into-your-application)
+  - [Integrating TopMenuBar (incl. AppLauncher) above an existing Bootsrap Navbar](#integrating-topmenubar-incl-applauncher-above-an-existing-bootstrap-navbar)
+  - [Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar](#integrating-applauncher-without-topmenubar-within-an-existing-bootstrap-navbar)
+  - [Integrating TopMenuBar (incl. AppLauncher) with custom menu items](#integrating-topmenubar-incl-applauncher-with-custom-menu-items)
 - [Integration Test](#integration-test)
   - [Requirements](#requirements)
   - [Test Case 1](#test-case-1)
@@ -79,6 +84,131 @@ to be defined.
 This module contains the graphical representation of Top Menu Bar plus a prototype landing page
 
 
+## Configuration
+In a production environment you should define the location of the configuration file
+and image folder. The configuration file and image folder in the sources are just used for
+development purpose. You do not want to commit your configuration and images to a
+public version control repository like GitHub.
+
+See [applauncher](#applauncher) for configuration properties and configuration file.
+
+
+## Integration of TopMenuBar and AppLauncher into your application
+
+### Requirements
+- You must know the URLs where topmenubar and applauncher are deployed.
+
+### Integrating TopMenuBar (incl. AppLauncher) above an existing Bootsrap Navbar
+For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/resources/templates/topmenubar-above-navbar.html).
+- Add javascript and css to header.
+```html
+<link type="text/css" rel="stylesheet"
+    th:href="${topmenubarUrl}+'/topmenubar.css'" />
+<script type="text/javascript" language="javascript"
+    th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+<link type="text/css" rel="stylesheet"
+    th:href="${applauncherUrl}+'/applauncher.css'" />
+```
+
+- Add div tag for topmenubar at the top of the html body.
+```html
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+    data-tmb-headline="TEST APPLICATION"
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+<div id="tmb_app_launcher"
+    th:attr="data-tmb-application-url=${applauncherUrl}"
+    data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+</div>
+<div id="tmb_portal_links"></div>
+<div id="tmb_icons_right"></div>
+<div id="tmb_profile" class="fa fa-user headertabs"></div>
+<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+</div>
+```
+
+#### Configuring TopMenuBar above an existing Bootsrap Navbar
+- Changing the name and image of the application displayed in the TopMenuBar and the background color of the TopMenuBar:
+Just change the attributes in the outer div tag of the TopMenuBar.
+```html
+<div id="tmb_top_menu_bar" 
+    data-tmb-color="#223d62"
+    data-tmb-headline="TEST APPLICATION"
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+```
+
+### Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar
+For a complete example see [applauncher-within-navbar.html](tmb-demo/src/main/resources/templates/applauncher-within-navbar.html).
+- Add javascript and css to header.
+```html
+<link type="text/css" rel="stylesheet"
+    th:href="${applauncherUrl}+'/applauncher.css'" />
+<script type="text/javascript" language="javascript"
+    th:src="${applauncherUrl}+'/applauncher/applauncher.nocache.js'"></script>
+```
+
+- Add div tag to your existing Navbar.
+```html
+<div id="tmb_app_launcher"
+    th:attr="data-tmb-application-url=${applauncherUrl}"
+    data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+</div>
+```
+
+### Integrating TopMenuBar (incl. AppLauncher) with custom menu items
+For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/resources/templates/topmenubar-with-portalitems.html).
+- Add javascript and css to header.
+```html
+<link type="text/css" rel="stylesheet"
+    th:href="${topmenubarUrl}+'/topmenubar.css'" />
+<script type="text/javascript" language="javascript"
+    th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+<link type="text/css" rel="stylesheet"
+    th:href="${applauncherUrl}+'/applauncher.css'" />
+```
+
+- Add div tag for topmenubar at the top of the html body.
+```html
+<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+    data-tmb-headline="TEST APPLICATION"
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+<div id="tmb_app_launcher"
+    th:attr="data-tmb-application-url=${applauncherUrl}"
+    data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+</div>
+<div id="tmb_portal_links"></div>
+<div id="tmb_icons_right"></div>
+<div id="tmb_profile" class="fa fa-user headertabs"></div>
+<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+</div>
+```
+
+- Add an unordered HTML list with id "internal_topics" into the html body to define your custom links in the TopMenuBar.
+```html
+<ul id="internal_topics" class="text-right">
+    <li>
+        <a href="https://www.interseroh.de" target="_blank">Home</a>
+    </li>
+    <li>
+        <a href="https://www.interseroh.de/en/company/about-us-interseroh" target="_blank">About</a>
+    </li>
+    <li>
+        <a href="https://www.interseroh.de/en/contact" target="_blank">Contact</a>
+    </li>
+</ul>
+```
+
+#### Configuring TopMenuBar with custom menu items
+- Alignment of menu items if menu collapses: Just change the css class of the unordered list with the menu items.
+    - right: `<ul id="internal_topics" class="text-right">`
+    - left:  `<ul id="internal_topics" class="text-left">`
+- Changing the name and image of the application displayed in the TopMenuBar and the background color of the TopMenuBar:
+Just change the attributes in the outer div tag of the TopMenuBar.
+```html
+<div id="tmb_top_menu_bar" 
+    data-tmb-color="#223d62"
+    data-tmb-headline="TEST APPLICATION"
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+```
 ## Integration Test
 The integration test simulates the injection of TopMenuBar in an existing page containing Bootstrap components and been developed applying the principles of responsive design.
  
