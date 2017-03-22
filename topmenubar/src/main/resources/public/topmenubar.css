@@ -39,13 +39,6 @@ body {
 	box-shadow: 1px 2px 0 #000;
 }
 
-.TMB_application .icons-right {
-	position: absolute;
-	top: 0;
-	right: 10px;
-	padding-top: 20px;
-}
-
 .TMB_application .icons-right .TMB_application__button {
 	margin-top:-10px;
 }
@@ -59,8 +52,29 @@ body {
 	color: #789abc;
 }
 
+#icons_right {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	padding-top: 20px;
+}
+
 @media (max-width: 400px) {
 	.navbar-brand {
 		display: none;
 	}
+}
+#tmb_profile,
+#tmb_messaging {
+	position: relative;
+}
+
+#tmb_profile a,
+#tmb_messaging a {
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: -5px;
+	left: -5px;
 }

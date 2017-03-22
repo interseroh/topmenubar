@@ -51,7 +51,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String DATA_TMB_HEADLINE = "data-tmb-headline";
 	private static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
-	private static final String TOP_MENU_ICONS_RIGHT = "tmb_icons_right";
+	private static final String TOP_MENU_ICONS_RIGHT = "icons_right";
 
 	private static final String PORTAL_LINKS = "tmb_portal_links";
 	private static final String TOPICS = "internal_topics";

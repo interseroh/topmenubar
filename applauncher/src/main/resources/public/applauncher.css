@@ -10,27 +10,30 @@
 	font-size: 13px;
 }
 
-.APL_application__item {
-	margin-top: 5px;
-	margin-bottom: 20px;
-}
-
 .APL_application__iconsContainer {
-	width: 265px;
-	padding: 10px;
+	width: 270px;
+	padding: 15px 25px;
+}
+.APL_application__link {
+	display: block;
+	padding-bottom: 10px;
 }
 
 .APL_application__iconWrapper,
-.APL_application__link {
-	height: 40px;
+.APL_application__text {
+	height: 30px;
 	margin: auto;
 	display: block;
 	text-align: center;
+	margin-top: 13px;
+	line-height: 17px;
 }
-
+.APL_application__iconWrapper {
+	height: 55px;
+}
 .APL_application__iconsContainer img {
-	width: 35px;
-	height: 35px;
+	width: 45px;
+	height: 45px;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -38,11 +41,9 @@
 	margin: auto;
 }
 
-/** Example rules used by the template application (remove for your app) */
-h1 {
-	font-size: 2em;
-	font-weight: bold;
-	color: #777777;
-	margin: 40px 0 70px;
-	text-align: center;
+#icons_right {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	padding-top: 20px;
 }
