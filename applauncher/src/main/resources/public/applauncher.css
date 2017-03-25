@@ -11,7 +11,7 @@
 }
 
 .APL_application__iconsContainer {
-	width: 270px;
+	width: 300px;
 	padding: 15px 25px;
 }
 
@@ -19,10 +19,19 @@
 	display: block;
 	padding-bottom: 10px;
 	border:1px solid transparent;
+	color: #000;
+}
+
+.APL_application__link:link,
+.APL_application__link:active,
+.APL_application__link:visited,
+.APL_application__link:hover {
+	text-decoration: none;
 }
 
 .APL_application__link:hover {
 	border:1px solid #eee;
+	color: #000;
 }
 
 .APL_application__iconWrapper,
@@ -33,6 +42,7 @@
 	text-align: center;
 	margin-top: 13px;
 	line-height: 17px;
+	color: #000;
 }
 
 .APL_application__iconWrapper {
@@ -57,11 +67,12 @@
 }
 
 .popover {
-	background-color: transparent;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	max-width: 1000px;
+	background-color: transparent !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	max-width: 500px !important;
+	border: none !important;
 }
 
 .popover-content {
@@ -71,6 +82,16 @@
 	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 	 box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 	transform: translate(-20px, 0);
+}
+
+.t10 .popover-content {
+	transform: translate(-10px, 0);
+}
+.t5 .popover-content {
+	transform: translate(-5px, 0);
+}
+.t0 .popover-content {
+	transform: translate(0, 0);
 }
 .arrow {
 	top:-10px !important;
