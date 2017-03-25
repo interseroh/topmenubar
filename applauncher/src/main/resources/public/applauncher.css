@@ -14,9 +14,15 @@
 	width: 270px;
 	padding: 15px 25px;
 }
+
 .APL_application__link {
 	display: block;
 	padding-bottom: 10px;
+	border:1px solid transparent;
+}
+
+.APL_application__link:hover {
+	border:1px solid #eee;
 }
 
 .APL_application__iconWrapper,
@@ -28,9 +34,11 @@
 	margin-top: 13px;
 	line-height: 17px;
 }
+
 .APL_application__iconWrapper {
 	height: 55px;
 }
+
 .APL_application__iconsContainer img {
 	width: 45px;
 	height: 45px;
@@ -46,4 +54,24 @@
 	top: 0;
 	right: 10px;
 	padding-top: 20px;
+}
+
+.popover {
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	max-width: 1000px;
+}
+
+.popover-content {
+	background-color: #fff;
+	border-radius: 3px;
+	background-clip: padding-box;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	 box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	transform: translate(-20px, 0);
+}
+.arrow {
+	top:-10px !important;
 }
