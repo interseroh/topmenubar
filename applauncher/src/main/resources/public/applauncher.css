@@ -11,14 +11,14 @@
 }
 
 .APL_application__iconsContainer {
-	width: 300px;
-	padding: 15px 25px;
+	width: 293px;
+	padding: 25px 30px;
 }
 
 .APL_application__link {
 	display: block;
 	padding-bottom: 10px;
-	border:1px solid transparent;
+	border: 1px solid transparent;
 	color: #000;
 }
 
@@ -30,18 +30,18 @@
 }
 
 .APL_application__link:hover {
-	border:1px solid #eee;
+	border: 1px solid #eee;
 	color: #000;
 }
 
 .APL_application__iconWrapper,
 .APL_application__text {
-	height: 30px;
+	height: 18px;
 	margin: auto;
 	display: block;
 	text-align: center;
-	margin-top: 13px;
-	line-height: 17px;
+	margin-top: 7px;
+	line-height: 15px;
 	color: #000;
 }
 
@@ -50,8 +50,8 @@
 }
 
 .APL_application__iconsContainer img {
-	width: 45px;
-	height: 45px;
+	width: 47px;
+	height: 47px;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
@@ -79,20 +79,24 @@
 	background-color: #fff;
 	border-radius: 3px;
 	background-clip: padding-box;
-	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-	 box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-	transform: translate(-20px, 0);
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	position: relative;
+	right: 20px;
 }
 
 .t10 .popover-content {
-	transform: translate(-10px, 0);
+	right: 10px;
 }
+
 .t5 .popover-content {
-	transform: translate(-5px, 0);
+	right: 5px;
 }
+
 .t0 .popover-content {
-	transform: translate(0, 0);
+	right: 0;
 }
+
 .arrow {
-	top:-10px !important;
+	top: -10px !important;
 }
