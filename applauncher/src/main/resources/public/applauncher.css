@@ -61,9 +61,10 @@
 
 #icons_right {
 	position: absolute;
-	top: 0;
 	right: 10px;
-	padding-top: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 }
 
 .popover {
