@@ -5,7 +5,7 @@ body {
 }
 
 .TMB_application .fa {
-	font-size: 13px;
+	font-size: 18px;
 	color: #fff;
 	text-shadow: 1px 1px 0 #000;
 }
@@ -13,6 +13,7 @@ body {
 .TMB_application .headertabs {
 	float: right;
 	margin-right: 15px;
+	margin-left: 13px;
 }
 
 .TMB_application__logocontainer {
@@ -28,10 +29,8 @@ body {
 }
 
 .TMB_application__button {
-	border: 2px solid #fff !important;
-	box-shadow: 1px 1px 0 #000;
-	padding-left: 0.15em;
-	padding-right: 0.15em;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .TMB_application__button span {
@@ -40,7 +39,7 @@ body {
 }
 
 .TMB_application .icons-right .TMB_application__button {
-	margin-top:-10px;
+	margin-top:-8px;
 }
 
 .TMB_application .navbar-default .navbar-nav>li>a {
