@@ -187,7 +187,7 @@ For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/
 
 - Add an unordered HTML list with id "internal_topics" into the html body to define your custom links in the TopMenuBar.
 ```html
-<ul id="internal_topics" class="text-right">
+<ul id="internal_topics">
     <li>
         <a href="https://www.interseroh.de" target="_blank">Home</a>
     </li>
@@ -203,7 +203,7 @@ For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/
 #### Configuring TopMenuBar with custom menu items
 - Alignment of menu items if menu collapses: Just change the css class of the unordered list with the menu items.
     - right: `<ul id="internal_topics" class="text-right">`
-    - left:  `<ul id="internal_topics" class="text-left">`
+    - left:  `<ul id="internal_topics">`
 - Changing the name and image of the application displayed in the TopMenuBar and the background color of the TopMenuBar:
 Just change the attributes in the outer div tag of the TopMenuBar.
 ```html
