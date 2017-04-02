@@ -101,21 +101,21 @@ See [applauncher](#applauncher) for configuration properties and configuration f
 
 ### Integrating TopMenuBar (incl. AppLauncher) above an existing Bootstrap Navbar
 For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/resources/templates/topmenubar-above-navbar.html).
-- Add javascript and css to header.
+- Add javascript and css to header. Applauncher.css first, than topmenubar.css then other libraries
 ```html
+<link type="text/css" rel="stylesheet"
+    th:href="${applauncherUrl}+'/applauncher.css'" />
 <link type="text/css" rel="stylesheet"
     th:href="${topmenubarUrl}+'/topmenubar.css'" />
 <script type="text/javascript" language="javascript"
     th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
-<link type="text/css" rel="stylesheet"
-    th:href="${applauncherUrl}+'/applauncher.css'" />
 ```
 
 - Add div tag for topmenubar at the top of the html body.
 ```html
 <div id="tmb_top_menu_bar" data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
 <div id="tmb_app_launcher"
     th:attr="data-tmb-application-url=${applauncherUrl}"
     data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
@@ -134,7 +134,7 @@ Just change the attributes in the outer div tag of the TopMenuBar.
 <div id="tmb_top_menu_bar" 
     data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
 ```
 
 ### Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar
@@ -159,19 +159,21 @@ For a complete example see [applauncher-within-navbar.html](tmb-demo/src/main/re
 For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/resources/templates/topmenubar-with-portalitems.html).
 - Add javascript and css to header.
 ```html
+
+<link type="text/css" rel="stylesheet"
+    th:href="${applauncherUrl}+'/applauncher.css'" />
 <link type="text/css" rel="stylesheet"
     th:href="${topmenubarUrl}+'/topmenubar.css'" />
 <script type="text/javascript" language="javascript"
     th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
-<link type="text/css" rel="stylesheet"
-    th:href="${applauncherUrl}+'/applauncher.css'" />
+
 ```
 
 - Add div tag for topmenubar at the top of the html body.
 ```html
 <div id="tmb_top_menu_bar" data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
 <div id="tmb_app_launcher"
     th:attr="data-tmb-application-url=${applauncherUrl}"
     data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
@@ -208,7 +210,7 @@ Just change the attributes in the outer div tag of the TopMenuBar.
 <div id="tmb_top_menu_bar" 
     data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/entsorger-logo.png'">
+    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
 ```
 ## Integration Test
 The integration test simulates the injection of TopMenuBar in an existing page containing Bootstrap components and been developed applying the principles of responsive design.
@@ -244,7 +246,7 @@ This test is represented with the page `resources/public/bstest_1_original.html`
        
 ```html
 <div id="tmb_top_menu_bar" data-color="#223d62"
-    data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
+    data-headline="TEST APPLICATION" data-icon-url="images/logo.svg">
     <div id="tmb_app_launcher" data-application-url="http://localhost:9010/"
         data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
     </div>
