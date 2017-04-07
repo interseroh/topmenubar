@@ -4,6 +4,11 @@ body {
 	overflow: hidden;
 }
 
+.TMB_application {/*own space, always on the top for applauncher popup*/
+	z-index: 2;
+	position: relative;
+}
+
 .TMB_application .fa {
 	font-size: 18px;
 	color: #fff;
@@ -44,15 +49,15 @@ body {
 	margin-bottom: 0;
 	margin-top: 0;
 	position: relative;
-	bottom:2px;
+	bottom: 2px;
 }
 
-.TMB_application .navbar-default .navbar-nav>li>a {
+.TMB_application .navbar-default .navbar-nav > li > a {
 	color: #fff;
 }
 
-.TMB_application .navbar-default .navbar-nav>li>a:hover,
-.TMB_application .navbar-default .navbar-nav>li>a:focus {
+.TMB_application .navbar-default .navbar-nav > li > a:hover,
+.TMB_application .navbar-default .navbar-nav > li > a:focus {
 	color: #789abc;
 }
 
@@ -69,6 +74,7 @@ body {
 		display: none;
 	}
 }
+
 #tmb_profile,
 #tmb_messaging {
 	position: relative;
