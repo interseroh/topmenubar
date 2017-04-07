@@ -4,27 +4,32 @@
       {
         "imageURL": "images/webshop-logo.png",
         "caption": "WebShop",
-        "applicationURL": "http://www.google.de"
+        "applicationURL": "http://www.google.de",
+        "target": "_self"
       },
       {
         "imageURL": "images/entsorgerportal-logo.png",
         "caption": "Entsorger- portal",
-        "applicationURL": "http://www.google.de"
+        "applicationURL": "http://www.youtube.de",
+        "target": "_blank"
       },
       {
         "imageURL": "images/kleinmengenlogistik-logo.png",
         "caption": "Kleinmengen- logistik",
-        "applicationURL": "http://www.google.de"
+        "applicationURL": "http://www.google.de",
+        "target": "_self"
       },
       {
         "imageURL": "images/mengenmeldeportal-logo.png",
         "caption": "Mengenmelde- portal",
-        "applicationURL": "http://www.google.de"
+        "applicationURL": "http://www.youtube.de",
+        "target": "_blank"
       },
       {
         "imageURL": "images/dlp-logo.png",
         "caption": "Dienste",
-        "applicationURL": "http://www.google.de"
+        "applicationURL": "http://www.google.de",
+        "target": "_self"
       }
     ]
   }

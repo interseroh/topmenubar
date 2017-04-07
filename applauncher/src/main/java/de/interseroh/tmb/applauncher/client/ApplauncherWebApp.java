@@ -120,19 +120,19 @@ public class ApplauncherWebApp implements EntryPoint {
 		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
 			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
-					webApp.getApplicationURL(), webApp.getImageURL()));
+					webApp.getApplicationURL(), webApp.getImageURL(), webApp.getTarget()));
 		}
 	}
 
 	private Column createAnchorColumn(String span, String text, String url,
-			String iconUrl) {
+			String iconUrl, String target) {
 		Column col = new Column(span);
 		Row newRow = new Row();
 		newRow.getElement().addClassName(CSS_BLOCK + "__item");
 
 		Anchor anchor = new Anchor();
 		anchor.setHref(url);
-		//	anchor.setTarget("_blank");
+		anchor.setTarget(target);
 		anchor.getElement().setClassName(CSS_BLOCK + "__link");
 
 		SimplePanel iconWrapper = new SimplePanel();

@@ -27,6 +27,8 @@ public class TargetApplication implements Serializable {
 	private String imageURL;
 	private String caption;
 	private String applicationURL;
+	private String target;
+
 
 	public String getImageURL() {
 		return imageURL;
@@ -51,5 +53,12 @@ public class TargetApplication implements Serializable {
 	public void setApplicationURL(String applicationURL) {
 		this.applicationURL = applicationURL;
 	}
+	public String getTarget() {
+		return target;
+	}
+	public void setTarget(String target) {
+		this.target = target;
+	}
+
 
 }
