@@ -113,7 +113,7 @@ This test is represented with the page `resources/public/bstest_1_original.html`
        
 ```html
 <div id="tmb_top_menu_bar" data-color="#223d62"
-    data-headline="TEST APPLICATION" data-icon-url="images/entsorger-logo.png">
+    data-headline="TEST APPLICATION" data-icon-url="images/logo.svg">
     <div id="tmb_app_launcher" data-application-url="http://localhost:9010/"
         data-javascript-url="applauncher/applauncher/applauncher.nocache.js">
     </div>
