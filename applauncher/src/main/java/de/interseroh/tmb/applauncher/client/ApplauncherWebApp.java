@@ -132,7 +132,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		Anchor anchor = new Anchor();
 		anchor.setHref(url);
-	//	anchor.setTarget("_blank");
+		//	anchor.setTarget("_blank");
 		anchor.getElement().setClassName(CSS_BLOCK + "__link");
 
 		SimplePanel iconWrapper = new SimplePanel();
