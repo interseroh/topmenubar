@@ -89,7 +89,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		popover.add(popoverBtn);
 
 		createDivStructure(popover, dropDown, appLauncherRoot);
-
+		noopenerImitate();
 		logger.info("AppLauncher: Create Views end...");
 	}
 
@@ -120,7 +120,8 @@ public class ApplauncherWebApp implements EntryPoint {
 		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
 			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
-					webApp.getApplicationURL(), webApp.getImageURL(), webApp.getTarget()));
+					webApp.getApplicationURL(), webApp.getImageURL(),
+					webApp.getTarget()));
 		}
 	}
 
@@ -196,4 +197,35 @@ public class ApplauncherWebApp implements EntryPoint {
 				});
 	}
 
+	public static native void noopenerImitate() /*-{
+        $wnd.jQuery($doc).on('click', 'a[target=_blank]', function (event) {
+            var href = $wnd.jQuery(this).attr('href');
+            if (navigator.userAgent.indexOf("Safari") && (navigator.userAgent.indexOf("Chrome") === -1)) {
+                iframeOpen(href);
+                return false;
+            }
+            var e = window.open();
+            return e.opener = null, e.location = href, false;
+        });
+
+        function iframeOpen(url) {
+            var iframe, iframeDoc, script, newWin;
+
+            iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            script = iframeDoc.createElement('script');
+            script.type = 'text/javascript';
+            script.text = 'window.parent = null; window.top = null;' +
+                'window.frameElement = null; var child = window.open("' + url + '");' +
+                'child.opener = null';
+            iframeDoc.body.appendChild(script);
+            newWin = iframe.contentWindow.child;
+
+            document.body.removeChild(iframe);
+            return newWin;
+        }
+    }-*/;
 }
