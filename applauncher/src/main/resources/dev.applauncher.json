@@ -27,7 +27,7 @@
 			},
 			{
 				"imageURL": "images/dlp-logo.png",
-				"caption": "Dienste",
+				"caption": "Dienste und target Test",
 				"applicationURL": "https://mathiasbynens.be/demo/opener",
 				"target": "_blank"
 			}
