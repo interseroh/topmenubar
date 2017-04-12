@@ -192,9 +192,9 @@ public class ApplauncherWebApp implements EntryPoint {
 						dropDown.add(popover);
 						appLauncherRoot.add(dropDown);
 						dropDown.getElement().setAttribute("onFocusOut",
-								"javasript:"
-										+ ApplauncherPopover.CLOSE_POPOVER_JSFUNCTION
-										+ ";");
+						"javasript:"
+								+ ApplauncherPopover.CLOSE_POPOVER_JSFUNCTION
+								+ ";");
 					}
 				});
 	}
