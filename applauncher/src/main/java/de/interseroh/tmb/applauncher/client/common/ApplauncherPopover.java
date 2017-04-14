@@ -63,12 +63,12 @@ public class ApplauncherPopover extends Popover {
 	 */
 	private String createPopoverHider(String id) {
 		return "function " + CLOSE_POPOVER_JSFUNCTION + " {"
-				+ "    setTimeout(function(){"
-				+ "  $('[data-topmenubar=\"" + id + "\"]').popover('hide');"
-				+ "  $('body').on('hidden.bs.popover', function (e) {"
+				+ "  setTimeout(function(){"
+				+ "    $('[data-topmenubar=\"" + id + "\"]').popover('hide');"
+				+ "    $('body').on('hidden.bs.popover', function (e) {"
 				+ "       $(e.target).data(\"bs.popover\").inState = { click: false, hover: false, focus: false }"
-				+ "  });"
-				+ "    }, 100);"
+				+ "    });"
+				+ "  }, 100);"
 				+ " }";
 	}
 }
