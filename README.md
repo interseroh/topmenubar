@@ -16,6 +16,8 @@ Top Menu Bar for Interseroh Webapps.
 - [Maven modules](#maven-modules)
   - [topmenubar-parent](#topmenubar-parent)
   - [applauncher](#applauncher)
+    - [Configuration Properties](#configuration-properties)
+    - [Configuration File](#configuration-file)
   - [messaging](#messaging)
   - [profile](#profile)
   - [topmenubar](#topmenubar)
@@ -69,11 +71,27 @@ This module represents the application launcher panel of the Top Menu Bar.
  
 #### Configuration Properties
 It utilizes the `dev.applauncher.json` file by default for configuring the panel.
-You can override it by setting the `applauncher.config.json property.
+You can override it by setting the `applauncher.config.json` property.
  
 Example:
  
  `-Dapplauncher.config.json=classpath:prod.applauncher.json`
+
+#### Configuration File
+For an example you can look at the existing development file. [dev.applauncher.json](applauncher/src/main/resources/dev.applauncher.json)
+
+For each application in the applauncher you have one entry like the following.
+You can add as much applications as you want to this configuration file.
+```
+{
+        "imageURL": "images/google-logo.png",
+        "caption": "Google",
+        "applicationURL": "http://www.google.de"
+}
+```
+- __imageURL__: The relative URL to the image that will be displayed in the applauncher.
+- __caption__: The name of the application that will be displayed in the applauncher.
+- __applicationURL__: The full URL to the application.
 
 ### messaging
 This module represents the messaging facilities of Top Menu Bar.
