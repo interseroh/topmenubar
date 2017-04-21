@@ -44,10 +44,10 @@ public class ApplauncherPopover extends Popover {
 		ScriptInjector.fromString(createPopoverHider(id))
 				.setWindow(ScriptInjector.TOP_WINDOW).inject();
 		setAlternateTemplate(
-				"<div class=\"popover\" style=\"max-width: 1000px;''\" role=\"tooltip\" data-topmenubar=\""
+				"<div class=\"popover\" role=\"tooltip\" data-topmenubar=\""
 						+ id + "\">" + "<div class=\"arrow\"></div>"
 						+ "<h3 class=\"popover-title\"></h3>"
-						+ "<div class=\"popover-content\"></div>" + "</div>");
+						+ "<div class=\"popover-content\"></div></div>");
 		setIsHtml(true);
 		setTrigger(Trigger.CLICK);
 		setPlacement(Placement.AUTO);
