@@ -68,7 +68,7 @@ public class ApplauncherPopover extends Popover {
 				+ "    $('body').on('hidden.bs.popover', function (e) {"
 				+ "       $(e.target).data(\"bs.popover\").inState = { click: false, hover: false, focus: false }"
 				+ "    });"
-				+ "  }, 100);"
+				+ "  }, 300);"
 				+ " }";
 	}
 }
