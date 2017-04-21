@@ -68,6 +68,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		appLauncherRoot.getElement().addClassName(CSS_BLOCK);
+		appLauncherRoot.getElement().addClassName("hidden-xs");
 		applauncherUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
 		logger.info("Applauncher application URL: " + applauncherUrl);
@@ -128,17 +129,25 @@ public class ApplauncherWebApp implements EntryPoint {
 		Column col = new Column(span);
 		Row newRow = new Row();
 		newRow.getElement().addClassName(CSS_BLOCK + "__item");
+
+		Anchor anchor = new Anchor();
+		anchor.setHref(url);
+		//	anchor.setTarget("_blank");
+		anchor.getElement().setClassName(CSS_BLOCK + "__link");
+
 		SimplePanel iconWrapper = new SimplePanel();
 		iconWrapper.getElement().setClassName(CSS_BLOCK + "__iconWrapper");
 		Image icon = new Image(applauncherUrl + "/" + iconUrl);
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
 		iconWrapper.add(icon);
-		Anchor anchor = new Anchor();
-		anchor.setText(text);
-		anchor.getElement().setClassName(CSS_BLOCK + "__link");
-		anchor.setHref(url);
-		newRow.add(iconWrapper);
+
+		SimplePanel textWrapper = new SimplePanel();
+		textWrapper.getElement().setInnerText(text);
+		textWrapper.getElement().setClassName(CSS_BLOCK + "__text");
+
+		anchor.add(iconWrapper);
+		anchor.add(textWrapper);
 		newRow.add(anchor);
 		col.add(newRow);
 		return col;

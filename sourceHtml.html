@@ -1,4 +1,4 @@
-<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+ data-tmb-color="#223d62"
 	data-tmb-headline="TEST APPLICATION" data-tmb-icon-url="images/logo.svg"
 	class="TMB_application">
 
@@ -16,7 +16,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="tmb_navbar_collapse">
 			<div id="tmb_portal_links">
-				<ul id="internal_topics" class="text-right nav navbar-nav">
+				<ul id="internal_topics" class="nav navbar-nav"><!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Thema 1</a></li>
 					<li><a href="#">Thema 2</a></li>
@@ -24,7 +24,7 @@
 				</ul>
 			</div>
 		</div>
-		<div id="tmb_icons_right" class="icons-right">
+		<div id="icons_right">
 
 			<button type="button"
 				class="navbar-toggle TMB_application__button headertabs"
@@ -49,14 +49,14 @@
 					</a>
 				</div>
 			</div>
-			<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
-			<div id="tmb_profile" class="fa fa-user headertabs"></div>
+			<div id="tmb_profile" class="fa fa-user headertabs"><a href="#"></a></div>
+			<div id="tmb_messaging" class="fa fa-envelope-o headertabs"><a href="#"></a></div>
 		</div>
 	</nav>
 </div>
 
 für die Links, die von außen kommen, gilt diese Struktur: (class="text-right" nur dann, wenn der Text rechts ausgerichtet sein soll)
-<ul id="internal_topics" class="text-right">
+<ul id="internal_topics"><!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
 	<li><a href="#">Home</a></li>
 	<li><a href="#">Thema 1</a></li>
 	<li><a href="#">Thema 2</a></li>
@@ -87,7 +87,7 @@ oder einfacher:
 		2
 		<div class="collapse navbar-collapse" id="tmb_navbar_collapse">
 			<div id="tmb_portal_links">
-				<ul id="internal_topics" class="text-right nav navbar-nav">
+				<ul id="internal_topics" class="nav navbar-nav"><!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
 					<li><a href="#">COLAPSABLE</a></li>
 					<li><a href="#">LIST</a></li>
 					<li><a href="#">Thema 2</a></li>
@@ -97,7 +97,7 @@ oder einfacher:
 		</div>
 
 		3
-		<div id="tmb_icons_right" class="icons-right">
+		<div id="icons_right">
 			<button type="button">
 				BURGERBUTTON
 			</button>
@@ -118,8 +118,37 @@ Container für alles
 Links vom Portal
 <div id="tmb_portal_links"></div>
 Icons auf der rechten Seite
-<div id="tmb_icons_right"></div>
-Profile Icon
-<div id="tmb_profile" class="fa fa-user headertabs"></div>
-Nachrichten Icon
-<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+<div id="icons_right"></div>
+Profile Icon mit Verlinkung
+<div id="tmb_profile" class="fa fa-user headertabs"><a href="#"></a></div>
+Nachrichten Icon mit Verlinkung
+<div id="tmb_messaging" class="fa fa-envelope-o headertabs"><a href="#"></a></div>
+
+
+ jedes Template musss mindestens enthalten:
+ <div id="tmb_top_menu_bar" ......  />
+ <div id="icons_right"></div>
+ für die icons und den applauncher damit das rechts steht
+
+Optional
+ <div id="tmb_portal_links"></div>
+ für die eventuell anfallenden portal links
+
+ die Linkliste
+ <ul id="internal_topics" class="nav navbar-nav"><!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
+	 <li><a href="#"> . . . .</a></li>
+	 <li><a href="#"> . . . . </a></li>
+ </ul>
+
+ Einbinden der css Dateien:
+
+ zuerst applauncher.css, dann
+ topmenubar.css,
+ zuletzt landingpafe css
+ da letzte hat die höchste Priorität.
+
+ demgemäß diesmal umgekehrt:
+
+ child - child - parent
+
+ somit bestimmt die einbindende als höchstes und kann überschreiben

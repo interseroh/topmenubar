@@ -4,40 +4,38 @@ body {
 	overflow: hidden;
 }
 
-.TMB_application .APL_application {
-	padding-top: 2px;
+.TMB_application {/*own space, always on the top for applauncher popup*/
+	z-index: 2;
+	position: relative;
 }
 
 .TMB_application .fa {
-	font-size: 25px;
+	font-size: 18px;
 	color: #fff;
 	text-shadow: 1px 1px 0 #000;
-	margin-top: 20px;
 }
 
 .TMB_application .headertabs {
 	float: right;
-	margin-left: .15em;
-	margin-right: .15em;
+	margin-right: 15px;
+	margin-left: 13px;
 }
 
 .TMB_application__logocontainer {
 	float: left;
 	background-color: #fff;
 	padding: 3px;
-	margin: 1px 0;
+	margin: 3px 0 3px 2px;
 	border-radius: 5px;
 }
 
 .TMB_application__logocontainer img {
-	height: 55px;
+	height: 50px;
 }
 
 .TMB_application__button {
-	border: 2px solid #fff !important;
-	box-shadow: 1px 1px 0 #000;
-	padding-left: 0.15em;
-	padding-right: 0.15em;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .TMB_application__button span {
@@ -45,23 +43,49 @@ body {
 	box-shadow: 1px 2px 0 #000;
 }
 
-.TMB_application .icons-right {
-	position: absolute;
-	top: 0;
-	right: 10px;
+.TMB_application .icons-right .TMB_application__button {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-bottom: 0;
+	margin-top: 0;
+	position: relative;
+	bottom: 2px;
 }
 
-.TMB_application .navbar-default .navbar-nav>li>a {
+.TMB_application .navbar-default .navbar-nav > li > a {
 	color: #fff;
 }
 
-.TMB_application .navbar-default .navbar-nav>li>a:hover,
-.TMB_application .navbar-default .navbar-nav>li>a:focus {
+.TMB_application .navbar-default .navbar-nav > li > a:hover,
+.TMB_application .navbar-default .navbar-nav > li > a:focus {
 	color: #789abc;
+}
+
+#icons_right {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 }
 
 @media (max-width: 400px) {
 	.navbar-brand {
 		display: none;
 	}
+}
+
+#tmb_profile,
+#tmb_messaging {
+	position: relative;
+}
+
+#tmb_profile a,
+#tmb_messaging a {
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: -5px;
+	left: -5px;
 }

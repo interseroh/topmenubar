@@ -55,7 +55,7 @@
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#navbarCollapse">
+				data-target="#app_navbarCollapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -64,7 +64,7 @@
 			<a class="navbar-brand" href="#">Tutorial Republic</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="navbarCollapse">
+		<div class="collapse navbar-collapse" id="app_navbarCollapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="https://www.interseroh.de"
 					target="_blank">Home</a></li>
@@ -73,13 +73,13 @@
 					target="_blank">About</a></li>
 				<li><a href="https://www.interseroh.de/en/contact"
 					target="_blank">Contact</a></li>
-				<li>
-					<div id="tmb_app_launcher"
-						th:attr="data-tmb-application-url=${applauncherUrl}"
-						data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
-					</div>
-				</li>
 			</ul>
+		</div>
+		<div id="icons_right" style="right:20px;" class="t5">
+			<div id="tmb_app_launcher"
+				th:attr="data-tmb-application-url=${applauncherUrl}"
+				data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+			</div>
 		</div>
 	</div>
 </nav>
