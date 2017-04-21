@@ -140,8 +140,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		SimplePanel iconWrapper = new SimplePanel();
 		iconWrapper.getElement().setClassName(CSS_BLOCK + "__iconWrapper");
-
-		Image icon = new Image(iconUrl);
+		Image icon = new Image(applauncherUrl + "/" + iconUrl);
 		icon.setType(ImageType.CIRCLE);
 		icon.setResponsive(true);
 		iconWrapper.add(icon);
