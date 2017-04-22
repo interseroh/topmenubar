@@ -64,7 +64,7 @@ body {
 #icons_right {
 	position: absolute;
 	right: 10px;
-	top: 50%;
+	top: 33px;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 }
