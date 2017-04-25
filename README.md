@@ -135,20 +135,20 @@ For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/reso
 - Add javascript and css to header. Applauncher.css first, than topmenubar.css then other libraries
 ```html
 <link type="text/css" rel="stylesheet"
-    th:href="${applauncherUrl}+'/applauncher.css'" />
+    href="${applauncherUrl}/applauncher.css" />
 <link type="text/css" rel="stylesheet"
-    th:href="${topmenubarUrl}+'/topmenubar.css'" />
+    href="${topmenubarUrl}/topmenubar.css" />
 <script type="text/javascript" language="javascript"
-    th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+    src="${topmenubarUrl}/topmenubar/topmenubar.nocache.js"></script>
 ```
 
 - Add div tag for topmenubar at the top of the html body.
 ```html
 <div id="tmb_top_menu_bar" data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
+    data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 <div id="tmb_app_launcher"
-    th:attr="data-tmb-application-url=${applauncherUrl}"
+    data-tmb-application-url="${applauncherUrl}"
     data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
 </div>
 <div id="tmb_portal_links"></div>
@@ -165,7 +165,7 @@ Just change the attributes in the outer div tag of the TopMenuBar.
 <div id="tmb_top_menu_bar" 
     data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
+    data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 ```
 
 ### Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar
@@ -173,15 +173,15 @@ For a complete example see [applauncher-within-navbar.html](tmb-demo/src/main/re
 - Add javascript and css to header.
 ```html
 <link type="text/css" rel="stylesheet"
-    th:href="${applauncherUrl}+'/applauncher.css'" />
+    href="${applauncherUrl}/applauncher.css" />
 <script type="text/javascript" language="javascript"
-    th:src="${applauncherUrl}+'/applauncher/applauncher.nocache.js'"></script>
+    src="${applauncherUrl}/applauncher/applauncher.nocache.js"></script>
 ```
 
 - Add div tag to your existing Navbar.
 ```html
 <div id="tmb_app_launcher"
-    th:attr="data-tmb-application-url=${applauncherUrl}"
+    data-tmb-application-url="${applauncherUrl}"
     data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
 </div>
 ```
@@ -192,11 +192,11 @@ For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/
 ```html
 
 <link type="text/css" rel="stylesheet"
-    th:href="${applauncherUrl}+'/applauncher.css'" />
+    href="${applauncherUrl}/applauncher.css" />
 <link type="text/css" rel="stylesheet"
-    th:href="${topmenubarUrl}+'/topmenubar.css'" />
+    href="${topmenubarUrl}/topmenubar.css" />
 <script type="text/javascript" language="javascript"
-    th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+    src="${topmenubarUrl}/topmenubar/topmenubar.nocache.js"></script>
 
 ```
 
@@ -204,9 +204,9 @@ For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/
 ```html
 <div id="tmb_top_menu_bar" data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
+    data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 <div id="tmb_app_launcher"
-    th:attr="data-tmb-application-url=${applauncherUrl}"
+    data-tmb-application-url="${applauncherUrl}"
     data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
 </div>
 <div id="tmb_portal_links"></div>
@@ -241,7 +241,7 @@ Just change the attributes in the outer div tag of the TopMenuBar.
 <div id="tmb_top_menu_bar" 
     data-tmb-color="#223d62"
     data-tmb-headline="TEST APPLICATION"
-    th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
+    data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 ```
 ## Integration Test
 The integration test simulates the injection of TopMenuBar in an existing page containing Bootstrap components and been developed applying the principles of responsive design.
