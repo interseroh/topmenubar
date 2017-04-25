@@ -47,6 +47,8 @@ import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
+import static de.interseroh.tmb.applauncher.client.NoopenerImitateNativeJavaScript.noopenerImitate;
+
 public class ApplauncherWebApp implements EntryPoint {
 
 	private static final String DATA_APPLICATION_URL = "data-tmb-application-url";
@@ -89,7 +91,7 @@ public class ApplauncherWebApp implements EntryPoint {
 		popover.add(popoverBtn);
 
 		createDivStructure(popover, dropDown, appLauncherRoot);
-
+		noopenerImitate();
 		logger.info("AppLauncher: Create Views end...");
 	}
 
@@ -120,19 +122,20 @@ public class ApplauncherWebApp implements EntryPoint {
 		popupContainer.add(currentRow);
 		for (TargetApplication webApp : webApps) {
 			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
-					webApp.getApplicationURL(), webApp.getImageURL()));
+					webApp.getApplicationURL(), webApp.getImageURL(),
+					webApp.getTarget()));
 		}
 	}
 
 	private Column createAnchorColumn(String span, String text, String url,
-			String iconUrl) {
+			String iconUrl, String target) {
 		Column col = new Column(span);
 		Row newRow = new Row();
 		newRow.getElement().addClassName(CSS_BLOCK + "__item");
 
 		Anchor anchor = new Anchor();
 		anchor.setHref(url);
-		//	anchor.setTarget("_blank");
+		anchor.setTarget(target);
 		anchor.getElement().setClassName(CSS_BLOCK + "__link");
 
 		SimplePanel iconWrapper = new SimplePanel();
@@ -188,11 +191,10 @@ public class ApplauncherWebApp implements EntryPoint {
 						dropDown.add(popover);
 						appLauncherRoot.add(dropDown);
 						dropDown.getElement().setAttribute("onFocusOut",
-								"javasript:"
-										+ ApplauncherPopover.CLOSE_POPOVER_JSFUNCTION
-										+ ";");
+						"javasript:"
+								+ ApplauncherPopover.CLOSE_POPOVER_JSFUNCTION
+								+ ";");
 					}
 				});
 	}
-
 }
