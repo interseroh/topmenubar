@@ -36,6 +36,9 @@
 
 .APL_application__iconWrapper,
 .APL_application__text {
+	font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+	letter-spacing: 0.1px;
+	font-size: 13px;
 	height: 18px;
 	margin: auto;
 	display: block;
