@@ -40,25 +40,6 @@
 	<inherits name="org.gwtbootstrap3.extras.select.Select" />
     <inherits name="org.gwtbootstrap3.extras.typeahead.Typeahead"/>
 
-	<!-- Bootstrap Themes files -->
-	<public path='resource/themes'>
-		<include name='**/*.css' />
-		<include name='**/*.js' />
-		<include name="**/*.eot" />
-		<include name="**/*.svg" />
-		<include name="**/*.ttf" />
-		<include name="**/*.woff" />
-		<include name="**/*.png" />
-		<include name="**/*.gif" />
-		<include name="**/*.jpg" />
-	</public>
-
-	<!-- Themes -->
-	<stylesheet src='bootswatch/paper/css/bootstrap.min.css' />
-
-    <!-- Fix themes Paper Bootswatch with GwtBootstrap3 -->
-    <stylesheet src='bootswatch/paper/css/bootstrap.fix.css'/>
-
     <!-- Logging -->
 	<inherits name="com.google.gwt.logging.Logging" />
 	<set-property name="gwt.logging.logLevel" value="INFO" />
