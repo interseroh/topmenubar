@@ -1,0 +1,6 @@
+cd C:\interseroh\topmenubar-parent\topmenubar\src\main\resources\public\topmenubar.less topmenubar\src\main\resources\public\
+lessc topmenubar.less topmenubar.css
+
+cd C:\interseroh\topmenubar-parent\applauncher\src\main\resources\public\applauncher.css
+lessc applauncher.less applauncher\src\main\resources\public\applauncher2.css
+
