@@ -56,9 +56,7 @@
 #icons_right {
   position: absolute;
   right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
+  top: 17px;
 }
 .popover {
   background-color: transparent !important;
@@ -68,7 +66,10 @@
   max-width: 500px !important;
   border: none !important;
 }
-.popover-content {
+.popover .arrow {
+  top: -9px !important;
+}
+.popover .popover-content {
   background-color: #fff;
   border-radius: 3px;
   background-clip: padding-box;
@@ -85,7 +86,4 @@
 }
 .t0 .popover-content {
   right: 0;
-}
-.arrow {
-  top: -9px !important;
 }

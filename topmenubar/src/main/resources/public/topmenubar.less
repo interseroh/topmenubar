@@ -37,7 +37,6 @@ body {
   .fa {
     font-size: 18px;
     color: #fff;
-    text-shadow: 1px 1px 0 #000;
   }
 
   .headertabs {
@@ -52,38 +51,35 @@ body {
     padding: 3px;
     margin: 3px 0 3px 2px;
     border-radius: 5px;
-  }
 
-  &__logocontainer img {
-    height: 50px;
+    img {
+      height: 50px;
+    }
   }
 
   &__button {
     padding-left: 0 !important;
     padding-right: 0 !important;
+
+    span {
+      background-color: #fff !important;
+    }
   }
 
-  &__button span {
-    background-color: #fff !important;
-    box-shadow: 1px 1px 0 #000;
-  }
-
-  .icons-right {
+  #icons_right {
     position: absolute;
     right: 10px;
-    top: 33px;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-  }
+    top: 26px;
 
-  .icons-right .TMB_application__button {
-    border: none;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin-bottom: 0;
-    margin-top: 0;
-    position: relative;
-    bottom: 2px;
+    .TMB_application__button {
+      border: none;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      margin-bottom: 0;
+      margin-top: 0;
+      position: relative;
+      bottom: 2px;
+    }
   }
 
   .navbar-default {
@@ -96,6 +92,8 @@ body {
     }
     .navbar-toggle {
       border: none;
+      margin: 2px 15px;
+      padding: 0;
       &:focus,
       &:hover {
         background-color: transparent;
@@ -106,7 +104,6 @@ body {
       border-color: transparent;
     }
   }
-
 }
 
 @media (max-width: 400px) {

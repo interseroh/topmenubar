@@ -33,7 +33,6 @@ body {
 .TMB_application .fa {
   font-size: 18px;
   color: #fff;
-  text-shadow: 1px 1px 0 #000;
 }
 .TMB_application .headertabs {
   float: right;
@@ -56,16 +55,13 @@ body {
 }
 .TMB_application__button span {
   background-color: #fff !important;
-  box-shadow: 1px 1px 0 #000;
 }
-.TMB_application .icons-right {
+.TMB_application #icons_right {
   position: absolute;
   right: 10px;
-  top: 33px;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
+  top: 26px;
 }
-.TMB_application .icons-right .TMB_application__button {
+.TMB_application #icons_right .TMB_application__button {
   border: none;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -83,6 +79,8 @@ body {
 }
 .TMB_application .navbar-default .navbar-toggle {
   border: none;
+  margin: 2px 15px;
+  padding: 0;
 }
 .TMB_application .navbar-default .navbar-toggle:focus,
 .TMB_application .navbar-default .navbar-toggle:hover {
