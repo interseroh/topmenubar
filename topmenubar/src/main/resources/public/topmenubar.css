@@ -1,91 +1,116 @@
 /** Add css rules here for your tmb application. */
 body {
-	min-width: 320px;
-	overflow: hidden;
+  min-width: 320px;
+  overflow: hidden;
 }
-
-.TMB_application {/*own space, always on the top for applauncher popup*/
-	z-index: 2;
-	position: relative;
+.TMB_application {
+  /*own space, always on the top for applauncher popup*/
+  z-index: 2;
+  position: relative;
+  font-size: 13px;
+  line-height: 1.846;
+  color: #666666;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.1px;
 }
-
+.TMB_application .navbar {
+  min-height: 64px;
+  border: none;
+}
+.TMB_application .navbar-brand {
+  padding: 20.5px 15px;
+  line-height: 23px;
+  height: 64px;
+}
+.TMB_application .badge {
+  font-weight: normal;
+  background-color: #bbbbbb;
+  padding: 4px 6px 4px;
+}
+.TMB_application .navbar-nav > li > a {
+  line-height: 23px;
+}
 .TMB_application .fa {
-	font-size: 18px;
-	color: #fff;
-	text-shadow: 1px 1px 0 #000;
+  font-size: 18px;
+  color: #fff;
 }
-
 .TMB_application .headertabs {
-	float: right;
-	margin-right: 15px;
-	margin-left: 13px;
+  float: right;
+  margin-right: 15px;
+  margin-left: 13px;
 }
-
 .TMB_application__logocontainer {
-	float: left;
-	background-color: #fff;
-	padding: 3px;
-	margin: 3px 0 3px 2px;
-	border-radius: 5px;
+  float: left;
+  background-color: #fff;
+  padding: 3px;
+  margin: 3px 0 3px 2px;
+  border-radius: 5px;
 }
-
 .TMB_application__logocontainer img {
-	height: 50px;
+  height: 50px;
 }
-
 .TMB_application__button {
-	padding-left: 0 !important;
-	padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
-
 .TMB_application__button span {
-	background-color: #fff !important;
-	box-shadow: 1px 2px 0 #000;
+  background-color: #fff !important;
 }
-
-.TMB_application .icons-right .TMB_application__button {
-	padding-top: 3px;
-	padding-bottom: 3px;
-	margin-bottom: 0;
-	margin-top: 0;
-	position: relative;
-	bottom: 2px;
+.TMB_application #icons_right {
+  position: absolute;
+  right: 10px;
+  top: 26px;
 }
-
+.TMB_application #icons_right .TMB_application__button {
+  border: none;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  bottom: 2px;
+}
 .TMB_application .navbar-default .navbar-nav > li > a {
-	color: #fff;
+  color: #fff;
 }
-
 .TMB_application .navbar-default .navbar-nav > li > a:hover,
 .TMB_application .navbar-default .navbar-nav > li > a:focus {
-	color: #789abc;
+  color: #789abc;
 }
-
-#icons_right {
-	position: absolute;
-	right: 10px;
-	top: 33px;
-	transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
+.TMB_application .navbar-default .navbar-toggle {
+  border: none;
+  margin: 2px 15px;
+  padding: 0;
 }
-
+.TMB_application .navbar-default .navbar-toggle:focus,
+.TMB_application .navbar-default .navbar-toggle:hover {
+  background-color: transparent;
+}
+.TMB_application .navbar-default .navbar-collapse,
+.TMB_application .navbar-default .navbar-form {
+  border-color: transparent;
+}
 @media (max-width: 400px) {
-	.navbar-brand {
-		display: none;
-	}
+  .navbar-brand {
+    display: none;
+  }
 }
-
 #tmb_profile,
 #tmb_messaging {
-	position: relative;
+  position: relative;
 }
-
 #tmb_profile a,
 #tmb_messaging a {
-	display: block;
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	top: -5px;
-	left: -5px;
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -5px;
+  left: -5px;
+}
+@media (min-width: 768px) {
+  .TMB_application .navbar-nav > li > a {
+    padding-top: 20.5px;
+    padding-bottom: 20.5px;
+  }
 }
