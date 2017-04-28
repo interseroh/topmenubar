@@ -68,6 +68,7 @@
 }
 .popover .arrow {
   top: -9px !important;
+  border-bottom-color: #eee !important;
 }
 .popover .popover-content {
   background-color: #fff;
