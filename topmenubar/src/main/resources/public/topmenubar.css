@@ -23,8 +23,11 @@ body {
   height: 64px;
 }
 .TMB_application .badge {
-  font-weight: normal;
-  background-color: #bbbbbb;
+  font-size: 12px;
+  color: #fff;
+  white-space: nowrap;
+  font-weight: 700;
+  background-color: transparent;
   padding: 4px 6px 4px;
 }
 .TMB_application .navbar-nav > li > a {
