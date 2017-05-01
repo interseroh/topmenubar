@@ -104,7 +104,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		Navbar basePanel = new Navbar();
 		basePanel.getElement().addClassName(theme);
-		basePanel.getElement().getStyle().setBackgroundColor(ifPresent(color, DEFAULT_BACKGROUND_COLOR));
+		basePanel.getElement().getStyle().setBackgroundColor(color);
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
