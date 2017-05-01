@@ -9,11 +9,13 @@ body {
   position: relative;
   font-size: 13px;
   line-height: 1.846;
-  color: #666666;
+  color: #777;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.1px;
+  /*themes*/
 }
 .TMB_application .navbar {
+  background-color: #f8f8f8;
   min-height: 64px;
   border: none;
 }
@@ -21,10 +23,11 @@ body {
   padding: 20.5px 15px;
   line-height: 23px;
   height: 64px;
+  color: inherit !important;
 }
 .TMB_application .badge {
   font-size: 12px;
-  color: #fff;
+  color: inherit;
   white-space: nowrap;
   font-weight: 700;
   background-color: transparent;
@@ -35,7 +38,11 @@ body {
 }
 .TMB_application .fa {
   font-size: 18px;
-  color: #fff;
+  color: inherit;
+}
+.TMB_application .fa:focus,
+.TMB_application .fa:hover {
+  color: inherit !important;
 }
 .TMB_application .headertabs {
   float: right;
@@ -56,15 +63,26 @@ body {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-.TMB_application__button span {
+.TMB_application .navbar.darkblue {
+  background-color: #223d62;
+  color: #fff;
+}
+.TMB_application .navbar.darkblue .TMB_application__button span {
   background-color: #fff !important;
 }
-.TMB_application #icons_right {
+.TMB_application .navbar.white {
+  background-color: #fff;
+  color: #777;
+}
+.TMB_application .navbar.white .TMB_application__button span {
+  background-color: #777 !important;
+}
+#icons_right {
   position: absolute;
   right: 10px;
   top: 26px;
 }
-.TMB_application #icons_right .TMB_application__button {
+#icons_right .TMB_application__button {
   border: none;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -73,24 +91,25 @@ body {
   position: relative;
   bottom: 2px;
 }
-.TMB_application .navbar-default .navbar-nav > li > a {
-  color: #fff;
+.navbar-default .navbar-nav > li > a {
+  color: inherit !important;
 }
-.TMB_application .navbar-default .navbar-nav > li > a:hover,
-.TMB_application .navbar-default .navbar-nav > li > a:focus {
-  color: #789abc;
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: inherit;
 }
-.TMB_application .navbar-default .navbar-toggle {
+.navbar-default .navbar-toggle {
   border: none;
   margin: 2px 15px;
   padding: 0;
+  background-color: transparent !important;
 }
-.TMB_application .navbar-default .navbar-toggle:focus,
-.TMB_application .navbar-default .navbar-toggle:hover {
-  background-color: transparent;
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+  background-color: transparent !important;
 }
-.TMB_application .navbar-default .navbar-collapse,
-.TMB_application .navbar-default .navbar-form {
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
   border-color: transparent;
 }
 @media (max-width: 400px) {

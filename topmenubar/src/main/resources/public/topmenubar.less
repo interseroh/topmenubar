@@ -9,11 +9,12 @@ body {
   position: relative;
   font-size: 13px;
   line-height: 1.846;
-  color: #666666;
+  color: #777;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.1px;
 
   .navbar {
+    background-color: #f8f8f8;
     min-height: 64px;
     border: none;
   }
@@ -22,11 +23,12 @@ body {
     padding: 20.5px 15px;
     line-height: 23px;
     height: 64px;
+    color: inherit !important;
   }
 
   .badge {
     font-size: 12px;
-    color: #fff;
+    color: inherit;
     white-space: nowrap;
     font-weight: 700;
     background-color: transparent;
@@ -39,7 +41,11 @@ body {
 
   .fa {
     font-size: 18px;
-    color: #fff;
+    color: inherit;
+    &:focus,
+    &:hover {
+      color: inherit !important;
+    }
   }
 
   .headertabs {
@@ -64,42 +70,44 @@ body {
     padding-left: 0 !important;
     padding-right: 0 !important;
 
-    span {
-      background-color: #fff !important;
+  }
+  /*themes*/
+  .navbar {
+    &.darkblue {
+      background-color: #223d62;
+      color: #fff;
+      .TMB_application__button {
+        span {
+          background-color: #fff !important;
+        }
+      }
+    }
+    &.white {
+      background-color: #fff;
+      color: #777;
+      .TMB_application__button {
+        span {
+          background-color: #777 !important;
+        }
+      }
     }
   }
-
-  #icons_right {
-    position: absolute;
-    right: 10px;
-    top: 26px;
-
-    .TMB_application__button {
-      border: none;
-      padding-top: 3px;
-      padding-bottom: 3px;
-      margin-bottom: 0;
-      margin-top: 0;
-      position: relative;
-      bottom: 2px;
-    }
-  }
-
   .navbar-default {
     .navbar-nav > li > a {
-      color: #fff;
+      color: inherit !important;
       &:hover,
       &:focus {
-        color: #789abc;
+        color: inherit;
       }
     }
     .navbar-toggle {
       border: none;
       margin: 2px 15px;
       padding: 0;
+      background-color: transparent !important;
       &:focus,
       &:hover {
-        background-color: transparent;
+        background-color: transparent !important;
       }
     }
     .navbar-collapse,
@@ -107,7 +115,25 @@ body {
       border-color: transparent;
     }
   }
+
 }
+
+#icons_right {
+  position: absolute;
+  right: 10px;
+  top: 26px;
+
+  .TMB_application__button {
+    border: none;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-bottom: 0;
+    margin-top: 0;
+    position: relative;
+    bottom: 2px;
+  }
+}
+
 
 @media (max-width: 400px) {
   .navbar-brand {

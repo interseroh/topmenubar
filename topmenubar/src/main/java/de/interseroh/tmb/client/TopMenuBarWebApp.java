@@ -49,12 +49,15 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String DATA_TMB_COLOR = "data-tmb-color";
 	private static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
 	private static final String DATA_TMB_HEADLINE = "data-tmb-headline";
-	private static final String DEFAULT_BACKGROUND_COLOR = "#FF0000";
+	private static final String DATA_TMB_THEME = "data-tmb-theme";
+	private static final String DEFAULT_BACKGROUND_COLOR = "#f8f8f8";
+	private static final String DEFAULT_BACKGROUND_THEME = "default";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
 	private static final String TOP_MENU_ICONS_RIGHT = "icons_right";
 
 	private static final String PORTAL_LINKS = "tmb_portal_links";
 	private static final String TOPICS = "internal_topics";
+
 
 	private static final String COLLAPSEID = "tmb_navbar_collapse";
 	private static final Logger logger = Logger
@@ -95,10 +98,12 @@ public class TopMenuBarWebApp implements EntryPoint {
 		configureRootPanel();
 
 		String color = rootPanel.getElement().getAttribute(DATA_TMB_COLOR);
+		String theme = rootPanel.getElement().getAttribute(DATA_TMB_THEME);
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement().getAttribute(DATA_TMB_HEADLINE);
 
 		Navbar basePanel = new Navbar();
+		basePanel.getElement().addClassName(theme);
 		basePanel.getElement().getStyle().setBackgroundColor(ifPresent(color, DEFAULT_BACKGROUND_COLOR));
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
