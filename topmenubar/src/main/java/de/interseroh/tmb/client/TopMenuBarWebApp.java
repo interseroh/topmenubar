@@ -46,7 +46,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	private static final String ATTRIBUTE_APPLICATION_URL = "data-tmb-application-url";
 	private static final String ATTRIBUTE_JAVASCRIPT_PATH = "data-tmb-javascript-url";
-	private static final String DATA_TMB_COLOR = "data-tmb-color";
+	private static final String DATA_TMB_BGCOLOR = "data-tmb-bgcolor";
+	private static final String DATA_TMB_TXTCOLOR = "data-tmb-txtcolor";
 	private static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
 	private static final String DATA_TMB_HEADLINE = "data-tmb-headline";
 	private static final String DATA_TMB_THEME = "data-tmb-theme";
@@ -97,7 +98,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		injectApplauncherScript();
 		configureRootPanel();
 
-		String color = rootPanel.getElement().getAttribute(DATA_TMB_COLOR);
+		String color = rootPanel.getElement().getAttribute(DATA_TMB_BGCOLOR);
+		String text_color = rootPanel.getElement().getAttribute(DATA_TMB_TXTCOLOR);
 		String theme = rootPanel.getElement().getAttribute(DATA_TMB_THEME);
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement().getAttribute(DATA_TMB_HEADLINE);
@@ -105,6 +107,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		Navbar basePanel = new Navbar();
 		basePanel.getElement().addClassName(theme);
 		basePanel.getElement().getStyle().setBackgroundColor(color);
+		basePanel.getElement().getStyle().setColor(text_color);
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
 		NavbarHeader header = new NavbarHeader();
