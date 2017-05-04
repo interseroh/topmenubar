@@ -40,9 +40,9 @@
 </head>
 <body>
 
-<div id="tmb_top_menu_bar" data-tmb-bgcolor="#223d62"
+<div id="tmb_top_menu_bar" data-tmb-bgcolor="#f8f8f8"
 	data-tmb-headline="TEST APPLICATION"
-	data-tmb-theme="darkblue"
+	data-tmb-theme="default"
 	th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
 	<div id="tmb_app_launcher"
 		th:attr="data-tmb-application-url=${applauncherUrl}"
@@ -65,6 +65,21 @@
 	<li>
 		<a href="https://www.interseroh.de/en/contact"
 			target="_blank">Contact</a>
+	</li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">Dropdown</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="https://www.interseroh.de">Home</a>
+			</li>
+			<li>
+				<a href="https://www.interseroh.de/en/contact">Contact</a>
+			</li>
+			<li>
+				<a href="https://www.interseroh.de/en/company/about-us-interseroh">About</a>
+			</li>
+		</ul>
 	</li>
 </ul>
 

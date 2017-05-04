@@ -144,7 +144,7 @@ For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/reso
 
 - Add div tag for topmenubar at the top of the html body.
 ```html
-<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+<div id="tmb_top_menu_bar" data-tmb-bgcolor="#223d62"
     data-tmb-headline="TEST APPLICATION"
     data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 <div id="tmb_app_launcher"
@@ -163,7 +163,7 @@ For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/reso
 Just change the attributes in the outer div tag of the TopMenuBar.
 ```html
 <div id="tmb_top_menu_bar" 
-    data-tmb-color="#223d62"
+    data-tmb-bgcolor="#223d62"
     data-tmb-headline="TEST APPLICATION"
     data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 ```
@@ -202,7 +202,7 @@ For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/
 
 - Add div tag for topmenubar at the top of the html body.
 ```html
-<div id="tmb_top_menu_bar" data-tmb-color="#223d62"
+<div id="tmb_top_menu_bar" data-tmb-bgcolor="#223d62"
     data-tmb-headline="TEST APPLICATION"
     data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 <div id="tmb_app_launcher"
@@ -239,7 +239,7 @@ For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/
 Just change the attributes in the outer div tag of the TopMenuBar.
 ```html
 <div id="tmb_top_menu_bar" 
-    data-tmb-color="#223d62"
+    data-tmb-bgcolor="#223d62"
     data-tmb-headline="TEST APPLICATION"
     data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 ```
