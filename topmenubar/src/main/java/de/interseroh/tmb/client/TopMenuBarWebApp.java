@@ -36,6 +36,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
+import static de.interseroh.tmb.client.common.CopyTxtcolorToToggleNativeJavaScript.copyTxtColor;
 
 public class TopMenuBarWebApp implements EntryPoint {
 
@@ -98,7 +99,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		injectApplauncherScript();
 		configureRootPanel();
 
-		String color = rootPanel.getElement().getAttribute(DATA_TMB_BGCOLOR);
+		String bg_color = rootPanel.getElement().getAttribute(DATA_TMB_BGCOLOR);
 		String text_color = rootPanel.getElement().getAttribute(DATA_TMB_TXTCOLOR);
 		String theme = rootPanel.getElement().getAttribute(DATA_TMB_THEME);
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
@@ -106,7 +107,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 		Navbar basePanel = new Navbar();
 		basePanel.getElement().addClassName(theme);
-		basePanel.getElement().getStyle().setBackgroundColor(color);
+		basePanel.getElement().getStyle().setBackgroundColor(bg_color);
 		basePanel.getElement().getStyle().setColor(text_color);
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
 
@@ -142,6 +143,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		}
 
 		rootPanel.insert(basePanel, 0);
+		copyTxtColor();
 		logger.info("Create Views ends...");
 	}
 

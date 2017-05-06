@@ -4,7 +4,7 @@ body {
   overflow: hidden;
 }
 
-.TMB_application { /*own space, always on the top for applauncher popup*/
+.TMB_application { /*own space, always on the top to overwrite applauncher popup*/
   z-index: 2;
   position: relative;
   font-size: 13px;
@@ -78,7 +78,7 @@ body {
       color: #fff;
       .TMB_application__button {
         span {
-          background-color: #fff !important;
+          background-color: #fff;
         }
       }
     }
@@ -87,7 +87,7 @@ body {
       color: #777;
       .TMB_application__button {
         span {
-          background-color: #777 !important;
+          background-color: #777;
         }
       }
     }
