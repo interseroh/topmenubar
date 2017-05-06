@@ -158,7 +158,7 @@ For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/reso
 </div>
 ```
 
-- Add theme to topmenubar at the top of the html body. (bisher noch nicht aber wird noch obligatorisch)
+- Add theme to topmenubar at the top of the html body. (obligatorisch)
 - no theme is default: background-color: "#f8f8f8";, text-color="#777777"
 - darkblue:  background-color: "#223d62";, text-color="white"
 - darkblue:  background-color: "white";, text-color="#777777"

@@ -52,7 +52,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String DATA_TMB_ICON_URL = "data-tmb-icon-url";
 	private static final String DATA_TMB_HEADLINE = "data-tmb-headline";
 	private static final String DATA_TMB_THEME = "data-tmb-theme";
-	private static final String DEFAULT_BACKGROUND_COLOR = "#f8f8f8";
 	private static final String DEFAULT_BACKGROUND_THEME = "default";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
 	private static final String TOP_MENU_ICONS_RIGHT = "icons_right";
@@ -105,8 +104,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement().getAttribute(DATA_TMB_HEADLINE);
 
+
 		Navbar basePanel = new Navbar();
-		basePanel.getElement().addClassName(theme);
+		basePanel.getElement().addClassName(ifPresent(theme, DEFAULT_BACKGROUND_THEME));
 		basePanel.getElement().getStyle().setBackgroundColor(bg_color);
 		basePanel.getElement().getStyle().setColor(text_color);
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
