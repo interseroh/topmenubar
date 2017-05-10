@@ -1,0 +1,49 @@
+version: '2'
+volumes:
+  applauncher-config-filesystem:
+    external: true
+    driver: 'null'
+  applauncher-public-filesystem:
+    external: true
+    driver: 'null'
+services:
+  topmenubar:
+    mem_limit: 536870912
+    image: @docker.registry.url@/topmenubar:@project.version@-@git.branch.shortName@
+    environment:
+      server.context-path: /@git.branch.shortName@/topmenubar
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:host_label: HOST_IDENTIFIER=@host.identifier@
+      io.rancher.container.pull_image: always
+      project: topmenubar
+  landingpage:
+    mem_limit: 536870912
+    image: @docker.registry.url@/tmb-demo:@project.version@-@git.branch.shortName@
+    environment:
+      applauncher.url: @host.baseUrl@/@git.branch.shortName@/applauncher
+      topmenubar.url: @host.baseUrl@/@git.branch.shortName@/topmenubar
+      server.context-path: /@git.branch.shortName@/landing
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:host_label: HOST_IDENTIFIER=@host.identifier@
+      io.rancher.container.pull_image: always
+      project: topmenubar
+  applauncher:
+    mem_limit: 536870912
+    image: @docker.registry.url@/applauncher:@project.version@-@git.branch.shortName@
+    environment:
+      applauncher.config.json: file:/var/config/applauncher.json
+      applauncher.images.location: file:/var/public/images/
+      server.context-path: /@git.branch.shortName@/applauncher
+    stdin_open: true
+    volumes:
+    - applauncher-public-filesystem:/var/public
+    - applauncher-config-filesystem:/var/config
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: HOST_IDENTIFIER=@host.identifier@
+      project: topmenubar

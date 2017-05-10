@@ -110,6 +110,7 @@
 		<module>applauncher</module>
 		<module>topmenubar</module>
 		<module>tmb-demo</module>
+		<module>rancherdeploy</module>
 	</modules>
 
 	<dependencyManagement>

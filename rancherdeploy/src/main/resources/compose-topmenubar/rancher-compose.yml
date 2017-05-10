@@ -1,0 +1,24 @@
+version: '2'
+services:
+  topmenubar:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      port_rules:
+      - target_port: 9014
+        path: /@git.branch.shortName@/topmenubar
+  landingpage:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      port_rules:
+      - target_port: 9000
+        path: /@git.branch.shortName@/landing
+  applauncher:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - path: /@git.branch.shortName@/applauncher
+        target_port: 9010

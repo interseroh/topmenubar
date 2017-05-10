@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--<parent>
+		<artifactId>topmenubar-parent</artifactId>
+		<groupId>de.interseroh.tmb</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>-->
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>rancher-deploy</artifactId>
+	<groupId>de.interseroh.tmb</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<properties>
+		<host.identifier>THREE</host.identifier>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>deploy-rancher</id>
+
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<includes>
+							<include>**/*.yml</include>
+						</includes>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>build-helper-maven-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>regex-property</goal>
+								</goals>
+								<configuration>
+									<name>git.branch.shortName</name>
+									<!--suppress MavenModelInspection -->
+									<value>${GIT_BRANCH}</value>
+									<regex>.*\/</regex>
+									<replacement></replacement>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+	</profiles>
+
+</project>
