@@ -70,15 +70,9 @@ body {
 .TMB_application .navbar.darkblue .TMB_application__logocontainer {
   background-color: #fff;
 }
-.TMB_application .navbar.darkblue .TMB_application__button span {
-  background-color: #fff;
-}
 .TMB_application .navbar.white {
   background-color: #fff;
   color: #777;
-}
-.TMB_application .navbar.white .TMB_application__button span {
-  background-color: #777;
 }
 .TMB_application .navbar-default .navbar-nav > li > a {
   color: inherit !important;
