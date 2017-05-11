@@ -51,7 +51,7 @@ body {
 }
 .TMB_application__logocontainer {
   float: left;
-  background-color: #fff;
+  background-color: transparent;
   padding: 3px;
   margin: 3px 0 3px 2px;
   border-radius: 5px;
@@ -66,6 +66,9 @@ body {
 .TMB_application .navbar.darkblue {
   background-color: #223d62;
   color: #fff;
+}
+.TMB_application .navbar.darkblue .TMB_application__logocontainer {
+  background-color: #fff;
 }
 .TMB_application .navbar.darkblue .TMB_application__button span {
   background-color: #fff;

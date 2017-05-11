@@ -270,8 +270,9 @@ You can set one of the following values to this attribute.
 ### Colors
 Add your own background color and text color to topmenubar by setting the attributes
 `data-tmb-bgcolor` and `data-tmb-txtcolor`.
-- `data-tmb-bgcolor` and `data-tmb-txtcolor` will overwrite the used theme 
-- you can overwrite text color and background color independently 
+- `data-tmb-bgcolor` and `data-tmb-txtcolor` will overwrite the used theme except own styled background for the logo
+ - it's better not to combine own backgroundcolor with theme "darkblue"
+- means you can overwrite text color and background color independently except logo-backgrundcollor is set by the theme
 ```html
 <div id="tmb_top_menu_bar"
     data-tmb-headline="TEST APPLICATION"
