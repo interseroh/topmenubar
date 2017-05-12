@@ -144,7 +144,7 @@ For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/reso
 
 - Add div tag for topmenubar at the top of the html body.
 ```html
-<div id="tmb_top_menu_bar" data-tmb-bgcolor="#223d62"
+<div id="tmb_top_menu_bar"
     data-tmb-headline="TEST APPLICATION"
     data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 <div id="tmb_app_launcher"
@@ -243,6 +243,55 @@ Just change the attributes in the outer div tag of the TopMenuBar.
     data-tmb-headline="TEST APPLICATION"
     data-tmb-icon-url="${topmenubarUrl}/images/logo.svg">
 ```
+
+## Customizing the design
+### Themes
+Add a predefined theme to topmenubar by setting the attribute `data-tmb-theme`.
+You can set one of the following values to this attribute.
+- default (or attribute not set): *background-color: "#f8f8f8", text-color="#777777"*
+- darkblue:  *background-color: "#223d62", text-color="white"*
+- white:  *background-color: "white", text-color="#777777"*
+```html
+<div id="tmb_top_menu_bar"
+    data-tmb-headline="TEST APPLICATION"
+    data-tmb-icon-url="${topmenubarUrl}/images/logo.svg"
+    data-tmb-theme="darkblue">
+<div id="tmb_app_launcher"
+    data-tmb-application-url="${applauncherUrl}"
+    data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+</div>
+<div id="tmb_portal_links"></div>
+<div id="tmb_icons_right"></div>
+<div id="tmb_profile" class="fa fa-user headertabs"></div>
+<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+</div>
+```
+
+### Colors
+Add your own background color and text color to topmenubar by setting the attributes
+`data-tmb-bgcolor` and `data-tmb-txtcolor`.
+- `data-tmb-bgcolor` and `data-tmb-txtcolor` will overwrite the used theme except own styled background for the logo
+- it's better not to combine own backgroundcolor with theme "darkblue"
+- means you can overwrite text color and background color independently except logo-backgrundcolor is set by the theme
+- then now you have to set `data-tmb-txtcolor` as well otherwise its default color
+```html
+<div id="tmb_top_menu_bar"
+    data-tmb-headline="TEST APPLICATION"
+    data-tmb-icon-url="${topmenubarUrl}/images/logo.svg"
+    data-tmb-bgcolor="#0000FF" 
+    data-tmb-txtcolor="#00FF00" >
+<div id="tmb_app_launcher"
+    data-tmb-application-url="${applauncherUrl}"
+    data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+</div>
+<div id="tmb_portal_links"></div>
+<div id="tmb_icons_right"></div>
+<div id="tmb_profile" class="fa fa-user headertabs"></div>
+<div id="tmb_messaging" class="fa fa-envelope-o headertabs"></div>
+</div>
+```
+
+
 ## Integration Test
 The integration test simulates the injection of TopMenuBar in an existing page containing Bootstrap components and been developed applying the principles of responsive design.
  
