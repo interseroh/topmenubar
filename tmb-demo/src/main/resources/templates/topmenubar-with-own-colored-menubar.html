@@ -31,13 +31,20 @@
 		content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
 	<title>Bootstrap 3 Responsive Layout Example</title>
+	<link type="text/css" rel="stylesheet"
+		th:href="${applauncherUrl}+'/applauncher.css'" />
+	<link type="text/css" rel="stylesheet"
+		th:href="${topmenubarUrl}+'/topmenubar.css'" />
 	<script type="text/javascript" language="javascript"
 		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
 </head>
 <body>
 
 <div id="tmb_top_menu_bar"
+	data-tmb-bgcolor="#FF00FF"
+	data-tmb-txtcolor="#7722FF"
 	data-tmb-headline="TEST APPLICATION"
+
 	th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
 	<div id="tmb_app_launcher"
 		th:attr="data-tmb-application-url=${applauncherUrl}"
