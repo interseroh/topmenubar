@@ -132,12 +132,9 @@ See [applauncher](#applauncher) for configuration properties and configuration f
 
 ### Integrating TopMenuBar (incl. AppLauncher) above an existing Bootstrap Navbar
 For a complete example see [topmenubar-above-navbar.html](tmb-demo/src/main/resources/templates/topmenubar-above-navbar.html).
-- Add javascript and css to header. Applauncher.css first, than topmenubar.css then other libraries
+- Add javascript header.
 ```html
-<link type="text/css" rel="stylesheet"
-    href="${applauncherUrl}/applauncher.css" />
-<link type="text/css" rel="stylesheet"
-    href="${topmenubarUrl}/topmenubar.css" />
+
 <script type="text/javascript" language="javascript"
     src="${topmenubarUrl}/topmenubar/topmenubar.nocache.js"></script>
 ```
@@ -170,10 +167,8 @@ Just change the attributes in the outer div tag of the TopMenuBar.
 
 ### Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar
 For a complete example see [applauncher-within-navbar.html](tmb-demo/src/main/resources/templates/applauncher-within-navbar.html).
-- Add javascript and css to header.
+- Add javascript header.
 ```html
-<link type="text/css" rel="stylesheet"
-    href="${applauncherUrl}/applauncher.css" />
 <script type="text/javascript" language="javascript"
     src="${applauncherUrl}/applauncher/applauncher.nocache.js"></script>
 ```
@@ -188,13 +183,9 @@ For a complete example see [applauncher-within-navbar.html](tmb-demo/src/main/re
 
 ### Integrating TopMenuBar (incl. AppLauncher) with custom menu items
 For a complete example see [topmenubar-with-portalitems.html](tmb-demo/src/main/resources/templates/topmenubar-with-portalitems.html).
-- Add javascript and css to header.
+- Add javascript header.
 ```html
 
-<link type="text/css" rel="stylesheet"
-    href="${applauncherUrl}/applauncher.css" />
-<link type="text/css" rel="stylesheet"
-    href="${topmenubarUrl}/topmenubar.css" />
 <script type="text/javascript" language="javascript"
     src="${topmenubarUrl}/topmenubar/topmenubar.nocache.js"></script>
 
@@ -314,12 +305,7 @@ This test is represented with the page `resources/public/bstest_1_original.html`
 <script type="text/javascript" language="javascript"
     src="http://localhost:9010/applauncher/applauncher/applauncher.nocache.js">
 </script>
-```
 
-- Add applauncher css the html header
-       
-```html
-<link type="text/css" rel="stylesheet" href="http://localhost:9010/applauncher/applauncher.css">
 ```
     
 - Add TopMenuBar at the top of the html body.
