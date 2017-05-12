@@ -7,7 +7,7 @@
   line-height: 1em;
 }
 .APL_application .fa {
-  color: #fff;
+  color: inherit;
   margin-top: 1px;
   font-size: 18px;
 }
