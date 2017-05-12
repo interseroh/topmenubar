@@ -20,6 +20,8 @@ package de.interseroh.tmb.shared;
 
 public interface TopMenuBarServiceEndpoint {
 
-	String GWT_REMOTE_LOGGING = "/remote_logging";
+	String GWT_MODULE = "/topmenubar";
+
+	String GWT_REMOTE_LOGGING = GWT_MODULE + "/remote_logging";
 
 }

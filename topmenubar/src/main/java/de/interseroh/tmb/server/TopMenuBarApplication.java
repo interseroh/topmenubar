@@ -44,7 +44,6 @@ public class TopMenuBarApplication {
 	@Bean
 	public ServletRegistrationBean filterRegistrationBean() {
 		return new ServletRegistrationBean(new RemoteLoggingServiceImpl(),
-				contextPath.concat(TopMenuBarServiceEndpoint.GWT_REMOTE_LOGGING)
-						+ "/*");
+				TopMenuBarServiceEndpoint.GWT_REMOTE_LOGGING + "/*");
 	}
 }
