@@ -4,7 +4,7 @@ body {
   overflow: hidden;
 }
 
-.TMB_application { /*own space, always on the top for applauncher popup*/
+.TMB_application { /*own space, always on the top to overwrite applauncher popup*/
   z-index: 2;
   position: relative;
   font-size: 13px;
@@ -56,7 +56,7 @@ body {
 
   &__logocontainer {
     float: left;
-    background-color: #fff;
+    background-color: transparent;
     padding: 3px;
     margin: 3px 0 3px 2px;
     border-radius: 5px;
@@ -76,20 +76,13 @@ body {
     &.darkblue {
       background-color: #223d62;
       color: #fff;
-      .TMB_application__button {
-        span {
-          background-color: #fff !important;
-        }
+      .TMB_application__logocontainer {
+        background-color: #fff;
       }
     }
     &.white {
       background-color: #fff;
       color: #777;
-      .TMB_application__button {
-        span {
-          background-color: #777 !important;
-        }
-      }
     }
   }
   .navbar-default {
@@ -115,7 +108,6 @@ body {
       border-color: transparent;
     }
   }
-
 }
 
 #icons_right {
@@ -130,10 +122,9 @@ body {
     margin-bottom: 0;
     margin-top: 0;
     position: relative;
-    bottom: 2px;
+    bottom: 1px;
   }
 }
-
 
 @media (max-width: 400px) {
   .navbar-brand {
