@@ -106,7 +106,6 @@
 
 	<modules>
 		<module>tmb-common</module>
-		<module>zuul-server</module>
 		<module>applauncher</module>
 		<module>topmenubar</module>
 		<module>tmb-demo</module>
