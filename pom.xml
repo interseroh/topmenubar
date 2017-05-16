@@ -105,6 +105,7 @@
 		</kissmda.extensions.importpacker.version>
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 		<additionalparam>-Xdoclint:none</additionalparam>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
 
 	<modules>
