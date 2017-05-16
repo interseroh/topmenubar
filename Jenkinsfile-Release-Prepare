@@ -13,9 +13,6 @@ node {
         // ** NOTE: This 'maven-default' Maven tool must be configured
         // **       in the global configuration.
         mvnHome = tool 'maven-default'
-
-        sh 'git config user.email "jenkins@crowdcode.io"'
-        sh 'git config user.name "Jenkins"'
     }
     stage('Build') {
         println "BRANCH: $GIT_BRANCH"
