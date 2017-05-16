@@ -107,6 +107,7 @@
 		<additionalparam>-Xdoclint:none</additionalparam>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<javadoc.skip>true</javadoc.skip>
+		<arguments>-Dmaven.javadoc.skip=true</arguments>
 	</properties>
 
 	<modules>
