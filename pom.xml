@@ -106,6 +106,7 @@
 		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 		<additionalparam>-Xdoclint:none</additionalparam>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
+		<javadoc.skip>true</javadoc.skip>
 	</properties>
 
 	<modules>
