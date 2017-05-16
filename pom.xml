@@ -45,6 +45,7 @@
 
 	<scm>
 		<url>https://github.com/interseroh/topmenubar</url>
+		<connection>scm:git:https://github.com/interseroh/topmenubar.git</connection>
 	</scm>
 
 	<developers>
@@ -226,6 +227,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -553,6 +555,18 @@
 						</plugin>
 					</plugins>
 				</pluginManagement>
+			</build>
+		</profile>
+		<profile>
+			<id>createRelease</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>2.5.3</version>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 
