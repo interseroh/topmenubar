@@ -103,11 +103,6 @@
 		</kissmda.cartridges.simple.java.version>
 		<kissmda.extensions.importpacker.version>1.0.0
 		</kissmda.extensions.importpacker.version>
-		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
-		<additionalparam>-Xdoclint:none</additionalparam>
-		<maven.javadoc.skip>true</maven.javadoc.skip>
-		<javadoc.skip>true</javadoc.skip>
-		<arguments>-Dmaven.javadoc.skip=true</arguments>
 	</properties>
 
 	<modules>
@@ -575,25 +570,7 @@
 						<artifactId>maven-release-plugin</artifactId>
 						<version>2.5.3</version>
 					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.6.1</version>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-						</configuration>
-					</plugin>
 				</plugins>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>2.10.4</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
 			</build>
 		</profile>
 
