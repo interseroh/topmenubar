@@ -103,6 +103,8 @@
 		</kissmda.cartridges.simple.java.version>
 		<kissmda.extensions.importpacker.version>1.0.0
 		</kissmda.extensions.importpacker.version>
+		<maven.javadoc.failOnError>false</maven.javadoc.failOnError>
+		<additionalparam>-Xdoclint:none</additionalparam>
 	</properties>
 
 	<modules>
