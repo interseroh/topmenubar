@@ -1,6 +1,7 @@
 node {
     def mvnHome
     stage('Preparation') {
+        deleteDir()
         // Using scm configuration from upstream project.
         checkout scm
         //Setting GIT_BRANCH in environment because jenkins does not set it in the current version.
