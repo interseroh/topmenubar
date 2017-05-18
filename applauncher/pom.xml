@@ -23,7 +23,7 @@
 	<parent>
 		<groupId>de.interseroh.tmb</groupId>
 		<artifactId>topmenubar-parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>de.interseroh.tmb.applauncher</groupId>
@@ -46,7 +46,7 @@
 		<dependency>
 			<groupId>de.interseroh.tmb.common</groupId>
 			<artifactId>tmb-common</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Spring -->
