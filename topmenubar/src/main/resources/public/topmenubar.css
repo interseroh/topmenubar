@@ -1,7 +1,6 @@
 /** Add css rules here for your tmb application. */
 body {
   min-width: 320px;
-  overflow: scroll;
 }
 .TMB_application {
   /*own space, always on the top to overwrite applauncher popup*/
