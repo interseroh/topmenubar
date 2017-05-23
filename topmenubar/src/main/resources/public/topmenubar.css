@@ -39,7 +39,7 @@ body {
 }
 .TMB_application .fa {
   font-size: 18px;
-  color: inherit;
+  color: inherit !important;
 }
 .TMB_application .fa:focus,
 .TMB_application .fa:hover {
