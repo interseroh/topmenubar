@@ -56,6 +56,18 @@
   -webkit-transform: translateY(-50%);
   margin: auto;
 }
+.APL_application .row {
+  margin-left: -15px !important;
+  margin-right-: -15px !important;
+}
+.APL_application [class^='col-'] {
+  padding-bottom: 15px !important;
+  padding-right: 15px !important;
+}
+.APL_application .navbar-default .container,
+.APL_application .navbar-default .container-fluid {
+  border-bottom: none;
+}
 #icons_right {
   position: absolute;
   right: 10px;

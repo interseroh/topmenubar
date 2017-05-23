@@ -1,14 +1,15 @@
 /** Add css rules here for your tmb application. */
 body {
   min-width: 320px;
-  overflow: hidden;
 }
 
 #tmb_top_menu_bar {
 
   &.TMB_application { /*own space, always on the top to overwrite applauncher popup*/
     z-index: 2;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
     font-size: 13px;
     line-height: 1.846;
     color: #777;
@@ -73,13 +74,16 @@ body {
       &__logocontainer {
         float: left;
         background-color: transparent;
-        padding: 3px;
-        margin: 3px 0 3px 2px;
+        padding: 10px;
         border-radius: 5px;
 
         img {
-          height: 50px;
+          height: 45px;
+          @media (max-width: 640px) {
+            height: 40px;
+          }
         }
+
       }
 
       &__button {
