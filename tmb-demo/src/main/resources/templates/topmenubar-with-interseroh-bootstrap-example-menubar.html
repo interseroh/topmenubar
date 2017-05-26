@@ -33,6 +33,11 @@
 	<title>Bootstrap 3 Responsive Layout Example</title>
 	<script type="text/javascript" language="javascript"
 		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+	<style>
+		[class^='col-'] {
+			border: 1px solid grey;
+		}
+	</style>
 </head>
 <body>
 
@@ -49,10 +54,12 @@
 	<div id="tmb_portal_links"></div>
 	<div id="icons_right"></div>
 	<div id="tmb_profile" class="fa fa-user headertabs"><a href="#"></a></div>
-	<div id="tmb_messaging" class="fa fa-envelope-o headertabs"><a href="#"></a></div>
+	<div id="tmb_messaging" class="fa fa-envelope-o headertabs"><a href="#"></a>
+	</div>
 </div>
 
-<ul id="internal_topics"><!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
+<ul id="internal_topics">
+	<!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
 	<li>
 		<a href="https://www.interseroh.de" target="_blank">Home</a>
 	</li>
@@ -109,12 +116,12 @@
 
 <div class="container">
 	<div class="container">
-		<h1>Table <em>in</em> Container</h1>
-		<h2>Table <em>in</em> Container</h2>
-		<h3>Table <em>in</em> Container</h3>
-		<h4>Table <em>in</em> Container</h4>
-		<h5>Table <em>in</em> Container</h5>
-		<h6>Table <em>in</em> Container</h6>
+		<h1>Table <b>in</b> Container</h1>
+		<h2>Table <b>in</b> Container</h2>
+		<h3>Table <b>in</b> Container</h3>
+		<h4>Table <b>in</b> Container</h4>
+		<h5>Table <b>in</b> Container</h5>
+		<h6>Table <b>in</b> Container</h6>
 		<p>The .table class adds basic styling (light padding and only
 			horizontal
 			dividers) to a table:</p>
@@ -159,47 +166,80 @@
 	</div>
 
 
-<button class="btn btn-primary">some primarybutton</button>
-<button class="btn btn-secondary">some secondary button</button>
+	<button class="btn btn-primary">some primarybutton</button>
+	<button class="btn btn-secondary">some secondary button</button>
+	<br/><br/><br/>
+	<div class="row" style="text-align: center">
 
-<div class="row">
-	
-<div class="col-xs-12">zwölf</div>
-	
-	<div class="col-xs-6">sechs</div>
-	<div class="col-xs-6">sechs</div>
+		<div class="col-xs-12">zwölf</div>
 
-	<div class="col-xs-4">vier</div>
-	<div class="col-xs-4">vier</div>
-	<div class="col-xs-4">vier</div>
+		<div class="col-xs-6">sechs</div>
+		<div class="col-xs-6">sechs</div>
 
-	<div class="col-xs-3">drei</div>
-	<div class="col-xs-3">drei</div>
-	<div class="col-xs-3">drei</div>
-	<div class="col-xs-3">drei</div>
+		<div class="col-xs-4">vier</div>
+		<div class="col-xs-4">vier</div>
+		<div class="col-xs-4">vier</div>
 
-	<div class="col-xs-2">zwei</div>
-	<div class="col-xs-2">zwei</div>
-	<div class="col-xs-2">zwei</div>
-	<div class="col-xs-2">zwei</div>
-	<div class="col-xs-2">zwei</div>
-	<div class="col-xs-2">zwei</div>
+		<div class="col-xs-3">drei</div>
+		<div class="col-xs-3">drei</div>
+		<div class="col-xs-3">drei</div>
+		<div class="col-xs-3">drei</div>
 
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
-	<div class="col-xs-1">eins</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
 
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+
+	</div>
+	<br/>
+
+	<p>Wir schließen Produkt-, Material- und Logistikkreisläufe systematisch und
+		unsere Recyclinglösungen und Strategien zur Abfallvermeidung setzen
+		branchenweit Maßstäbe. Dabei investieren wir in Innovationen ebenso wie
+		in langfristige <b>Partnerschaften</b> mit unseren Kunden. Unser Ziel ist es,
+		jede Kundenanforderung individuell zu erfüllen – mit immer neuen
+		Modellen der Nachhaltigkeit. <a href="#">Dafür steht Interseroh seit mehr als 25
+			Jahren.</a></p>
+	<br/><br/>
+
+	<input type="checkbox" id="checkbox" name="checkbox"/>
+	<label for="checkbox">checkbox1</label>
+	<br/>
+
+	<input type="radio" id="radio1" name="radio1" value="0"/>
+	<label for="radio1">radio1</label>
+	<input type="radio" id="radio2" name="radio2" value="1"/>
+	<label for="radio2">radio2</label>
+	<input type="radio" id="radio3" name="radio3" value="2"/>
+	<label for="radio3">radio3</label>
+	<br/>
+
+	<input type="text"/>text1<br/>
+	<br/>
+	<select>
+		<option value="option1">option1</option>
+		<option value="option2">option2</option>
+		<option value="option3">option3</option>
+		<option value="option4">option4</option>
+	</select>
+
+	<br/>
 </div>
-</div>	
-
+<br/><br/><br/>	<br/><br/><br/>
 </body>
 </html>
