@@ -7096,6 +7096,13 @@ input[type="radio"] + label:before {
   top: 4px;
   float: left;
 }
+input[type="checkbox"]:checked + label:before,
+input[type="radio"]:checked + label:before {
+  border: 1px solid #009DD3;
+  background: #009DD3;
+  color: #333;
+  text-align: center;
+}
 input[type="radio"] + label:before {
   border-radius: 20px;
 }
