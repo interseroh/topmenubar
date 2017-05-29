@@ -20,9 +20,9 @@ body {
   border: none;
 }
 .TMB_application .navbar-brand {
-  padding: 20.5px 15px;
-  line-height: 23px;
-  height: 64px;
+  padding: 0 15px;
+  position: relative;
+  top: 23px;
   color: inherit !important;
 }
 .TMB_application .badge {
@@ -52,12 +52,11 @@ body {
 .TMB_application__logocontainer {
   float: left;
   background-color: transparent;
-  padding: 3px;
-  margin: 3px 0 3px 2px;
+  margin: 10px;
   border-radius: 5px;
 }
 .TMB_application__logocontainer img {
-  height: 50px;
+  height: 45px;
 }
 .TMB_application__button {
   padding-left: 0 !important;
@@ -98,7 +97,7 @@ body {
 #icons_right {
   position: absolute;
   right: 10px;
-  top: 26px;
+  top: 23px !important;
 }
 #icons_right .TMB_application__button {
   border: none;
