@@ -168,7 +168,7 @@
 
 	<button class="btn btn-primary">some primarybutton</button>
 	<button class="btn btn-secondary">some secondary button</button>
-	<br/><br/><br/>
+	<br /><br /><br />
 	<div class="row" style="text-align: center">
 
 		<div class="col-xs-12">zwölf</div>
@@ -206,40 +206,81 @@
 		<div class="col-xs-1">eins</div>
 
 	</div>
-	<br/>
+	<br />
 
 	<p>Wir schließen Produkt-, Material- und Logistikkreisläufe systematisch und
 		unsere Recyclinglösungen und Strategien zur Abfallvermeidung setzen
 		branchenweit Maßstäbe. Dabei investieren wir in Innovationen ebenso wie
-		in langfristige <b>Partnerschaften</b> mit unseren Kunden. Unser Ziel ist es,
+		in langfristige <b>Partnerschaften</b> mit unseren Kunden. Unser Ziel
+		ist es,
 		jede Kundenanforderung individuell zu erfüllen – mit immer neuen
-		Modellen der Nachhaltigkeit. <a href="#">Dafür steht Interseroh seit mehr als 25
+		Modellen der Nachhaltigkeit. <a href="#">Dafür steht Interseroh seit
+			mehr als 25
 			Jahren.</a></p>
-	<br/><br/>
+	<br /><br />
 
-	<input type="checkbox" id="checkbox" name="checkbox"/>
+
+
+
+	<div class="bs-example" data-example-id="block-checkboxes-radios">
+		<form>
+			<div class="checkbox">
+				<label for="checkbox1">
+				<input type="checkbox"  id="checkbox1" value=""/>
+				Option one
+			</label>
+			</div>
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" value="" disabled=""/>
+					Option two is disabled </label>
+			</div>
+			<br>
+			<div class="radio">
+				<label for="radio1">
+					<input type="radio1" name="irgendwas" id="radio1" value="radio1" checked=""/>
+					Option one
+				</label>
+			</div>
+			<div class="radio">
+				<label  for="radio2">
+					<input type="radio" name="irgendwas" id="radio2" value="radio2" />
+				Option two
+			</label>
+			</div>
+			<div class="radio disabled">
+				<label  for="radio3">
+					<input type="radio" name="irgendwas" id="radio3" value="radio3" disabled=""/>
+					Option three is disabled
+				</label>
+			</div>
+		</form>
+	</div>
+	<br />
 	<label for="checkbox">checkbox1</label>
-	<br/>
+	<input type="checkbox" id="checkbox" name="checkbox" />
+	<input type="radio" id="radio13" name="irgendwas" value="0" />
+	<label for="radio13">radio1</label>
+	<input type="radio" id="radio23" name="irgendwas" value="1" />
+	<label for="radio23">radio2</label>
+	<input type="radio" id="radio33" name="irgendwas" value="2" />
+	<label for="radio33">radio3</label>
+	<br />
 
-	<input type="radio" id="radio1" name="irgendwas" value="0"/>
-	<label for="radio1">radio1</label>
-	<input type="radio" id="radio2" name="irgendwas" value="1"/>
-	<label for="radio2">radio2</label>
-	<input type="radio" id="radio3" name="irgendwas" value="2"/>
-	<label for="radio3">radio3</label>
-	<br/>
-
-	<input type="text"/>text1<br/>
-	<br/>
-	<select>
-		<option value="option1">option1</option>
-		<option value="option2">option2</option>
-		<option value="option3">option3</option>
-		<option value="option4">option4</option>
-	</select>
-
-	<br/>
+	<div class="form-group">
+		<label for="Email">Emailaddress</label>
+		<input type="email" id="Email" class="form-control" />
+	</div>
+	<div class="form-group">
+		<select>
+			<option value="option1">option1</option>
+			<option value="option2">option2</option>
+			<option value="option3">option3</option>
+			<option value="option4">option4</option>
+		</select>
+	</div>
+	<br />
 </div>
-<br/><br/><br/>	<br/><br/><br/>
+<br /><br /><br /> <br /><br /><br />
 </body>
 </html>
