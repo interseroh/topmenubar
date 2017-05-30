@@ -14,6 +14,10 @@
 .APL_application__iconsContainer {
   width: 293px;
   padding: 25px 30px !important;
+  border-bottom: none !important;
+}
+.APL_application__iconsContainer [class^='col-'] {
+  border: none;
 }
 .APL_application__link {
   display: block;
@@ -61,7 +65,7 @@
   margin-right-: -15px !important;
 }
 .APL_application [class^='col-'] {
-  padding-bottom: 15px !important;
+  padding-left: 15px !important;
   padding-right: 15px !important;
 }
 .APL_application .navbar-default .container,
