@@ -117,7 +117,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logoContainer.getElement().setClassName(CSS_BLOCK + "__logocontainer");
 		logoContainer.add(createLogoImage(iconUrl));
 		header.add(logoContainer);
-		header.add(createBadge(headlineText));
+		header.add(createTitle(headlineText));
 		basePanel.add(header);
 
 		if (topics != null) {
@@ -185,13 +185,23 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 *
 	 * @param headlineText text for adding
 	 */
-	private NavbarBrand createBadge(String headlineText) {
-		NavbarBrand brand = new NavbarBrand();
-		brand.setBadgePosition(BadgePosition.RIGHT);
-		brand.setBadgeText(headlineText);
+//	private NavbarBrand createBadge(String headlineText) {
+//		NavbarBrand brand = new NavbarBrand();
+//	//	brand.setBadgePosition(BadgePosition.RIGHT);
+//		brand.setBadgeText(headlineText);
+//		return brand;
+//	}
+	/**
+	 * Creates and add headline text to the left panel
+	 *
+	 * @param headlineText text for adding
+	 */
+	private SimplePanel createTitle(String headlineText) {
+		SimplePanel brand = new SimplePanel();
+		brand.getElement().setClassName("navbar-brand");
+		brand.getElement().setInnerText(headlineText);
 		return brand;
 	}
-
 	/**
 	 * Creates and add Logo image to the left panel
 	 *

@@ -1,18 +1,3 @@
-/*body*/
-/*{*/
-/*!* background: url('https://www.interseroh-portal.de/dienstleistungsportal/uploads/Image/header.png'); *!*/
-/*!* background: url('http://www.interseroh.com/fileadmin/interseroh/system/templates/images/bg_country.jpg') no-repeat center center fixed; */
-/*background-size: cover; *!*/
-/*padding-top: 95px;*/
-/*background-color: white*/
-/*}*/
-
-/*.modal-dialog-sidebar {*/
-/*position: relative;*/
-/*margin: 30px auto;*/
-/*width: 300px*/
-/*}*/
-
 .sticky-content {
   position: fixed;
   z-index: 9;
@@ -25,78 +10,96 @@
       list-style-type: none;
     }
   }
-}
 
-.sticky-content__element:first-child {
-  margin-bottom: 3px;
-}
+  &__element {
+    box-shadow: -5px 5px 25px rgba(0, 0, 0, .1);
+    &:first-child {
+      margin-bottom: 3px;
+    }
+    > a {
+      transition: background 150ms ease;
+      background: #ffce00;
+      color: #002652;
+      display: block;
+      text-decoration: none;
+      position: relative;
+      text-align: center;
+      z-index: 8;
+      padding: 15px 15px 13px;
+      &:hover {
+        background: #00b3f0;
+        color: #fff;
+      }
+      i {
+        font-size: 2em;
+        font-weight: bold;
+        display: block;
+      }
+    }
+    &.is-active {
+      .sticky-content__flyout {
+        opacity: 1;
+        visibility: visible;
+      }
+      > a:after {
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        margin-top: -13px;
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 13px 15px 13px 0;
+        border-color: transparent #00b3f0 transparent transparent;
+      }
+    }
 
-.sticky-content__element {
-  box-shadow: -5px 5px 25px rgba(0, 0, 0, .1);
-}
-
-@media screen and (min-width: 62em) {
-  .sticky-content__element > a {
-    text-align: center;
-    z-index: 8;
-    padding: 15px 15px 13px;
   }
-
-  .sticky-content__element.is-active > a:after {
-    position: absolute;
+  &__flyout {
+    transition: opacity .2s ease, visibility .2s ease;
+    font-size: 15px;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 0 55px -15px rgba(0, 0, 0, .5);
+    overflow: auto;
+    padding: 30px;
+    background: #fff;
+    width: 500px;
+    z-index: 7;
     right: 100%;
-    top: 50%;
-    margin-top: -13px;
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 13px 15px 13px 0;
-    border-color: transparent #00b3f0 transparent transparent;
+    bottom: 0;
+    display: none;
   }
 }
 
-.sticky-content__element > a {
-  transition: background 150ms ease;
-  background: #ffce00;
-  color: #002652;
-  display: block;
-  text-decoration: none;
-  position: relative;
-  text-align: center;
-  z-index: 8;
-  padding: 15px 15px 13px;
-  i {
-    font-size: 2em;
-    font-weight: bold;
-    display: block;
-  }
+textarea {
+  min-height: 300px;
 }
 
-.sticky-content__flyout {
-  transition: opacity .2s ease, visibility .2s ease;
-  font-size: 15px;
-  opacity: 0;
-  visibility: hidden;
-  box-shadow: 0 0 55px -15px rgba(0, 0, 0, .5);
-  overflow: auto;
-  padding: 30px;
-  background: #fff;
-  width: 500px;
-  z-index: 7;
-  right: 100%;
-  bottom: 0;
-  display: none;
+.btn {
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+  padding: 20px 30px;
 }
 
-.sticky-content__element.is-active .sticky-content__flyout {
-  opacity: 1;
-  visibility: visible;
+.btn:focus {
+  outline: none;
 }
 
-
-
-.sticky-content__element > a:hover {
-  background: #00b3f0;
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 200;
+}
+.jumbotron h1, .jumbotron .h1 {
+  font-size: 63px;
+}
+.btn-lg, .btn-group-lg>.btn {
+  font-size: 18px;
+}
+.btn-success, .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open>.btn-success.dropdown-toggle {
   color: #fff;
+  background-color: rgba(74,135,38,0.8);
+  border-color: transparent;
 }
