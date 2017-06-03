@@ -95,14 +95,24 @@ textarea {
   font-size: 16px;
   font-weight: 200;
 }
+
 .jumbotron h1, .jumbotron .h1 {
   font-size: 63px;
 }
-.btn-lg, .btn-group-lg>.btn {
+
+.btn-lg, .btn-group-lg > .btn {
   font-size: 18px;
 }
-.btn-success, .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open>.btn-success.dropdown-toggle {
-  color: #fff;
-  background-color: rgba(74,135,38,0.8);
-  border-color: transparent;
+
+.btn-success {
+  &:hover,
+  &.focus,
+  &:active,
+  &:active:hover,
+  &.active {
+    color: #fff;
+    background-color: #6B9C4E;
+    border-color: transparent;
+  }
+
 }
