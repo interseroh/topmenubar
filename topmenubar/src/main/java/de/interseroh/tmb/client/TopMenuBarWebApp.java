@@ -40,7 +40,6 @@ import static de.interseroh.tmb.client.common.CopyTxtcolorToToggleNativeJavaScri
 
 public class TopMenuBarWebApp implements EntryPoint {
 
-	private static final String CSS_BLOCK = "TMB_application";
 	private static final String TMB_APP_LAUNCHER = "tmb_app_launcher";
 	private static final String TMB_PROFILE = "tmb_profile";
 	private static final String TMB_MESSAGING = "tmb_messaging";
@@ -55,12 +54,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String DEFAULT_BACKGROUND_THEME = "default";
 	private static final String TOP_MENU_BAR_PLACEHOLDER = "tmb_top_menu_bar";
 	private static final String TOP_MENU_ICONS_RIGHT = "icons_right";
-
 	private static final String PORTAL_LINKS = "tmb_portal_links";
 	private static final String TOPICS = "internal_topics";
-
-
 	private static final String COLLAPSEID = "tmb_navbar_collapse";
+	private static String CSS_BLOCK = "TMB_application";
+
 	private static final Logger logger = Logger
 			.getLogger(TopMenuBarWebApp.class.getName());
 
@@ -93,7 +91,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		// Views
 		logger.info("Create Views begins...");
 
-		loadWidgetsFromInsideOut();
+		CSS_BLOCK = loadWidgetsFromInsideOut();
 		configureApplauncher();
 		injectApplauncherScript();
 		configureRootPanel();
@@ -161,7 +159,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		appLauncher.getElement().addClassName("headertabs");
 	}
 
-	private void loadWidgetsFromInsideOut() {
+	private String loadWidgetsFromInsideOut() {
 		portal = getWidgets(PORTAL_LINKS);
 		topics = getWidgets(TOPICS);
 		profile = getWidgets(TMB_PROFILE);
@@ -170,6 +168,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		icons_right = getWidgets(TOP_MENU_ICONS_RIGHT);
 		// Outer Widgets must be loaded at last
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
+		return ifPresent(rootPanel.getElement().getClassName(), CSS_BLOCK);
 	}
 
 	private Widget createCollapseButton(String dataTarget) {
