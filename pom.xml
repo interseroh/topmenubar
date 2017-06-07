@@ -28,7 +28,7 @@
 
 	<groupId>de.interseroh.tmb</groupId>
 	<artifactId>topmenubar-parent</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>topmenubar-parent</name>
 	<description>Top menu bar project</description>
@@ -44,7 +44,7 @@
 	<scm>
 		<url>https://github.com/interseroh/topmenubar</url>
 		<connection>scm:git:https://github.com/interseroh/topmenubar.git</connection>
-	  <tag>topmenubar-parent-1.0.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<developers>
