@@ -1,12 +1,14 @@
 /** Add css rules here for your tmb application. */
 body {
   min-width: 320px;
-  overflow: hidden;
+  margin-top: 65px;
 }
 
 .TMB_application { /*own space, always on the top to overwrite applauncher popup*/
   z-index: 2;
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
   font-size: 13px;
   line-height: 1.846;
   color: #777;
@@ -41,7 +43,7 @@ body {
 
   .fa {
     font-size: 18px;
-    color: inherit;
+    color: inherit !important;
     &:focus,
     &:hover {
       color: inherit !important;
