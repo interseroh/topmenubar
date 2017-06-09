@@ -54,7 +54,8 @@ body {
 .TMB_application__logocontainer {
   float: left;
   background-color: transparent;
-  margin: 10px;
+  margin: 4px;
+  padding: 6px;
   border-radius: 5px;
 }
 .TMB_application__logocontainer img {
