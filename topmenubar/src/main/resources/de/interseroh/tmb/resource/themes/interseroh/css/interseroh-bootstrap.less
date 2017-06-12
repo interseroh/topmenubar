@@ -991,6 +991,39 @@ select, input, textarea {
   }
 }
 
+.dropdown .btn.btn-default,
+.dropdown.open .btn.btn-default,
+.dropdown.active .btn.btn-default{
+  padding: 6px 12px;
+  background-color: @secondary-lighter-grey;
+  color: @interseroh-placeholder-color;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  &:active,
+  &:hover {
+    background-color: @secondary-lighter-hover-grey;
+    border: 1px solid transparent;
+  }
+  &:focus,
+  &:active {
+    border-color: #66afe9;
+  }
+  .caret {
+    font-family: 'Glyphicons Halflings';
+    border: none;
+    display: inline;
+    font-size: 0.7em;
+    &:before {
+      content: "\e114";
+    }
+  }
+}
+
+
+
+
 .secondary-dark-grey {
   back-ground-color: @secondary-dark-grey;
 }
@@ -998,24 +1031,31 @@ select, input, textarea {
 .secondary-medium-grey {
   back-ground-color: @secondary-medium-grey;
 }
+
 .secondary-light-grey {
   back-ground-color: @secondary-light-grey;
 }
+
 .secondary-lighter-grey {
   back-ground-color: @secondary-lighter-grey;
 }
+
 .interseroh-dark-blue {
   back-ground-color: @interseroh-dark-blue;
 }
+
 .interseroh-azur-blue {
   back-ground-color: @interseroh-azur-blue;
 }
+
 .interseroh-yellow {
   back-ground-color: @interseroh-yellow;
 }
+
 .interseroh-dark-green {
   back-ground-color: @interseroh-dark-green;
 }
+
 .interseroh-white {
   back-ground-color: @interseroh-white;
 }
