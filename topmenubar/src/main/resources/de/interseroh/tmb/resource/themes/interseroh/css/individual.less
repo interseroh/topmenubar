@@ -1,3 +1,5 @@
+@import "variables.less";
+
 .sticky-content {
   position: fixed;
   z-index: 9;
@@ -18,8 +20,8 @@
     }
     > a {
       transition: background 150ms ease;
-      background: #ffce00;
-      color: #002652;
+      background: @interseroh-yellow;
+      color: @interseroh-dark-blue;
       display: block;
       text-decoration: none;
       position: relative;
@@ -27,8 +29,8 @@
       z-index: 8;
       padding: 15px 15px 13px;
       &:hover {
-        background: #00b3f0;
-        color: #fff;
+        background: @interseroh-azur-hover-blue;
+        color: @interseroh-white;
       }
       i {
         font-size: 2em;
@@ -51,7 +53,7 @@
         height: 0;
         border-style: solid;
         border-width: 13px 15px 13px 0;
-        border-color: transparent #00b3f0 transparent transparent;
+        border-color: transparent @interseroh-azur-hover-blue transparent transparent;
       }
     }
 
@@ -64,7 +66,7 @@
     box-shadow: 0 0 55px -15px rgba(0, 0, 0, .5);
     overflow: auto;
     padding: 30px;
-    background: #fff;
+    background: @interseroh-white;
     width: 500px;
     z-index: 7;
     right: 100%;
@@ -110,8 +112,8 @@ textarea {
   &:active,
   &:active:hover,
   &.active {
-    color: #fff;
-    background-color: #6B9C4E;
+    color: @interseroh-white;
+    background-color: @interseroh-dark-green;
     border-color: transparent;
   }
 }
