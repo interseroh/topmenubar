@@ -37,6 +37,21 @@
 		[class^='col-'] {
 			border: 1px solid grey;
 		}
+		.no-border [class^='col-'] {
+			border: none;
+		}
+		.circle {
+			width: 140px;
+			height: 140px;
+			border-radius: 100%;
+			margin: 30px auto 10px auto;
+		}
+		.circle.interseroh-white {
+			border: 1px solid #f2f2f2;
+		}
+		.text {
+			margin-bottom: 20px;
+		}
 	</style>
 </head>
 <body>
@@ -303,6 +318,22 @@
 			placeholder="Ihre Nachricht *" class="form-control"
 			maxlength="500"></textarea>
 	</div>
+
+<br/>
+
+<div class="row no-border" style="text-align: center">
+	<div class="col-xs-3"><div class="circle secondary-dark-grey"></div><div class="text">secondary-dark-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-medium-grey "></div><div class="text">secondary-medium-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-light-grey"></div><div class="text">secondary-light-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-lighter-grey"></div><div class="text">secondary-lighter-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-lighter-hover-grey"></div><div class="text">secondary-lighter-hover-grey</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-dark-blue"></div><div class="text">interseroh-dark-blue</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-azur-blue"></div><div class="text">interseroh-azur-blue</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-azur-hover-blue"></div><div class="text">interseroh-azur-hover-blue</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-white "></div><div class="text">interseroh-white</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-yellow "></div><div class="text">interseroh-yellow</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-dark-green "></div><div class="text">interseroh-dark-green</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-placeholder-color "></div><div class="text">interseroh-placeholder-color</div></div>
 </div>
 <br /><br /><br />
 <br /><br /><br />
@@ -321,6 +352,7 @@
 			</li>
 		</ul>
 	</ul>
+</div>
 </div>
 </body>
 </html>
