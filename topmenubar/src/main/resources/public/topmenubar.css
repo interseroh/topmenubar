@@ -17,13 +17,9 @@ body {
   /*themes*/
 }
 .TMB_application #icons_right,
-.TMB_application .navbar-brand {
+.TMB_application .navbar-brand,
+.TMB_application .navbar-nav > li > a {
   top: 27px !important;
-}
-@media (min-width: 768px) {
-  .TMB_application .navbar-nav > li > a {
-    top: 27px !important;
-  }
 }
 .TMB_application .navbar {
   background-color: #f8f8f8;
