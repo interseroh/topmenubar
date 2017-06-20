@@ -16,6 +16,15 @@ body {
   letter-spacing: 0.1px;
   /*themes*/
 }
+.TMB_application #icons_right,
+.TMB_application .navbar-brand {
+  top: 27px !important;
+}
+@media (min-width: 768px) {
+  .TMB_application .navbar-nav > li > a {
+    top: 27px !important;
+  }
+}
 .TMB_application .navbar {
   background-color: #f8f8f8;
   min-height: 64px;
@@ -24,7 +33,6 @@ body {
 .TMB_application .navbar-brand {
   padding: 0 15px;
   position: relative;
-  top: 23px;
   color: inherit !important;
 }
 .TMB_application .badge {
@@ -33,10 +41,7 @@ body {
   white-space: nowrap;
   font-weight: 700;
   background-color: transparent;
-  padding: 4px 6px 4px;
-}
-.TMB_application .navbar-nav > li > a {
-  line-height: 23px;
+  padding: 0 6px;
 }
 .TMB_application .fa {
   font-size: 18px;
@@ -54,7 +59,7 @@ body {
 .TMB_application__logocontainer {
   float: left;
   background-color: transparent;
-  margin: 4px;
+  margin: 8px;
   padding: 6px;
   border-radius: 5px;
 }
@@ -100,7 +105,6 @@ body {
 #icons_right {
   position: absolute;
   right: 10px;
-  top: 23px !important;
 }
 #icons_right .TMB_application__button {
   border: none;
@@ -131,7 +135,10 @@ body {
 }
 @media (min-width: 768px) {
   .TMB_application .navbar-nav > li > a {
-    padding-top: 20.5px;
-    padding-bottom: 20.5px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .TMB_application__logocontainer {
+    margin-left: 19px;
   }
 }
