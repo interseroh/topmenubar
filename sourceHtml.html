@@ -70,8 +70,7 @@ für die Links, die von außen kommen, gilt diese Struktur: (class="text-right" 
 
 oder einfacher:
 <div id="tmb_top_menu_bar">
-
-
+	<!-- class="INTERSEROH_application" wenn die Standardklasse "TMB_application" mit dem interseroh-bootstrap überschrieben werden soll -->
 	<nav class="navbar navbar-default">
 
 		1
@@ -144,11 +143,16 @@ Optional
 
  zuerst applauncher.css, dann
  topmenubar.css,
- zuletzt landingpafe css
+ zuletzt landingpage css
  da letzte hat die höchste Priorität.
 
  demgemäß diesmal umgekehrt:
 
  child - child - parent
 
- somit bestimmt die einbindende als höchstes und kann überschreiben
+ somit bestimmt die letzte Einzubindende als höchstes und kann überschreiben
+
+
+ getBootstrap Konfiguration:
+
+ Die im Ordner unter .. topmenubar-parent\topmenubar\src\main\resources\de\interseroh\tmb\resource\themes\interseroh\bootstrap\config\" gespeicherte "config.json" speichert bisherige bootstrap Konfigurationen und muss dort unter "Boortstrap/configurize" voher upgeloaded werden, um bisherige Änderungen zu übernehmen.

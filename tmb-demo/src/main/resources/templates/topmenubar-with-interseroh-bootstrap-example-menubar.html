@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!--
+  ~ /*
+  ~  * Licensed to the Apache Software Foundation (ASF) under one
+  ~  * or more contributor license agreements.  See the NOTICE file
+  ~  * distributed with this work for additional information
+  ~  * regarding copyright ownership.  The ASF licenses this file
+  ~  * to you under the Apache License, Version 2.0 (the
+  ~  * "License"); you may not use this file except in compliance
+  ~  * with the License.  You may obtain a copy of the License at
+  ~  *
+  ~  *  http://www.apache.org/licenses/LICENSE-2.0
+  ~  *
+  ~  * Unless required by applicable law or agreed to in writing,
+  ~  * software distributed under the License is distributed on an
+  ~  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  * KIND, either express or implied.  See the License for the
+  ~  * specific language governing permissions and limitations
+  ~  * under the License.
+  ~  */
+  -->
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--/*@thymesVar id="applauncherUrl" type="java.lang.String"*/-->
+<!--/*@thymesVar id="topmenubarUrl" type="java.lang.String"*/-->
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+	<title>Bootstrap 3 Responsive Layout Example</title>
+	<script type="text/javascript" language="javascript"
+		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
+	<style>
+		[class^='col-'] {
+			border: 1px solid grey;
+		}
+		.no-border [class^='col-'] {
+			border: none;
+		}
+		.circle {
+			width: 140px;
+			height: 140px;
+			border-radius: 100%;
+			margin: 30px auto 10px auto;
+		}
+		.circle.interseroh-white {
+			border: 1px solid #f2f2f2;
+		}
+		.text {
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+<!-- class="INTERSEROH_application" wenn die Standardklasse "TMB_application" mit dem interseroh-bootstrap überschrieben werden soll -->
+<div id="tmb_top_menu_bar" class="INTERSEROH_application"
+	data-tmb-headline="TEST APPLICATION"
+	th:attr="data-tmb-icon-url=${topmenubarUrl}+'/images/logo.svg'">
+	<div id="tmb_app_launcher"
+		th:attr="data-tmb-application-url=${applauncherUrl}"
+		data-tmb-javascript-url="/applauncher/applauncher.nocache.js">
+	</div>
+	<div id="tmb_portal_links"></div>
+	<div id="icons_right"></div>
+	<div id="tmb_profile" class="fa fa-user headertabs"><a href="#"></a></div>
+	<div id="tmb_messaging" class="fa fa-envelope-o headertabs"><a href="#"></a>
+	</div>
+</div>
+
+<ul id="internal_topics">
+	<!-- class="text-right" wenn der Text im Dropdown rechtsbündig ausgerichtet werden soll -->
+	<li>
+		<a href="https://www.interseroh.de" target="_blank">Home</a>
+	</li>
+	<li>
+		<a href="https://www.interseroh.de/en/company/about-us-interseroh"
+			target="_blank">About</a>
+	</li>
+	<li>
+		<a href="https://www.interseroh.de/en/contact"
+			target="_blank">Contact</a>
+	</li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">Dropdown</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="https://www.interseroh.de">Home</a>
+			</li>
+			<li>
+				<a href="https://www.interseroh.de/en/contact">Contact</a>
+			</li>
+			<li>
+				<a href="https://www.interseroh.de/en/company/about-us-interseroh">About</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Modal body text goes here.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">Save changes
+				</button>
+				<button type="button" class="btn btn-default"
+					data-dismiss="modal">Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="container">
+		<h1>Table <b>in</b> Container</h1>
+		<h2>Table <b>in</b> Container</h2>
+		<h3>Table <b>in</b> Container</h3>
+		<h4>Table <b>in</b> Container</h4>
+		<h5>Table <b>in</b> Container</h5>
+		<h6>Table <b>in</b> Container</h6>
+		<p>The .table class adds basic styling (light padding and only
+			horizontal
+			dividers) to a table:</p>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>John</td>
+				<td>Doe</td>
+				<td>john@example.com</td>
+			</tr>
+			<tr>
+				<td>Mary</td>
+				<td>Moe</td>
+				<td>mary@example.com</td>
+			</tr>
+			<tr>
+				<td>July</td>
+				<td>Dooley</td>
+				<td>july@example.com</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="jumbotron">
+		<h1>Learn to Create Websites</h1>
+		<p>In today's world internet is the most popular way of connecting with
+			the people. At <a href="http://www.tutorialrepublic.com"
+				target="_blank">tutorialrepublic.com</a> you will
+			learn the essential of web development technologies along with real
+			life practice example, so that you can create your own website to
+			connect with the people around the world.</p>
+		<p><a href="#"
+			class="btn btn-success btn-lg">Get started today</a></p>
+	</div>
+
+
+	<button class="btn btn-primary">some primarybutton</button>
+	<button class="btn btn-default">some default button</button>
+	<br /><br /><br />
+	<div class="row" style="text-align: center">
+
+		<div class="col-xs-12">zwölf</div>
+
+		<div class="col-xs-6">sechs</div>
+		<div class="col-xs-6">sechs</div>
+
+		<div class="col-xs-4">vier</div>
+		<div class="col-xs-4">vier</div>
+		<div class="col-xs-4">vier</div>
+
+		<div class="col-xs-3">drei</div>
+		<div class="col-xs-3">drei</div>
+		<div class="col-xs-3">drei</div>
+		<div class="col-xs-3">drei</div>
+
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+		<div class="col-xs-2">zwei</div>
+
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+		<div class="col-xs-1">eins</div>
+
+	</div>
+	<br />
+
+	<p>Wir schließen Produkt-, Material- und Logistikkreisläufe systematisch und
+		unsere Recyclinglösungen und Strategien zur Abfallvermeidung setzen
+		branchenweit Maßstäbe. Dabei investieren wir in Innovationen ebenso wie
+		in langfristige <b>Partnerschaften</b> mit unseren Kunden. Unser Ziel
+		ist es,
+		jede Kundenanforderung individuell zu erfüllen – mit immer neuen
+		Modellen der Nachhaltigkeit. <a href="#">Dafür steht Interseroh seit
+			mehr als 25
+			Jahren.</a></p>
+	<br /><br />
+
+
+	<div class="bs-example" data-example-id="block-checkboxes-radios">
+		<form>
+			<div class="checkbox">
+				<label for="checkbox1">
+					<input type="checkbox" id="checkbox1" value="" />
+					Option one
+				</label>
+			</div>
+			<div class="checkbox disabled">
+				<label>
+					<input type="checkbox" value="" disabled="" />
+					Option two is disabled
+				</label>
+			</div>
+			<br />
+			<div class="radio">
+				<label for="radio1">
+					<input type="radio" name="irgendwas" id="radio1"
+						value="radio1" checked="" />
+					Option one
+				</label>
+			</div>
+			<div class="radio">
+				<label for="radio2">
+					<input type="radio" name="irgendwas" id="radio2"
+						value="radio2" />
+					Option two
+				</label>
+			</div>
+			<div class="radio">
+				<label for="radio3">
+					<input type="radio" name="irgendwas" id="radio3"
+						value="radio3" />
+					Option three is disabled
+				</label>
+			</div>
+			<div class="radio disabled">
+				<label for="radio4">
+					<input type="radio" name="irgendwas" id="radio4"
+						value="radio4" disabled="" />
+					Option 4 is disabled
+				</label>
+			</div>
+		</form>
+	</div>
+	<br />
+
+	<div class="form-group">
+		<label for="Email">Emailaddress</label>
+		<input type="email" id="Email" placeholder="E-Mail *"
+			class="form-control" />
+	</div>
+	<div class="form-group">
+		<label for="Email">Selector</label>
+		<select class="form-control">
+			<option value="0">Wählen Sie jetzt *</option>
+			<option value="option1">option1</option>
+			<option value="option2">option2</option>
+			<option value="option3">option3</option>
+			<option value="option4">option4</option>
+		</select>
+	</div>
+	<br />
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button"
+			id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+			aria-expanded="true">
+			Dropdown
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			<li><a href="#">Action</a></li>
+			<li><a href="#">Another action</a></li>
+			<li><a href="#">Something else here</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a href="#">Separated link</a></li>
+		</ul>
+	</div>
+	<br />
+	<div class="form-group">
+		<label for="message">Ihre Nachricht</label>
+		<textarea name="message" id="message" title="Ihre Nachricht"
+			placeholder="Ihre Nachricht *" class="form-control"
+			maxlength="500"></textarea>
+	</div>
+
+<br/>
+
+<div class="row no-border" style="text-align: center">
+	<div class="col-xs-3"><div class="circle secondary-dark-grey"></div><div class="text">secondary-dark-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-medium-grey "></div><div class="text">secondary-medium-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-light-grey"></div><div class="text">secondary-light-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-lighter-grey"></div><div class="text">secondary-lighter-grey</div></div>
+	<div class="col-xs-3"><div class="circle secondary-lighter-hover-grey"></div><div class="text">secondary-lighter-hover-grey</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-dark-blue"></div><div class="text">interseroh-dark-blue</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-azur-blue"></div><div class="text">interseroh-azur-blue</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-azur-hover-blue"></div><div class="text">interseroh-azur-hover-blue</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-white "></div><div class="text">interseroh-white</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-yellow "></div><div class="text">interseroh-yellow</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-dark-green "></div><div class="text">interseroh-dark-green</div></div>
+	<div class="col-xs-3"><div class="circle interseroh-placeholder-color "></div><div class="text">interseroh-placeholder-color</div></div>
+</div>
+<br /><br /><br />
+<br /><br /><br />
+
+<div class="sticky-content">
+	<ul>
+		<li class="sticky-content__element">
+			<a href="#" title="Kontakt"><i
+				class="glyphicon glyphicon-earphone"></i>Kontakt</a>
+		</li>
+		<ul>
+			<li class="sticky-content__element">
+				<a href="#"
+					title="{$stickybox.newsletter}"><i
+					class="glyphicon glyphicon-envelope"></i>Newsletter</a>
+			</li>
+		</ul>
+	</ul>
+</div>
+</div>
+</body>
+</html>

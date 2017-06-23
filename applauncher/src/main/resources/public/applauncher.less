@@ -16,7 +16,11 @@
 
   &__iconsContainer {
     width: 293px;
-    padding: 25px 30px !important;
+    padding: 17px 30px 25px 30px !important;
+    border-bottom: none !important;
+    [class^='col-'] {
+      border: none;
+    }
   }
 
   &__link {
@@ -65,7 +69,17 @@
     -webkit-transform: translateY(-50%);
     margin: auto;
   }
-
+  .row {
+    margin-left: -15px !important;
+    margin-right-: -15px !important;
+  }
+  [class^='col-'] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  .navbar-default .container, .navbar-default .container-fluid {
+    border-bottom: none;
+  }
 }
 
 #icons_right {

@@ -13,7 +13,11 @@
 }
 .APL_application__iconsContainer {
   width: 293px;
-  padding: 25px 30px !important;
+  padding: 17px 30px 25px 30px !important;
+  border-bottom: none !important;
+}
+.APL_application__iconsContainer [class^='col-'] {
+  border: none;
 }
 .APL_application__link {
   display: block;
@@ -55,6 +59,18 @@
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   margin: auto;
+}
+.APL_application .row {
+  margin-left: -15px !important;
+  margin-right-: -15px !important;
+}
+.APL_application [class^='col-'] {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+.APL_application .navbar-default .container,
+.APL_application .navbar-default .container-fluid {
+  border-bottom: none;
 }
 #icons_right {
   position: absolute;
