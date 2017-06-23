@@ -31,14 +31,23 @@
 		content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
 	<title>bootswatch Interseroh Theme example</title>
+	<script src="http://code.jquery.com/jquery-1.11.1.js" type="text/javascript"></script>
 	<script type="text/javascript" language="javascript"
 		th:src="${topmenubarUrl}+'/topmenubar/topmenubar.nocache.js'"></script>
 	<style>
 		body {
 			min-width: 0;
 			margin-top: 0;
+			/*no top menubar*/
 		}
 	</style>
+	<script>
+        $(function() {
+            $( "a[href='#'], button[type='submit']" ).click(function(e) {
+                e.preventDefault();
+            });
+        });
+	</script>
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
