@@ -1,6 +1,6 @@
 body {
   min-width: 320px;
-  margin-top: 65px;
+  margin-top: 75px;
 }
 
 #tmb_top_menu_bar {
@@ -11,13 +11,16 @@ body {
   width: 100%;
   letter-spacing: 0.1px;
 
+  #tmb_portal_links {
+    position: relative;
+  }
   p, .paragraph, li, a {
     font-size: 13px;
     font-family: inherit;
   }
   #icons_right,
   .navbar-brand,
-  .navbar-nav > navbar-collapse:not(.in) > li > a {
+  .navbar > .navbar-collapse:not(.in) > #tmb_portal_links {
     top: 29px !important;
   }
 
@@ -41,7 +44,7 @@ body {
   .navbar-nav > li > a {
     font-family: inherit;
     line-height: 23px;
-    padding: 0px 15px;
+    padding: 0 15px;
     font-size: inherit;
   }
 
@@ -155,6 +158,9 @@ body {
   }
 
   @media (max-width: 767px) {
+    #tmb_portal_links {
+      position: static;
+    }
     .navbar-nav > li > a {
       padding: 10px 15px;
     }
