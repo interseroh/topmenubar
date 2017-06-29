@@ -423,3 +423,5 @@ mvn clean install -Pwith-docker -Ddocker.registry=<DOCKER_REGISTRY_URL> -Ddocker
    
    ## variables
    colors are defined in the config.less and imported by the interseroh.less and individual.less
+   ## Buttons with interseroh style (BIG)
+   if you want to get Buttons with interseroh style with the dimensions from the styleguide, add class "interseroh-style" to the element
