@@ -40,7 +40,7 @@
 
             var component = $('.showhtmlinmodal');
 
-            var $button = $('<div id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div>').click(function(){
+            var $button = $('<div id="source-button" class="btn btn-primary btn-xs">&lt; &gt;</div>').click(function () {
                 var html = $(this).parent().html();
                 html = cleanSource(html);
                 $("#source-modal pre").text(html);
@@ -197,7 +197,7 @@
 		</table>
 	</div>
 
-	<div class="jumbotron">
+	<div class="jumbotron showhtmlinmodal">
 		<h1>Learn to Create Websites</h1>
 		<p>In today's world internet is the most popular way of connecting with
 			the people. At <a href="http://www.tutorialrepublic.com"
@@ -206,16 +206,21 @@
 			life practice example, so that you can create your own website to
 			connect with the people around the world.</p>
 		<p><a href="#"
-			class="btn btn-success btn-lg interseroh-style">Get started today</a></p>
+			class="btn btn-success btn-lg interseroh-style">Get started
+			today</a></p>
 	</div>
 
-
+<div>
 	<button class="btn btn-primary">some primary button</button>
 	<button class="btn btn-default">some default button</button>
-	<br/><br/>
-	<button class="btn btn-primary interseroh-style">some primary button with interseroh style</button>
-	<button class="btn btn-default interseroh-style">some default button with interseroh style</button>
-
+	<br /><br />
+	<button class="btn btn-primary interseroh-style">some primary button with
+		interseroh style
+	</button>
+	<button class="btn btn-default interseroh-style">some default button with
+		interseroh style
+	</button>
+</div>
 	<br /><br /><br />
 	<div class="row showhtmlinmodal" style="text-align: center">
 
@@ -268,7 +273,7 @@
 	<br /><br />
 
 
-	<div class="bs-example" data-example-id="block-checkboxes-radios">
+	<div class="showhtmlinmodal" data-example-id="block-checkboxes-radios">
 		<form>
 			<div class="checkbox">
 				<label for="checkbox1">
@@ -315,12 +320,12 @@
 	</div>
 	<br />
 
-	<div class="form-group">
+	<div class="form-group showhtmlinmodal">
 		<label for="Email">Emailaddress</label>
 		<input type="email" id="Email" placeholder="E-Mail *"
 			class="form-control" />
 	</div>
-	<div class="form-group">
+	<div class="form-group showhtmlinmodal">
 		<label for="Email">Selector</label>
 		<select class="form-control">
 			<option value="0">Wählen Sie jetzt *</option>
@@ -331,7 +336,7 @@
 		</select>
 	</div>
 	<br />
-	<div class="dropdown">
+	<div class="dropdown showhtmlinmodal">
 		<button class="btn btn-default dropdown-toggle" type="button"
 			id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="true">
@@ -347,53 +352,90 @@
 		</ul>
 	</div>
 	<br />
-	<div class="form-group">
+	<div class="form-group showhtmlinmodal">
 		<label for="message">Ihre Nachricht</label>
 		<textarea name="message" id="message" title="Ihre Nachricht"
 			placeholder="Ihre Nachricht *" class="form-control"
 			maxlength="500"></textarea>
 	</div>
 
-<br/>
+	<br />
 
-<div class="row no-border" style="text-align: center">
-	<div class="col-xs-3"><div class="circle secondary-dark-grey"></div><div class="text">secondary-dark-grey</div></div>
-	<div class="col-xs-3"><div class="circle secondary-medium-grey "></div><div class="text">secondary-medium-grey</div></div>
-	<div class="col-xs-3"><div class="circle secondary-light-grey"></div><div class="text">secondary-light-grey</div></div>
-	<div class="col-xs-3"><div class="circle secondary-lighter-grey"></div><div class="text">secondary-lighter-grey</div></div>
-	<div class="col-xs-3"><div class="circle secondary-lighter-hover-grey"></div><div class="text">secondary-lighter-hover-grey</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-dark-blue"></div><div class="text">interseroh-dark-blue</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-azur-blue"></div><div class="text">interseroh-azur-blue</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-azur-hover-blue"></div><div class="text">interseroh-azur-hover-blue</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-white "></div><div class="text">interseroh-white</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-yellow "></div><div class="text">interseroh-yellow</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-dark-green "></div><div class="text">interseroh-dark-green</div></div>
-	<div class="col-xs-3"><div class="circle interseroh-placeholder-color "></div><div class="text">interseroh-placeholder-color</div></div>
-</div>
-<br /><br /><br />
-<br /><br /><br />
+	<div class="row no-border showhtmlinmodal" style="text-align: center">
+		<div class="col-xs-3">
+			<div class="circle secondary-dark-grey"></div>
+			<div class="text">secondary-dark-grey</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle secondary-medium-grey "></div>
+			<div class="text">secondary-medium-grey</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle secondary-light-grey"></div>
+			<div class="text">secondary-light-grey</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle secondary-lighter-grey"></div>
+			<div class="text">secondary-lighter-grey</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle secondary-lighter-hover-grey"></div>
+			<div class="text">secondary-lighter-hover-grey</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-dark-blue"></div>
+			<div class="text">interseroh-dark-blue</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-azur-blue"></div>
+			<div class="text">interseroh-azur-blue</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-azur-hover-blue"></div>
+			<div class="text">interseroh-azur-hover-blue</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-white "></div>
+			<div class="text">interseroh-white</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-yellow "></div>
+			<div class="text">interseroh-yellow</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-dark-green "></div>
+			<div class="text">interseroh-dark-green</div>
+		</div>
+		<div class="col-xs-3">
+			<div class="circle interseroh-placeholder-color "></div>
+			<div class="text">interseroh-placeholder-color</div>
+		</div>
+	</div>
+	<br /><br /><br />
+	<br /><br /><br />
 
-<div class="sticky-content">
-	<ul>
-		<li class="sticky-content__element">
-			<a href="#" title="Kontakt"><i
-				class="glyphicon glyphicon-earphone"></i>Kontakt</a>
-		</li>
+	<div class="sticky-content showhtmlinmodal">
 		<ul>
 			<li class="sticky-content__element">
-				<a href="#"
-					title="{$stickybox.newsletter}"><i
-					class="glyphicon glyphicon-envelope"></i>Newsletter</a>
+				<a href="#" title="Kontakt"><i
+					class="glyphicon glyphicon-earphone"></i>Kontakt</a>
 			</li>
+			<ul>
+				<li class="sticky-content__element">
+					<a href="#"
+						title="{$stickybox.newsletter}"><i
+						class="glyphicon glyphicon-envelope"></i>Newsletter</a>
+				</li>
+			</ul>
 		</ul>
-	</ul>
+	</div>
 </div>
-</div>
-<div id="source-modal" class="modal fade">
+<div id="source-modal" class="modal">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
 				<h4 class="modal-title">Source Code</h4>
 			</div>
 			<div class="modal-body">
