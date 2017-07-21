@@ -32,7 +32,7 @@ public class NoopenerImitateNativeJavaScript {
 	public static native void noopenerImitate() /*-{
         $wnd.jQuery($doc).on('click', 'a[target=_blank]', function (event) {
             var href = $wnd.jQuery(this).attr('href');
-            if (navigator.userAgent.indexOf("Safari") && (navigator.userAgent.indexOf("Chrome") === -1)) {
+            if (navigator.userAgent.indexOf("Safari") !== -1 && (navigator.userAgent.indexOf("Chrome") === -1)) {
                 iframeOpen(href);
                 return false;
             }
