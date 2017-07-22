@@ -56,7 +56,7 @@
 					<groupId>org.springframework.boot</groupId>
 				</exclusion>
 				<exclusion>
-					<groupId />
+					<groupId>org.apache</groupId>
 					<artifactId>tomcat-juli</artifactId>
 				</exclusion>
 			</exclusions>
