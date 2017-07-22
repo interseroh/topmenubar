@@ -30,6 +30,7 @@
 	<artifactId>topmenubar-parent</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<name>topmenubar-parent</name>
 	<description>Top menu bar project</description>
 
@@ -39,7 +40,6 @@
 		<name>Interseroh Dienstleistungs GmbH</name>
 		<url>http://www.interseroh.com</url>
 	</organization>
-
 
 	<scm>
 		<url>https://github.com/interseroh/topmenubar</url>
@@ -88,6 +88,7 @@
 			<organizationUrl>https://www.crowdcode.io</organizationUrl>
 		</developer>
 	</developers>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
