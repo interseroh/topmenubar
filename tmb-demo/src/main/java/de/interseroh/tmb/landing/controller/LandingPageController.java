@@ -32,6 +32,9 @@ public class LandingPageController {
 	@Value("${applauncher.url:http://localhost:9014/applauncher}")
 	private String applauncherUrl;
 
+	@Value("${profile.url:http://localhost:9012/profile}")
+	private String profileUrl;
+
 	@Value("${topmenubar.url:http://localhost:9010/topmenubar}")
 	private String topmenubarUrl;
 
@@ -39,7 +42,9 @@ public class LandingPageController {
 	public String doGet(Model model,
 			@PathVariable("viewname") String viewname) {
 		model.addAttribute("applauncherUrl", applauncherUrl);
+		model.addAttribute("profileUrl", profileUrl);
 		model.addAttribute("topmenubarUrl", topmenubarUrl);
+
 		return viewname;
 	}
 

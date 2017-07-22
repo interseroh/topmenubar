@@ -16,13 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.profile.shared;
+package de.interseroh.tmb.profile.client;
 
-public interface ProfileServiceEndpoint {
+import com.google.gwt.inject.client.GinModules;
+import com.google.gwt.inject.client.Ginjector;
+import de.interseroh.tmb.profile.client.common.ServicePreparator;
 
-
-	String GWT_MODULE = "/profile";
-
-	String GWT_REMOTE_LOGGING = "/remote_logging";
-
+@FunctionalInterface
+@GinModules(ProfileWebAppGinModul.class)
+public interface ProfileWebAppGinjector extends Ginjector {
+	ServicePreparator getServicePreparator();
 }

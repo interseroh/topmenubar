@@ -18,23 +18,84 @@
  */
 package de.interseroh.tmb.profile.client;
 
-import java.util.logging.Logger;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.ui.RootPanel;
+import de.interseroh.tmb.profile.client.common.ProfilePopover;
+import org.gwtbootstrap3.client.ui.AnchorButton;
+import org.gwtbootstrap3.client.ui.Container;
+import org.gwtbootstrap3.client.ui.ListDropDown;
+import org.gwtbootstrap3.client.ui.Popover;
+import org.gwtbootstrap3.client.ui.constants.IconSize;
+import org.gwtbootstrap3.client.ui.constants.IconType;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
 
+import java.util.logging.Logger;
+
+/**
+ * @author Ingo Düppe (CROWDCODE)
+ */
 public class ProfileWebApp implements EntryPoint {
 
-	private static final Logger logger = Logger
-			.getLogger(ProfileWebApp.class.getName());
+    private static final String TMB_PROFILE = "tmb_profile";
 
-	@Override
-	public void onModuleLoad() {
-		logger.info("ProfileWebApp: Create Views begins...");
+    private static final String CSS_BLOCK = "PROFILE_application";
 
-		GWT.log("Hello ProfileWebApp!", null);
+    private static final Logger logger = Logger
+            .getLogger(ProfileWebApp.class.getName());
 
-		logger.info("ProfileWebApp: Create Views ends...");
-	}
+    private final ProfileWebAppGinjector injector =
+            GWT.create(ProfileWebAppGinjector.class);
+
+    @Override
+    public void onModuleLoad() {
+        logger.info("ProfileWebApp: Create Views begins...");
+
+        RootPanel profileRoot = getWidgets(TMB_PROFILE);
+        profileRoot.getElement().addClassName(CSS_BLOCK);
+
+
+        ListDropDown dropDown = new ListDropDown();
+        dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
+
+
+        Popover popover = new ProfilePopover("profilePopover");
+
+        AnchorButton popoverBtn = new AnchorButton();
+        popoverBtn.setIcon(IconType.USER);
+        popoverBtn.setIconSize(IconSize.TIMES3);
+
+        popover.add(popoverBtn);
+
+        FlowPanel panel = createFlowPanel();
+        Container container = createPopupContainer();
+
+        panel.add(container);
+        popover.setContent(container.getElement().getString());
+        dropDown.add(popover);
+        dropDown.getElement().setAttribute("onFocuesOut", "javascript:"+ProfilePopover.CLOSE_POPOVER_JSFUNCTION+";");
+        profileRoot.add(dropDown);
+
+
+        logger.info("ProfileWebApp: Create Views end");
+    }
+
+    private RootPanel getWidgets(String element) {
+        return RootPanel.get(element);
+    }
+
+    private FlowPanel createFlowPanel() {
+        return new FlowPanel();
+    }
+
+    private Container createPopupContainer() {
+        Container popupContainer = new Container();
+        popupContainer.getElement()
+                .addClassName(CSS_BLOCK + "__iconsContainer");
+        popupContainer.setFluid(true);
+        return popupContainer;
+
+    }
 
 }

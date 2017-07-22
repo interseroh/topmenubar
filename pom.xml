@@ -44,8 +44,8 @@
 	<scm>
 		<url>https://github.com/interseroh/topmenubar</url>
 		<connection>scm:git:https://github.com/interseroh/topmenubar.git</connection>
-	  <tag>HEAD</tag>
-  </scm>
+	 	<tag>HEAD</tag>
+  	</scm>
 
 	<developers>
 		<developer>
@@ -107,6 +107,7 @@
 
 	<modules>
 		<module>tmb-common</module>
+		<module>profile</module>
 		<module>applauncher</module>
 		<module>topmenubar</module>
 		<module>tmb-demo</module>
