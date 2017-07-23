@@ -47,7 +47,8 @@ import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
 
-import static de.interseroh.tmb.applauncher.client.NoopenerImitateNativeJavaScript.noopenerImitate;
+import static de.interseroh.tmb.applauncher.client.ImitateNativeJavaScript.noopenerImitate;
+import static de.interseroh.tmb.applauncher.client.ImitateNativeJavaScript.checkIEVersion;
 
 public class ApplauncherWebApp implements EntryPoint {
 
@@ -92,6 +93,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		createDivStructure(popover, dropDown, appLauncherRoot);
 		noopenerImitate();
+		checkIEVersion();
 		logger.info("AppLauncher: Create Views end...");
 	}
 
