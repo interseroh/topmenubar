@@ -18,7 +18,7 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-public class NoopenerImitateNativeJavaScript {
+public class ImitateNativeJavaScript {
 	/**
 	 * This method solves a security problem when external links are opened in a new tab.
 	 * This method must be called in your {@link com.google.gwt.core.client.EntryPoint}
@@ -29,10 +29,11 @@ public class NoopenerImitateNativeJavaScript {
 	 *
 	 * For details see https://mathiasbynens.github.io/rel-noopener/
 	 */
+
 	public static native void noopenerImitate() /*-{
         $wnd.jQuery($doc).on('click', 'a[target=_blank]', function (event) {
             var href = $wnd.jQuery(this).attr('href');
-            if (navigator.userAgent.indexOf("Safari") && (navigator.userAgent.indexOf("Chrome") === -1)) {
+            if (navigator.userAgent.indexOf("Safari") !== -1 && (navigator.userAgent.indexOf("Chrome") === -1)) {
                 iframeOpen(href);
                 return false;
             }
@@ -58,6 +59,13 @@ public class NoopenerImitateNativeJavaScript {
 
             document.body.removeChild(iframe);
             return newWin;
+        }
+    }-*/;
+
+	public static native void checkIEVersion() /*-{
+        if (navigator.userAgent.indexOf("MSIE") !== -1 && (navigator.userAgent.indexOf("9.0") === -1)) {
+            console.log("ie9");
+            $wnd.jQuery("html").addClass("ie9");
         }
     }-*/;
 }
