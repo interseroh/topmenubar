@@ -22,11 +22,9 @@ import java.util.logging.Logger;
 
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Navbar;
-import org.gwtbootstrap3.client.ui.NavbarBrand;
 import org.gwtbootstrap3.client.ui.NavbarCollapse;
 import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.NavbarHeader;
-import org.gwtbootstrap3.client.ui.constants.BadgePosition;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -184,17 +182,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 *
 	 * @param headlineText text for adding
 	 */
-//	private NavbarBrand createBadge(String headlineText) {
-//		NavbarBrand brand = new NavbarBrand();
-//	//	brand.setBadgePosition(BadgePosition.RIGHT);
-//		brand.setBadgeText(headlineText);
-//		return brand;
-//	}
-	/**
-	 * Creates and add headline text to the left panel
-	 *
-	 * @param headlineText text for adding
-	 */
+
 	private SimplePanel createTitle(String headlineText) {
 		SimplePanel brand = new SimplePanel();
 		brand.getElement().setClassName("navbar-brand");
