@@ -35,7 +35,7 @@ public class ProfilePopover extends Popover {
 
 	/**
 	 * By default the Bootstrap generate html id dynamically. Because of that it was created alternative
-	 * identification of Popover component by using data attribute 'data-topmenubar'.
+	 * identification of Popover component by using data attribute 'data-profile'.
 	 *
 	 * @param id Popover identificator.
 	 */
@@ -43,7 +43,7 @@ public class ProfilePopover extends Popover {
 		ScriptInjector.fromString(createPopoverHider(id))
 				.setWindow(ScriptInjector.TOP_WINDOW).inject();
 		setAlternateTemplate(
-				"<div class=\"popover\" role=\"tooltip\" data-topmenubar=\""
+				"<div class=\"popover\" role=\"tooltip\" data-profile=\""
 						+ id + "\">" + "<div class=\"arrow\"></div>"
 						+ "<h3 class=\"popover-title\"></h3>"
 						+ "<div class=\"popover-content\"></div></div>");
@@ -63,7 +63,7 @@ public class ProfilePopover extends Popover {
 	private String createPopoverHider(String id) {
 		return "function " + CLOSE_POPOVER_JSFUNCTION + " {"
 				+ "  setTimeout(function(){"
-				+ "    $('[data-topmenubar=\"" + id + "\"]').popover('hide');"
+				+ "    $('[data-profile=\"" + id + "\"]').popover('hide');"
 				+ "    $('body').on('hidden.bs.popover', function (e) {"
 				+ "       $(e.target).data(\"bs.popover\").inState = { click: false, hover: false, focus: false }"
 				+ "    });"

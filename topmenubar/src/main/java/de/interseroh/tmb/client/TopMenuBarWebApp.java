@@ -92,6 +92,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		CSS_BLOCK = loadWidgetsFromInsideOut();
 		configureApplauncher();
 		injectApplauncherScript();
+		injectProfileScript();
 		configureRootPanel();
 
 		String bg_color = rootPanel.getElement().getAttribute(DATA_TMB_BGCOLOR);
@@ -146,6 +147,12 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private void injectApplauncherScript() {
 		String appUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
+		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
+	}
+
+	private void injectProfileScript() {
+		String appUrl = profile.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
+		String javascriptUrl = profile.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
 	}
 

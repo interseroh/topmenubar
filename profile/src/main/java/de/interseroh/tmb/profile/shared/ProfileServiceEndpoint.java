@@ -23,6 +23,6 @@ public interface ProfileServiceEndpoint {
 
 	String GWT_MODULE = "/profile";
 
-	String GWT_REMOTE_LOGGING = "/remote_logging";
+	String GWT_REMOTE_LOGGING = GWT_MODULE+ "/remote_logging";
 
 }
