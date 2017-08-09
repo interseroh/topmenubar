@@ -145,15 +145,19 @@ public class TopMenuBarWebApp implements EntryPoint {
 	}
 
 	private void injectApplauncherScript() {
+		logger.info("Begin injection of applauncher");
 		String appUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
+		logger.info("End injection of applauncher");
 	}
 
 	private void injectProfileScript() {
+		logger.info("Begin injection of profile");
 		String appUrl = profile.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = profile.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
+		logger.info("End injection of profile");
 	}
 
 	private void configureRootPanel() {
