@@ -20,14 +20,11 @@ package de.interseroh.tmb.profile.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style;
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.RootPanel;
 import de.interseroh.tmb.profile.client.common.ProfilePopover;
 import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.constants.AlertType;
 import org.gwtbootstrap3.client.ui.constants.ButtonType;
 import org.gwtbootstrap3.client.ui.constants.IconSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
@@ -50,6 +47,8 @@ public class ProfileWebApp implements EntryPoint {
 
 	private static final Logger logger = Logger
 			.getLogger(ProfileWebApp.class.getName());
+	public static final String OPENID_CONNECT_LOGIN = "openid_connect_login";
+	public static final String OID_SERVER_LOGIN = "http://localhost:8080/openid-connect-server-webapp/";
 
 	private final ProfileWebAppGinjector injector = GWT
 			.create(ProfileWebAppGinjector.class);
@@ -61,18 +60,24 @@ public class ProfileWebApp implements EntryPoint {
 		RootPanel profileRoot = getWidgets(TMB_PROFILE);
 		profileRoot.getElement().addClassName(CSS_BLOCK);
 
-		ListDropDown dropDown = new ListDropDown();
-		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
+		AnchorButton loginButton = new AnchorButton();
+		loginButton.setHref("http://localhost:9012/profile/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F");
+		loginButton.setText("Anmelden");
+		profileRoot.add(loginButton);
 
-		Popover popover = new ProfilePopover("profilePopover");
+
+/*		ListDropDown dropDown = new ListDropDown();
+		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
 
 		AnchorButton popoverBtn = new AnchorButton();
 		popoverBtn.setIcon(IconType.USER);
 		popoverBtn.setIconSize(IconSize.TIMES3);
+*/
 
-		popover.add(popoverBtn);
+		// profileRoot.add(createLoginForm());
 
-		FlowPanel panel = createFlowPanel();
+
+/*		FlowPanel panel = createFlowPanel();
 		Container container = createPopupContainer();
 
 		panel.add(container);
@@ -83,139 +88,47 @@ public class ProfileWebApp implements EntryPoint {
 		String closeDivStr = divClose.getElement().getString();
 		String containerStr = container.getElement().getString();
 		popover.setContent(closeDivStr + containerStr);
-
 		dropDown.add(popover);
-		dropDown.getElement().setAttribute("onFocusOut", "javascript:"+ProfilePopover.CLOSE_POPOVER_JSFUNCTION+";");
+//		dropDown.getElement().setAttribute("onFocusOut", "javascript:"+ProfilePopover.CLOSE_POPOVER_JSFUNCTION+";");
 		profileRoot.add(dropDown);
 
+*/
+
 		logger.info("ProfileWebApp: Create Views end");
+	}
+
+	private boolean isLoggedIn() {
+		return false;
 	}
 
 	private RootPanel getWidgets(String element) {
 		return RootPanel.get(element);
 	}
 
-	private FlowPanel createFlowPanel() {
-		return new FlowPanel();
-	}
-
-	private Container createPopupContainer() {
-		Container popupContainer = new Container();
-		popupContainer.getElement()
-				.addClassName(CSS_BLOCK + "__iconsContainer");
-		popupContainer.setFluid(true);
-		createLoginForm(popupContainer);
-		return popupContainer;
-
-	}
-
-	private void createLoginForm(Container popupContainer) {
-		String IdTxtBenutzerName = "IdTxtBenutzerName";
-		String labelText = "Benutzername";
-		Form logingForm = new Form();
-		logingForm.getElement().setId("loginform");
-		logingForm.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"true");
-		//create group user name
-		FormGroup groupUserName = new FormGroup();
-		groupUserName.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"true");
-		FormLabel labelUserName = new FormLabel();
-		labelUserName.setFor(IdTxtBenutzerName);
-		labelUserName.setText(labelText);
-		labelUserName.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"true");
-		TextBox txtUserName = new TextBox();
-		txtUserName.setId(IdTxtBenutzerName);
-		txtUserName.setPlaceholder(labelText);
-		txtUserName.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"true");
-		groupUserName.add(labelUserName);
-		groupUserName.add(txtUserName);
-		logingForm.add(groupUserName);
-		/////
-		createPassordFormGroup(logingForm);
-
-		createButtonsGroup(logingForm);
-
-		PanelBody panelBody = new PanelBody();
-		panelBody.add(createAlert("Ihre Anmeldedaten waren nicht richtig.",
-				"wrong_incendetials","glyphicon-exclamation-sign"));
-
-		panelBody.add(createAlert(
-				"Bitte füllen sie die rot markierten Felder aus.",
-				"empty_alert","empty_alert"));
-
-		panelBody.add(logingForm);
-//        Column col= new Column("MD_12");
-//		col.add(panelBody);
-//		popupContainer.add(col);
-		popupContainer.add(panelBody);
-	}
-
-	private Alert createAlert(String msg, String style, String iconStyle) {
-		Alert alert = new Alert();
-		alert.setType(AlertType.DANGER);
-		alert.addStyleName(style);
-		Span glypImg = new Span();
-        glypImg.addStyleName("glyphicon");
-		glypImg.addStyleName(iconStyle);
-		alert.add(glypImg);
-		Div txt = new Div();
-		txt.getElement().setInnerText(msg);
-		alert.getElement().appendChild(txt.getElement().getFirstChild());
-		alert.setVisible(false);
-
-		return alert;
-	}
-
-	private void createPassordFormGroup(Form logingForm) {
-		String IdTxtPassword = "IdTxtPassword";
-		String labelText = "Passwort";
-
-		FormGroup groupPassword = new FormGroup();
-		groupPassword.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"");
-		FormLabel labelPassword = new FormLabel();
-		labelPassword.setFor(IdTxtPassword);
-		labelPassword.setText(labelText);
-		labelPassword.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"");
-		TextBox txtPassword = new TextBox();
-		txtPassword.getElement().setAttribute("type", "password");
-		txtPassword.getElement().setAttribute("autocomplete", "false");
-		txtPassword.setId(IdTxtPassword);
-		txtPassword.setPlaceholder(labelText);
-		txtPassword.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"");
-		groupPassword.add(labelPassword);
-		groupPassword.add(txtPassword);
-
-		logingForm.add(groupPassword);
-	}
-
-	private void createButtonsGroup(Form logingForm) {
-		ButtonGroup buttonGroup = new ButtonGroup();
-		buttonGroup.addStyleName("pull-right");
-		Button btnCancel = new Button();
-		btnCancel.setType(ButtonType.DEFAULT);
-		btnCancel.getElement().setAttribute("type", "reset");
-		btnCancel.setText("Abbrechen");
-		btnCancel.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"");
-
-		Button btnSubmit = new Button();
-		btnSubmit.setType(ButtonType.PRIMARY);
-		btnSubmit.getElement().setAttribute("type", "submit");
-
-		Span glypImg = new Span();
-		glypImg.addStyleName("glyphicon");
-		glypImg.addStyleName(getStyle("glyphicon-log-in"));
-		glypImg.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"");
-		btnSubmit.add(glypImg);
-		Div txtDiv = new Div();
-		txtDiv.getElement().setInnerText("  Anmelden");
-		btnSubmit.getElement().appendChild(txtDiv.getElement().getFirstChild());
-		btnSubmit.getElement().setAttribute(ProfilePopover.NON_CLOCEABLE_POPOVER,"");
-		buttonGroup.add(btnCancel);
-		buttonGroup.add(btnSubmit);
-		logingForm.add(buttonGroup);
-	}
-
 	private String getStyle(String style) {
 		return style;
+	}
+
+
+
+	private PanelBody createLoginForm() {
+		Form logingForm = new Form();
+		logingForm.getElement().setId("loginform");
+		logingForm.setAction("http://localhost:8090/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F");
+
+		SubmitButton btnSubmit = new SubmitButton();
+		Div txtDiv = new Div();
+		txtDiv.getElement().setInnerText("Anmelden");
+		btnSubmit.getElement().appendChild(txtDiv.getElement().getFirstChild());
+		logingForm.add(btnSubmit);
+
+		Hidden identifier = new Hidden();
+		identifier.setID("identifier");
+		identifier.setDefaultValue(OID_SERVER_LOGIN);
+
+		PanelBody panelBody = new PanelBody();
+		panelBody.add(logingForm);
+		return panelBody;
 	}
 
 }

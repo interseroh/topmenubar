@@ -37,7 +37,7 @@ public class ProfilePopover extends Popover {
 	 * In case of click of element which contains this attribute the  <code>ProfilePopover</code> will not
 	 * to be closed.
 	 */
-	public static final String NON_CLOCEABLE_POPOVER = "data_noncloseble_popover";
+	public static final String NON_CLOSEABLE_POPOVER = "data_noncloseble_popover";
 
 	/**
 	 * By default the Bootstrap generate html id dynamically. Because of that it was created alternative
@@ -69,7 +69,7 @@ public class ProfilePopover extends Popover {
 	private String createPopoverHider(String id) {
 		return "function " + CLOSE_POPOVER_JSFUNCTION + " {"
 				+ "  setTimeout(function(){"
-				+  "   var isNotCloceable =document.activeElement.hasAttribute(\""+ NON_CLOCEABLE_POPOVER + "\");"
+				+  "   var isNotCloceable =document.activeElement.hasAttribute(\""+ NON_CLOSEABLE_POPOVER + "\");"
 				+ "    if (isNotCloceable){"
 				+ "       return; "
 				+ "    }"

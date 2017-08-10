@@ -19,6 +19,8 @@
 package de.interseroh.tmb.profile.server;
 
 import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
+import org.mitre.openid.connect.client.service.impl.StaticServerConfigurationService;
+import org.mitre.openid.connect.config.ServerConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,10 +30,16 @@ import org.springframework.context.annotation.Bean;
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 
 import de.interseroh.tmb.profile.shared.ProfileServiceEndpoint;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootApplication
 @Import(LoggingCrossOriginConfiguration.class)
+@ImportResource("classpath:application-context.xml")
 public class ProfileApplication {
 	@Value("${server.context-path}")
 	private String contextPath;
@@ -46,4 +54,5 @@ public class ProfileApplication {
 				ProfileServiceEndpoint.GWT_REMOTE_LOGGING
 						+ "/*");
 	}
+
 }
