@@ -38,12 +38,20 @@ public class LandingPageController {
 	@Value("${topmenubar.url:http://localhost:9010/topmenubar}")
 	private String topmenubarUrl;
 
+	@Value("${callee:DEMO}")
+	private String callee;
+
+	@Value("${caleeUrl:http://localhost:9000/demo/}")
+	private String calleeUrl;
+
 	@GetMapping(path = "{viewname}.html")
 	public String doGet(Model model,
 			@PathVariable("viewname") String viewname) {
 		model.addAttribute("applauncherUrl", applauncherUrl);
 		model.addAttribute("profileUrl", profileUrl);
 		model.addAttribute("topmenubarUrl", topmenubarUrl);
+		model.addAttribute("callee", topmenubarUrl);
+		model.addAttribute("calleeUrl", topmenubarUrl);
 
 		return viewname;
 	}

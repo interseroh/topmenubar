@@ -42,7 +42,11 @@ public class ProfileWebApp implements EntryPoint {
 	private static final String TMB_PROFILE = "tmb_profile";
 
 	private static final String CSS_BLOCK = "PROFILE_application";
+	public static final String LOGIN_LOCATION = "http://localhost:8090/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
+	public static final String OID_CONNECT_LOCATION = "http://localhost:9012/profile/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
 
+	private static String callee = "";
+	private static String calleeUrl = "";
 
 
 	private static final Logger logger = Logger
@@ -61,11 +65,14 @@ public class ProfileWebApp implements EntryPoint {
 		profileRoot.getElement().addClassName(CSS_BLOCK);
 
 		AnchorButton loginButton = new AnchorButton();
-		loginButton.setHref("http://localhost:9012/profile/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F");
+		loginButton.setHref(OID_CONNECT_LOCATION);
 		loginButton.setText("Anmelden");
 		profileRoot.add(loginButton);
 
+		callee = com.google.gwt.user.client.Window.Location.getParameter("callee");
+		calleeUrl = com.google.gwt.user.client.Window.Location.getParameter("calleeUrl");
 
+		logger.info("Referencing App is "+callee+" located at "+calleeUrl);
 /*		ListDropDown dropDown = new ListDropDown();
 		dropDown.getElement().getStyle().setFloat(Style.Float.RIGHT);
 
@@ -114,7 +121,7 @@ public class ProfileWebApp implements EntryPoint {
 	private PanelBody createLoginForm() {
 		Form logingForm = new Form();
 		logingForm.getElement().setId("loginform");
-		logingForm.setAction("http://localhost:8090/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F");
+		logingForm.setAction(LOGIN_LOCATION);
 
 		SubmitButton btnSubmit = new SubmitButton();
 		Div txtDiv = new Div();
