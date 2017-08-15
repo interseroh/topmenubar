@@ -91,7 +91,7 @@ public class ProfileWebApp implements EntryPoint {
 
 		Div divClose = new Div();
 		divClose.addStyleName(getStyle("close"));
-		divClose.getElement().setInnerText("x");
+		divClose.getElement().setInnerHTML("&times;");
 		String closeDivStr = divClose.getElement().getString();
 		String containerStr = container.getElement().getString();
 		popover.setContent(closeDivStr + containerStr);
