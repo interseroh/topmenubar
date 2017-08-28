@@ -178,28 +178,28 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.lesscss</groupId>
-				<artifactId>lesscss-maven-plugin</artifactId>
-				<version>1.7.0.1.1</version>
-				<executions>
-					<execution>
-						<id>interserohless</id>
-						<configuration>
-							<sourceDirectory>${project.basedir}/src/main/resources/de/interseroh/tmb/resource/themes/interseroh/css/</sourceDirectory>
-							<outputDirectory>${project.build.directory}/classes/de/interseroh/tmb/resource/themes/interseroh/css/</outputDirectory>
-							<compress>true</compress>
-							<includes>
-								<include>interseroh-bootstrap.less</include>
-								<include>individual.less</include>
-								<include>topmenubar.less</include>
-							</includes>
-						</configuration>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<groupId>org.lesscss</groupId>
+			<artifactId>lesscss-maven-plugin</artifactId>
+			<version>1.7.0.1.1</version>
+			<executions>
+				<execution>
+					<id>interserohless</id>
+					<configuration>
+						<sourceDirectory>${project.basedir}/src/main/resources/de/interseroh/tmb/resource/themes/interseroh/css/</sourceDirectory>
+						<outputDirectory>${project.build.directory}/classes/de/interseroh/tmb/resource/themes/interseroh/css/</outputDirectory>
+						<compress>true</compress>
+						<includes>
+							<include>interseroh-bootstrap.less</include>
+							<include>individual.less</include>
+							<include>topmenubar.less</include>
+						</includes>
+					</configuration>
+					<goals>
+						<goal>compile</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
