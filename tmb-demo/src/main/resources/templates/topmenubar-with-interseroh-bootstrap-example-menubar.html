@@ -97,7 +97,10 @@
 	</div>
 	<div id="tmb_portal_links"></div>
 	<div id="icons_right"></div>
-	<div id="tmb_profile" class="fa fa-user headertabs"><a href="#"></a></div>
+	<div id="tmb_profile" class="headertabs"
+		th:attr="data-tmb-application-url=${profileUrl}"
+		data-tmb-javascript-url="/profile/profile.nocache.js">
+	</div>
 	<div id="tmb_messaging" class="fa fa-envelope-o headertabs"><a href="#"></a>
 	</div>
 </div>
