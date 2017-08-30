@@ -31,7 +31,9 @@
 
 	<logger name="de" level="DEBUG" />
 	<logger name="org.mitre" level="DEBUG" />
-	<logger name="org.springframework.security" level="DEBUG" />
+	<!--logger name="org.springframework.security" level="DEBUG" /-->
+	<logger name="org.springframework.web.client" level="DEBUG"/>
+	<logger name="httpclient.wire" level="DEBUG"/>
 
     <root level="DEBUG">
         <appender-ref ref="dailyRollingFileAppender"/>
