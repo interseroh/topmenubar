@@ -85,7 +85,7 @@
       - The authentication filter
       -
       -->
-    <bean id="openIdConnectAuthenticationFilter" class="org.mitre.openid.connect.client.OIDCAuthenticationFilter">
+    <bean id="openIdConnectAuthenticationFilter" class="de.interseroh.tmb.profile.server.filter.TpiSsoAuthFilterWithPostStrategy">
         <property name="authenticationManager" ref="authenticationManager" />
 
         <property name="issuerService" ref="hybridIssuerService" />
