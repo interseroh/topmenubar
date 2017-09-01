@@ -18,21 +18,18 @@
  */
 package de.interseroh.tmb.profile.client;
 
+import java.util.logging.Logger;
+
+import org.gwtbootstrap3.client.ui.AnchorButton;
+import org.gwtbootstrap3.client.ui.Form;
+import org.gwtbootstrap3.client.ui.PanelBody;
+import org.gwtbootstrap3.client.ui.SubmitButton;
+import org.gwtbootstrap3.client.ui.html.Div;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.RootPanel;
-import de.interseroh.tmb.profile.client.common.ProfilePopover;
-import org.gwtbootstrap3.client.ui.*;
-import org.gwtbootstrap3.client.ui.constants.ButtonType;
-import org.gwtbootstrap3.client.ui.constants.IconSize;
-import org.gwtbootstrap3.client.ui.constants.IconType;
-import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-import org.gwtbootstrap3.client.ui.html.Div;
-import org.gwtbootstrap3.client.ui.html.Span;
-
-import java.util.logging.Logger;
 
 /**
  * @author Ingo Düppe (CROWDCODE)
@@ -42,16 +39,17 @@ public class ProfileWebApp implements EntryPoint {
 	private static final String TMB_PROFILE = "tmb_profile";
 
 	private static final String CSS_BLOCK = "PROFILE_application";
+
 	public static final String LOGIN_LOCATION = "http://localhost:8090/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
+	public static final String OID_CONNECT_GATEWAY_LOCATION = "http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
 	public static final String OID_CONNECT_LOCATION = "http://localhost:9012/profile/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
 
 	private static String callee = "";
 	private static String calleeUrl = "";
 
-
 	private static final Logger logger = Logger
 			.getLogger(ProfileWebApp.class.getName());
-	public static final String OPENID_CONNECT_LOGIN = "openid_connect_login";
+//	public static final String OPENID_CONNECT_LOGIN = "openid_connect_login";
 	public static final String OID_SERVER_LOGIN = "http://localhost:8080/openid-connect-server-webapp/";
 
 	private final ProfileWebAppGinjector injector = GWT
@@ -68,6 +66,21 @@ public class ProfileWebApp implements EntryPoint {
 		loginButton.setHref(OID_CONNECT_LOCATION);
 		loginButton.setText("Anmelden");
 		profileRoot.add(loginButton);
+
+		AnchorButton gatewayButton = new AnchorButton();
+		gatewayButton.setHref(OID_CONNECT_GATEWAY_LOCATION);
+		gatewayButton.setText("Gateway Login");
+		profileRoot.add(gatewayButton);
+
+		AnchorButton userInfoButton = new AnchorButton();
+		userInfoButton.setHref("http://localhost:9000/ep/userinfo");
+		userInfoButton.setText("UserInfo");
+		profileRoot.add(userInfoButton);
+
+		AnchorButton countButton = new AnchorButton();
+		countButton.setHref("http://localhost:9000/ep/profiles/count");
+		countButton.setText("Count");
+		profileRoot.add(countButton);
 
 		callee = com.google.gwt.user.client.Window.Location.getParameter("callee");
 		calleeUrl = com.google.gwt.user.client.Window.Location.getParameter("calleeUrl");
@@ -102,6 +115,11 @@ public class ProfileWebApp implements EntryPoint {
 */
 
 		logger.info("ProfileWebApp: Create Views end");
+	}
+
+	private void onCountClick() {
+		logger.info("Get Count");
+
 	}
 
 	private boolean isLoggedIn() {

@@ -25,4 +25,6 @@ public interface ProfileServiceEndpoint {
 
 	String GWT_REMOTE_LOGGING = GWT_MODULE+ "/remote_logging";
 
+	String GWT_REQUEST_COUNT = GWT_MODULE + "/count";
+
 }
