@@ -18,8 +18,10 @@
  */
 package de.interseroh.tmb.client;
 
+import java.util.Collection;
 import java.util.logging.Logger;
 
+import com.google.gwt.user.client.Cookies;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Navbar;
 import org.gwtbootstrap3.client.ui.NavbarBrand;
@@ -103,6 +105,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement().getAttribute(DATA_TMB_HEADLINE);
 
+		handleCookies();
 
 		Navbar basePanel = new Navbar();
 		basePanel.getElement().addClassName(ifPresent(theme, DEFAULT_BACKGROUND_THEME));
@@ -243,4 +246,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 		return RootPanel.get(element);
 	}
 
+	private void handleCookies() {
+		Collection<String> cookieNames = Cookies.getCookieNames();
+
+		for (String cookieName : cookieNames) {
+			logger.info("I found "+cookieName+" value "+Cookies.getCookie(cookieName));
+		}
+	}
 }
