@@ -43,7 +43,6 @@
 		<dependency>
 			<groupId>de.interseroh.tmb.common</groupId>
 			<artifactId>tmb-common</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Spring -->

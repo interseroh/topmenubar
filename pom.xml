@@ -30,6 +30,7 @@
 	<artifactId>topmenubar-parent</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<name>topmenubar-parent</name>
 	<description>Top menu bar project</description>
 
@@ -109,10 +110,17 @@
 		<module>applauncher</module>
 		<module>topmenubar</module>
 		<module>tmb-demo</module>
+		<module>tmb-user-mgt</module>
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>de.interseroh.tmb.common</groupId>
+				<artifactId>tmb-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<!-- Spring Test -->
 			<dependency>
 				<groupId>javax.validation</groupId>
@@ -200,6 +208,17 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<dependency>
+				<groupId>de.interseroh.tmb</groupId>
+				<artifactId>tmb-userdata</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.interseroh.tmb</groupId>
+				<artifactId>tmb-userdata-impl</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
