@@ -147,13 +147,19 @@ body {
   #tmb_profile,
   #tmb_messaging {
     position: relative;
-    a {
+    a:not(.userLogo) {
       display: block;
       position: absolute;
       width: 20px;
       height: 20px;
       top: -5px;
       left: -5px;
+    }
+    a.userLogin{
+      position: absolute;
+      top: 0;
+      background-color: transparent;
+      height: 26px;
     }
   }
 

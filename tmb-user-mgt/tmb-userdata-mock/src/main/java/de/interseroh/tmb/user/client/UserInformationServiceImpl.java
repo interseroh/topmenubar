@@ -21,8 +21,8 @@ public class UserInformationServiceImpl implements UserInformationService{
     @Override
     public ComplexWidget createLoginButton() {
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
-        loginButton.setText("LOGIN");
         loginButton.setHref("./index.html");
+        loginButton.getElement().addClassName("userLogin");
 
         Cookies.setCookie("JSESSIONID","http://www.dilbert.com");
 

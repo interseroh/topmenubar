@@ -12,8 +12,7 @@ public class UserInformationServiceImpl implements UserInformationService {
     public ComplexWidget createLoginButton() {
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
 
-        loginButton.setText("LOGIN");
-
+        loginButton.getElement().addClassName("userLogin");
         loginButton.setHref(OID_CONNECT_GATEWAY_LOCATION);
 
         return loginButton;
