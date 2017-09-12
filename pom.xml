@@ -17,7 +17,9 @@
  | specific language governing permissions and limitations
  | under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -44,9 +46,10 @@
 
 	<scm>
 		<url>https://github.com/interseroh/topmenubar</url>
-		<connection>scm:git:https://github.com/interseroh/topmenubar.git</connection>
-	  <tag>HEAD</tag>
-  </scm>
+		<connection>scm:git:https://github.com/interseroh/topmenubar.git
+		</connection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<developers>
 		<developer>
@@ -396,7 +399,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore />
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -498,7 +501,7 @@
 										<value>${GIT_BRANCH}</value>
 										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
 										<regex>.*\/</regex>
-										<replacement />
+										<replacement/>
 									</configuration>
 								</execution>
 							</executions>
@@ -540,14 +543,18 @@
 								<skip>true</skip>
 								<images>
 									<image>
-										<name>${docker.registry}/${project.artifactId}</name>
+										<name>
+											${docker.registry}/${project.artifactId}
+										</name>
 										<build>
 											<from>java:8</from>
 											<maintainer>
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
 											<tags>
-												<tag>${project.version}-${docker.branch.name}</tag>
+												<tag>
+													${project.version}-${docker.branch.name}
+												</tag>
 											</tags>
 											<ports>
 												<port>${server.port}</port>

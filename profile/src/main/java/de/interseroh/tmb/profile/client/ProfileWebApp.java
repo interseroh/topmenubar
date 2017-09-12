@@ -58,7 +58,7 @@ public class ProfileWebApp implements EntryPoint {
 			logger.info("WE ARE LOGGED IN");
 			UserInfoResponse userInfoResponse = userInformationService.getUserInfo();
 
-			// TODO : use this information and display it somehow
+			// TODO : use this information and display it somehow nb
 
 		}
 

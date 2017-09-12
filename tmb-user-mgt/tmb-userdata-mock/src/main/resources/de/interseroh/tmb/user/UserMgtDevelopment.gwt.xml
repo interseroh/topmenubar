@@ -18,7 +18,6 @@
 
     <!-- Specify the paths for translatable code -->
     <source path='client'/>
-    <source path='shared'/>
 
     <!-- Compiler agent -->
     <set-property name="user.agent" value="safari"/>
