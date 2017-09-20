@@ -17,7 +17,7 @@ node {
     stage('Build') {
         println "BRANCH: $GIT_BRANCH"
         // Run the maven build
-        sh "'${mvnHome}/bin/mvn' clean install -Pwith-docker"
+        sh "'${mvnHome}/bin/mvn' clean install -Pwith-docker -Pwith-profile -Pwith-usermgt-mock"
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
