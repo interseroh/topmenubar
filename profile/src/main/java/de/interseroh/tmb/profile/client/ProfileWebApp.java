@@ -18,18 +18,20 @@
  */
 package de.interseroh.tmb.profile.client;
 
-import java.util.logging.Logger;
-
-import org.gwtbootstrap3.client.ui.AnchorButton;
-import org.gwtbootstrap3.client.ui.Form;
-import org.gwtbootstrap3.client.ui.PanelBody;
-import org.gwtbootstrap3.client.ui.SubmitButton;
-import org.gwtbootstrap3.client.ui.html.Div;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.RootPanel;
+import de.interseroh.tmb.profile.client.common.ServicePreparator;
+import de.interseroh.tmb.profile.client.domain.AgeClient;
+import de.interseroh.tmb.profile.client.domain.AgeRequest;
+import de.interseroh.tmb.profile.client.domain.AgeResponse;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.gwtbootstrap3.client.ui.*;
+import org.gwtbootstrap3.client.ui.html.Div;
+
+import java.util.logging.Logger;
 
 /**
  * @author Ingo Düppe (CROWDCODE)
@@ -51,9 +53,12 @@ public class ProfileWebApp implements EntryPoint {
 			.getLogger(ProfileWebApp.class.getName());
 //	public static final String OPENID_CONNECT_LOGIN = "openid_connect_login";
 	public static final String OID_SERVER_LOGIN = "http://localhost:8080/openid-connect-server-webapp/";
+	public static final String AGE_ENDPOINT_URI = "http://localhost:9000/ep/age/calculate";
 
 	private final ProfileWebAppGinjector injector = GWT
 			.create(ProfileWebAppGinjector.class);
+
+	private AgeClient ageClient;
 
 	@Override
 	public void onModuleLoad() {
@@ -81,6 +86,33 @@ public class ProfileWebApp implements EntryPoint {
 		countButton.setHref("http://localhost:9000/ep/profiles/count");
 		countButton.setText("Count");
 		profileRoot.add(countButton);
+
+		AnchorButton logoutButton = new AnchorButton();
+		logoutButton.setHref("http://localhost:9000/ep/logout");
+		logoutButton.setText("Logout");
+		profileRoot.add(logoutButton);
+
+		initServices(AGE_ENDPOINT_URI);
+
+		Button ageButton = new Button();
+		ageButton.setTitle("AgeTitle");
+		ageButton.setText("Age");
+		ageButton.addClickHandler((event) -> {
+			AgeRequest ageRequest = new AgeRequest();
+			ageRequest.setBirthdate("27/04/1975");
+			ageClient.age(ageRequest, new MethodCallback<AgeResponse>() {
+				@Override
+				public void onFailure(Method method, Throwable exception) {
+					logger.fine("failure");
+				}
+
+				@Override
+				public void onSuccess(Method method, AgeResponse response) {
+					logger.fine("AGE: "+response.getAge());
+				}
+			});
+		});
+		profileRoot.add(ageButton);
 
 		callee = com.google.gwt.user.client.Window.Location.getParameter("callee");
 		calleeUrl = com.google.gwt.user.client.Window.Location.getParameter("calleeUrl");
@@ -115,6 +147,13 @@ public class ProfileWebApp implements EntryPoint {
 */
 
 		logger.info("ProfileWebApp: Create Views end");
+	}
+
+
+	private ServicePreparator initServices(String appUrl) {
+		ServicePreparator servicePreparator = injector.getServicePreparator();
+		servicePreparator.prepare(appUrl);
+		return servicePreparator;
 	}
 
 	private void onCountClick() {
