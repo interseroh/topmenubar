@@ -151,8 +151,8 @@ body {
     }
   }
 
-  #tmb_profile .fa.fa-user,
-  #tmb_messaging .fa.fa-envelope-o{
+  #tmb_profile.fa.fa-user,
+  #tmb_messaging.fa.fa-envelope-o{
     position: relative;
     a:not(.userLogo) {
       display: block;
@@ -164,10 +164,12 @@ body {
     }
     a.userLogin{
       position: absolute;
-      top: 0;
+      top: -3px;
+      left: -7px;
       background-color: transparent;
-      height: 26px;
-      border: 1px solid darkblue; //tests
+      height: 30px;
+      width: 30px;
+      border: 1px solid blue;
     }
     &.user-logged-in {
       border: 1px solid #fff;

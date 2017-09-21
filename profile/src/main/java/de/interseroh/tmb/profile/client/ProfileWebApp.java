@@ -51,16 +51,19 @@ public class ProfileWebApp implements EntryPoint {
 		handleCookies();
 
 		logger.info("Checking login state...");
-		if (!userInformationService.isLoggedIn()) {
+		if (userInformationService.isLoggedIn()) {
+
 			profile.getElement().addClassName("user-logged-in");
-			logger.info("WE ARE NOT LOGGED IN");
-			profile.add(userInformationService.createLoginButton());
-		} else {
-			profile.getElement().removeClassName("user-logged-in");
 			logger.info("WE ARE LOGGED IN");
 			UserInfoResponse userInfoResponse = userInformationService.getUserInfo();
 
+			profile.getElement().setTitle(userInfoResponse.getUsername() + " " + userInfoResponse.getEmail());
 			// TODO : use this information and display it somehow nb
+
+		} else {
+			profile.getElement().removeClassName("user-logged-in");
+			logger.info("WE ARE NOT LOGGED IN");
+			profile.add(userInformationService.createLoginButton());
 		}
 
 		logger.info("ProfileWebApp: Create Views ends...");
