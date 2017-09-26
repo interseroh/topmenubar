@@ -4,7 +4,7 @@
 			{
 				"imageURL": "images/webshop-logo.png",
 				"caption": "WebShop",
-				"applicationURL": "http://localhost:9000/ep/age/dummy",
+				"applicationURL": "http://www.google.de",
 				"target": "_self"
 			},
 			{
