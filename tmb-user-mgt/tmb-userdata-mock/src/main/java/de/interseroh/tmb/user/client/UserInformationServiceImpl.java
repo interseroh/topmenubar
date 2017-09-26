@@ -12,6 +12,10 @@ import org.gwtbootstrap3.client.ui.constants.ButtonType;
 public class UserInformationServiceImpl implements UserInformationService{
 
 
+    public UserInformationServiceImpl(String gatewayLocation) {
+        // Nothing to do
+    }
+
     /**
      * create a dummy login button and set the JSESSIONID cookie. this cookie must be
      * deleted manually if the isLoggedIn logic shall be retested.

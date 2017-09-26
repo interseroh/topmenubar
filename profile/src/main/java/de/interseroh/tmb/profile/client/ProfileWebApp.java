@@ -32,6 +32,9 @@ import org.gwtbootstrap3.client.ui.constants.ButtonType;
 
 public class ProfileWebApp implements EntryPoint {
 
+	private static final String DATA_APPLICATION_URL = "data-tmb-sso-url";
+	private static final String SSO_FALLBACK="http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
+
 
 	private static final String TMB_PROFILE = "tmb_profile";
 	private RootPanel profile;
@@ -39,7 +42,6 @@ public class ProfileWebApp implements EntryPoint {
 	private static final Logger logger = Logger
 			.getLogger(ProfileWebApp.class.getName());
 
-	private final UserInformationService userInformationService = new UserInformationServiceImpl();
 
 	@Override
 	public void onModuleLoad() {
@@ -47,6 +49,18 @@ public class ProfileWebApp implements EntryPoint {
 
 		logger.info("Get Profile Widget...");
 		profile = getWidgets(TMB_PROFILE);
+
+		String ssoUrl = profile.getElement()
+				.getAttribute(DATA_APPLICATION_URL);
+
+		if (ssoUrl == null || ssoUrl.trim().isEmpty()) {
+			logger.info("FALLING BACK TO "+SSO_FALLBACK);
+			ssoUrl=SSO_FALLBACK;
+		} else{
+			logger.info("USING SSO SERVICE "+ssoUrl);
+		}
+
+		UserInformationService userInformationService = new UserInformationServiceImpl(ssoUrl);
 
 		handleCookies();
 

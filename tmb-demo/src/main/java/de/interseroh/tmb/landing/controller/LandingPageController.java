@@ -38,12 +38,16 @@ public class LandingPageController {
 	@Value("${profile.url:http://localhost:9018/profile}")
 	private String profileUrl;
 
+	@Value("${ssoUrl.url:http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F}")
+	private String ssoUrl;
+
 	@GetMapping(path = "{viewname}.html")
 	public String doGet(Model model,
 			@PathVariable("viewname") String viewname) {
 		model.addAttribute("applauncherUrl", applauncherUrl);
 		model.addAttribute("topmenubarUrl", topmenubarUrl);
 		model.addAttribute("profileUrl", profileUrl);
+		model.addAttribute("ssoUrl", ssoUrl);
 		return viewname;
 	}
 

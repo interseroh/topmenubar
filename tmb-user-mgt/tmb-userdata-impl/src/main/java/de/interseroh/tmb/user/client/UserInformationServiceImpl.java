@@ -6,7 +6,11 @@ import org.gwtbootstrap3.client.ui.constants.ButtonType;
 
 public class UserInformationServiceImpl implements UserInformationService {
 
-    public static final String OID_CONNECT_GATEWAY_LOCATION = "http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
+    public final String OID_CONNECT_GATEWAY_LOCATION;
+
+    public UserInformationServiceImpl(String gatewayLocation) {
+        OID_CONNECT_GATEWAY_LOCATION=gatewayLocation;
+    }
 
     @Override
     public ComplexWidget createLoginButton() {
