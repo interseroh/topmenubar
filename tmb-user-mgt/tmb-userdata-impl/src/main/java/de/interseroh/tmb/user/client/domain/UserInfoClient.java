@@ -37,4 +37,9 @@ public interface UserInfoClient extends RestService {
 	@Path("userinfo")
 	void getUserInfo(MethodCallback<UserInfoResponseImpl> callback);
 
+	@GET
+	@Path("logout")
+	void logout(MethodCallback<Void> callback);
+
+
 }

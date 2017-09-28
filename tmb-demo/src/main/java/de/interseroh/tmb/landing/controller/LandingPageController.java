@@ -44,6 +44,9 @@ public class LandingPageController {
 	@Value("${userInfoUrl.url:http://localhost:9000/ep/}")
 	private String userInfoUrl;
 
+	@Value("${cookiePath.url:/ep}")
+	private String cookiePath;
+
 	@GetMapping(path = "{viewname}.html")
 	public String doGet(Model model,
 			@PathVariable("viewname") String viewname) {
@@ -52,6 +55,7 @@ public class LandingPageController {
 		model.addAttribute("profileUrl", profileUrl);
 		model.addAttribute("ssoUrl", ssoUrl);
 		model.addAttribute("userInfoUrl", userInfoUrl);
+		model.addAttribute("cookiePath", cookiePath);
 		return viewname;
 	}
 

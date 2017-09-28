@@ -1,5 +1,8 @@
 package de.interseroh.tmb.user.client;
 
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Cookies;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.AnchorButton;
@@ -14,12 +17,16 @@ import java.util.logging.Logger;
  */
 public class UserInformationServiceImpl implements UserInformationService{
 
+    private static final Logger logger = Logger
+            .getLogger(UserInformationServiceImpl.class.getName());
 
-    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, Logger logger) {
+    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath) {
         logger.info("USER INFORMATION MOCK HAS BEEN CONFIGURED WITH "
                 +(gatewayLocation==null || gatewayLocation.trim().isEmpty()? " NO GATEWAY ":gatewayLocation)
                 + " AND "
-                +(userInfoUrl == null || userInfoUrl.trim().isEmpty() ? " NO USER INFO URL ": userInfoUrl));
+                +(userInfoUrl == null || userInfoUrl.trim().isEmpty() ? " NO USER INFO URL ": userInfoUrl)
+                + " AND "
+                + (cookiePath == null | cookiePath.trim().isEmpty()? " NO" : cookiePath)+" COOKIE PATH" );
     }
 
     /**
@@ -33,8 +40,26 @@ public class UserInformationServiceImpl implements UserInformationService{
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
         loginButton.setHref("./index.html");
         loginButton.getElement().addClassName("userLogin");
+        loginButton.setId(ID_LOGIN_BUTTON);
 
         Cookies.setCookie("JSESSIONID","http://www.dilbert.com");
+
+        return loginButton;
+    }
+
+    @Override
+    public ComplexWidget createLogoutButton(Callback logoutCallback) {
+        AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
+        loginButton.setHref("./index.html");
+        loginButton.getElement().addClassName("userLogin");
+        loginButton.setId(ID_LOGOUT_BUTTON);
+
+        loginButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                performLogout();
+            }
+        });
 
         return loginButton;
     }
