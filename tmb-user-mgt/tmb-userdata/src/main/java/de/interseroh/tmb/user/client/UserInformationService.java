@@ -1,6 +1,7 @@
 package de.interseroh.tmb.user.client;
 
 import com.google.gwt.user.client.Cookies;
+import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.base.ComplexWidget;
 
 import java.util.Collection;
@@ -12,7 +13,6 @@ import java.util.Collection;
 public interface UserInformationService {
 
     String SESSION_ID_COOKIE="JSESSIONID";
-    String USERINFO_URL_COOKIE="USERINFO";
 
     /**
      * @return true, if the user is logged id
@@ -38,6 +38,6 @@ public interface UserInformationService {
     /**
      * @return the user information or null if the user is not logged in
      */
-    UserInfoResponse getUserInfo();
+    void getUserInfo(MethodCallback<UserInfoResponse> uiRepsonse);
 
 }

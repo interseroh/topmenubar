@@ -28,6 +28,9 @@
     <set-property name="gwt.logging.simpleRemoteHandler"
                   value="ENABLED"/>
 
+    <!-- RestyGWT -->
+    <inherits name="org.fusesource.restygwt.RestyGWT" />
+    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
 
     <!-- allow Super Dev Mode -->
     <add-linker name="xsiframe"/>

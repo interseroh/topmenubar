@@ -16,6 +16,8 @@
     <set-configuration-property name='xsiframe.failIfScriptTag'
                                 value='FALSE'/>
 
+    <inherits name="org.fusesource.restygwt.RestyGWT"/>
+
     <!-- Specify the paths for translatable code -->
     <source path='client'/>
     <source path='shared'/>

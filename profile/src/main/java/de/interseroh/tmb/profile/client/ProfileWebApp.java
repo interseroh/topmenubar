@@ -22,18 +22,22 @@ import java.util.Collection;
 import java.util.logging.Logger;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.RootPanel;
 import de.interseroh.tmb.user.client.UserInfoResponse;
 import de.interseroh.tmb.user.client.UserInformationService;
 import de.interseroh.tmb.user.client.UserInformationServiceImpl;
-import org.gwtbootstrap3.client.ui.AnchorButton;
-import org.gwtbootstrap3.client.ui.constants.ButtonType;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
 
 public class ProfileWebApp implements EntryPoint {
 
 	private static final String DATA_APPLICATION_URL = "data-tmb-sso-url";
+	private static final String DATA_USER_INFORMATION_URL = "data-tmb-user-info";
 	private static final String SSO_FALLBACK="http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
+	private static final String USERINFO_FALLBACK="http://localhost:9000/ep/";
+
 
 
 	private static final String TMB_PROFILE = "tmb_profile";
@@ -50,17 +54,10 @@ public class ProfileWebApp implements EntryPoint {
 		logger.info("Get Profile Widget...");
 		profile = getWidgets(TMB_PROFILE);
 
-		String ssoUrl = profile.getElement()
-				.getAttribute(DATA_APPLICATION_URL);
+		String ssoUrl = getSsoUrl();
+		String userInfoUrl = getUserInfoUrl();
 
-		if (ssoUrl == null || ssoUrl.trim().isEmpty()) {
-			logger.info("FALLING BACK TO "+SSO_FALLBACK);
-			ssoUrl=SSO_FALLBACK;
-		} else{
-			logger.info("USING SSO SERVICE "+ssoUrl);
-		}
-
-		UserInformationService userInformationService = new UserInformationServiceImpl(ssoUrl);
+		UserInformationService userInformationService = new UserInformationServiceImpl(ssoUrl,userInfoUrl, logger);
 
 		handleCookies();
 
@@ -69,10 +66,22 @@ public class ProfileWebApp implements EntryPoint {
 
 			profile.getElement().addClassName("user-logged-in");
 			logger.info("WE ARE LOGGED IN");
-			UserInfoResponse userInfoResponse = userInformationService.getUserInfo();
 
-			profile.getElement().setTitle(userInfoResponse.getUsername() + " " + userInfoResponse.getEmail());
-			// TODO : use this information and display it somehow nb
+			MethodCallback<UserInfoResponse> clientCallBack = new MethodCallback<UserInfoResponse>() {
+				@Override
+				public void onFailure(Method method, Throwable throwable) {
+					logger.severe("Retrieval of userinfo failed!");
+				}
+
+				@Override
+				public void onSuccess(Method method, UserInfoResponse response) {
+					Messages messages = GWT.create(Messages.class);
+					logger.info("I got user "+response.getUsername()+" who is logged in.");
+					profile.getElement().setTitle(messages.loggedInAs()+response.getUsername());
+				}
+			};
+
+			userInformationService.getUserInfo(clientCallBack);
 
 		} else {
 			profile.getElement().removeClassName("user-logged-in");
@@ -81,6 +90,32 @@ public class ProfileWebApp implements EntryPoint {
 		}
 
 		logger.info("ProfileWebApp: Create Views ends...");
+	}
+
+	private String getSsoUrl() {
+		String ssoUrl = profile.getElement()
+				.getAttribute(DATA_APPLICATION_URL);
+
+		if (ssoUrl == null || ssoUrl.trim().isEmpty()) {
+			logger.info("FALLING BACK TO SSO URL "+SSO_FALLBACK);
+			ssoUrl=SSO_FALLBACK;
+		} else{
+			logger.info("USING SSO SERVICE "+ssoUrl);
+		}
+		return ssoUrl;
+	}
+
+	private String getUserInfoUrl() {
+		String userInfoUrl = profile.getElement()
+				.getAttribute(DATA_USER_INFORMATION_URL);
+
+		if (userInfoUrl == null || userInfoUrl.trim().isEmpty()) {
+			logger.info("FALLING BACK TO USER INFO URL "+SSO_FALLBACK);
+			userInfoUrl=SSO_FALLBACK;
+		} else{
+			logger.info("USING USER INFO URL "+userInfoUrl);
+		}
+		return userInfoUrl;
 	}
 
 	private void handleCookies() {

@@ -37,6 +37,7 @@ Top Menu Bar for Interseroh Webapps.
   - [less](#less) 
   - [Bootstrap config](#Bootstrap config)
   - [variables less](#variables)
+- [Dockerizing](#dockerizing)
  
 
 
@@ -115,7 +116,34 @@ You can add as much applications as you want to this configuration file.
 This module represents the messaging facilities of Top Menu Bar.
 
 ### profile
-to be defined.
+The profile application handles user management and is currently availale in two flavours:
+
+* mocked service (just for simulation purpose)
+* life service accessing a user /userinfo rest service returning full name and email address
+
+#### Enabling
+
+One can enable the profile application by building the application with -Pwith-profile option. Notice, if you choose 
+this option, you need to decide whether to build with -Pwith-usermgt or with -Pwith-usermgt-mock.
+
+#### Configuration
+
+The service is configured externally by setting the attributes:
+
+Example:
+
+	<div id="tmb_profile" 
+	    class="fa fa-user headertabs" 
+	    data-tmb-javascript-url="/profile/profile.nocache.js" 
+	    data-tmb-sso-url="http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F" 
+	    data-tmb-application-url="http://localhost:9012/profile" 
+	    data-tmb-user-info="http://localhost:9000/ep/">
+
+* data-tmb-sso-url - the URL where to redirect if no session is found
+* data-tmb-user-info - the URL where the /userinfo REST service is found. This service should be capable to be called 
+without any parameters determining the user by the JSESSIONID cookie.
+
+A simple integration sample is currently available in templates/topmenubar-above-navbar.html of the landing page demo app.
 
 ### topmenubar
 This module contains the graphical representation of Top Menu Bar plus a prototype landing page
@@ -423,5 +451,15 @@ mvn clean install -Pwith-docker -Ddocker.registry=<DOCKER_REGISTRY_URL> -Ddocker
    
    ## variables
    colors are defined in the config.less and imported by the interseroh.less and individual.less
+   
    ## Buttons with interseroh style (BIG)
    if you want to get Buttons with interseroh style with the dimensions from the styleguide, add class "interseroh-style" to the element
+   
+# dockerizing
+
+This application already has been prepared for building docker images. You may call the maven build with -Pwith-docker settings 
+and setting all required parameters manually, or you choose jenkins2, setting up a new build pipeline and execute the Jenkinsfile.
+
+![Jenkins configuration](https://github.com/interseroh/topmenubar/etc/jenkins.jpg)
+
+The build will produces a docker image for each service.
