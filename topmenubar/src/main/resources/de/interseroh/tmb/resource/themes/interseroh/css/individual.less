@@ -1,7 +1,7 @@
 @import "variables.less";
 
 .sticky-content {
-  position: fixed;
+  position: fixed !important;
   z-index: 9;
   right: 0;
   bottom: 120px;
@@ -119,15 +119,26 @@ textarea {
     border-color: transparent;
   }
 }
+
+// extra bootstrap styles
 @media (min-width: 768px) and (max-width: 1000px) {
   .navbar-toggle {
     display: block !important;
   }
 }
 
-
 @media (min-width: 768px)  and (max-width: 1000px) {
   .navbar-collapse.collapse {
     display: none !important;
   }
 }
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  background-color: #f9f9f9;
+}
+.bootstrap-select .btn-default {
+  background-color: @secondary-lighter-grey;
+  &:hover {
+    background-color: @secondary-lighter-hover-grey;
+  }
+}
+
