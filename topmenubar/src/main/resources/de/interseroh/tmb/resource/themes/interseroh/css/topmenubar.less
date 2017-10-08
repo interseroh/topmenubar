@@ -145,9 +145,9 @@ body {
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 430px) {
     .navbar-brand {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -164,14 +164,13 @@ body {
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     #tmb_portal_links {
       position: static;
     }
     .navbar-nav > li > a {
       padding: 10px 15px;
     }
-
     .TMB_application,
     .INTERSEROH_application {
       &__logocontainer {
@@ -180,6 +179,9 @@ body {
     }
     .navbar-header {
       border-bottom: 1px solid #e7e7e7;
+    }
+    .navbar-right {
+      float: none !important;
     }
   }
 

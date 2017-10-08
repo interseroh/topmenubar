@@ -121,16 +121,32 @@ textarea {
 }
 
 // extra bootstrap styles
-@media (min-width: 768px) and (max-width: 1000px) {
+@media (max-width: 991px) {
   .navbar-toggle {
     display: block !important;
   }
-}
-
-@media (min-width: 768px)  and (max-width: 1000px) {
-  .navbar-collapse.collapse {
-    display: none !important;
+  .navbar-header {
+    width: 100%;
+    float: none;
   }
+  .navbar-nav {
+    float: none;
+    margin: 0;
+  }
+  .navbar-collapse.collapse{
+    &:not(.in) {
+      display: none !important;
+    }
+    .navbar-nav > li {
+      float: none;
+      position: relative;
+      display: block;
+    }
+    .navbar-right {
+      float: left !important;
+    }
+  }
+
 }
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
   background-color: #f9f9f9;
@@ -141,4 +157,3 @@ textarea {
     background-color: @secondary-lighter-hover-grey;
   }
 }
-
