@@ -70,7 +70,7 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		appLauncherRoot.getElement().addClassName(CSS_BLOCK);
-		appLauncherRoot.getElement().addClassName("hidden-xs hidden-sm");
+		//appLauncherRoot.getElement().addClassName("hidden-xs hidden-sm");
 		applauncherUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
 		logger.info("Applauncher application URL: " + applauncherUrl);
