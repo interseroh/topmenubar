@@ -120,8 +120,15 @@ textarea {
   }
 }
 
+.navbar-nav > li {
+  float: none;
+}
+
 // extra bootstrap styles
 @media (max-width: @collapse-breakpoint) {
+  .APL_application {
+    display: none;
+  }
   .navbar-toggle {
     display: block !important;
   }
@@ -137,16 +144,16 @@ textarea {
     &:not(.in) {
       display: none !important;
     }
-    .navbar-nav > li {
-      float: none;
-      position: relative;
-      display: block;
-    }
-    .navbar-right {
-      float: left !important;
-    }
   }
-
+}
+@media (min-width: @collapse-breakpoint) {
+  .navbar-nav > li {
+    float: left;
+  }
+  .interseroh-navbar-right {
+    float: right;
+    margin-right: -15px;
+  }
 }
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
   background-color: #f9f9f9;
