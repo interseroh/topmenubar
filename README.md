@@ -382,8 +382,8 @@ Besides the necessary maven environment, a working docker container build enviro
 All you have to do is enabling the with-docker-profile. The build command for building the image is fired through maven:
    
 ```
-mvn clean install -Pwith-docker -Ddocker.registry=<DOCKER_REGISTRY_URL> 
--Ddocker.username=<DOCKER_REGISTRY_USERNAME> 
+mvn clean install -Pwith-docker -Ddocker.registry=<DOCKER_REGISTRY_URL> \
+-Ddocker.username=<DOCKER_REGISTRY_USERNAME> \
 -Ddocker.password=<DOCKER_REGISTRY_PASSWORD>
 ```
 
@@ -398,7 +398,7 @@ As a result of this build you will find an image carrying the build version in t
     topmenubar          1.0.0-SNAPSHOT      0677b5eb24a8        3 minutes ago       767 MB
     topmenubar          latest              0677b5eb24a8        3 minutes ago       767 MB
     applauncher         1.0.0-SNAPSHOT      41183726d7a9        3 minutes ago       752 MB
-    applauncher         latest              41183726d7a9        3 minutes ago       752 MB```
+    applauncher         latest              41183726d7a9        3 minutes ago       752 MB
 
 ```
 
