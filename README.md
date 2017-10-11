@@ -24,7 +24,6 @@ Top Menu Bar for Interseroh Webapps.
 - [Configuration](#configuration)
 - [Integration of topmenubar and applauncher into your application](#integration-of-topmenubar-and-applauncher-into-your-application)
   - [Integrating TopMenuBar (incl. AppLauncher) above an existing Bootsrap Navbar](#integrating-topmenubar-incl-applauncher-above-an-existing-bootstrap-navbar)
-  https://github.com/interseroh/topmenubar/tree/feature/tpi-36-document-integration#integrating-topmenubar-incl-applauncher-above-an-existing-bootsrap-navbar
   - [Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar](#integrating-applauncher-without-topmenubar-within-an-existing-bootstrap-navbar)
   - [Integrating TopMenuBar (incl. AppLauncher) with custom menu items](#integrating-topmenubar-incl-applauncher-with-custom-menu-items)
 - [Integration Test](#integration-test)
