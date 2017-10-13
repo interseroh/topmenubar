@@ -1,12 +1,15 @@
+
 body {
   min-width: 320px;
   margin-top: 100px;
 }
 
 #tmb_top_menu_bar {
+
   .APL_application .fa {
     margin-top: 2px;
   }
+
   z-index: 2;
   position: fixed;
   top: 0;
@@ -28,7 +31,9 @@ body {
       top: 29px;
     }
   }
-
+  .navbar-brand {
+    top: 39px;
+  }
   .navbar {
     background-color: #f8f8f8;
     min-height: 64px;
@@ -145,14 +150,14 @@ body {
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 430px) {
     .navbar-brand {
-      display: none;
+      display: none !important;
     }
   }
 
   #tmb_profile .fa.fa-user,
-  #tmb_messaging .fa.fa-envelope-o{
+  #tmb_messaging .fa.fa-envelope-o {
     position: relative;
     a {
       display: block;
@@ -164,10 +169,11 @@ body {
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     #tmb_portal_links {
       position: static;
     }
+
     .navbar-nav > li > a {
       padding: 10px 15px;
     }
@@ -178,8 +184,13 @@ body {
         margin-left: 8px;
       }
     }
+
     .navbar-header {
       border-bottom: 1px solid #e7e7e7;
+    }
+
+    .navbar-right {
+      float: none !important;
     }
   }
 
@@ -203,6 +214,7 @@ body {
     }
   }
 }
+
 @media (min-width: 768px) and (max-width: 820px) {
   #icons_right {
     max-width: 17%;
