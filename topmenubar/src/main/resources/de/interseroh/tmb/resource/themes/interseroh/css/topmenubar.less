@@ -156,28 +156,28 @@ body {
     }
   }
 
-  #tmb_profile .fa.fa-user,
-  #tmb_messaging .fa.fa-envelope-o {
+  #tmb_profile.fa.fa-user,
+  #tmb_messaging.fa.fa-envelope-o {
     position: relative;
     a:not(.userLogo) {
       display: block;
       position: absolute;
-      width: 20px;
-      height: 20px;
-      top: -5px;
-      left: -5px;
+      width: 30px;
+      height: 30px;
+      top: -4px;
+      left: -7px;
+      background: none;
     }
     a.userLogin{
       position: absolute;
-      top: -3px;
-      left: -7px;
       background-color: transparent;
       height: 30px;
       width: 30px;
     }
-    &.user-logged-in {
+    a.user-logged-in {
       border: 1px solid #fff;
       border-radius: 100px;
+      cursor: default;
     }
   }
 
