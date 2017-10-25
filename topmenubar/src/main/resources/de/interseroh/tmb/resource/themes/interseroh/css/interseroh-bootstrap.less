@@ -39,8 +39,20 @@
   display: block;
 }
 
+.carousel-inner > .prev {
+  left: -100%;
+  &.right{
+    left: 0;
+  }
+}
 .carousel-inner > .active {
   left: 0;
+  &.left {
+    left: -100%;
+  }
+  &.right {
+    left: 100%;
+  }
 }
 
 .carousel-inner > .next,
@@ -52,23 +64,9 @@
 
 .carousel-inner > .next {
   left: 100%;
-}
-
-.carousel-inner > .prev {
-  left: -100%;
-}
-
-.carousel-inner > .next.left,
-.carousel-inner > .prev.right {
-  left: 0;
-}
-
-.carousel-inner > .active.left {
-  left: -100%;
-}
-
-.carousel-inner > .active.right {
-  left: 100%;
+  &.left {
+    left: 0;
+  }
 }
 
 .carousel-control {
@@ -696,6 +694,7 @@ label {
   box-shadow: none !important;
 }
 
+/*
 @font-face {
   font-family: 'FranklinGothic-Book';
   src: url("fonts/webfonts/31E5E6_0_0.eot");
@@ -706,6 +705,17 @@ label {
   font-family: 'FranklinGothic-Demi';
   src: url("fonts/webfonts/31E5E6_1_0.eot");
   src: url("fonts/webfonts/31E5E6_1_0.eot?#iefix") format("embedded-opentype"), url("fonts/webfonts/31E5E6_1_0.woff2") format("woff2"), url("fonts/webfonts/31E5E6_1_0.woff") format("woff"), url("fonts/webfonts/31E5E6_1_0.ttf") format("truetype");
+}
+*/
+@font-face {
+  font-family: 'FranklinGothic-Book';
+  src: url("fonts/webfonts/Franklin_Gothic_Book.ttf");
+  src: url("fonts/webfonts/Franklin_Gothic_Book.ttf?#iefix") format("embedded-opentype"), url("fonts/webfonts/Franklin_Gothic_Book.woff2") format("woff2"), url("fonts/webfonts/Franklin_Gothic_Book.woff") format("woff"), url("fonts/webfonts/Franklin_Gothic_Book.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'FranklinGothic-Demi';
+  src: url("fonts/webfonts/FranklinGothic-Demi.eot");
+  src: url("fonts/webfonts/FranklinGothic-Demi.eot?#iefix") format("embedded-opentype"), url("fonts/webfonts/FranklinGothic-Demi.woff2") format("woff"), url("fonts/webfonts/FranklinGothic-Demi.ttf") format("truetype");
 }
 
 body {
