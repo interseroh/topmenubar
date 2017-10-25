@@ -598,6 +598,17 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<id>local-nexus-ep</id>
+			<distributionManagement>
+				<snapshotRepository>
+					<name>nexus</name>
+					<id>nexus</id>
+					<layout>default</layout>
+					<url>http://nexus-ep/repository/maven-snapshots/</url>
+				</snapshotRepository>
+			</distributionManagement>
+		</profile>
 
 	</profiles>
 </project>

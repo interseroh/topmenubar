@@ -234,7 +234,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 * @return value or defaultValue
 	 */
 	private String ifPresent(String value, String defaultValue) {
-		return value != null && !value.trim().isEmpty() ? value : defaultValue;
+		boolean present = value != null && !value.trim().isEmpty();
+		logger.info("No value found! Falling back to default value "+defaultValue);
+		return present ? value : defaultValue;
 	}
 
 	/**

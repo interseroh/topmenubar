@@ -47,6 +47,9 @@ public class LandingPageController {
 	@Value("${cookiePath.url:/ep}")
 	private String cookiePath;
 
+	@Value("${logour.url:http://www.google.de}")
+	private String logoutUrl;
+
 	@GetMapping(path = "{viewname}.html")
 	public String doGet(Model model,
 			@PathVariable("viewname") String viewname) {
@@ -56,6 +59,7 @@ public class LandingPageController {
 		model.addAttribute("ssoUrl", ssoUrl);
 		model.addAttribute("userInfoUrl", userInfoUrl);
 		model.addAttribute("cookiePath", cookiePath);
+		model.addAttribute("logoutUrl", logoutUrl);
 		return viewname;
 	}
 

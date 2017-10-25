@@ -4,6 +4,7 @@ import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import de.interseroh.tmb.user.client.domain.UserInfoClient;
 import org.fusesource.restygwt.client.*;
 import org.gwtbootstrap3.client.ui.AnchorButton;
@@ -17,19 +18,23 @@ public class UserInformationServiceImpl implements UserInformationService {
     public final String OID_CONNECT_GATEWAY_LOCATION;
     public final String USER_INFO_URL;
     public final String COOKIE_PATH;
+    public final String LOGOUT_URL;
+
     private static final Logger logger = Logger
             .getLogger(UserInformationServiceImpl.class.getName());
 
-    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath) {
+    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath, String logoutUrl) {
         OID_CONNECT_GATEWAY_LOCATION=gatewayLocation;
         USER_INFO_URL = userInfoUrl;
         COOKIE_PATH = cookiePath;
+        LOGOUT_URL = logoutUrl;
     }
 
     public UserInformationServiceImpl(UserInformationServiceImpl dolly){
         this.OID_CONNECT_GATEWAY_LOCATION = dolly.OID_CONNECT_GATEWAY_LOCATION;
         this.USER_INFO_URL = dolly.USER_INFO_URL;
         this.COOKIE_PATH = dolly.COOKIE_PATH;
+        this.LOGOUT_URL = dolly.LOGOUT_URL;
     }
 
     @Override
@@ -56,6 +61,10 @@ public class UserInformationServiceImpl implements UserInformationService {
                     userService.logger.info("PERFORM LOGOUT");
                     userService.performLogout();
                     logoutCallback.onSuccess(null);
+                    if (LOGOUT_URL != null && !LOGOUT_URL.trim().isEmpty()) {
+                        userService.logger.info("MOVING TO "+LOGOUT_URL);
+                        Window.Location.replace(LOGOUT_URL);
+                    }
                 } catch (Exception e){
                     logoutCallback.onFailure(e);
                 }

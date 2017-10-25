@@ -20,13 +20,15 @@ public class UserInformationServiceImpl implements UserInformationService{
     private static final Logger logger = Logger
             .getLogger(UserInformationServiceImpl.class.getName());
 
-    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath) {
+    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath, String logoutUrl) {
         logger.info("USER INFORMATION MOCK HAS BEEN CONFIGURED WITH "
                 +(gatewayLocation==null || gatewayLocation.trim().isEmpty()? " NO GATEWAY ":gatewayLocation)
-                + " AND "
+                + "\n AND "
                 +(userInfoUrl == null || userInfoUrl.trim().isEmpty() ? " NO USER INFO URL ": userInfoUrl)
-                + " AND "
-                + (cookiePath == null | cookiePath.trim().isEmpty()? " NO" : cookiePath)+" COOKIE PATH" );
+                + "\n AND "
+                + (cookiePath == null | cookiePath.trim().isEmpty()? " NO" : cookiePath)+" COOKIE PATH"
+                + "\n AND "
+                + (logoutUrl == null | logoutUrl.trim().isEmpty()? " NO" : logoutUrl)+" LOGOUT URL");
     }
 
     /**
