@@ -138,12 +138,14 @@ Example:
 	    data-tmb-sso-url="http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F" 
 	    data-tmb-application-url="http://localhost:9012/profile" 
 	    data-tmb-user-info="http://localhost:9000/ep/"
-	    data-tmb-cookie-path="/ep">
+	    data-tmb-cookie-path="/ep"
+	    data-tmb-logout-url="http://www.google.de">
 
 * data-tmb-sso-url - the URL where to redirect if no session is found
 * data-tmb-user-info - the URL where the /userinfo REST service is found. This service should be capable to be called 
 without any parameters determining the user by the JSESSIONID cookie.
 * data-tmb-cookie-path - the path, under which the JSESSIONID cookie will be set by the authenticating system
+* data-tmb-logout-url - an url to navigate, after the logout has been processed
 
 A simple integration sample is currently available in templates/topmenubar-above-navbar.html of the landing page demo app.
 
