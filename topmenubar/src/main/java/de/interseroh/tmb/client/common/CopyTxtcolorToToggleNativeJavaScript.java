@@ -12,5 +12,6 @@ public class CopyTxtcolorToToggleNativeJavaScript {
 	 */
 	public static native void copyTxtColor() /*-{
         $wnd.jQuery('#tmb_top_menu_bar .navbar-toggle .icon-bar').css('background-color', $wnd.jQuery('.navbar').css('color'));
+        $wnd.jQuery('#tmb_profile').css('border-color',  $wnd.jQuery('.navbar').css('color'));
     }-*/;
 }

@@ -197,17 +197,6 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 *
 	 * @param headlineText text for adding
 	 */
-//	private NavbarBrand createBadge(String headlineText) {
-//		NavbarBrand brand = new NavbarBrand();
-//	//	brand.setBadgePosition(BadgePosition.RIGHT);
-//		brand.setBadgeText(headlineText);
-//		return brand;
-//	}
-	/**
-	 * Creates and add headline text to the left panel
-	 *
-	 * @param headlineText text for adding
-	 */
 	private SimplePanel createTitle(String headlineText) {
 		SimplePanel brand = new SimplePanel();
 		brand.getElement().setClassName("navbar-brand");
