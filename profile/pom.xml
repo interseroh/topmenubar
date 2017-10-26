@@ -23,7 +23,7 @@
     <parent>
         <groupId>de.interseroh.tmb</groupId>
         <artifactId>topmenubar-parent</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <groupId>de.interseroh.tmb.profile</groupId>
