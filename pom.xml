@@ -17,9 +17,7 @@
  | specific language governing permissions and limitations
  | under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -30,7 +28,7 @@
 
 	<groupId>de.interseroh.tmb</groupId>
 	<artifactId>topmenubar-parent</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>topmenubar-parent</name>
@@ -48,7 +46,7 @@
 		<url>https://github.com/interseroh/topmenubar</url>
 		<connection>scm:git:https://github.com/interseroh/topmenubar.git
 		</connection>
-		<tag>HEAD</tag>
+		<tag>topmenubar-parent-1.0.1</tag>
 	</scm>
 
 	<developers>
@@ -399,7 +397,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore/>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -501,7 +499,7 @@
 										<value>${GIT_BRANCH}</value>
 										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
 										<regex>.*\/</regex>
-										<replacement/>
+										<replacement />
 									</configuration>
 								</execution>
 							</executions>
