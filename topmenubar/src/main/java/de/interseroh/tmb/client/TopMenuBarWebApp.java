@@ -59,6 +59,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String PORTAL_LINKS = "tmb_portal_links";
 	private static final String TOPICS = "internal_topics";
 	private static final String COLLAPSEID = "tmb_navbar_collapse";
+	public static final String HEADERTABS = "headertabs";
 	private static String CSS_BLOCK = "TMB_application";
 
 	private static final Logger logger = Logger
@@ -168,11 +169,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	}
 
 	private void configureApplauncher() {
-		appLauncher.getElement().addClassName("headertabs");
-	}
-
-	private void configureProfile() {
-		profile.getElement().addClassName("headertabs");
+		appLauncher.getElement().addClassName(HEADERTABS);
 	}
 
 	private String loadWidgetsFromInsideOut() {
@@ -190,7 +187,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private Widget createCollapseButton(String dataTarget) {
 		NavbarCollapseButton button = new NavbarCollapseButton();
 		button.getElement().addClassName(CSS_BLOCK + "__button");
-		button.getElement().addClassName("headertabs");
+		button.getElement().addClassName(HEADERTABS);
 		button.setDataTarget(dataTarget);
 		return button;
 	}

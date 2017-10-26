@@ -49,7 +49,7 @@ public interface UserInformationService {
                 Logger logger = Logger
                         .getLogger(this.getClass().getName());
                 logger.warning("WARNING! I FOUND "+SESSION_ID_COOKIE+" BUT IT I WAS UNABLE TO DELETE IT! ARE YOU SURE, THAT YOU HAVE SET THE CORRECT COOKIE PATH ("+cookiePath+") TO MATCH THE COOKIE?");
-            }; // double check that it is really gone!
+            } // double check that it is really gone!
             result = true;
         }
 

@@ -21,14 +21,15 @@ public class UserInformationServiceImpl implements UserInformationService{
             .getLogger(UserInformationServiceImpl.class.getName());
 
     public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath, String logoutUrl) {
+        String AND = "\n AND ";
         logger.info("USER INFORMATION MOCK HAS BEEN CONFIGURED WITH "
                 +(gatewayLocation==null || gatewayLocation.trim().isEmpty()? " NO GATEWAY ":gatewayLocation)
-                + "\n AND "
+                + AND
                 +(userInfoUrl == null || userInfoUrl.trim().isEmpty() ? " NO USER INFO URL ": userInfoUrl)
-                + "\n AND "
-                + (cookiePath == null | cookiePath.trim().isEmpty()? " NO" : cookiePath)+" COOKIE PATH"
-                + "\n AND "
-                + (logoutUrl == null | logoutUrl.trim().isEmpty()? " NO" : logoutUrl)+" LOGOUT URL");
+                + AND
+                + (cookiePath == null || cookiePath.trim().isEmpty()? " NO" : cookiePath)+" COOKIE PATH"
+                + AND
+                + (logoutUrl == null || logoutUrl.trim().isEmpty()? " NO" : logoutUrl)+" LOGOUT URL");
     }
 
     /**
@@ -56,12 +57,7 @@ public class UserInformationServiceImpl implements UserInformationService{
         loginButton.getElement().addClassName("userLogin");
         loginButton.setId(ID_LOGOUT_BUTTON);
 
-        loginButton.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                performLogout();
-            }
-        });
+        loginButton.addClickHandler(event -> performLogout());
 
         return loginButton;
     }
@@ -85,12 +81,12 @@ public class UserInformationServiceImpl implements UserInformationService{
 
             @Override
             public void setUsername(String username) {
-
+                // Nothing to do
             }
 
             @Override
             public void setEmail(String email) {
-
+                // Nothing to do
             }
         });
     }

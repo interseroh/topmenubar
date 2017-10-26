@@ -15,33 +15,33 @@ import java.util.logging.Logger;
 
 public class UserInformationServiceImpl implements UserInformationService {
 
-    public final String OID_CONNECT_GATEWAY_LOCATION;
-    public final String USER_INFO_URL;
-    public final String COOKIE_PATH;
-    public final String LOGOUT_URL;
+    public final String oidConnectGatewayLocation;
+    public final String userInfoUrl;
+    public final String cookiePath;
+    public final String logoutUrl;
 
     private static final Logger logger = Logger
             .getLogger(UserInformationServiceImpl.class.getName());
 
     public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath, String logoutUrl) {
-        OID_CONNECT_GATEWAY_LOCATION=gatewayLocation;
-        USER_INFO_URL = userInfoUrl;
-        COOKIE_PATH = cookiePath;
-        LOGOUT_URL = logoutUrl;
+        oidConnectGatewayLocation =gatewayLocation;
+        this.userInfoUrl = userInfoUrl;
+        this.cookiePath = cookiePath;
+        this.logoutUrl = logoutUrl;
     }
 
     public UserInformationServiceImpl(UserInformationServiceImpl dolly){
-        this.OID_CONNECT_GATEWAY_LOCATION = dolly.OID_CONNECT_GATEWAY_LOCATION;
-        this.USER_INFO_URL = dolly.USER_INFO_URL;
-        this.COOKIE_PATH = dolly.COOKIE_PATH;
-        this.LOGOUT_URL = dolly.LOGOUT_URL;
+        this.oidConnectGatewayLocation = dolly.oidConnectGatewayLocation;
+        this.userInfoUrl = dolly.userInfoUrl;
+        this.cookiePath = dolly.cookiePath;
+        this.logoutUrl = dolly.logoutUrl;
     }
 
     @Override
     public ComplexWidget createLoginButton() {
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
         loginButton.getElement().addClassName("userLogin");
-        loginButton.setHref(OID_CONNECT_GATEWAY_LOCATION);
+        loginButton.setHref(oidConnectGatewayLocation);
         loginButton.setId(ID_LOGIN_BUTTON);
 
         return loginButton;
@@ -61,9 +61,9 @@ public class UserInformationServiceImpl implements UserInformationService {
                     userService.logger.info("PERFORM LOGOUT");
                     userService.performLogout();
                     logoutCallback.onSuccess(null);
-                    if (LOGOUT_URL != null && !LOGOUT_URL.trim().isEmpty()) {
-                        userService.logger.info("MOVING TO "+LOGOUT_URL);
-                        Window.Location.replace(LOGOUT_URL);
+                    if (logoutUrl != null && !logoutUrl.trim().isEmpty()) {
+                        userService.logger.info("MOVING TO "+ logoutUrl);
+                        Window.Location.replace(logoutUrl);
                     }
                 } catch (Exception e){
                     logoutCallback.onFailure(e);
@@ -73,7 +73,7 @@ public class UserInformationServiceImpl implements UserInformationService {
         });
         return logoutButton;
     }
-
+    @Override
     public boolean performLogout() {
         logger.fine("REMOVING SESSION COOKIE");
         if (UserInformationService.super.performLogout()){
@@ -127,7 +127,7 @@ public class UserInformationServiceImpl implements UserInformationService {
      * @return a instance of the user info client
      */
     private UserInfoClient getUserInfoClient() {
-        Resource resource = new Resource( USER_INFO_URL);
+        Resource resource = new Resource(userInfoUrl);
 
         UserInfoClient client = GWT.create(UserInfoClient.class);
         ((RestServiceProxy) client).setResource(resource);
@@ -136,6 +136,6 @@ public class UserInformationServiceImpl implements UserInformationService {
 
     @Override
     public String getCookiePath() {
-        return COOKIE_PATH;
+        return cookiePath;
     }
 }
