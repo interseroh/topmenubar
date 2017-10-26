@@ -24,7 +24,6 @@ Top Menu Bar for Interseroh Webapps.
 - [Configuration](#configuration)
 - [Integration of topmenubar and applauncher into your application](#integration-of-topmenubar-and-applauncher-into-your-application)
   - [Integrating TopMenuBar (incl. AppLauncher) above an existing Bootsrap Navbar](#integrating-topmenubar-incl-applauncher-above-an-existing-bootstrap-navbar)
-  https://github.com/interseroh/topmenubar/tree/feature/tpi-36-document-integration#integrating-topmenubar-incl-applauncher-above-an-existing-bootsrap-navbar
   - [Integrating Applauncher (without TopMenuBar) within an existing Bootstrap Navbar](#integrating-applauncher-without-topmenubar-within-an-existing-bootstrap-navbar)
   - [Integrating TopMenuBar (incl. AppLauncher) with custom menu items](#integrating-topmenubar-incl-applauncher-with-custom-menu-items)
 - [Integration Test](#integration-test)
@@ -39,6 +38,8 @@ Top Menu Bar for Interseroh Webapps.
   - [variables less](#variables)
 - [Dockerizing](#dockerizing)
  
+- [Docker Container](#docker-container)
+- [Interseroh Styles](#interseroh-styles) 
 
 
 ## Introduction
@@ -408,31 +409,33 @@ Proceeding for the successful integration of the **TopMenuBar** in the pages whi
 
    
       
-   # Docker-Container
-   This project is using the fabric8.io docker plugin for maven and enables the developer to create docker images in zero time. 
-   ##Requirements
-   Besides the necessary maven environment, a working docker container build environment is mandatory (this means, you must be able to run docker build commands successfully). 
-   ##Building the images
-   All you have to do is enabling the with-docker-profile. The build command for building the image is fired through maven:
-   
-   ```
-mvn clean install -Pwith-docker -Ddocker.registry=<DOCKER_REGISTRY_URL> -Ddocker.username=<DOCKER_REGISTRY_USERNAME> -Ddocker.password=<DOCKER_REGISTRY_PASSWORD>
-   ```
+# Docker Container 
+This project is using the fabric8.io docker plugin for maven and enables the developer to create docker images in zero time. 
 
-   _Please verify that the plugin version in the command line matches the plugin version in the parent pom.xml!_
+## Requirements
+Besides the necessary maven environment, a working docker container build environment is mandatory (this means, you must be able to run docker build commands successfully). 
+
+## Building the images
+All you have to do is enabling the with-docker-profile. The build command for building the image is fired through maven:
+   
+```
+mvn clean install -Pwith-docker -Ddocker.registry=<DOCKER_REGISTRY_URL> \
+-Ddocker.username=<DOCKER_REGISTRY_USERNAME> \
+-Ddocker.password=<DOCKER_REGISTRY_PASSWORD>
+```
+
+_Please verify that the plugin version in the command line matches the plugin version in the parent pom.xml!_
       
-  
-  As a result of this build you will find an image carrying the build version in the local docker registry:
+As a result of this build you will find an image carrying the build version in the local docker registry:
    
-   ```
-   $ docker images
+```
+    $ docker images
    
-      REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-      topmenubar          1.0.0-SNAPSHOT      0677b5eb24a8        3 minutes ago       767 MB
-      topmenubar          latest              0677b5eb24a8        3 minutes ago       767 MB
-      applauncher         1.0.0-SNAPSHOT      41183726d7a9        3 minutes ago       752 MB
-      applauncher         latest              41183726d7a9        3 minutes ago       752 MB```
-
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    topmenubar          1.0.0-SNAPSHOT      0677b5eb24a8        3 minutes ago       767 MB
+    topmenubar          latest              0677b5eb24a8        3 minutes ago       767 MB
+    applauncher         1.0.0-SNAPSHOT      41183726d7a9        3 minutes ago       752 MB
+    applauncher         latest              41183726d7a9        3 minutes ago       752 MB
 
 ```
 
@@ -445,22 +448,32 @@ The build will produces a docker image for each service.
 
 ## Interseroh-styles  
 
-   # HowTo
+# Interseroh Styles  
 
-   ##less
-   use less to generate css files
+## LESS
+Use less to generate css files.
    
-   http://lesscss.org/
+http://lesscss.org
    
-   if you change something in the css file and the deployment is started, the changes will be overwritten by the less-files
+If you change something in the css file and the deployment is started, the changes 
+will be overwritten by the less-files.
    
-   ## Bootstrap config
-   bootstrap is configured by http://getBootstrap.com
+## Bootstrap Config
+Bootstrap is configured by http://getBootstrap.com
    
-   to change style import the config-file "config.json" from folder "config" before to inculde all changes generated until now
+To change style import the config-file "config.json" from folder "config" before 
+to inculde all changes generated until now
 
-   all styles are now generated by the original http://www.getBootstrap.com no more from http://www.lavishbootstrap.com/
+All styles are now generated by the original http://www.getBootstrap.com 
+no more from http://www.lavishbootstrap.com.
    
+## Variables
+Colors are defined in the config.less and imported by the _interseroh.less_ and _individual.less_.
+
+## Buttons with Interseroh Style (BIG)
+If you want to get Buttons with interseroh style with the dimensions from the styleguide, 
+add class "interseroh-style" to the element.
+
    ## variables
    colors are defined in the config.less and imported by the interseroh.less and individual.less
    
