@@ -366,7 +366,7 @@ The problem is the class **navbar-fixed-top** which is located inside of origina
         
         
 ### Test Case 2
-This test case is co-represented with the page **resources/public/bstest_1_original.html** as test case 1.
+This test case is co-represented with the page **resources/public/bst``est_1_original.html** as test case 1.
    
 #### Test Procedure 2
 Additionally to the same steps as in (#Test case 1) we need to perform one more additional step.
