@@ -4,7 +4,7 @@
 			{
 				"imageURL": "images/webshop-logo.png",
 				"caption": "WebShop",
-				"applicationURL": "http://www.google.de",
+				"applicationURL": "http://www.google.de",  
 				"target": "_self"
 			},
 			{

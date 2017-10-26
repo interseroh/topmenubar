@@ -3,6 +3,8 @@
 <module rename-to='profile'>
     <!-- Inherit the core Web Toolkit stuff. -->
     <inherits name='de.interseroh.tmb.profile.Profile'/>
+    <inherits name="de.interseroh.tmb.user.UserMgtIF"/>
+    <inherits name="de.interseroh.tmb.user.UserMgt"/>
 
     <!-- Compiler agent - we only need to compile for one web browser in development -->
     <!-- If you want to use SDBG for debugging you need to use Chrome == safari -->

@@ -25,7 +25,7 @@
     <parent>
         <groupId>de.interseroh.tmb</groupId>
         <artifactId>topmenubar-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>de.interseroh.tmb.profile</groupId>
@@ -54,10 +54,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-actuator-docs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <dependency>
@@ -133,7 +129,11 @@
             <artifactId>gwtmockito</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>de.interseroh.tmb</groupId>
+            <artifactId>tmb-userdata</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -155,4 +155,67 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <dependencies>
+                <!-- https://mvnrepository.com/artifact/com.google.gwt/gwt-dev -->
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-dev</artifactId>
+                    <version>${gwt.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>with-usermgt-mock</id>
+            <dependencies>
+                <dependency>
+                    <groupId>de.interseroh.tmb.common</groupId>
+                    <artifactId>tmb-userdata-mock</artifactId>
+                    <version>${project.version}</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>de.interseroh.tmb</groupId>
+                            <artifactId>tmb-userdata-impl</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>with-usermgt</id>
+            <dependencies>
+                <dependency>
+                    <groupId>de.interseroh.tmb</groupId>
+                    <artifactId>tmb-userdata-impl</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>with-docker</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>properties-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.fabric8</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
 </project>

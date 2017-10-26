@@ -18,8 +18,10 @@
  */
 package de.interseroh.tmb.client;
 
+import java.util.Collection;
 import java.util.logging.Logger;
 
+import com.google.gwt.user.client.Cookies;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Navbar;
 import org.gwtbootstrap3.client.ui.NavbarBrand;
@@ -94,6 +96,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		CSS_BLOCK = loadWidgetsFromInsideOut();
 		configureApplauncher();
 		injectApplauncherScript();
+		injectProfileScript();
 		configureRootPanel();
 
 		String bg_color = rootPanel.getElement().getAttribute(DATA_TMB_BGCOLOR);
@@ -102,6 +105,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
 		String headlineText = rootPanel.getElement().getAttribute(DATA_TMB_HEADLINE);
 
+		handleCookies();
 
 		Navbar basePanel = new Navbar();
 		basePanel.getElement().addClassName(ifPresent(theme, DEFAULT_BACKGROUND_THEME));
@@ -148,6 +152,14 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private void injectApplauncherScript() {
 		String appUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
+		logger.info("Injection of "+appUrl +" @ "+javascriptUrl);
+		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
+	}
+
+	private void injectProfileScript() {
+		String appUrl = profile.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
+		String javascriptUrl = profile.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
+		logger.info("Injection of "+appUrl +" @ "+javascriptUrl);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
 	}
 
@@ -157,6 +169,10 @@ public class TopMenuBarWebApp implements EntryPoint {
 
 	private void configureApplauncher() {
 		appLauncher.getElement().addClassName("headertabs");
+	}
+
+	private void configureProfile() {
+		profile.getElement().addClassName("headertabs");
 	}
 
 	private String loadWidgetsFromInsideOut() {
@@ -218,7 +234,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 * @return value or defaultValue
 	 */
 	private String ifPresent(String value, String defaultValue) {
-		return value != null && !value.trim().isEmpty() ? value : defaultValue;
+		boolean present = value != null && !value.trim().isEmpty();
+		logger.info("No value found! Falling back to default value "+defaultValue);
+		return present ? value : defaultValue;
 	}
 
 	/**
@@ -230,4 +248,11 @@ public class TopMenuBarWebApp implements EntryPoint {
 		return RootPanel.get(element);
 	}
 
+	private void handleCookies() {
+		Collection<String> cookieNames = Cookies.getCookieNames();
+
+		for (String cookieName : cookieNames) {
+			logger.info("I found "+cookieName+" value "+Cookies.getCookie(cookieName));
+		}
+	}
 }

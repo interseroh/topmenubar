@@ -43,7 +43,6 @@
 		<dependency>
 			<groupId>de.interseroh.tmb.common</groupId>
 			<artifactId>tmb-common</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Spring -->
@@ -54,16 +53,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-actuator-docs</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<!--<exclusions>-->
-			<!--<exclusion>-->
-			<!--<groupId>org.apache.tomcat</groupId>-->
-			<!--<artifactId>tomcat-juli</artifactId>-->
-			<!--</exclusion>-->
-			<!--</exclusions>-->
 		</dependency>
 
 		<!-- Use this Spring Tool for restarting the app automatically -->

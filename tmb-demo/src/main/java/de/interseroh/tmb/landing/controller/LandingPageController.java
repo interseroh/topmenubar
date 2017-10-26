@@ -35,11 +35,31 @@ public class LandingPageController {
 	@Value("${topmenubar.url:http://localhost:9010/topmenubar}")
 	private String topmenubarUrl;
 
+	@Value("${profile.url:http://localhost:9018/profile}")
+	private String profileUrl;
+
+	@Value("${sso.url:http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F}")
+	private String ssoUrl;
+
+	@Value("${userInfoUrl.url:http://localhost:9000/ep/}")
+	private String userInfoUrl;
+
+	@Value("${cookiePath.url:/ep}")
+	private String cookiePath;
+
+	@Value("${logour.url:http://www.google.de}")
+	private String logoutUrl;
+
 	@GetMapping(path = "{viewname}.html")
 	public String doGet(Model model,
 			@PathVariable("viewname") String viewname) {
 		model.addAttribute("applauncherUrl", applauncherUrl);
 		model.addAttribute("topmenubarUrl", topmenubarUrl);
+		model.addAttribute("profileUrl", profileUrl);
+		model.addAttribute("ssoUrl", ssoUrl);
+		model.addAttribute("userInfoUrl", userInfoUrl);
+		model.addAttribute("cookiePath", cookiePath);
+		model.addAttribute("logoutUrl", logoutUrl);
 		return viewname;
 	}
 
