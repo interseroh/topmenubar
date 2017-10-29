@@ -47,6 +47,7 @@ public class ProfileWebApp implements EntryPoint {
 	private static final String USERINFO_FALLBACK="http://localhost:9000/ep/";
 
 	private static final String TMB_PROFILE = "tmb_profile";
+	private static final String LOGGED_IN_CLASS = "user-logged-in";
 	private RootPanel profile;
 
 	private static final Logger logger = Logger
@@ -138,7 +139,7 @@ public class ProfileWebApp implements EntryPoint {
 
 	private void setLoggedInState(UserInformationService userInformationService){
 
-		profile.getElement().addClassName("user-logged-in");
+		profile.getElement().addClassName(LOGGED_IN_CLASS);
 		logger.info("WE ARE LOGGED IN");
 
 		MethodCallback<UserInfoResponse> clientCallBack = new MethodCallback<UserInfoResponse>() {
@@ -180,7 +181,7 @@ public class ProfileWebApp implements EntryPoint {
 		eventualChildNodeRemoval(UserInformationService.ID_LOGIN_BUTTON);
 		eventualChildNodeRemoval(UserInformationService.ID_LOGOUT_BUTTON);
 
-		profile.getElement().removeClassName("user-logged-in");
+		profile.getElement().removeClassName(LOGGED_IN_CLASS);
 		profile.getElement().setTitle(messages.clickToLogin());
 		logger.info("WE ARE NOT LOGGED IN");
 		profile.add(userInformationService.createLoginButton());
