@@ -19,6 +19,7 @@ public class UserInformationServiceImpl implements UserInformationService {
     public final String userInfoUrl;
     public final String cookiePath;
     public final String logoutUrl;
+    public final static String USER_CLASS = "userLogin";
 
     private static final Logger logger = Logger
             .getLogger(UserInformationServiceImpl.class.getName());
@@ -40,7 +41,7 @@ public class UserInformationServiceImpl implements UserInformationService {
     @Override
     public ComplexWidget createLoginButton() {
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
-        loginButton.getElement().addClassName("userLogin");
+        loginButton.getElement().addClassName(USER_CLASS);
         loginButton.setHref(oidConnectGatewayLocation);
         loginButton.setId(ID_LOGIN_BUTTON);
 
@@ -51,7 +52,7 @@ public class UserInformationServiceImpl implements UserInformationService {
     public ComplexWidget createLogoutButton(final Callback logoutCallback) {
         final UserInformationServiceImpl me = this;
         AnchorButton logoutButton =  new AnchorButton(ButtonType.fromStyleName("fa-user"));
-        logoutButton.getElement().addClassName("userLogin");
+        logoutButton.getElement().addClassName(USER_CLASS);
         logoutButton.setId(ID_LOGOUT_BUTTON);
         logoutButton.addClickHandler(new ClickHandler() {
             final UserInformationServiceImpl userService = new UserInformationServiceImpl(me);

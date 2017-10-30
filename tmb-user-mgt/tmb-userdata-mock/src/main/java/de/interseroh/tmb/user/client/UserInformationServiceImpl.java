@@ -1,8 +1,6 @@
 package de.interseroh.tmb.user.client;
 
 import com.google.gwt.core.client.Callback;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Cookies;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.gwtbootstrap3.client.ui.AnchorButton;
@@ -16,6 +14,7 @@ import java.util.logging.Logger;
  * Mock User Service
  */
 public class UserInformationServiceImpl implements UserInformationService{
+    public final static String USER_LOGIN = "userLogin";
 
     private static final Logger logger = Logger
             .getLogger(UserInformationServiceImpl.class.getName());
@@ -42,7 +41,7 @@ public class UserInformationServiceImpl implements UserInformationService{
     public ComplexWidget createLoginButton() {
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
         loginButton.setHref("./index.html");
-        loginButton.getElement().addClassName("userLogin");
+        loginButton.getElement().addClassName(USER_LOGIN);
         loginButton.setId(ID_LOGIN_BUTTON);
 
         Cookies.setCookie("JSESSIONID","http://www.dilbert.com");
@@ -54,7 +53,7 @@ public class UserInformationServiceImpl implements UserInformationService{
     public ComplexWidget createLogoutButton(Callback logoutCallback) {
         AnchorButton loginButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
         loginButton.setHref("./index.html");
-        loginButton.getElement().addClassName("userLogin");
+        loginButton.getElement().addClassName(USER_LOGIN);
         loginButton.setId(ID_LOGOUT_BUTTON);
 
         loginButton.addClickHandler(event -> performLogout());
