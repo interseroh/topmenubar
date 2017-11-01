@@ -21,7 +21,7 @@
     <parent>
         <artifactId>tmb-user-mgt</artifactId>
         <groupId>de.interseroh.tmb</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>de.interseroh.tmb</groupId>
             <artifactId>tmb-userdata</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
