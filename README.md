@@ -34,7 +34,7 @@ Top Menu Bar for Interseroh Webapps.
 - [Conclusion](#conclusion)
 - [Interseroh-styles](#interseroh-styles) 
   - [LESS](#less) 
-  - [Bootstrap config](#Bootstrap-Config)
+  - [Bootstrap Config](#Bootstrap-Config)
   - [variables less](#variables)
 - [Dockerizing](#dockerizing)
  
