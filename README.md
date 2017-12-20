@@ -33,8 +33,8 @@ Top Menu Bar for Interseroh Webapps.
   - [Test Case 3](#test-case-3)
 - [Conclusion](#conclusion)
 - [Interseroh-styles](#interseroh-styles) 
-  - [less](#less) 
-  - [Bootstrap config](#Bootstrap config)
+  - [LESS](#less) 
+  - [Bootstrap config](#Bootstrap-Config)
   - [variables less](#variables)
 - [Dockerizing](#dockerizing)
  
