@@ -245,6 +245,9 @@
 						<phase>validate</phase>
 					</execution>
 				</executions>
+				<configuration>
+					<dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
