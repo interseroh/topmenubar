@@ -225,6 +225,7 @@
 
 	<build>
 		<plugins>
+			<!-- Bug in Heroku: https://github.com/ktoso/maven-git-commit-id-plugin/issues/279
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
@@ -241,7 +242,6 @@
 						<goals>
 							<goal>validateRevision</goal>
 						</goals>
-						<!-- *NOTE*: The default phase of validateRevision is verify, but in case you want to change it, you can do so by adding the phase here -->
 						<phase>validate</phase>
 					</execution>
 				</executions>
@@ -249,6 +249,7 @@
 					<dotGitDirectory>${project.basedir}/../.git</dotGitDirectory>
 				</configuration>
 			</plugin>
+			-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
