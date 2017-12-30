@@ -20,14 +20,29 @@
  */
 package de.interseroh.tmb.landing;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.context.annotation.Bean;
 
+import de.interseroh.tmb.landing.controller.SimpleZuulFilter;
+
+@EnableZuulProxy
 @SpringBootApplication
 public class LandingPageApplication {
 
+	private static final Logger logger = LoggerFactory
+			.getLogger(LandingPageApplication.class);
+
 	public static void main(String[] args) {
-		System.out.println("TEST");
+		logger.info("LandingPageApplication");
 		SpringApplication.run(LandingPageApplication.class, args);
+	}
+
+	@Bean
+	public SimpleZuulFilter simpleFilter() {
+		return new SimpleZuulFilter();
 	}
 }

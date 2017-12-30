@@ -47,7 +47,7 @@ public class LandingPageController {
 	@Value("${cookiePath.url:/ep}")
 	private String cookiePath;
 
-	@Value("${logour.url:http://www.google.de}")
+	@Value("${logout.url:http://www.google.de}")
 	private String logoutUrl;
 
 	@GetMapping(path = "{viewname}.html")
