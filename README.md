@@ -12,6 +12,7 @@ Top Menu Bar for Interseroh Webapps.
 
 
 ## Table of Contents
+- [Demo](#demo)
 - [Introduction](#introduction)
 - [Maven modules](#maven-modules)
   - [topmenubar-parent](#topmenubar-parent)
