@@ -471,12 +471,4 @@ no more from http://www.lavishbootstrap.com.
 Colors are defined in the config.less and imported by the _interseroh.less_ and _individual.less_.
 
 ## Buttons with Interseroh Style (BIG)
-If you want to get Buttons with interseroh style with the dimensions from the styleguide, 
-add class "interseroh-style" to the element.
-
-   ## variables
-   colors are defined in the config.less and imported by the interseroh.less and individual.less
-   
-   ## Buttons with interseroh style (BIG)
-   if you want to get Buttons with interseroh style with the dimensions from the styleguide, add class "interseroh-style" to the element
-
+If you want to get Buttons with interseroh style with the dimensions from the styleguide, add class "interseroh-style" to the element.
