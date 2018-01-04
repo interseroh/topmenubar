@@ -8,7 +8,7 @@ Top Menu Bar for Interseroh Webapps.
 [![Quality Gate](http://sonarqube.com/api/badges/gate?key=de.interseroh.tmb:topmenubar-parent)](https://sonarqube.com/dashboard?id=de.interseroh.tmb%3Atopmenubar-parent)
 [![Dependency Status](https://www.versioneye.com/user/projects/58cc04666893fd003facbf7f/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58cc04666893fd003facbf7f)
 [![codecov](https://codecov.io/gh/interseroh/topmenubar/branch/master/graph/badge.svg)](https://codecov.io/gh/interseroh/topmenubar)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=topmenubar&root=/topmenubar/topmenubar.html)](https://topmenubar.herokuapp.com/topmenubar/topmenubar.html)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=topmenubar&root=/landing/index.html)](https://topmenubar.herokuapp.com/landing/index.html)
 
 
 ## Table of Contents
