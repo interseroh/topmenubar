@@ -36,7 +36,7 @@ public interface UserInformationService {
     /**
      * @return true, if the session cookie has been removed
      */
-    default boolean performLogout() {
+    default boolean performLogout(Callback logoutCallback) {
         boolean result = false;
         if(containsSessionIdCookie()) {
             String cookiePath = getCookiePath();

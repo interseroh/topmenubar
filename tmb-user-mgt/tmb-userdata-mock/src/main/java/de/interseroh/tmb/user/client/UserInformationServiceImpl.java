@@ -19,10 +19,12 @@ public class UserInformationServiceImpl implements UserInformationService{
     private static final Logger logger = Logger
             .getLogger(UserInformationServiceImpl.class.getName());
 
-    public UserInformationServiceImpl(String gatewayLocation, String userInfoUrl, String cookiePath, String logoutUrl) {
+    public UserInformationServiceImpl(String gatewayLocation, String ssoLogoutUrl, String userInfoUrl, String cookiePath, String logoutUrl) {
         String AND = "\n AND ";
         logger.info("USER INFORMATION MOCK HAS BEEN CONFIGURED WITH "
                 +(gatewayLocation==null || gatewayLocation.trim().isEmpty()? " NO GATEWAY ":gatewayLocation)
+                + AND
+                +(ssoLogoutUrl==null || ssoLogoutUrl.trim().isEmpty()? " NO SSO LOGOUTHOOK ":gatewayLocation)
                 + AND
                 +(userInfoUrl == null || userInfoUrl.trim().isEmpty() ? " NO USER INFO URL ": userInfoUrl)
                 + AND
@@ -56,7 +58,7 @@ public class UserInformationServiceImpl implements UserInformationService{
         loginButton.getElement().addClassName(USER_LOGIN);
         loginButton.setId(ID_LOGOUT_BUTTON);
 
-        loginButton.addClickHandler(event -> performLogout());
+        loginButton.addClickHandler(event -> performLogout(logoutCallback));
 
         return loginButton;
     }

@@ -41,6 +41,9 @@ public class LandingPageController {
 	@Value("${sso.url:http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F}")
 	private String ssoUrl;
 
+	@Value("${sso.url:http://localhost:8080/openid-connect-server-webapp/endsession")
+	private String ssoLogoutUrl;
+
 	@Value("${userInfoUrl.url:http://localhost:9000/ep/}")
 	private String userInfoUrl;
 
@@ -60,6 +63,7 @@ public class LandingPageController {
 		model.addAttribute("userInfoUrl", userInfoUrl);
 		model.addAttribute("cookiePath", cookiePath);
 		model.addAttribute("logoutUrl", logoutUrl);
+		model.addAttribute("ssoLogoutUrl", ssoLogoutUrl);
 		return viewname;
 	}
 

@@ -43,6 +43,7 @@ public class ProfileWebApp implements EntryPoint {
 	private static final String DATA_USER_INFORMATION_URL = "data-tmb-user-info";
 	private static final String DATA_USER_COOKIE_PATH = "data-tmb-cookie-path";
 	private static final String DATA_LOGOUT_URL = "data-tmb-logout-url";
+	private static final String DATA_SSO_LOGOUT_URL = "data-tmb-sso-logout-url";
 	private static final String SSO_FALLBACK="http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F";
 	private static final String USERINFO_FALLBACK="http://localhost:9000/ep/";
 
@@ -64,13 +65,14 @@ public class ProfileWebApp implements EntryPoint {
 		profile = getWidgets(TMB_PROFILE);
 
 		String ssoUrl = getSsoUrl();
+		String ssoLogoutUrl = getSsoLogoutUrl();
 		String userInfoUrl = getUserInfoUrl();
 		String cookiePath  = getCookiePath();
 		String logoutUrl = getLogoutUrl();
 
 		messages = GWT.create(Messages.class);
 
-		UserInformationService userInformationService = new UserInformationServiceImpl(ssoUrl, userInfoUrl, cookiePath, logoutUrl);
+		UserInformationService userInformationService = new UserInformationServiceImpl(ssoUrl, ssoLogoutUrl, userInfoUrl, cookiePath, logoutUrl);
 
 		handleCookies();
 
@@ -110,6 +112,17 @@ public class ProfileWebApp implements EntryPoint {
 		return userInfoUrl;
 	}
 
+	private String getSsoLogoutUrl() {
+		String logoutUrl = profile.getElement()
+				.getAttribute(DATA_SSO_LOGOUT_URL);
+
+		if (logoutUrl == null || logoutUrl.trim().isEmpty()) {
+			logger.info("NO SOO LOGOUT URL PROVIDED - I CANNOT FULFILL A DEEP LOGOUT WITHOUT A SSO TERMINATION HOOK!");
+		} else{
+			logger.info("USING SSO LOGOUT URL "+logoutUrl);
+		}
+		return logoutUrl;
+	}
 
 	private String getLogoutUrl() {
 		String logoutUrl = profile.getElement()
@@ -166,8 +179,9 @@ public class ProfileWebApp implements EntryPoint {
 
 					@Override
 					public void onSuccess(Object result) {
-						logger.info("SUCCESSFULLY LOGGED OUT");
+						logger.info("SUCCESSFULLY LOGGED OUT --> MODIFY USER INTERFACE");
 						setLoggedOutState(userInformationService);
+						logger.info("DONE: SUCCESSFULLY LOGGED OUT --> MODIFY USER INTERFACE");
 					}
 				}));
 			}
