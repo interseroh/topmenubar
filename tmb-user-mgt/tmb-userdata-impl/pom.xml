@@ -21,7 +21,7 @@
     <parent>
         <artifactId>tmb-user-mgt</artifactId>
         <groupId>de.interseroh.tmb</groupId>
-        <version>1.0.2T</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
