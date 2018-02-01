@@ -20,8 +20,8 @@ node {
     stage('Build') {
         println "BRANCH: $GIT_BRANCH"
         // Run the maven build
-        sh "git config user.email "jenkins@interseroh.com"
-        sh "git config user.name "Jenkins"
+        sh "git config user.email 'jenkins@interseroh.com'"
+        sh "git config user.name 'Jenkins'"
         sh "'${mvnHome}/bin/mvn' -B clean release:prepare -PcreateRelease -Pwith-profile -Pwith-usermgt -Pwith-usermgt-mock -Darguments=-Dmaven.javadoc.skip=true -DpushChanges=true"
     }
     stage('Results') {
