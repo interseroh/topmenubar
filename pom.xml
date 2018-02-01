@@ -28,7 +28,7 @@
 
 	<groupId>de.interseroh.tmb</groupId>
 	<artifactId>topmenubar-parent</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>topmenubar-parent</name>
@@ -607,7 +607,7 @@
 					<name>nexus</name>
 					<id>nexus</id>
 					<layout>default</layout>
-					<url>http://nexus/repository/releases/</url>
+					<url>http://nexus/repository/maven-snapshots/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
