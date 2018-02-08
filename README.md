@@ -43,12 +43,12 @@ Top Menu Bar for Interseroh Webapps.
 - [Interseroh Styles](#interseroh-styles) 
 
 ## Demo
-See: [https://tmb-demo.herokuapp.com/landing/index.html](https://tmb-demo.herokuapp.com/landing/index.html)
+See: [https://tmb-demo.herokuapp.com/landing/index.html](https://tmb-demo.herokuapp.com/landing/index.html). We are using free cloud from Heroku, so please wait a litte bit until all the webapps are up and running.
 
 ## Introduction
 This application is a top menu bar for various Web apps. The project is represented by four micro services.
 The UI (User Interface) of each microservice is based on GWT framework (http://www.gwtproject.org) and a matching
-backend basing on Spring boot framework (https://projects.spring.io/spring-boot).
+backend based on Spring Boot framework (https://projects.spring.io/spring-boot).
 
 
 ## Maven Modules
