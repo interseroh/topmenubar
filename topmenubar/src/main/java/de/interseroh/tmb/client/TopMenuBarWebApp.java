@@ -73,7 +73,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private RootPanel topics;
 
 	private RootPanel icons_right;
-	private RootPanel appLauncher;
+	//private RootPanel appLauncher;
 	private RootPanel profile;
 	private RootPanel messaging;
 	private RootPanel rootPanel;
@@ -95,8 +95,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views begins...");
 
 		CSS_BLOCK = loadWidgetsFromInsideOut();
-		configureApplauncher();
-		injectApplauncherScript();
+		/*configureApplauncher();
+		injectApplauncherScript();*/
 		injectProfileScript();
 		configureRootPanel();
 
@@ -140,7 +140,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 			icons_right.add(createCollapseButton("#" + COLLAPSEID));
 			icons_right.add(profile);
 			icons_right.add(messaging);
-			icons_right.add(appLauncher);
+			//icons_right.add(appLauncher);
 			icons_right.getElement().addClassName("icons-right");
 			basePanel.add(icons_right);
 		}
@@ -150,12 +150,12 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views ends...");
 	}
 
-	private void injectApplauncherScript() {
+	/*private void injectApplauncherScript() {
 		String appUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
 		String javascriptUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
 		logger.info("Injection of "+appUrl +" @ "+javascriptUrl);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
-	}
+	}*/
 
 	private void injectProfileScript() {
 		String appUrl = profile.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
@@ -168,16 +168,16 @@ public class TopMenuBarWebApp implements EntryPoint {
 		rootPanel.getElement().setClassName(CSS_BLOCK);
 	}
 
-	private void configureApplauncher() {
+	/*private void configureApplauncher() {
 		appLauncher.getElement().addClassName(HEADERTABS);
-	}
+	}*/
 
 	private String loadWidgetsFromInsideOut() {
 		portal = getWidgets(PORTAL_LINKS);
 		topics = getWidgets(TOPICS);
 		profile = getWidgets(TMB_PROFILE);
 		messaging = getWidgets(TMB_MESSAGING);
-		appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		//appLauncher = getWidgets(TMB_APP_LAUNCHER);
 		icons_right = getWidgets(TOP_MENU_ICONS_RIGHT);
 		// Outer Widgets must be loaded at last
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
