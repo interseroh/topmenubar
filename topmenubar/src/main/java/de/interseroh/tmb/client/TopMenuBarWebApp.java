@@ -21,23 +21,22 @@ package de.interseroh.tmb.client;
 import java.util.Collection;
 import java.util.logging.Logger;
 
-import com.google.gwt.user.client.Cookies;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.Navbar;
-import org.gwtbootstrap3.client.ui.NavbarBrand;
 import org.gwtbootstrap3.client.ui.NavbarCollapse;
 import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.NavbarHeader;
-import org.gwtbootstrap3.client.ui.constants.BadgePosition;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.interseroh.tmb.client.common.RemoteScriptInjector;
+
 import static de.interseroh.tmb.client.common.CopyTxtcolorToToggleNativeJavaScript.copyTxtColor;
 
 public class TopMenuBarWebApp implements EntryPoint {
@@ -59,7 +58,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private static final String PORTAL_LINKS = "tmb_portal_links";
 	private static final String TOPICS = "internal_topics";
 	private static final String COLLAPSEID = "tmb_navbar_collapse";
-	public static final String HEADERTABS = "headertabs";
+	private static final String HEADERTABS = "headertabs";
 	private static String CSS_BLOCK = "TMB_application";
 
 	private static final Logger logger = Logger
@@ -73,9 +72,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 	private RootPanel topics;
 
 	private RootPanel icons_right;
-	//private RootPanel appLauncher;
+	private RootPanel appLauncher;
 	private RootPanel profile;
-	//private RootPanel messaging;
+	private RootPanel messaging;
 	private RootPanel rootPanel;
 
 	@Override
@@ -95,22 +94,24 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views begins...");
 
 		CSS_BLOCK = loadWidgetsFromInsideOut();
-		// Vorläufiges auskommentieren des AppLaunchers
-		//configureApplauncher();
-		//injectApplauncherScript();
+		configureApplauncher();
+		injectApplauncherScript();
 		injectProfileScript();
 		configureRootPanel();
 
 		String bg_color = rootPanel.getElement().getAttribute(DATA_TMB_BGCOLOR);
-		String text_color = rootPanel.getElement().getAttribute(DATA_TMB_TXTCOLOR);
+		String text_color = rootPanel.getElement()
+				.getAttribute(DATA_TMB_TXTCOLOR);
 		String theme = rootPanel.getElement().getAttribute(DATA_TMB_THEME);
 		String iconUrl = rootPanel.getElement().getAttribute(DATA_TMB_ICON_URL);
-		String headlineText = rootPanel.getElement().getAttribute(DATA_TMB_HEADLINE);
+		String headlineText = rootPanel.getElement()
+				.getAttribute(DATA_TMB_HEADLINE);
 
 		handleCookies();
 
 		Navbar basePanel = new Navbar();
-		basePanel.getElement().addClassName(ifPresent(theme, DEFAULT_BACKGROUND_THEME));
+		basePanel.getElement()
+				.addClassName(ifPresent(theme, DEFAULT_BACKGROUND_THEME));
 		basePanel.getElement().getStyle().setBackgroundColor(bg_color);
 		basePanel.getElement().getStyle().setColor(text_color);
 		basePanel.getElement().getStyle().setMarginBottom(0, Style.Unit.PT);
@@ -140,9 +141,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		if (icons_right != null) {
 			icons_right.add(createCollapseButton("#" + COLLAPSEID));
 			icons_right.add(profile);
-			//Vorläufiges auskommentieren von Messaging und AppLauncher
-			//icons_right.add(messaging);
-			//icons_right.add(appLauncher);
+			icons_right.add(messaging);
+			icons_right.add(appLauncher);
 			icons_right.getElement().addClassName("icons-right");
 			basePanel.add(icons_right);
 		}
@@ -152,17 +152,21 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views ends...");
 	}
 
-	/*private void injectApplauncherScript() {
-		String appUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
-		String javascriptUrl = appLauncher.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
-		logger.info("Injection of "+appUrl +" @ "+javascriptUrl);
+	private void injectApplauncherScript() {
+		String appUrl = appLauncher.getElement()
+				.getAttribute(ATTRIBUTE_APPLICATION_URL);
+		String javascriptUrl = appLauncher.getElement()
+				.getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
+		logger.info("Injection of " + appUrl + " @ " + javascriptUrl);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
-	}*/
+	}
 
 	private void injectProfileScript() {
-		String appUrl = profile.getElement().getAttribute(ATTRIBUTE_APPLICATION_URL);
-		String javascriptUrl = profile.getElement().getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
-		logger.info("Injection of "+appUrl +" @ "+javascriptUrl);
+		String appUrl = profile.getElement()
+				.getAttribute(ATTRIBUTE_APPLICATION_URL);
+		String javascriptUrl = profile.getElement()
+				.getAttribute(ATTRIBUTE_JAVASCRIPT_PATH);
+		logger.info("Injection of " + appUrl + " @ " + javascriptUrl);
 		new RemoteScriptInjector().injectScript(appUrl, javascriptUrl);
 	}
 
@@ -170,16 +174,16 @@ public class TopMenuBarWebApp implements EntryPoint {
 		rootPanel.getElement().setClassName(CSS_BLOCK);
 	}
 
-	/*private void configureApplauncher() {
+	private void configureApplauncher() {
 		appLauncher.getElement().addClassName(HEADERTABS);
-	}*/
+	}
 
 	private String loadWidgetsFromInsideOut() {
 		portal = getWidgets(PORTAL_LINKS);
 		topics = getWidgets(TOPICS);
 		profile = getWidgets(TMB_PROFILE);
-		//messaging = getWidgets(TMB_MESSAGING);
-		//appLauncher = getWidgets(TMB_APP_LAUNCHER);
+		messaging = getWidgets(TMB_MESSAGING);
+		appLauncher = getWidgets(TMB_APP_LAUNCHER);
 		icons_right = getWidgets(TOP_MENU_ICONS_RIGHT);
 		// Outer Widgets must be loaded at last
 		rootPanel = getWidgets(TOP_MENU_BAR_PLACEHOLDER);
@@ -195,7 +199,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 	}
 
 	/**
-	 * Creates and add headline text to the left panel
+	 * Creates and add headline text to the left panel.
 	 *
 	 * @param headlineText text for adding
 	 */
@@ -205,8 +209,9 @@ public class TopMenuBarWebApp implements EntryPoint {
 		brand.getElement().setInnerText(headlineText);
 		return brand;
 	}
+
 	/**
-	 * Creates and add Logo image to the left panel
+	 * Creates and add Logo image to the left panel.
 	 *
 	 * @param iconUrl the url of logo image
 	 */
@@ -223,12 +228,14 @@ public class TopMenuBarWebApp implements EntryPoint {
 	 */
 	private String ifPresent(String value, String defaultValue) {
 		boolean present = value != null && !value.trim().isEmpty();
-		logger.info("No value found! Falling back to default value "+defaultValue);
+		logger.info("No value found! Falling back to default value "
+				+ defaultValue);
 		return present ? value : defaultValue;
 	}
 
 	/**
-	 * Get Widget from RootPanel
+	 * Get Widget from RootPanel.
+	 *
 	 * @param element - name of the widget
 	 * @return RootPanel
 	 */
@@ -240,7 +247,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		Collection<String> cookieNames = Cookies.getCookieNames();
 
 		for (String cookieName : cookieNames) {
-			logger.info("I found "+cookieName+" value "+Cookies.getCookie(cookieName));
+			logger.info("I found " + cookieName + " value " + Cookies
+					.getCookie(cookieName));
 		}
 	}
 }
