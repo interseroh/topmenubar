@@ -95,6 +95,7 @@ public class TopMenuBarWebApp implements EntryPoint {
 		logger.info("Create Views begins...");
 
 		CSS_BLOCK = loadWidgetsFromInsideOut();
+		// Vorläufiges auskommentieren des AppLaunchers
 		//configureApplauncher();
 		//injectApplauncherScript();
 		injectProfileScript();
@@ -139,7 +140,8 @@ public class TopMenuBarWebApp implements EntryPoint {
 		if (icons_right != null) {
 			icons_right.add(createCollapseButton("#" + COLLAPSEID));
 			icons_right.add(profile);
-			icons_right.add(messaging);
+			//Vorläufiges auskommentieren von Messaging und AppLauncher
+			//icons_right.add(messaging);
 			//icons_right.add(appLauncher);
 			icons_right.getElement().addClassName("icons-right");
 			basePanel.add(icons_right);
