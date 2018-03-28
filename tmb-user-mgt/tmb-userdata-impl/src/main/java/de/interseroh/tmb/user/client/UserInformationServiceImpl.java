@@ -142,6 +142,7 @@ public class UserInformationServiceImpl implements UserInformationService {
                     logger.info("BEGIN DEEP LOGOUT");
                     logger.log(Level.INFO, () -> "Deep Logout : logoutURL = " + logoutUrl);
                     final UserInfoClient userInfoClient = userService.getUserInfoClient();
+                    logger.log(Level.INFO, () -> "UserInfoClient: LoggedIn?" + userService.isLoggedIn());
                     userInfoClient.deepLogout(logoutUrl, new MethodCallback<Void>() {
                         @Override
                         public void onFailure(Method method, Throwable exception) {
