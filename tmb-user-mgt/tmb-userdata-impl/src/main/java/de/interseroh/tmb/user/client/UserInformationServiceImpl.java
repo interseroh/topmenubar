@@ -11,6 +11,7 @@ import org.gwtbootstrap3.client.ui.AnchorButton;
 import org.gwtbootstrap3.client.ui.base.ComplexWidget;
 import org.gwtbootstrap3.client.ui.constants.ButtonType;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserInformationServiceImpl implements UserInformationService {
@@ -139,6 +140,7 @@ public class UserInformationServiceImpl implements UserInformationService {
                 @Override
                 public void run() {
                     logger.info("BEGIN DEEP LOGOUT");
+                    logger.log(Level.INFO, () -> "Deep Logout : logoutURL = " + logoutUrl);
                     final UserInfoClient userInfoClient = userService.getUserInfoClient();
                     userInfoClient.deepLogout(logoutUrl, new MethodCallback<Void>() {
                         @Override
