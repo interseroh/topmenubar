@@ -112,6 +112,7 @@
 		<module>topmenubar</module>
 		<module>tmb-demo</module>
 		<module>tmb-user-mgt</module>
+		<module>profile</module>
 	</modules>
 
 	<dependencyManagement>

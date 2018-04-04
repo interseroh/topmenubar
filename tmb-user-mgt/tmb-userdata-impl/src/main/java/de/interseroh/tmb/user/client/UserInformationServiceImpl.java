@@ -28,14 +28,14 @@ public class UserInformationServiceImpl implements UserInformationService {
             .getLogger(UserInformationServiceImpl.class.getName());
 
     public UserInformationServiceImpl(String gatewayLocation, String ssoLogoutUrl, String userInfoUrl, String cookiePath, String logoutUrl) {
-        oidConnectGatewayLocation =gatewayLocation;
+        oidConnectGatewayLocation = gatewayLocation;
         this.ssoLogoutUrl = ssoLogoutUrl;
         this.userInfoUrl = userInfoUrl;
         this.cookiePath = cookiePath;
         this.logoutUrl = logoutUrl;
     }
 
-    public UserInformationServiceImpl(UserInformationServiceImpl dolly){
+    public UserInformationServiceImpl(UserInformationServiceImpl dolly) {
         this.oidConnectGatewayLocation = dolly.oidConnectGatewayLocation;
         this.userInfoUrl = dolly.userInfoUrl;
         this.cookiePath = dolly.cookiePath;
@@ -56,11 +56,12 @@ public class UserInformationServiceImpl implements UserInformationService {
     @Override
     public ComplexWidget createLogoutButton(final Callback logoutCallback) {
         final UserInformationServiceImpl me = this;
-        AnchorButton logoutButton =  new AnchorButton(ButtonType.fromStyleName("fa-user"));
+        AnchorButton logoutButton = new AnchorButton(ButtonType.fromStyleName("fa-user"));
         logoutButton.getElement().addClassName(USER_CLASS);
         logoutButton.setId(ID_LOGOUT_BUTTON);
         logoutButton.addClickHandler(new ClickHandler() {
             final UserInformationServiceImpl userService = new UserInformationServiceImpl(me);
+
             @Override
             public void onClick(ClickEvent event) {
                 userService.logger.info("BEGIN INITIATING PERFORM LOGOUT");
@@ -70,6 +71,7 @@ public class UserInformationServiceImpl implements UserInformationService {
         });
         return logoutButton;
     }
+
     @Override
     public boolean performLogout(final Callback logoutCallback) {
         logger.info("BEGIN PERFOMING LOGOUT");
@@ -77,20 +79,20 @@ public class UserInformationServiceImpl implements UserInformationService {
         try {
             // In order to destory all session info, we are stacking the callbacks like a matryoshka.
             // last step : terminate session and navigate to logout url
-            final LogoutTask methodObject3= new LogoutTask(new UserInformationServiceImpl(this)) {
+            final LogoutTask methodObject3 = new LogoutTask(new UserInformationServiceImpl(this)) {
                 @Override
                 public void run() {
                     logger.info("BEGIN COOKIE REMOVAL");
                     LogoutCallback callback = new LogoutCallback(new UserInformationServiceImpl(userService), logoutCallback) {
                         @Override
                         public void onFailure(Object reason) {
-                            userService.logger.info("A FAILURE HAS HAPPENED. REASON: "+(reason != null? reason.toString():"NULL"));
+                            userService.logger.info("A FAILURE HAS HAPPENED. REASON: " + (reason != null ? reason.toString() : "NULL"));
                             logoutCallback.onFailure(reason);
                         }
 
                         @Override
                         public void onSuccess(Object result) {
-
+                            logger.info("Cookie removed successful.");
                         }
                     };
 
@@ -110,6 +112,7 @@ public class UserInformationServiceImpl implements UserInformationService {
                     logoutCallback.onSuccess(null);
                 }
             };
+
             // second step : end gateway session
             final LogoutTask methodObject2 = new LogoutTask(new UserInformationServiceImpl(this)) {
                 @Override
@@ -131,11 +134,9 @@ public class UserInformationServiceImpl implements UserInformationService {
                     });
                     logger.info("DONE GW SHALLOW LOGOUT");
                 }
-
-                ;
             };
 
-                    // first step : end sso session
+            // first step : end sso session
             final LogoutTask methodObject1 = new LogoutTask(new UserInformationServiceImpl(this)) {
                 @Override
                 public void run() {
@@ -165,8 +166,8 @@ public class UserInformationServiceImpl implements UserInformationService {
             methodObject1.run();
             logger.fine("DONE: PERFOMING LOGOUT");
 
-        }catch (Exception e){
-            logger.warning("SOMETHING SCREWED UP ON LOGOUT :"+e.getMessage());
+        } catch (Exception e) {
+            logger.warning("SOMETHING SCREWED UP ON LOGOUT :" + e.getMessage());
             return false;
         }
 
@@ -183,13 +184,13 @@ public class UserInformationServiceImpl implements UserInformationService {
         MethodCallback<UserInfoResponseImpl> callback = new MethodCallback<UserInfoResponseImpl>() {
             @Override
             public void onFailure(Method method, Throwable exception) {
-                logger.severe("FAILED TO RETRIEVE USER DATA. ERROR "+exception.getClass().getName()+" MSG "+exception.getMessage());
-                uiCallback.onFailure(method,exception);
+                logger.severe("FAILED TO RETRIEVE USER DATA. ERROR " + exception.getClass().getName() + " MSG " + exception.getMessage());
+                uiCallback.onFailure(method, exception);
             }
 
             @Override
             public void onSuccess(Method method, UserInfoResponseImpl response) {
-                uiCallback.onSuccess(method,response);
+                uiCallback.onSuccess(method, response);
             }
         };
         client.getUserInfo(callback);
@@ -213,15 +214,15 @@ public class UserInformationServiceImpl implements UserInformationService {
         return cookiePath;
     }
 
-    void removeCookies(final Callback callback){
-        if (UserInformationService.super.performLogout(callback)){
+    void removeCookies(final Callback callback) {
+        if (UserInformationService.super.performLogout(callback)) {
             logger.fine("SESSION COOKIE SUCCESSFULLY REMOVED");
         } else {
             logger.warning("NO SESSION COOKIE FOUND FOR REMOVAL?");
         }
     }
 
-    private static abstract class LogoutTask implements Runnable{
+    private static abstract class LogoutTask implements Runnable {
 
         final UserInformationServiceImpl userService;
 
