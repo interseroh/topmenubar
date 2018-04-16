@@ -682,7 +682,7 @@
 											</maintainer>
 											<tags>
 												<tag>
-													${project.version}-${docker.branch.name}
+													${project.version}
 												</tag>
 											</tags>
 											<ports>
