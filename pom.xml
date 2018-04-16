@@ -547,7 +547,7 @@
 								<images>
 									<image>
 										<name>
-											${docker_registry}/${project.artifactId}
+											${docker_release_registry}/${project.artifactId}
 										</name>
 										<build>
 											<from>java:8</from>
@@ -556,7 +556,7 @@
 											</maintainer>
 											<tags>
 												<tag>
-													${project.version}-${docker.branch.name}
+													${project.version}
 												</tag>
 											</tags>
 											<ports>
