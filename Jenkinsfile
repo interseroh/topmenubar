@@ -17,7 +17,7 @@ node {
     stage('Build') {
         println "BRANCH: $GIT_BRANCH"
         // Run the maven build
-        sh "'${mvnHome}/bin/mvn' clean deploy -Pwith-docker -Pwith-profile -Pwith-usermgt -DaltDeploymentRepository=nexus::default::http://nexus/repository/releases"
+        sh "'${mvnHome}/bin/mvn' clean deploy -Pwith-docker  -Pwith-profile -Pwith-usermgt -DaltDeploymentRepository=nexus::default::http://nexus/repository/releases"
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
