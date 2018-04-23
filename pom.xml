@@ -46,7 +46,7 @@
 		<url>https://github.com/interseroh/topmenubar</url>
 		<connection>scm:git:https://github.com/interseroh/topmenubar.git
 		</connection>
-		<tag>topmenubar-parent-1.1.0</tag>
+		<tag>topmenubar-parent-1.2.0-SNAPSHOT</tag>
 	</scm>
 
 	<developers>

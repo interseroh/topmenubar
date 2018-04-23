@@ -29,6 +29,8 @@
     <inherits name="org.fusesource.restygwt.RestyGWT"/>
     <set-property name="gwt.logging.logLevel" value="INFO"/>
     <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <!-- Turn off the console handler -->
+    <set-property name="gwt.logging.consoleHandler" value="DISABLED"/>
     <set-property name="gwt.logging.simpleRemoteHandler"
                   value="ENABLED"/>
 
