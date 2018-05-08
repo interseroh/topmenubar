@@ -19,21 +19,6 @@
     <set-configuration-property name='xsiframe.failIfScriptTag'
                                 value='FALSE'/>
 
-
-    <!-- Bootstrap Themes files -->
-    <public path='resource/themes'>
-        <include name='**/*.css'/>
-        <include name='**/*.js'/>
-        <include name="**/*.eot"/>
-        <include name="**/*.svg"/>
-        <include name="**/*.ttf"/>
-        <include name="**/*.woff"/>
-        <include name="**/*.png"/>
-        <include name="**/*.gif"/>
-        <include name="**/*.jpg"/>
-    </public>
-
-
     <!-- Logging -->
     <inherits name="com.google.gwt.logging.Logging"/>
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>

@@ -35,7 +35,7 @@ public class LandingPageController {
 	@Value("${topmenubar.url:http://localhost:9010/topmenubar}")
 	private String topmenubarUrl;
 
-	@Value("${profile.url:http://localhost:9018/profile}")
+	@Value("${profile.url:http://localhost:9012/profile}")
 	private String profileUrl;
 
 	@Value("${sso.url:http://localhost:9000/ep/openid_connect_login?identifier=http%3A%2F%2Flocalhost%3A8080%2Fopenid-connect-server-webapp%2F}")

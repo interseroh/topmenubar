@@ -18,17 +18,17 @@
  */
 package de.interseroh.tmb.profile.server;
 
-import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 
+import de.interseroh.tmb.common.LoggingCrossOriginConfiguration;
 import de.interseroh.tmb.profile.shared.ProfileServiceEndpoint;
-import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @Import(LoggingCrossOriginConfiguration.class)

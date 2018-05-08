@@ -16,26 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package de.interseroh.tmb.user.client;
+package de.interseroh.tmb.profile.client;
 
-public class UserInfoResponseImpl implements  UserInfoResponse{
+import com.google.gwt.user.client.ui.Composite;
 
-	private String username;
-	private String email;
+public class ProfilePopover extends Composite {
 
-	public String getUsername() {
-		return username;
+	public ProfilePopover() {
+
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 }

@@ -21,4 +21,5 @@
 
     <!-- Logging -->
     <set-property name="gwt.logging.logLevel" value="INFO"/>
+	<set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
 </module>
