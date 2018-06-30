@@ -34,15 +34,19 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<i18n.messages.bundle>de.interseroh.tmb.applauncher.client.Messages
+        <i18n.messages.bundle>
+            de.interseroh.tmb.applauncher.client.Messages
 		</i18n.messages.bundle>
-		<i18n.gwt.module>de.interseroh.tmb.applauncher.Applauncher
+        <i18n.gwt.module>
+            de.interseroh.tmb.applauncher.Applauncher
 		</i18n.gwt.module>
-		<gwt.dev.module>de.interseroh.tmb.applauncher.ApplauncherDevelopment
+        <gwt.dev.module>
+            de.interseroh.tmb.applauncher.ApplauncherDevelopment
 		</gwt.dev.module>
 	</properties>
 
 	<dependencies>
+        <!-- TMB Common -->
 		<dependency>
 			<groupId>de.interseroh.tmb.common</groupId>
 			<artifactId>tmb-common</artifactId>
@@ -195,5 +199,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>

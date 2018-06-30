@@ -20,26 +20,75 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
+import com.google.gwtmockito.GwtMock;
+import com.google.gwtmockito.GwtMockitoTestRunner;
+import com.google.gwtmockito.WithClassesToStub;
+import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+import org.gwtbootstrap3.client.ui.Anchor;
+import org.gwtbootstrap3.client.ui.Column;
+import org.gwtbootstrap3.client.ui.Container;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Spy;
 
-import com.google.gwtmockito.GwtMockitoTestRunner;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 
 @RunWith(GwtMockitoTestRunner.class)
+@WithClassesToStub(Anchor.class)
 public class ApplauncherWebAppTest {
 
+	@Spy
 	private ApplauncherWebApp applauncherWebApp;
+
+	@GwtMock
+	private ApplauncherWebAppGinjector injector;
+
+	@GwtMock
+	private Container popupContainer;
+
+	private List<TargetApplication> webApps = new ArrayList<>();
+
+	@GwtMock
+	private TargetApplication targetApplication;
+
+	@GwtMock
+	private Column column;
 
 	@Before
 	public void setUp() throws Exception {
-		applauncherWebApp = new ApplauncherWebApp();
+	}
+
+	@Ignore
+	@Test
+	public void testOnModuleLoad() throws Exception {
+		applauncherWebApp.onModuleLoad();
 	}
 
 	@Test
-	@Ignore
-	public void testOnModuleLoad() throws Exception {
-		applauncherWebApp.onModuleLoad();
+	public void fillThreeColumnContainer() throws Exception {
+		// Prepare
+		webApps.add(targetApplication);
+
+		when(targetApplication.getCaption()).thenReturn("Test");
+		when(targetApplication.getApplicationURL()).thenReturn("Test");
+		when(targetApplication.getImageURL()).thenReturn("Test");
+		when(targetApplication.getTarget()).thenReturn("Test");
+
+		doReturn(column).when(applauncherWebApp).createAnchorColumn(
+				"XS_4", "Test", "Test",
+				"Test", "test");
+
+		// CUT
+		applauncherWebApp.fillThreeColumnContainer(popupContainer, webApps);
+
+		// Asserts
+		verify(popupContainer, times(1)).add(any());
+		verify(webApps.get(0), times(1)).getCaption();
 	}
 }

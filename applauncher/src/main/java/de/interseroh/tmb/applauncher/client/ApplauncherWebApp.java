@@ -18,34 +18,25 @@
  */
 package de.interseroh.tmb.applauncher.client;
 
-import java.util.List;
-import java.util.logging.Logger;
-
-import org.fusesource.restygwt.client.Method;
-import org.fusesource.restygwt.client.MethodCallback;
-import org.gwtbootstrap3.client.ui.Anchor;
-import org.gwtbootstrap3.client.ui.AnchorButton;
-import org.gwtbootstrap3.client.ui.Column;
-import org.gwtbootstrap3.client.ui.Container;
-import org.gwtbootstrap3.client.ui.Image;
-import org.gwtbootstrap3.client.ui.ListDropDown;
-import org.gwtbootstrap3.client.ui.Popover;
-import org.gwtbootstrap3.client.ui.Row;
-import org.gwtbootstrap3.client.ui.constants.IconSize;
-import org.gwtbootstrap3.client.ui.constants.IconType;
-import org.gwtbootstrap3.client.ui.constants.ImageType;
-import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
-
 import de.interseroh.tmb.applauncher.client.common.ApplauncherPopover;
 import de.interseroh.tmb.applauncher.client.common.ServicePreparator;
 import de.interseroh.tmb.applauncher.client.domain.AppConfigurationClient;
 import de.interseroh.tmb.applauncher.shared.json.TargetApplication;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.gwtbootstrap3.client.ui.*;
+import org.gwtbootstrap3.client.ui.constants.IconSize;
+import org.gwtbootstrap3.client.ui.constants.IconType;
+import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.gwt.FlowPanel;
+
+import java.util.List;
+import java.util.logging.Logger;
 
 import static de.interseroh.tmb.applauncher.client.NoopenerImitateNativeJavaScript.noopenerImitate;
 
@@ -70,10 +61,12 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		RootPanel appLauncherRoot = getWidgets(TMB_APP_LAUNCHER);
 		appLauncherRoot.getElement().addClassName(CSS_BLOCK);
-		//appLauncherRoot.getElement().addClassName("hidden-xs hidden-sm");
+        // appLauncherRoot.getElement().addClassName("hidden-xs hidden-sm");
+
 		applauncherUrl = appLauncherRoot.getElement()
 				.getAttribute(DATA_APPLICATION_URL);
 		logger.info("Applauncher application URL: " + applauncherUrl);
+
 		ServicePreparator servicePreparator = initServices(applauncherUrl);
 
 		appConfigurationClient = servicePreparator.getAppConfigurationClient();
@@ -91,7 +84,9 @@ public class ApplauncherWebApp implements EntryPoint {
 		popover.add(popoverBtn);
 
 		createDivStructure(popover, dropDown, appLauncherRoot);
+
 		noopenerImitate();
+
 		logger.info("AppLauncher: Create Views end...");
 	}
 
@@ -112,23 +107,24 @@ public class ApplauncherWebApp implements EntryPoint {
 		popupContainer.getElement()
 				.addClassName(CSS_BLOCK + "__iconsContainer");
 		popupContainer.setFluid(true);
-		return popupContainer;
 
+        return popupContainer;
 	}
 
-	private void fillThreeColumnContainer(Container popupContainer,
-			List<TargetApplication> webApps) {
+    void fillThreeColumnContainer(Container popupContainer,
+                                  List<TargetApplication> webApps) {
 		Row currentRow = new Row();
 		popupContainer.add(currentRow);
-		for (TargetApplication webApp : webApps) {
+
+        for (TargetApplication webApp : webApps) {
 			currentRow.add(createAnchorColumn("XS_4", webApp.getCaption(),
 					webApp.getApplicationURL(), webApp.getImageURL(),
 					webApp.getTarget()));
 		}
 	}
 
-	private Column createAnchorColumn(String span, String text, String url,
-			String iconUrl, String target) {
+    Column createAnchorColumn(String span, String text, String url,
+                              String iconUrl, String target) {
 		Column col = new Column(span);
 		Row newRow = new Row();
 		newRow.getElement().addClassName(CSS_BLOCK + "__item");
@@ -153,7 +149,8 @@ public class ApplauncherWebApp implements EntryPoint {
 		anchor.add(textWrapper);
 		newRow.add(anchor);
 		col.add(newRow);
-		return col;
+
+        return col;
 	}
 
 	private Popover createApplauncherPopover() {
@@ -176,11 +173,10 @@ public class ApplauncherWebApp implements EntryPoint {
 
 		appConfigurationClient.getAppConfiguration(
 				new MethodCallback<List<TargetApplication>>() {
-
 					@Override
 					public void onFailure(Method method, Throwable throwable) {
-						logger.severe("Error getting applauncher properties");
-					}
+                        logger.severe("Error getting applauncher properties: " + throwable.getMessage());
+                    }
 
 					@Override
 					public void onSuccess(Method method,
