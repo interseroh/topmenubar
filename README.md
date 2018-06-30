@@ -441,7 +441,7 @@ As a result of this build you will find an image carrying the build version in t
 Hint: You may call the maven build with -Pwith-docker settings 
 and setting all required parameters manually, or you choose jenkins2, setting up a new build pipeline and execute the Jenkinsfile.
 
-![Jenkins configuration](https://github.com/interseroh/topmenubar/etc/jenkins.jpg)
+![Jenkins configuration](https://github.com/interseroh/topmenubar/raw/master/etc/jenkins.jpg)
 
 The build will produces a docker image for each service.
 
