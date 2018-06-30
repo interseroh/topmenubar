@@ -33,7 +33,6 @@ Top Menu Bar for Interseroh Webapps.
   - [Bootstrap Config](#Bootstrap-Config)
   - [variables less](#variables)
 - [Dockerizing](#dockerizing)
- 
 - [Docker Container](#docker-container)
 - [Interseroh Styles](#interseroh-styles) 
 
@@ -61,7 +60,7 @@ This is the parent module with pom packaging. The pom.xml file of this module co
  
 The plugins are parametrized with three placeholders:
 
-- `${i18n.gwt.module} (Reference to configuration of the main GWT module)
+- `${i18n.gwt.module}` (Reference to configuration of the main GWT module)
 - `${gwt.dev.module}` (Reference to the configuration of development GWT module)
 - `${i18n.messages.bundle}` (Reference to the configuration of development GWT module)
 
