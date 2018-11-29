@@ -550,7 +550,7 @@
 											${docker_registry}/${project.artifactId}
 										</name>
 										<build>
-											<from>java:8</from>
+											<from>nexus:6000/java8:1.2.0</from>
 											<maintainer>
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
