@@ -94,7 +94,8 @@
 		<java.version>1.8</java.version>
 		<gwt.version>2.8.1</gwt.version>
 		<google.gin.version>2.1.2</google.gin.version>
-		<gwt.bootstrap.version>0.9.5</gwt.bootstrap.version>
+		<gwt.bootstrap.version>0.9.3</gwt.bootstrap.version>
+		<gwt.bootstrap-extra.version>0.9.5</gwt.bootstrap-extra.version>
 		<gwt.eventbinder.version>1.1.0</gwt.eventbinder.version>
 		<gwt.resty.version>2.2.0</gwt.resty.version>
 		<gwt.mockito.version>1.1.6</gwt.mockito.version>
@@ -177,7 +178,7 @@
 			<dependency>
 				<groupId>org.gwtbootstrap3</groupId>
 				<artifactId>gwtbootstrap3-extras</artifactId>
-				<version>${gwt.bootstrap.version}</version>
+				<version>${gwt.bootstrap-extra.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.gwt</groupId>
