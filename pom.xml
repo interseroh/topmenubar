@@ -503,6 +503,7 @@
 										<value>${GIT_BRANCH}</value>
 										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
 										<regex>.*\/</regex>
+										<failIfNoMatch>false</failIfNoMatch>
 										<replacement />
 									</configuration>
 								</execution>
