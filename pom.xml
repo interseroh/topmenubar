@@ -46,7 +46,6 @@
 		<url>https://github.com/interseroh/topmenubar</url>
 		<connection>scm:git:https://github.com/interseroh/topmenubar.git
 		</connection>
-		<tag>topmenubar-parent-1.3.0-SNAPSHOT</tag>
 	</scm>
 
 	<developers>
@@ -734,7 +733,7 @@
 					<name>nexus</name>
 					<id>nexus</id>
 					<layout>default</layout>
-					<url>http://nexus/repository/releases/</url>
+					<url>http://nexus/repository/snapshot/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
