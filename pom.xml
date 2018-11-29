@@ -734,7 +734,7 @@
 					<name>nexus</name>
 					<id>nexus</id>
 					<layout>default</layout>
-					<url>http://nexus/repository/snapshots/</url>
+					<url>http://nexus/repository/releases/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
