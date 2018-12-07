@@ -178,7 +178,7 @@
 			<dependency>
 				<groupId>org.gwtbootstrap3</groupId>
 				<artifactId>gwtbootstrap3-extras</artifactId>
-				<version>${gwt.bootstrap-extra.version}</version>
+				<version>${gwt.bootstrap-extras.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.gwt</groupId>
