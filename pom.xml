@@ -28,7 +28,7 @@
 
 	<groupId>de.interseroh.tmb</groupId>
 	<artifactId>topmenubar-parent</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>1.3.0</version>
 	<packaging>pom</packaging>
 
 	<name>topmenubar-parent</name>
@@ -46,7 +46,6 @@
 		<url>https://github.com/interseroh/topmenubar</url>
 		<connection>scm:git:https://github.com/interseroh/topmenubar.git
 		</connection>
-		<tag>topmenubar-parent-1.2.0-SNAPSHOT</tag>
 	</scm>
 
 	<developers>
@@ -179,7 +178,7 @@
 			<dependency>
 				<groupId>org.gwtbootstrap3</groupId>
 				<artifactId>gwtbootstrap3-extras</artifactId>
-				<version>${gwt.bootstrap.version}</version>
+				<version>${gwt.bootstrap-extra.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.gwt</groupId>
@@ -505,6 +504,7 @@
 										<value>${GIT_BRANCH}</value>
 										<!-- <value>origin/feature/TPI-16-builddocker</value> -->
 										<regex>.*\/</regex>
+										<failIfNoMatch>false</failIfNoMatch>
 										<replacement />
 									</configuration>
 								</execution>
@@ -551,7 +551,7 @@
 											${docker_registry}/${project.artifactId}
 										</name>
 										<build>
-											<from>java:8</from>
+											<from>nexus:6000/java8:1.2.0</from>
 											<maintainer>
 												marcus.noerder-tuitje@crowdcode.io
 											</maintainer>
@@ -735,7 +735,7 @@
 					<name>nexus</name>
 					<id>nexus</id>
 					<layout>default</layout>
-					<url>http://nexus/repository/snapshots/</url>
+					<url>http://nexus/repository/snapshot/</url>
 				</snapshotRepository>
 			</distributionManagement>
 		</profile>
